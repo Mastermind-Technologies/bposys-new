@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var base_url = 'http://192.168.43.213/bposys/';//'http://localhost/bposys/';
+	var base_url = 'http://localhost/bposys/';
 	var info_active = false;
 	var success_active = false;
 	var warning_active = false;

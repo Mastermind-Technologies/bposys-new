@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-  var base_url = 'http://192.168.43.213/bposys/';//'http://localhost/bposys/';
+  var base_url = 'http://localhost/bposys/';
   var interval = window.setInterval(check_application_status, 3000);
 
   // $('.line-of-business').change(function(){

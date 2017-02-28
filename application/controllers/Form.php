@@ -216,13 +216,15 @@ class Form extends CI_Controller {
 
 		$submitted_requirements = $this->Requirement_m->get_submitted_requirements($referenceNum);
 
-		for($i = 0 ; $i < count($submitted_requirements); $i = $i +1)
+		$data['checklist'] = [];
+		if(count($submitted_requirements) > 0)
 		{
-			$checklist['requirement'.$submitted_requirements[$i]->requirementId] = true;
+			for($i = 0 ; $i < count($submitted_requirements); $i = $i +1)
+			{
+				$checklist['requirement'.$submitted_requirements[$i]->requirementId] = true;
+			}
+			$data['checklist'] = $checklist;
 		}
-
-		$data['checklist'] = $checklist;
-
 
 		// echo '<pre>';
 		// print_r(array($data));
