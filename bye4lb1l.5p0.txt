@@ -1,0 +1,110 @@
+﻿Merge branch 'development' of https://github.com/Mastermind-Technologies/bposys into development
+
+# Conflicts:
+#	application/controllers/Dashboard.php
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch development
+# Your branch and 'origin/development' have diverged,
+# and have 1 and 9 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   application/BPLO_Application.php
+#	modified:   application/config/autoload.php
+#	modified:   application/controllers/Form.php
+#	modified:   application/controllers/Profile.php
+#	new file:   application/controllers/Reports.php
+#	deleted:    application/libraries/Application.php
+#	new file:   application/libraries/BPLO_Application.php
+#	new file:   application/libraries/Business.php
+#	new file:   application/libraries/CENRO_Application.php
+#	modified:   application/libraries/Owner.php
+#	new file:   application/libraries/Sanitary_Application.php
+#	modified:   application/libraries/User.php
+#	new file:   application/libraries/Zoning_Application.php
+#	modified:   application/models/Application_m.php
+#	modified:   application/models/Approval_m.php
+#	modified:   application/models/Business_Address_m.php
+#	copied:     application/models/Business_Address_m.php -> application/models/Business_m.php
+#	new file:   application/models/Issued_Application_m.php
+#	modified:   application/models/Owner_m.php
+#	modified:   application/models/Role_m.php
+#	modified:   application/views/dashboard/applicant/index.php
+#	modified:   application/views/dashboard/applicant/new_application.php
+#	modified:   application/views/dashboard/applicant/notif-view.php
+#	modified:   application/views/dashboard/applicant/view_application.php
+#	modified:   application/views/dashboard/assessors/index.php
+#	modified:   application/views/dashboard/bfp/index.php
+#	new file:   application/views/dashboard/bplo/ajax-report.php
+#	renamed:    application/views/dashboard/bplo/incoming.php -> application/views/dashboard/bplo/complete.php
+#	modified:   application/views/dashboard/bplo/index.php
+#	new file:   application/views/dashboard/bplo/reports.php
+#	modified:   application/views/dashboard/bplo/view.php
+#	deleted:    application/views/dashboard/cenro/incoming.php
+#	modified:   application/views/dashboard/cenro/index.php
+#	modified:   application/views/dashboard/cenro/view.php
+#	modified:   application/views/dashboard/cho/index.php
+#	modified:   application/views/dashboard/cho/view.php
+#	deleted:    application/views/dashboard/engineering/incoming.php
+#	modified:   application/views/dashboard/engineering/index.php
+#	deleted:    application/views/dashboard/engineering/pending.php
+#	renamed:    application/views/dashboard/cho/incoming.php -> application/views/dashboard/incoming.php
+#	renamed:    application/views/dashboard/cho/pending.php -> application/views/dashboard/issued.php
+#	renamed:    application/views/dashboard/bplo/pending.php -> application/views/dashboard/on-process.php
+#	renamed:    application/views/dashboard/cenro/pending.php -> application/views/dashboard/pending.php
+#	deleted:    application/views/dashboard/zoning/incoming.php
+#	modified:   application/views/dashboard/zoning/index.php
+#	deleted:    application/views/dashboard/zoning/pending.php
+#	modified:   application/views/dashboard/zoning/view.php
+#	modified:   application/views/profile/index.php
+#	new file:   application/views/profile/manage_businesses.php
+#	renamed:    application/views/profile/manage_business_address.php -> application/views/profile/manage_owners.php
+#	modified:   application/views/templates/matrix/matrix_includes.php
+#	modified:   application/views/templates/matrix/matrix_navbar.php
+#	modified:   application/views/templates/sb_admin2/sb_admin2_navbar.php
+#	modified:   assets/js/dashboard.js
+#	modified:   assets/js/dept-dashboard.js
+#	new file:   assets/js/jquery.canvasjs.min.js
+#	modified:   assets/js/noty/jquery.noty.js
+#	modified:   assets/js/noty/packaged/jquery.noty.packaged.js
+#	modified:   assets/js/noty/packaged/jquery.noty.packaged.min.js
+#	modified:   assets/js/noty/themes/bootstrap.js
+#	modified:   assets/js/noty/themes/default.js
+#	new file:   assets/js/noty/themes/metroui.js
+#	modified:   assets/js/noty/themes/relax.js
+#	new file:   assets/js/noty/themes/semanticUI.js
+#	copied:     assets/js/noty/jquery.noty.js -> assets/js/notybackup/jquery.noty.js
+#	new file:   assets/js/notybackup/layouts/bottom.js
+#	new file:   assets/js/notybackup/layouts/bottomCenter.js
+#	new file:   assets/js/notybackup/layouts/bottomLeft.js
+#	new file:   assets/js/notybackup/layouts/bottomRight.js
+#	new file:   assets/js/notybackup/layouts/center.js
+#	new file:   assets/js/notybackup/layouts/centerLeft.js
+#	new file:   assets/js/notybackup/layouts/centerRight.js
+#	new file:   assets/js/notybackup/layouts/inline.js
+#	new file:   assets/js/notybackup/layouts/top.js
+#	new file:   assets/js/notybackup/layouts/topCenter.js
+#	new file:   assets/js/notybackup/layouts/topLeft.js
+#	new file:   assets/js/notybackup/layouts/topRight.js
+#	copied:     assets/js/noty/packaged/jquery.noty.packaged.js -> assets/js/notybackup/packaged/jquery.noty.packaged.js
+#	copied:     assets/js/noty/packaged/jquery.noty.packaged.min.js -> assets/js/notybackup/packaged/jquery.noty.packaged.min.js
+#	new file:   assets/js/notybackup/promise.js
+#	copied:     assets/js/noty/themes/bootstrap.js -> assets/js/notybackup/themes/bootstrap.js
+#	copied:     assets/js/noty/themes/default.js -> assets/js/notybackup/themes/default.js
+#	copied:     assets/js/noty/themes/relax.js -> assets/js/notybackup/themes/relax.js
+#	modified:   bplsys.sql
+#
+# Changes not staged for commit:
+#	deleted:    application/controllers/Dashboard.php
+#
+

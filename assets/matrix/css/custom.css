@@ -1,0 +1,23 @@
+.container-alert label {
+  font-weight: bold;
+}
+
+.table-status-expired {
+  color: red;
+}
+
+.table-status-processing {
+  color: green;
+}
+
+.table-status-active {
+  color: blue;
+}
+
+.table-status-bullet {
+  font-size:8px !important; padding:0 4px; display: inline-block; vertical-align: middle;
+}
+
+.table-status-desc {
+  padding:0 4px; display: inline-block; vertical-align: middle;
+}
