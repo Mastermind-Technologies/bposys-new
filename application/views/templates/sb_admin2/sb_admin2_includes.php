@@ -86,6 +86,9 @@
     <script src="<?php echo base_url(); ?>assets/sb_admin2/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/sb_admin2/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/sb_admin2/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script type="text/javascript">
+        var base_url = "<?php echo base_url(); ?>";
+    </script>
 
 
 </head>

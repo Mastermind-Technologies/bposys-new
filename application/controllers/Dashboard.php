@@ -2584,7 +2584,7 @@ public function get_cert_closure_info()
 public function get_bplo_certificate_info()
 {
 	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('9E9E1D64A2');
+	$data['application'] = new BPLO_Application('739862FF5C');
 
 	$this->load->view('dashboard/bplo/bplo_certificate_printable',$data);
 }
