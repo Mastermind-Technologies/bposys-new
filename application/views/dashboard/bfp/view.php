@@ -125,10 +125,10 @@
               <?php if ($application->get_status() != "Active"): ?>
                 <div class="row text-center">
                   <?php if ($application->get_status() == "For applicant visit"): ?>
-                    <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Validate</a>
+                    <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-process">Validate</a>
                     <!-- <a href="#" class="btn btn-danger btn-lg">Reject</a> -->
                   <?php elseif ($application->get_status() == "On process"): ?>
-                    <button class="btn btn-success" disabled="" id="approve-btn">Issue Fire Safety Insurance Certificate</button>
+                    <button class="btn btn-success btn-process" disabled="" id="approve-btn">Issue Fire Safety Insurance Certificate</button>
                   </form>
                   <!-- <a href="<?php echo base_url(); ?>dashboard/approve_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Approve</a> -->
                   <!-- <a href="#" class="btn btn-warning btn-lg">Edit information</a> -->
@@ -580,8 +580,8 @@
                     <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[3]) ? number_format($bplo->get_quarterPayment()[3], 2) : '.00' ?></span></td>
                   </tbody>
                 </table>
-                <span>This Statement is valid until 1/30/<?= date('Y') ?></span><br>
-                <span>Please disregard this statement if payment has been made. Thank you.</span>
+                <!-- <span>This Statement is valid until 1/30/<?= date('Y') ?></span><br>
+                <span>Please disregard this statement if payment has been made. Thank you.</span> -->
               </div>
               <div id="tab3" class='tab-pane'>
                 <div id="gmaps" style="width:100%; height:500px; background-color: gray"></div>

@@ -3,7 +3,7 @@
   <div id="content-header">
     <div id="breadcrumb">
       <a href="<?php echo base_url(); ?>dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a>
-      <?php if ($application->get_status() == "For applicant visit"): ?>
+      <?php if ($application->get_status() == "BPLO Interview and Assessment of Fees"): ?>
         <a href="<?php echo base_url(); ?>dashboard/incoming_applications">Incoming Applications</a>
       <?php elseif ($application->get_status() == "On process"): ?>
         <a href="<?php echo base_url(); ?>dashboard/on_process_applications">On Process Applications</a>
@@ -278,7 +278,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <?php if ($application->get_status() == 'For applicant visit'): ?>
+                <?php if ($application->get_status() == 'BPLO Interview and Assessment of Fees'): ?>
                   <form action="<?php echo base_url(); ?>dashboard/approve_capitalization/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum()) ?>" method="post">
                   <?php endif ?>
 
@@ -296,7 +296,7 @@
                         <th rowspan="2" style="width: 20%">
                           <label for="business_activity_capitalization">Capitalization</label>
                         </th>
-                        <?php if ($application->get_status() == "For applicant visit"): ?>
+                        <?php if ($application->get_status() == "BPLO Interview and Assessment of Fees"): ?>
                           <th rowspan="2" style="width: 20%">
                             <label for="">Action</label>
                           </th>
@@ -304,7 +304,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php if ($application->get_status() == "For applicant visit"): ?>
+                      <?php if ($application->get_status() == "BPLO Interview and Assessment of Fees"): ?>
                         <?php if ($application->get_applicationType() == "New"): ?>
                           <?php foreach ($application->get_businessActivities() as $activity): ?>
                             <tr>
@@ -323,7 +323,7 @@
                                 type="button" 
                                 data-target="#<?= $activity->type=='Amusement' ? 'modal-amusement' : '' ?><?= $activity->type=='Financial Institution' ? 'modal-financial' : '' ?>" 
                                 data-toggle="modal" 
-                                value="<?= $activity->type=='Financial Institution' ? 'Select Financial Institution Type' : '' ?><?= $activity->type=='Amusement' ? 'Edit Amusement Devices' : '' ?>" <?= $activity->type=="Financial Institution"||$activity->type=="Amusement" ? '' : 'disabled' ?> 
+                                value="<?= $activity->type=='Financial Institution' ? 'Select Financial Institution Type' : '' ?><?= $activity->type=='Amusement' ? 'Edit Amusement Devices' : '' ?>" <?= $activity->type=="Financial Institution"||$activity->type=="Amusement" ? '' : 'disabled style="display:none;"' ?> 
                                 class="btn <?= $activity->type=='Financial Institution'||$activity->type=='Amusement' ? 'btn-danger btn-required' : 'btn-primary' ?> btn-block"
                                 id="<?= $activity->type=='Financial Institution' ? 'btn-select-financial-institution' : '' ?><?= $activity->type=='Amusement' ? 'btn-edit-amusement-devices' : '' ?>">
                                 <?php if ($activity->type=="Amusement"): ?>
@@ -451,11 +451,11 @@
                   </tbody>
                 </table>
 
-                <?php if ($application->get_status() == 'For applicant visit'): ?>
+                <?php if ($application->get_status() == 'BPLO Interview and Assessment of Fees'): ?>
                   <div class="row-fluid text-center">
                     <div class="span4 offset4">
                       <div class="control-group">
-                        <button type="submit" disabled class="btn btn-success btn-submit">Approve Capitalization/Gross Sales</button>
+                        <button type="submit" disabled class="btn btn-success btn-submit btn-process">Approve Capitalization/Gross Sales</button>
                       </div>
                     </div>
                   </div>
@@ -512,10 +512,10 @@
               <div class="form-actions">
                 <div class="row text-center">
                   <?php if ($application->get_status() == "Completed"): ?>
-                    <a href="<?php echo base_url(); ?>form/payment/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-large">Proceed to Payment</a>
+                    <a href="<?php echo base_url(); ?>form/payment/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-large btn-process">Proceed to Payment</a>
                     <!-- <a href="<?php echo base_url(); ?>dashboard/issue_permit/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-large">Issue Business Permit</a> -->
                   <?php elseif ($application->get_status() == "Active"): ?>
-                    <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info" class="btn btn-success btn-large">Print BPLO Certificate</a>
+                    <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info" class="btn btn-success btn-large btn-process">Print BPLO Certificate</a>
                   <?php endif ?>
                 </div>
               </div>
@@ -640,8 +640,8 @@
                   <td><span class="pull-right"><?= isset($application->get_quarterPayment()[3]) ? number_format($application->get_quarterPayment()[3], 2) : '.00' ?></span></td>
                 </tbody>
               </table>
-              <span>This Statement is valid until 1/30/<?= date('Y') ?></span><br>
-              <span>Please disregard this statement if payment has been made. Thank you.</span>
+              <!-- <span>This Statement is valid until 1/30/<?= date('Y') ?></span><br>
+              <span>Please disregard this statement if payment has been made. Thank you.</span> -->
             </div>
             <div id="tab3" class='tab-pane'>
               <div id="gmaps" style="width:100%; height:500px; background-color: gray">

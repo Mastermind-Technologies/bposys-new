@@ -71,7 +71,7 @@ class Form extends CI_Controller {
 				$query['status'] = 'Completed';
 				$data['complete'] = count($this->Application_m->get_all_bplo_applications($query));
 
-				$query['status'] = 'For applicant visit';
+				$query['status'] = 'BPLO Interview and Assessment of Fees';
 				$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 				$query['status'] = "For approval";

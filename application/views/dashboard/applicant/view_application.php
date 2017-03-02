@@ -43,27 +43,27 @@
 									<div class="mdl-stepper-step <?=
 									//conditions for active-step
 									$application->get_status() == "Visit the Office of the Building Official" ||
-									$application->get_status() == "For applicant visit" ||
+									$application->get_status() == "BPLO Interview and Assessment of Fees" ||
 									$application->get_status() == "On process" ||
 									$application->get_status() == "Completed" ||
 									$application->get_status() == "Active"
 									? 'active-step' : '' ?>
 									<?=
 									//conditions for step-done
-									$application->get_status() == "For applicant visit" ||
+									$application->get_status() == "BPLO Interview and Assessment of Fees" ||
 									$application->get_status() == "On process" ||
 									$application->get_status() == "Completed" ||
 									$application->get_status() == "Active"
 									? 'step-done' : '' ?>">
 									<div class="mdl-stepper-circle"><span>2</span></div>
-									<div class="mdl-stepper-title">Visit the Office of the Building Offiial</div>
+									<div class="mdl-stepper-title">Visit the Office of the Building Official</div>
 									<div class="mdl-stepper-optional"></div>
 									<div class="mdl-stepper-bar-left"></div>
 									<div class="mdl-stepper-bar-right"></div>
 								</div>
 								<div class="mdl-stepper-step <?=
 									//conditions for active-step
-									$application->get_status() == "For applicant visit" ||
+									$application->get_status() == "BPLO Interview and Assessment of Fees" ||
 									$application->get_status() == "On process" ||
 									$application->get_status() == "Completed" ||
 									$application->get_status() == "Active"

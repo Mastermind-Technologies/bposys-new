@@ -102,7 +102,7 @@ $(document).ready(function(){
 				$('.badge-incoming').html(data.incoming>0 ? data.incoming : "");
 				$('.badge-process').html(data.process>0 ? data.process : "");
 				$('.badge-completed').html(data.completed>0 ? data.completed : "");
-				console.log(data);
+				// console.log(data);
 			}
 		});
 	}
@@ -285,5 +285,16 @@ $(document).ready(function(){
 		}
 		// console.log($('.financial-institution:checked').val());
 	})
+
+	$('.btn-process').click(function(){
+		$(this).attr('disabled',true);
+	});
+
+	$('a.btn-process').on("click", function(e){
+		console.log('disabled');
+		e.preventDefault();
+		$(this).removeAttr("href"); 
+		$(this).attr('disabled',true);
+	});
 
 });//End of Jquery

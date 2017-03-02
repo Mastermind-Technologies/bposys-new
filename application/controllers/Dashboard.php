@@ -62,7 +62,7 @@ class Dashboard extends CI_Controller {
 			// $data['pending'] = count($this->Application_m->get_all_bplo_applications($query));
 				unset($query);
 
-				$query['status'] = 'For applicant visit';
+				$query['status'] = 'BPLO Interview and Assessment of Fees';
 				$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 				$query['status'] = 'On process';
@@ -284,7 +284,7 @@ class Dashboard extends CI_Controller {
 			// $query['status'] = 'For finalization';
 			// $data['finalization'] = count($this->Application_m->get_all_bplo_applications($query));
 
-			$query['status'] = 'For applicant visit';
+			$query['status'] = 'BPLO Interview and Assessment of Fees';
 			$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 			// $query['status'] = 'For applicant visit';
@@ -1230,7 +1230,7 @@ class Dashboard extends CI_Controller {
 
 		if($role == "BPLO")
 		{
-			$query['status'] = 'For applicant visit';
+			$query['status'] = 'BPLO Interview and Assessment of Fees';
 			$applications = $this->Application_m->get_all_bplo_applications($query);
 
 			if(count($applications) > 0)
@@ -1936,7 +1936,7 @@ class Dashboard extends CI_Controller {
 				$application->change_status($referenceNum, 'Active');
 				$notif_message = $application->get_businessName() . " has been approved by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." from the Office of the Building Official.";
 
-				BPLO_Application::update_status($referenceNum, 'For applicant visit');
+				BPLO_Application::update_status($referenceNum, 'BPLO Interview and Assessment of Fees');
 				// Zoning_Application::update_status($referenceNum, 'For applicant visit');
 				// CENRO_Application::update_status($referenceNum, 'For applicant visit');
 				// Sanitary_Application::update_status($referenceNum, 'For applicant visit');
@@ -2855,7 +2855,7 @@ public function check_notif()
 		$data['new'] = count(User::get_notifications());
 		$data['complete'] = count(User::get_complete_notifications());
 
-		$query['status'] = 'For applicant visit';
+		$query['status'] = 'BPLO Interview and Assessment of Fees';
 		$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 		$query['status'] = 'On process';
