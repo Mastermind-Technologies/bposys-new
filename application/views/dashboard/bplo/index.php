@@ -52,7 +52,7 @@
            <li class="bg_ly span1"> <a href="<?php echo base_url(); ?>Alerts"><span><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i> </span><br>Create Alerts</a> </li>
          </ul>
        </div>
-       <div class="row-fluid">
+       <!-- <div class="row-fluid">
         <div class="span4">
           <div class="widget-box">
             <div class="widget-title"> <span class="icon"> <i class="icon-eye-open"></i> </span>
@@ -103,7 +103,6 @@
                   <tr>
                     <th>#</th>
                     <th>Business Name</th>
-                    <!-- <th>Visits</th> -->
                   </tr>
                 </thead>
                 <tbody class="">
@@ -153,7 +152,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
 
@@ -246,7 +245,7 @@
                        <tr>
                          <th>#</th>
                          <th>Business Name</th>
-                         
+
                        </tr>
                      </thead>
                      <tbody class="">

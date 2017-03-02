@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-  var base_url = 'http://localhost/bposys/';
+  // var base_url = 'http://172.16.105.102/bposys/';
   var interval = window.setInterval(check_application_status, 3000);
 
   // $('.line-of-business').change(function(){
@@ -285,7 +285,7 @@ $(document).ready(function()
     {
       $("#entity").prop('disabled', true);
       $("#entity").prop('required', false);
-    }    
+    }
   });
 
   $('#rented').click(function() {
@@ -304,7 +304,7 @@ $(document).ready(function()
         $(this).val("");
         $(this).html("");
       });
-    }    
+    }
   });
 
   var rowCount = 1;
@@ -381,7 +381,7 @@ $(document).ready(function()
         {
           if(data == 'success')
           {
-            window.location = base_url+"dashboard"; 
+            window.location = base_url+"dashboard";
           }
           else
           {
@@ -390,7 +390,7 @@ $(document).ready(function()
             $('.fa-draft-icon').removeClass('fa-circle-o-notch fa-spin');
             $('.fa-draft-icon').addClass('fa-pencil-square-o');
           }
-          
+
         }
       }
     });
@@ -419,8 +419,8 @@ $(document).ready(function()
               $(document).ajaxStop(function(){
                console.log("Finished!");
                console.log("Redirecting...");
-               window.setTimeout(function() { 
-                window.location = base_url+"dashboard"; 
+               window.setTimeout(function() {
+                window.location = base_url+"dashboard";
               },2000);
              })
             }
@@ -455,8 +455,8 @@ $(document).ready(function()
   //       {
   //         console.log("Success!");
   //         console.log("Redirecting...");
-  //         window.setTimeout(function() { 
-  //           window.location = base_url+"dashboard"; 
+  //         window.setTimeout(function() {
+  //           window.location = base_url+"dashboard";
   //         },2000);
   //       }
   //     }
@@ -505,7 +505,7 @@ $(document).ready(function()
 
         initMap(data.lat, data.lng);
 
-        
+
       }
     });
   });
@@ -663,7 +663,7 @@ $(document).ready(function()
       $("#btn-submit").prop('disabled', true);
       $("#btn-add-bus-activity").prop('disabled', true);
       $("#fa-submit").removeClass('fa-check');
-      $("#fa-submit").addClass('fa-circle-o-notch fa-spin');  
+      $("#fa-submit").addClass('fa-circle-o-notch fa-spin');
     // console.log('here');
     e.preventDefault();
     jQuery.ajax({
@@ -683,10 +683,10 @@ $(document).ready(function()
         else
         {
           process_business_activity(data.referenceNum);
-        }     
+        }
       }
     });
     return false;
   });
-  
+
 }); //End of Jquery
