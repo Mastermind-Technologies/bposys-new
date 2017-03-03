@@ -290,9 +290,8 @@ $(document).ready(function(){
 		$(this).attr('disabled',true);
 	});
 
-	$('a.btn-process').on("click", function(e){
-		console.log('disabled');
-		e.preventDefault();
+	$('a.btn-process').mouseup(function(){
+		window.location = $(this).attr('href');
 		$(this).removeAttr("href"); 
 		$(this).attr('disabled',true);
 	});

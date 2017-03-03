@@ -31,6 +31,7 @@ class BPLO_Application extends Business {
     private $totalAssessment = null;
     private $requirements = null;
     private $quarterPayment = null;
+    private $isRecentlyChanged = null;
 
     public function __construct($reference_num = null){
         $this->CI =& get_instance();
@@ -43,6 +44,9 @@ class BPLO_Application extends Business {
         $this->CI->load->model('Assessment_m');
         $this->CI->load->model('Requirement_m');
         $this->CI->load->model('Gross_m');
+        $this->CI->load->model('Change_m');
+
+        $this->isRecentlyChanged = $this->CI->Change_m->check_recent_change($reference_num);
 
         $isExisting = $this->CI->Renewal_m->check_application($reference_num);
 
@@ -1023,5 +1027,29 @@ class BPLO_Application extends Business {
         return $this;
     }
 
+
+    /**
+     * Gets the value of isRecentlyChanged.
+     *
+     * @return mixed
+     */
+    public function get_IsRecentlyChanged()
+    {
+        return $this->isRecentlyChanged;
+    }
+
+    /**
+     * Sets the value of isRecentlyChanged.
+     *
+     * @param mixed $isRecentlyChanged the is recently changed
+     *
+     * @return self
+     */
+    private function set_IsRecentlyChanged($isRecentlyChanged)
+    {
+        $this->isRecentlyChanged = $isRecentlyChanged;
+
+        return $this;
+    }
 }
 
