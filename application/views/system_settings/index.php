@@ -6,7 +6,7 @@
       <a href="#" class="current"> Settings</a>
     </div>
     <!--End-breadcrumbs-->
-    <h1> System Settings </h1>
+    <h1> Tax Code Revenue Configuration </h1>
   </div>
 
 

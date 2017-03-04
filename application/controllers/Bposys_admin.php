@@ -7,6 +7,8 @@ class Bposys_admin extends CI_Controller {
 	{
 		//object classes are autoloaded from config/autoload.php
 		parent::__construct();
+
+		$this->load->model('User_m');
 	}
 
 	public function _init($data = null)
@@ -71,10 +73,22 @@ class Bposys_admin extends CI_Controller {
 		$this->isLogin();
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
-		$data['title'] = "Users";
-		$data['active'] = "Users";
-		$this->_init_matrix($data);
-		$this->load->view('admin/users');
+		$nav_data['title'] = "Users";
+		$nav_data['active'] = "Users";
+		$this->_init_matrix($nav_data);
+
+		$users = $this->User_m->get_all_users();
+
+		foreach ($users as $key => $user) {
+			$data['users'][] = new User($user->userId);
+		}
+		// echo "<pre>";
+		// print_r($data['users']);
+		// echo "</pre>";
+		// exit();
+
+
+		$this->load->view('admin/users', $data);
 	}
 
 	public function add_user()

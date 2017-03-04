@@ -189,6 +189,10 @@
 				<?php if ($application->get_status() == "Active" || $application->get_status() == "Expired" || $application->get_applicationType() == "Renew" && $application->get_status() != "For Retirement"): ?>
 					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#model-retire"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Retire Business</button>
 				<?php endif ?>
+				<?php if ($application->get_status() == "Active" || $application->get_status() == "On process" || $application->get_status() == "Completed" && $application->get_status() != "For Retirement"): ?>
+					<button type="button" data-toggle="modal" data-target="#modal-tax-order" class="btn btn-success">Tax Order of Payment</button>
+				<?php endif ?>
+				
 				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalReference"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
 			</div>
 
@@ -243,6 +247,149 @@
 				<p>Date of Completion: <?= isset($engineering[0]->createdAt) ? $engineering[0]->createdAt : 'Incomplete' ?></p>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div id="modal-tax-order" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Tax Order of Payment</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-2 col-sm-offset-1">
+							<label for=""><strong>Name of Business</strong></label>
+							<br>
+							<span><?= $application->get_BusinessName() ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Line of Business</strong></label>
+							<br>
+							<span><?= $application->get_LineOfBusiness() ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Status</strong></label>
+							<br>
+							<span><?= $application->get_ApplicationType() ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Bill No.</strong></label>
+							<br>
+							<span><?= $application->get_Assessment()->assessmentId ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Year</strong></label>
+							<br>
+							<span><?= date('Y', strtotime($application->get_Assessment()->createdAt)) ?></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-2 col-sm-offset-1">
+							<label for=""><strong>Owner/Taxpayer</strong></label>
+							<br>
+							<span><?= $application->get_FirstName()." ".strtoupper(substr($application->get_MiddleName(),0,1)).". ".$application->get_LastName() ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Business Address</strong></label>
+							<br>
+							<span><?= $application->get_barangay().", Biñan City, Laguna" ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Capital</strong></label>
+							<br>
+							<span><?= "PHP ".number_format($application->get_capital(), 2) ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Date Issued</strong></label>
+							<br>
+							<span><?= date('F j, o',strtotime($application->get_Assessment()->createdAt)) ?></span>
+						</div>
+						<div class="col-sm-2">
+							<label for=""><strong>Mode of Payment</strong></label>
+							<br>
+							<span><?= $application->get_modeOfPayment() ?></span>
+						</div>
+					</div>
+				</div>
+				<table class="table table-bordered">
+					<thead>
+						<th>Year</th>
+						<th>Period</th>
+						<th>Particulars</th>
+						<th>Due</th>
+						<th>Surcharge</th>
+						<th>Interest</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+						<?php 
+						$total = 0; 
+						$total_due = 0;
+						$total_surcharge = 0;
+						$total_interest = 0;
+						?>
+						<?php foreach ($application->get_Charges() as $key => $charge): ?>
+							<tr>
+								<td><?= date('Y', strtotime($charge->createdAt)) ?></td>
+								<td><?= $charge->period ?></td>
+								<td><?= $charge->particulars ?></td>
+								<td align="right"><?= number_format($charge->due, 2) ?></td>
+								<td align="right"><?= number_format($charge->surcharge, 2) ?></td>
+								<td align="right"><?= number_format($charge->interest, 2) ?></td>
+								<td align="right">
+									<?php 
+									$t = $charge->due + $charge->surcharge + $charge->interest;
+									echo number_format($t, 2);
+									$total += $t; 
+									$total_due += $charge->due;
+									$total_surcharge += $charge->surcharge;
+									$total_interest += $charge->interest;
+									?>
+								</td>
+							</tr>
+						<?php endforeach ?>
+					</tbody>
+				</table>
+				<div class="row">
+					<div class="col-sm-1 col-sm-offset-5">
+						<label for="" class='pull-right'>Total:</label>
+					</div>
+					<div class="col-sm-1"><?= number_format($total_due, 2) ?></div>
+					<div class="col-sm-1"><?= number_format($total_surcharge, 2) ?></div>
+					<div class="col-sm-1" style="padding-left:50px"><?= number_format($total_interest, 2) ?></div>
+					<div class="col-sm-1" style="padding-left:20px"><?= number_format($application->get_totalAssessment(), 2) ?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-1 col-sm-offset-5">
+						<label for="" class="pull-right">Balance:</label>
+					</div>
+					<div class="col-sm-1"><?= number_format($application->get_Assessment()->amount, 2) ?></div>
+				</div>
+				<table class="table table-bordered">
+					<thead>
+						<th>Due Date</th>
+						<th>First Quarter (Jan 20)</th>
+						<th>Second Quarter (Apr 20)</th>
+						<th>Third Quarter (Jul 20)</th>
+						<th>Fourth Quarter (Oct 20)</th>
+					</thead>
+					<tbody>
+						<th>Amount Due</th>
+						<td><span class="pull-right"><?= isset($application->get_quarterPayment()[0]) ? number_format($application->get_quarterPayment()[0], 2) : '.00' ?></span></td>
+						<td><span class="pull-right"><?= isset($application->get_quarterPayment()[1]) ? number_format($application->get_quarterPayment()[1], 2) : '.00' ?></span></td>
+						<td><span class="pull-right"><?= isset($application->get_quarterPayment()[2]) ? number_format($application->get_quarterPayment()[2], 2) : '.00' ?></span></td>
+						<td><span class="pull-right"><?= isset($application->get_quarterPayment()[3]) ? number_format($application->get_quarterPayment()[3], 2) : '.00' ?></span></td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
 	</div>
 </div>
 
