@@ -35,7 +35,10 @@
   <script src="<?php echo base_url(); ?>assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
   <!-- <script src="<?php echo base_url(); ?>assets/js/noty/themes/relax.js"></script> -->
 
-  <script src="<?php echo base_url(); ?>assets/js/dept-dashboard.js"></script>
+  <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) != "Master Admin"): ?>
+    <script src="<?php echo base_url(); ?>assets/js/dept-dashboard.js"></script>
+  <?php endif ?>
+  
   <script src="<?php echo base_url(); ?>assets/matrix/js/jquery.ui.custom.js"></script>
   <script src="<?php echo base_url(); ?>assets/matrix/js/bootstrap.min.js"></script>
 

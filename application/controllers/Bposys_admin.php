@@ -9,6 +9,7 @@ class Bposys_admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('User_m');
+		$this->load->library('form_validation');
 	}
 
 	public function _init($data = null)
@@ -100,6 +101,26 @@ class Bposys_admin extends CI_Controller {
 		$data['active'] = "Users";
 		$this->_init_matrix($data);
 		$this->load->view('admin/add_user');
+	}
+
+	public function save_user()
+	{
+		$this->form_validation->set_rules('firstName','First Name','required');
+		$this->form_validation->set_rules('lastName','Last Name','required');
+		$this->form_validation->set_rules('hidden-gender','Gender','required');
+		$this->form_validation->set_rules('contactNumber','Contact Number','required');
+		$this->form_validation->set_rules('emailAddress','Email','required');
+		$this->form_validation->set_rules('password','Password','required');
+		$this->form_validation->set_rules('role','Staff Details','required');
+
+		if($this->form_validation->run() == false)
+		{
+			
+		}
+		else
+		{
+			
+		}
 	}
 
 	public function edit_user()
