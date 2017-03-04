@@ -54,7 +54,6 @@ class Form extends CI_Controller {
 			$query['dept'] = $role;
 			$data['issued'] = count($this->Issued_Application_m->get_all($query));
 
-
 			if($role == "BPLO")
 			{
 // $query['status'] = 'For validation...';
