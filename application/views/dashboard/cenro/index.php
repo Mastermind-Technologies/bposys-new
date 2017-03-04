@@ -36,6 +36,12 @@
         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
       </ul>
     </div>
+
+    <div class="quick-actions_homepage">
+      <ul class="quick-actions">
+      <li class="bg_db span3"> <a href="<?php echo base_url(); ?>reports"><span><i class="fa fa-bar-chart-o fa-2x" aria-hidden="true"></i> </span><br>View Reports</a> </li>
+      </ul>
+    </div>
     <!-- <div class="row-fluid">
       <div class="span4">
         <div class="widget-box">

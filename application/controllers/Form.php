@@ -78,7 +78,7 @@ class Form extends CI_Controller {
 				$query['status'] = "For approval";
 				$data['retirements'] = count($this->Retirement_m->get_all($query));
 
-				$data['total'] = $data['process'];
+				$data['total'] = $data['incoming'];
 			}
 			else if($role == 'Zoning')
 			{
@@ -307,6 +307,8 @@ class Form extends CI_Controller {
 					);
 				$this->Assessment_m->add_charge($charge_field);
 
+				$this->Assessment_m->refresh_assessment_amount(['referenceNum' => $reference_num]);
+
 				$this->session->set_flashdata('message','Change of business owner successful! Please proceed to BPLO for payment');
 				redirect('dashboard');
 			}
@@ -359,6 +361,8 @@ class Form extends CI_Controller {
 					'status' => 'not paid',
 					);
 				$this->Assessment_m->add_charge($charge_field);
+
+				$this->Assessment_m->refresh_assessment_amount(['referenceNum' => $reference_num]);
 
 				$this->session->set_flashdata('message','Change of business name successful! Please proceed to BPLO for payment');
 				redirect('dashboard');
@@ -1227,6 +1231,12 @@ public function pay_unsettled_charges($reference_num)
 		}
 	}
 
+	$data['amount_paid'] = $data['application']->get_totalAssessment() - $data['total_paid'];
+	// echo "<pre>";
+	// print_r($data['amount_paid']);
+	// echo "</pre>";
+	// exit();
+	
 	$this->load->view('dashboard/bplo/payments-view', $data);
 }
 
@@ -1304,6 +1314,14 @@ public function accept_payment($assessment_id)
 			$this->Assessment_m->update_charges($query, $set);
 			break;
 		}
+
+		$query = array(
+			'referenceNum' => $reference_num,
+			'role' => 4,
+			'type' => "Recieve Payment",
+			'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+			);
+		$this->Approval_m->insert($query);
 
 		// $fields = array(
 		// 	'referenceNum' => $reference_num,

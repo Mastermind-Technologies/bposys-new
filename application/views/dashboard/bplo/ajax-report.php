@@ -4,7 +4,7 @@
 	$(document).ready(function(){
 		var chart = new CanvasJS.Chart("chartContainer", {
 			title: {
-				text: "Issued Business Permits Year <?= $year ?>"
+				text: "<?= $title ?><?= $year ?>"
 			},
 			animationEnabled: true,
 			data: [{

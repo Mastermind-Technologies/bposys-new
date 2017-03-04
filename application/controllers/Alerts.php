@@ -69,7 +69,7 @@ class Alerts extends CI_Controller {
 			$query['status'] = "For approval";
 			$data['retirements'] = count($this->Retirement_m->get_all($query));
 
-			$data['total'] = $data['process'];
+			$data['total'] = $data['incoming'];
 			$this->load->view('templates/matrix/matrix_includes');
 			$this->load->view('templates/matrix/matrix_navbar', $data);
 		}
