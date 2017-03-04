@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2017 at 09:23 AM
+-- Generation Time: Mar 04, 2017 at 09:43 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `approvals` (
   `staff` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `approvals`
@@ -320,7 +320,10 @@ INSERT INTO `approvals` (`approvalId`, `referenceNum`, `role`, `type`, `staff`, 
 (38, '9FBDFC51AA', 4, 'Approve Capital', 'tester bplo', '2017-03-02 13:04:53', '2017-03-02 13:04:53'),
 (39, 'AE29D1B98F', 9, 'Validate', 'tester engineering', '2017-03-03 02:32:58', '2017-03-03 02:32:58'),
 (40, 'AE29D1B98F', 9, 'Approve', 'tester engineering', '2017-03-03 02:33:52', '2017-03-03 02:33:52'),
-(41, 'AE29D1B98F', 4, 'Approve Capital', 'tester bplo', '2017-03-03 02:35:06', '2017-03-03 02:35:06');
+(41, 'AE29D1B98F', 4, 'Approve Capital', 'tester bplo', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
+(42, '739862FF5C', 4, 'Issue', 'tester bplo', '2017-03-04 07:29:22', '2017-03-04 07:29:22'),
+(43, '739862FF5C', 4, 'Issue', 'tester bplo', '2017-03-04 07:54:00', '2017-03-04 07:54:00'),
+(44, '739862FF5C', 4, 'Recieve Payment', 'tester bplo', '2017-03-04 07:54:00', '2017-03-04 07:54:00');
 
 -- --------------------------------------------------------
 
@@ -492,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `assessments` (
 INSERT INTO `assessments` (`assessmentId`, `referenceNum`, `amount`, `paidUpTo`, `status`, `createdAt`, `updatedAt`) VALUES
 (1, 'AE29D1B98F', 7730, 'None', 'New', '2017-03-01 02:37:10', '2017-03-03 02:35:06'),
 (2, '9FAEA9BEB4', 26600, 'None', 'New', '2017-03-01 02:41:26', '2017-03-01 02:43:18'),
-(3, '739862FF5C', 125, 'First Quarter', 'New', '2017-03-01 02:50:54', '2017-03-01 07:24:29'),
+(3, '739862FF5C', 0, 'Fourth Quarter', 'New', '2017-03-01 02:50:54', '2017-03-04 07:53:59'),
 (4, 'A98409F68C', 26450, 'None', 'New', '2017-03-01 02:52:19', '2017-03-01 08:34:40'),
 (6, 'A03F21C5BC', 0, 'Fourth Quarter', 'New', '2017-03-01 08:07:17', '2017-03-01 08:18:46'),
 (7, '3BA448289A', 13900, 'None', 'New', '2017-03-01 08:40:30', '2017-03-01 08:42:10'),
@@ -557,7 +560,7 @@ CREATE TABLE IF NOT EXISTS `businesses` (
   `emergencyEmail` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `businesses`
@@ -566,11 +569,12 @@ CREATE TABLE IF NOT EXISTS `businesses` (
 INSERT INTO `businesses` (`businessId`, `userId`, `ownerId`, `presidentTreasurerName`, `businessName`, `companyName`, `tradeName`, `signageName`, `organizationType`, `corporationName`, `dateOfOperation`, `zoneType`, `businessDesc`, `PIN`, `bldgName`, `houseBldgNum`, `unitNum`, `street`, `barangay`, `subdivision`, `cityMunicipality`, `province`, `lat`, `lng`, `gmapAddress`, `telNum`, `email`, `pollutionControlOfficer`, `maleEmployees`, `femaleEmployees`, `PWDEmployees`, `businessArea`, `LGUResidingEmployees`, `emergencyContactPerson`, `emergencyTelNum`, `emergencyEmail`, `createdAt`, `updatedAt`) VALUES
 (1, 24, 1, 'Billy Labay', 'Mastermind Incorporated', 'Mastermind Incorporated', 'Mastermind Incorporated', 'mastermind-incorporated', 'Corporation', 'Mastermind Incorporated', '02/15/2017', 'Single residential', 'Software Development', 4024, 'Mastermind Building', 'B39 L16', '59', 'NA', 'Zapote', 'NA', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '0961245125', 'sales@mastermind.inc', 'Jason Hernandez', 37, 45, 15, '400', 20, 'Billy Labay', '09178715969', 'billy_labay@yahoo.com', '2017-03-01 02:19:28', '2017-03-01 02:19:28'),
 (2, 24, 8, 'Renjo Dolosa', 'Grind Spot Internet Cafe', 'NA', 'NA', 'Grind Spot Internet Cafe', 'Single', 'NA', '03/01/2017', 'Single residential', 'Computer Shop', 4024, 'NA', 'Blk 29 Lot 19', 'NA', 'Dumaguete Street', 'Santo Domingo', 'South City Homes', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '8393969', 'grindspot@yahoo.com', 'Jason Hernandez', 10, 3, 0, '120', 5, 'Jason Hernandez', '09175138266', 'dolosa.renjo@yahoo.com', '2017-03-01 02:31:25', '2017-03-03 06:49:29'),
-(3, 24, 4, 'Reymon Molina', 'Renjo Trucking Services', 'NA', 'NA', 'Reymon Trucking Services', 'Partnership', 'NA', '03/01/2017', 'Commercial/Industrial kind', 'NA', 4024, 'NA', 'Blk 29 Lot 20', 'NA', 'Dumaguete Street', 'Loma', 'South City Homes', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '8393969', 'reymon@yahoo.com', 'Jason Hernandez', 5, 3, 0, '200', 3, 'Jason Hernandez', '09175138266', 'hernandez.jason@yahoo.com', '2017-03-01 02:47:14', '2017-03-03 07:34:41'),
+(3, 24, 4, 'Reymon Molina', 'Reymond Trucking Services', 'NA', 'NA', 'Reymon Trucking Services', 'Partnership', 'NA', '03/01/2017', 'Commercial/Industrial kind', 'NA', 4024, 'NA', 'Blk 29 Lot 20', 'NA', 'Dumaguete Street', 'Loma', 'South City Homes', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '8393969', 'reymon@yahoo.com', 'Jason Hernandez', 5, 3, 0, '200', 3, 'Jason Hernandez', '09175138266', 'hernandez.jason@yahoo.com', '2017-03-01 02:47:14', '2017-03-04 07:34:01'),
 (4, 24, 5, 'Migi Descalzo', 'Migiflakes', 'Migiflakes', 'Migiflakes', 'migiflakes', 'Single', 'NA', '02/21/2017', 'Commercial/Industrial kind', 'Food manufacturing buscuit', 4024, 'Mercurial', '6', '5', '5th Street Avenue', 'Loma', 'NA', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '81258', 'migiflakes@yahoo.com', 'Exequiel Villar', 50, 0, 0, '500', 23, 'Jason Hernandez', '0912556123', 'jthernz@yahoo.com', '2017-03-01 02:49:14', '2017-03-01 06:11:49'),
-(5, 24, 6, 'Kris Mariano', 'Magpamasahe kay Exe', 'Exe Group of Co.', 'Exe Group of Co.', 'Exe', 'Corporation', 'Exe Group of Co.', '03/01/2017', 'Apartments/Townhouses', 'Spa and rejuvenation', 4100, 'GPS', 'B6 L89', '996', 'South Point', 'Zapote', 'Carson', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '69-788', 'kris.mariano@yahoo.com', 'Ian Kikuchi', 6, 9, 0, '300', 15, 'Kris Mariano', '09234238989', 'kris.mariano@yahoo.com', '2017-03-01 02:51:19', '2017-03-01 06:11:51'),
+(5, 24, 6, 'Kris Mariano', 'Magpamasahe kay Exe', 'Exe Group of Co.', 'Exe Group of Co.', 'Exe', 'Corporation', 'Exe Group of Co.', '03/01/2017', 'Apartments/Townhouses', 'Spa and rejuvenation', 4100, 'GPS', 'B6 L89', '996', 'South Point', 'Zapote', 'Carson', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '69-788', 'kris.mariano@yahoo.com', 'Kris Mariano', 6, 9, 0, '300', 15, 'Kris Mariano', '09234238989', 'kris.mariano@yahoo.com', '2017-03-01 02:51:19', '2017-03-04 01:55:44'),
 (6, 24, 3, 'Aemon Delos Reyes', 'Aimbot', 'Aimbot', 'Aimbot', 'Aimbotaemon', 'Corporation', 'Aimbot Corps.', '02/26/2017', 'Commercial/Industrial kind', 'Aimbot Manufacturing', 4024, 'Aimbot Bldg.', 'B38', '5', 'NA', 'Malaban', 'NA', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '123456', 'aimbothax@gmail.com', 'Jason Hernandez', 200, 176, 0, '4000', 120, 'Renjo Dolosa', '09125981251', 'rjpower@yahoo.com', '2017-03-01 02:56:08', '2017-03-01 06:11:54'),
-(7, 24, 7, 'Jason Hernandez', 'Jason''s Basurahan', 'NA', 'Jason''s Basurahan', 'Jason''s Basurahan', 'Single', 'NA', '03/01/2017', 'Commercial/Industrial kind', 'dumpsite', 4024, 'NA', 'Blk 29 Lot 21', 'NA', 'Dumaguete Street', 'Malaban', 'South City Homes', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '8393969', 'jason@yahoo.com', 'Exequiel Villar', 15, 0, 0, '320', 10, 'Jason Hernandez', '09175138266', 'hernandez.jason@yahoo.com', '2017-03-01 02:57:21', '2017-03-01 06:11:59');
+(7, 24, 7, 'Jason Hernandez', 'Jason''s Basurahan', 'NA', 'Jason''s Basurahan', 'Jason''s Basurahan', 'Single', 'NA', '03/01/2017', 'Commercial/Industrial kind', 'dumpsite', 4024, 'NA', 'Blk 29 Lot 21', 'NA', 'Dumaguete Street', 'Malaban', 'South City Homes', 'Biñan City', 'Laguna', '14.314304859110639', '121.08557510349783', 'Unnamed Road, Biñan, Laguna, Philippines', '8393969', 'jason@yahoo.com', 'Exequiel Villar', 15, 0, 0, '320', 10, 'Jason Hernandez', '09175138266', 'hernandez.jason@yahoo.com', '2017-03-01 02:57:21', '2017-03-01 06:11:59'),
+(8, 24, 9, 'Rico Bihis', 'R V BIHIS TRUCKING SERVICES', 'NA', 'R V BIHIS TRUCKING SERVICES', 'R V BIHIS TRUCKING SERVICES', 'Single', 'NA', '03/02/2017', 'Commercial/Industrial kind', 'Trucking Services', 4024, 'NA', 'NA', 'NA', 'NA', 'San Vicente', 'Don Pablo Subdivision', 'Biñan City', 'Laguna', '14.330336609501085', '121.07960343360901', '332 F. Reyes St, Biñan, Laguna, Philippines', '0498395689', 'bihistrucking@gmail.com', 'NA', 12, 3, 0, '250', 15, 'Rico Bihis', '0498395689', 'bihistrucking@gmail.com', '2017-03-04 04:47:56', '2017-03-04 04:47:56');
 
 -- --------------------------------------------------------
 
@@ -619,7 +623,14 @@ CREATE TABLE IF NOT EXISTS `changes` (
   `_to` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `changes`
+--
+
+INSERT INTO `changes` (`id`, `referenceNum`, `type`, `_from`, `_to`, `createdAt`, `updatedAt`) VALUES
+(1, '739862FF5C', 'Change Business Name', 'Renjo Trucking Services', 'Reymond Trucking Services', '2017-03-04 07:34:01', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -638,7 +649,7 @@ CREATE TABLE IF NOT EXISTS `charges` (
   `status` varchar(60) NOT NULL DEFAULT 'not paid',
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `charges`
@@ -665,7 +676,7 @@ INSERT INTO `charges` (`chargeId`, `assessmentId`, `period`, `due`, `surcharge`,
 (18, 3, 'F1', 100, 0, 0, 'TAX ON MANUFACTURING KIND', 'paid', '2017-03-01 07:15:36', '2017-03-01 07:24:29'),
 (19, 3, 'F1', 2500, 0, 0, 'MAYOR''S PERMIT FEE (EXPORTER)', 'paid', '2017-03-01 07:15:36', '2017-03-01 07:24:29'),
 (20, 3, 'Q1', 125, 0, 0, 'TAX ON EXPORTER', 'paid', '2017-03-01 07:15:36', '2017-03-01 07:24:29'),
-(21, 3, 'Q2', 125, 0, 0, 'TAX ON EXPORTER', 'not paid', '2017-03-01 07:15:36', '2017-03-01 07:15:36'),
+(21, 3, 'Q2', 125, 0, 0, 'TAX ON EXPORTER', 'paid', '2017-03-01 07:15:36', '2017-03-04 07:29:22'),
 (22, 3, 'F1', 1200, 0, 0, 'GARBAGE SERVICE FEE', 'paid', '2017-03-01 07:15:36', '2017-03-01 07:24:29'),
 (23, 3, 'F1', 1500, 0, 0, 'ENVIRONMENTAL CLEARANCE FEE', 'paid', '2017-03-01 07:15:36', '2017-03-01 07:24:29'),
 (24, 3, 'F1', 1200, 0, 0, 'HEALTH CARD FEE', 'paid', '2017-03-01 07:15:36', '2017-03-01 07:24:29'),
@@ -738,7 +749,8 @@ INSERT INTO `charges` (`chargeId`, `assessmentId`, `period`, `due`, `surcharge`,
 (91, 1, 'F1', 480, 0, 0, 'SANITARY PERMIT FEE', 'not paid', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
 (92, 1, 'F1', 200, 0, 0, 'BUSINESS INSPECTION FEE', 'not paid', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
 (93, 1, 'F1', 200, 0, 0, 'ZONING/LOCATION CLEARANCE FEE', 'not paid', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
-(94, 1, 'F1', 350, 0, 0, 'BUSINESS PLATE & STICKER', 'not paid', '2017-03-03 02:35:06', '2017-03-03 02:35:06');
+(94, 1, 'F1', 350, 0, 0, 'BUSINESS PLATE & STICKER', 'not paid', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
+(95, 3, 'F1', 200, 0, 0, 'CHANGE OF BUSINESS NAME FEE', 'paid', '2017-03-04 07:34:02', '2017-03-04 07:54:00');
 
 -- --------------------------------------------------------
 
@@ -1190,36 +1202,36 @@ INSERT INTO `notifications` (`notificationId`, `referenceNum`, `status`, `role`,
 (51, 'A98409F68C', 'Read', 3, 'Migiflakes has been validated by tester engineering from the Office of the Building Official. Please check application status.', '2017-03-01 08:33:39', '2017-03-02 12:42:06'),
 (52, 'A98409F68C', 'Read', 4, 'New', '2017-03-01 08:33:44', '2017-03-01 08:34:06'),
 (53, 'A98409F68C', 'Read', 3, 'Migiflakes has been approved by tester engineering from the Office of the Building Official.', '2017-03-01 08:33:44', '2017-03-02 12:42:06'),
-(54, 'A98409F68C', 'Unread', 5, 'Incoming', '2017-03-01 08:34:40', '2017-03-01 08:34:40'),
-(55, 'A98409F68C', 'Unread', 7, 'Incoming', '2017-03-01 08:34:40', '2017-03-01 08:34:40'),
-(56, 'A98409F68C', 'Unread', 8, 'Incoming', '2017-03-01 08:34:40', '2017-03-01 08:34:40'),
-(57, 'A98409F68C', 'Unread', 10, 'Incoming', '2017-03-01 08:34:40', '2017-03-01 08:34:40'),
+(54, 'A98409F68C', 'Read', 5, 'Incoming', '2017-03-01 08:34:40', '2017-03-04 01:52:39'),
+(55, 'A98409F68C', 'Read', 7, 'Incoming', '2017-03-01 08:34:40', '2017-03-04 01:53:50'),
+(56, 'A98409F68C', 'Read', 8, 'Incoming', '2017-03-01 08:34:40', '2017-03-04 01:46:59'),
+(57, 'A98409F68C', 'Read', 10, 'Incoming', '2017-03-01 08:34:40', '2017-03-04 01:50:35'),
 (58, 'A98409F68C', 'Read', 3, '<strong>Capitalization</strong> for <strong>Dacudao Apartment</strong> has been <strong>approved!</strong> You can now proceed to other offices to process your remaining requirements.', '2017-03-01 08:34:40', '2017-03-02 12:42:06'),
 (59, '3BA448289A', 'Read', 9, 'Incoming', '2017-03-01 08:40:30', '2017-03-01 08:41:01'),
 (60, '3BA448289A', 'Read', 3, 'Magpamasahe kay Exe has been validated by tester engineering from the Office of the Building Official. Please check application status.', '2017-03-01 08:41:17', '2017-03-02 12:42:06'),
 (61, '3BA448289A', 'Read', 4, 'New', '2017-03-01 08:41:25', '2017-03-01 08:41:43'),
 (62, '3BA448289A', 'Read', 3, 'Magpamasahe kay Exe has been approved by tester engineering from the Office of the Building Official.', '2017-03-01 08:41:25', '2017-03-02 12:42:06'),
-(63, '3BA448289A', 'Unread', 5, 'Incoming', '2017-03-01 08:42:10', '2017-03-01 08:42:10'),
-(64, '3BA448289A', 'Unread', 7, 'Incoming', '2017-03-01 08:42:10', '2017-03-01 08:42:10'),
-(65, '3BA448289A', 'Unread', 8, 'Incoming', '2017-03-01 08:42:10', '2017-03-01 08:42:10'),
-(66, '3BA448289A', 'Unread', 10, 'Incoming', '2017-03-01 08:42:10', '2017-03-01 08:42:10'),
+(63, '3BA448289A', 'Read', 5, 'Incoming', '2017-03-01 08:42:10', '2017-03-04 01:52:39'),
+(64, '3BA448289A', 'Read', 7, 'Incoming', '2017-03-01 08:42:10', '2017-03-04 01:53:50'),
+(65, '3BA448289A', 'Read', 8, 'Incoming', '2017-03-01 08:42:10', '2017-03-04 01:46:59'),
+(66, '3BA448289A', 'Read', 10, 'Incoming', '2017-03-01 08:42:10', '2017-03-04 01:50:35'),
 (67, '3BA448289A', 'Read', 3, '<strong>Capitalization</strong> for <strong>Dacudao Apartment</strong> has been <strong>approved!</strong> You can now proceed to other offices to process your remaining requirements.', '2017-03-01 08:42:10', '2017-03-02 12:42:06'),
 (68, '9FBDFC51AA', 'Read', 9, 'Incoming', '2017-03-02 12:52:39', '2017-03-02 12:52:57'),
 (69, '9FBDFC51AA', 'Read', 3, 'Jason''s Basurahan has been validated by tester engineering from the Office of the Building Official. Please check application status.', '2017-03-02 12:53:03', '2017-03-02 12:54:58'),
 (70, '9FBDFC51AA', 'Read', 4, 'New', '2017-03-02 12:53:11', '2017-03-02 12:53:24'),
 (71, '9FBDFC51AA', 'Read', 3, 'Jason''s Basurahan has been approved by tester engineering from the Office of the Building Official.', '2017-03-02 12:53:11', '2017-03-02 12:54:58'),
-(72, '9FBDFC51AA', 'Unread', 5, 'Incoming', '2017-03-02 13:04:53', '2017-03-02 13:04:53'),
-(73, '9FBDFC51AA', 'Unread', 7, 'Incoming', '2017-03-02 13:04:53', '2017-03-02 13:04:53'),
-(74, '9FBDFC51AA', 'Unread', 8, 'Incoming', '2017-03-02 13:04:53', '2017-03-02 13:04:53'),
-(75, '9FBDFC51AA', 'Unread', 10, 'Incoming', '2017-03-02 13:04:53', '2017-03-02 13:04:53'),
+(72, '9FBDFC51AA', 'Read', 5, 'Incoming', '2017-03-02 13:04:53', '2017-03-04 01:52:39'),
+(73, '9FBDFC51AA', 'Read', 7, 'Incoming', '2017-03-02 13:04:53', '2017-03-04 01:53:50'),
+(74, '9FBDFC51AA', 'Read', 8, 'Incoming', '2017-03-02 13:04:53', '2017-03-04 01:46:59'),
+(75, '9FBDFC51AA', 'Read', 10, 'Incoming', '2017-03-02 13:04:53', '2017-03-04 01:50:35'),
 (76, '9FBDFC51AA', 'Read', 3, '<strong>Capitalization</strong> for <strong>Dacudao Apartment</strong> has been <strong>approved!</strong> You can now proceed to other offices to process your remaining requirements.', '2017-03-02 13:04:53', '2017-03-03 01:53:56'),
 (77, 'AE29D1B98F', 'Read', 3, 'Grind Spot Internet Cafe has been validated by tester engineering from the Office of the Building Official. Please check application status.', '2017-03-03 02:32:58', '2017-03-03 02:36:40'),
 (78, 'AE29D1B98F', 'Read', 4, 'New', '2017-03-03 02:33:52', '2017-03-03 02:34:38'),
 (79, 'AE29D1B98F', 'Read', 3, 'Grind Spot Internet Cafe has been approved by tester engineering from the Office of the Building Official.', '2017-03-03 02:33:52', '2017-03-03 02:36:40'),
-(80, 'AE29D1B98F', 'Unread', 5, 'Incoming', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
-(81, 'AE29D1B98F', 'Unread', 7, 'Incoming', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
-(82, 'AE29D1B98F', 'Unread', 8, 'Incoming', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
-(83, 'AE29D1B98F', 'Unread', 10, 'Incoming', '2017-03-03 02:35:06', '2017-03-03 02:35:06'),
+(80, 'AE29D1B98F', 'Read', 5, 'Incoming', '2017-03-03 02:35:06', '2017-03-04 01:52:39'),
+(81, 'AE29D1B98F', 'Read', 7, 'Incoming', '2017-03-03 02:35:06', '2017-03-04 01:53:50'),
+(82, 'AE29D1B98F', 'Read', 8, 'Incoming', '2017-03-03 02:35:06', '2017-03-04 01:46:59'),
+(83, 'AE29D1B98F', 'Read', 10, 'Incoming', '2017-03-03 02:35:06', '2017-03-04 01:50:35'),
 (84, 'AE29D1B98F', 'Read', 3, '<strong>Capitalization</strong> for <strong>Grind Spot Internet Cafe</strong> has been <strong>approved!</strong> You can now proceed to other offices to process your remaining requirements.', '2017-03-03 02:35:07', '2017-03-03 02:36:40');
 
 -- --------------------------------------------------------
@@ -1250,7 +1262,7 @@ CREATE TABLE IF NOT EXISTS `owners` (
   `email` varchar(255) NOT NULL,
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `owners`
@@ -1264,7 +1276,8 @@ INSERT INTO `owners` (`ownerId`, `userId`, `firstName`, `middleName`, `lastName`
 (5, 24, 'Migi', 'Range', 'Descalzo', '', 'Male', 'B7 L90', 'Paseo ', '696', 'Nova ', 'Molino 1', 'Bel Air', 'Bacoor', 'Cavite', '4102', '09787812316', '67-897', 'migi.descalzo', '2017-03-01 02:43:15', '2017-03-01 02:43:15'),
 (6, 24, 'Exequiel', 'Atienza', 'Villar', '', 'Male', 'B8 L69', 'Rizal', '676', 'Adellina', 'Ayala', 'Ayala Alabang', 'Alabang', 'Muntinlupa', '4100', '09693446767', '69-881', 'exequiel.villar@yahoo.com', '2017-03-01 02:45:55', '2017-03-01 02:45:55'),
 (7, 24, 'Jason', 'Tadeo', 'Hernandez', '', 'Male', 'Blk 29 Lot 21', 'NA', 'NA', 'Dumaguete Street', 'Santo Tomas', 'South City Homes', 'Biñan City', 'Laguna', '4024', '09175138266', '8393969', 'hernandez.jason@yahoo.com', '2017-03-01 02:54:02', '2017-03-01 02:54:02'),
-(8, 24, 'John Lester', 'M.', 'Fontelara', '', 'Male', 'Blk 29 Lot 22', 'NA', 'NA', 'Dumaguete Street', 'Santo Tomas', 'South City Homes', 'Biñan City', 'Laguna', '4024', '8393969', '09175138266', 'johnny@yahoo.com', '2017-03-03 05:59:53', '2017-03-03 05:59:53');
+(8, 24, 'John Lester', 'M.', 'Fontelara', '', 'Male', 'Blk 29 Lot 22', 'NA', 'NA', 'Dumaguete Street', 'Santo Tomas', 'South City Homes', 'Biñan City', 'Laguna', '4024', '8393969', '09175138266', 'johnny@yahoo.com', '2017-03-03 05:59:53', '2017-03-03 05:59:53'),
+(9, 24, 'Rico', 'V', 'Bihis', '', 'Male', 'NA', 'NA', 'NA', 'NA', 'San Vicente', 'Don Pablo Subdivision', 'Biñan', 'Laguna', '4024', '0498395686', '', 'ricobihis@yahoo.com', '2017-03-04 04:41:28', '2017-03-04 04:41:28');
 
 -- --------------------------------------------------------
 
@@ -1281,7 +1294,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `quarterPaid` varchar(60) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `payments`
@@ -1289,7 +1302,9 @@ CREATE TABLE IF NOT EXISTS `payments` (
 
 INSERT INTO `payments` (`transactionId`, `referenceNum`, `assessmentId`, `orNumber`, `amountPaid`, `quarterPaid`, `createdAt`, `updatedAt`) VALUES
 (1, '739862FF5C', 3, '512613', 10175, 'First Quarter', '2017-03-01 07:24:29', '2017-03-01 07:24:29'),
-(2, 'A03F21C5BC', 6, '123456', 81000, 'First Quarter', '2017-03-01 08:18:46', '2017-03-01 08:18:46');
+(2, 'A03F21C5BC', 6, '123456', 81000, 'First Quarter', '2017-03-01 08:18:46', '2017-03-01 08:18:46'),
+(3, '739862FF5C', 3, '0000002', 125, 'Second Quarter', '2017-03-04 07:29:22', '2017-03-04 07:29:22'),
+(4, '739862FF5C', 3, '00000003', 200, 'Fourth Quarter', '2017-03-04 07:54:00', '2017-03-04 07:54:00');
 
 -- --------------------------------------------------------
 
@@ -1900,7 +1915,7 @@ ALTER TABLE `application_zoning`
 -- AUTO_INCREMENT for table `approvals`
 --
 ALTER TABLE `approvals`
-  MODIFY `approvalId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+  MODIFY `approvalId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `archived_applications`
 --
@@ -1925,7 +1940,7 @@ ALTER TABLE `assessments`
 -- AUTO_INCREMENT for table `businesses`
 --
 ALTER TABLE `businesses`
-  MODIFY `businessId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `businessId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `business_activities`
 --
@@ -1935,12 +1950,12 @@ ALTER TABLE `business_activities`
 -- AUTO_INCREMENT for table `changes`
 --
 ALTER TABLE `changes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `charges`
 --
 ALTER TABLE `charges`
-  MODIFY `chargeId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=105;
+  MODIFY `chargeId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT for table `fee_amusement_devices`
 --
@@ -2010,12 +2025,12 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `owners`
 --
 ALTER TABLE `owners`
-  MODIFY `ownerId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `ownerId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `transactionId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `transactionId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `reference_numbers`
 --
