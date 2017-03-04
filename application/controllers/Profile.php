@@ -156,12 +156,12 @@ class Profile extends CI_Controller {
 			}
 			else
 			{
-				// $data['owner'][$key]->set_IsApplied(1);
+				$data['owner'][$key]->set_IsApplied(1);
 			}
 		}
 		// echo "<pre>";
-		// print_r($owner);
-		// echo "</	pre>";
+		// print_r($data);
+		// echo "</pre>";
 		// exit();
 
 

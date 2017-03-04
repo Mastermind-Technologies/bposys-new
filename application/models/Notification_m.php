@@ -30,7 +30,10 @@ class Notification_m extends CI_Model {
   public function get_applicant_notif($roleId = null, $userId = null)
   {
     $this->db->where(['notifications.role' => $roleId, 'reference_numbers.userId' => $userId]);
-    $this->db->select('notifications.referenceNum, application_bplo.applicationId, reference_numbers.referenceNum, notifications.notifMessage,notifications.createdAt')->from($this->table)->join($this->reference, 'reference_numbers.referenceNum = notifications.referenceNum')->join($this->application_bplo, 'reference_numbers.referenceNum = application_bplo.referenceNum')->limit(10)->order_by("notifications.createdAt", "desc");
+    $this->db->select('notifications.referenceNum, application_bplo.applicationId, reference_numbers.referenceNum, notifications.notifMessage,notifications.createdAt');
+    $this->db->from($this->table);
+    $this->db->join($this->reference, 'reference_numbers.referenceNum = notifications.referenceNum');
+    $this->db->join($this->application_bplo, 'reference_numbers.referenceNum = application_bplo.referenceNum')->limit(10)->order_by("notifications.createdAt", "desc");
     $result = $this->db->get();
 
     return $result->result();

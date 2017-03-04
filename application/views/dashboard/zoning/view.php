@@ -125,10 +125,10 @@
             <?php if ($application->get_status() != "Active"): ?>
               <div class="row text-center">
                 <?php if ($application->get_status() == "For applicant visit"): ?>
-                  <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Validate</a>
+                  <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-process">Validate</a>
                   <!-- <a href="#" class="btn btn-danger btn-lg">Reject</a> -->
                 <?php elseif ($application->get_status() == "On process"): ?>
-                  <button class="btn btn-success" id="approve-btn" disabled>Issue Zoning Clearance</button>
+                  <button class="btn btn-success btn-process" id="approve-btn" disabled>Issue Zoning Clearance</button>
                   </form>
                   <!-- <a id="approve-btn" disabled href="<?php echo base_url(); ?>dashboard/approve_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Issue Zoning Clearance</a> -->
                   <!-- <a href="#" class="btn btn-warning btn-lg">Edit information</a> -->

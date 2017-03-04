@@ -28,7 +28,7 @@ class Payment_m extends CI_Model {
   public function get_user_payments($user_id)
   {
     //select payments.*, businesses.businessName from payments join reference_numbers on reference_numbers.referencenum = payments.referenceNum join businesses on businesses.userId = reference_numbers.userId where businesses.userId = 1 group by payments.transactionId 
-    $this->db->select('payments.*, businesses.businessName')->from($this->table)->join('reference_numbers', 'reference_numbers.referenceNum = payments.referenceNum')->join('businesses', 'businesses.userId = reference_numbers.userId')->where('reference_numbers.userId', $user_id)->group_by('payments.transactionId');
+    $this->db->select('payments.*, businesses.businessName')->from($this->table)->join('reference_numbers', 'reference_numbers.referenceNum = payments.referenceNum')->join('application_bplo', 'reference_numbers.referenceNum = application_bplo.referenceNum')->join('businesses', 'businesses.businessId = application_bplo.businessId')->where('reference_numbers.userId', $user_id)->group_by('payments.transactionId');
     return $this->db->get()->result();
   }
 

@@ -62,7 +62,7 @@ class Dashboard extends CI_Controller {
 			// $data['pending'] = count($this->Application_m->get_all_bplo_applications($query));
 				unset($query);
 
-				$query['status'] = 'For applicant visit';
+				$query['status'] = 'BPLO Interview and Assessment of Fees';
 				$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 				$query['status'] = 'On process';
@@ -284,7 +284,7 @@ class Dashboard extends CI_Controller {
 			// $query['status'] = 'For finalization';
 			// $data['finalization'] = count($this->Application_m->get_all_bplo_applications($query));
 
-			$query['status'] = 'For applicant visit';
+			$query['status'] = 'BPLO Interview and Assessment of Fees';
 			$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 			// $query['status'] = 'For applicant visit';
@@ -1230,7 +1230,7 @@ class Dashboard extends CI_Controller {
 
 		if($role == "BPLO")
 		{
-			$query['status'] = 'For applicant visit';
+			$query['status'] = 'BPLO Interview and Assessment of Fees';
 			$applications = $this->Application_m->get_all_bplo_applications($query);
 
 			if(count($applications) > 0)
@@ -1714,7 +1714,7 @@ class Dashboard extends CI_Controller {
 			'referenceNum' => $reference_num,
 			'status' => 'Unread',
 			'role' => 3,
-			'notifMessage' => 'Retirement approved. You may now proceed to the treasury for payment and then claim your certificate at Business Permit and Licensing Office. Thank you.');
+			'notifMessage' => '<strong>Retirement approved</strong>. You may now proceed to the treasury for payment and then claim your certificate at Business Permit and Licensing Office. Thank you.');
 		$this->Notification_m->insert($notification_fields);
 
 		//process assessment?
@@ -1740,42 +1740,42 @@ class Dashboard extends CI_Controller {
 			$application = new BPLO_Application($referenceNum);
 			//validate
 			$application->change_status($referenceNum, 'For applicant visit');
-			$notif_message = $application->get_businessName() . " has been validated by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of BPLO. Please check your application status.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>validated</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of BPLO. Please check your application status.";
 		}
 		else if ($role == "Zoning")
 		{
 			$application = new Zoning_Application($referenceNum);
 			//validate
 			$application->change_status($referenceNum, 'On process');
-			$notif_message = $application->get_businessName() . " has been validated by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of Zoning Department. Please check application status.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>validated</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of Zoning Department. Please check application status.";
 		}
 		else if ($role == "CENRO")
 		{
 			$application = new CENRO_Application($referenceNum);
 			//validate
 			$application->change_status($referenceNum, 'On process');
-			$notif_message = $application->get_businessName() . " has been validated by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of City Environment and Natural Resources. Please check application status.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>validated</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of City Environment and Natural Resources. Please check application status.";
 		}
 		else if ($role == "CHO")
 		{
 			$application = new Sanitary_Application($referenceNum);
 			//validate
 			$application->change_status($referenceNum, 'On process');
-			$notif_message = $application->get_businessName() . " has been validated by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of City Health Office. Please check application status.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>validated</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of City Health Office. Please check application status.";
 		}
 		else if ($role == "BFP")
 		{
 			$application = new BFP_Application($referenceNum);
 			//validate
 			$application->change_status($referenceNum, 'On process');
-			$notif_message = $application->get_businessName() . " has been validated by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of Bureau of Fire Protection. Please check application status.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>validated</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of Bureau of Fire Protection. Please check application status.";
 		}
 		else if ($role == "Engineering")
 		{
 			$application = new Engineering_Application($referenceNum);
 			//validate
 			$application->change_status($referenceNum, 'On process');
-			$notif_message = $application->get_businessName() . " has been validated by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." from the Office of the Building Official. Please check application status.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>validated</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> from the Office of the Building Official. Please check application status.";
 		}
 
 		//approvals
@@ -1859,7 +1859,7 @@ class Dashboard extends CI_Controller {
 		{
 			$application = new Zoning_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
-			$notif_message = $application->get_businessName() . " has been approved by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of Zoning Department.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of Zoning Department.";
 			foreach ($requirements as $key => $requirement) {
 				$submitted_requirements_field = array(
 					'referenceNum' => $referenceNum,
@@ -1872,7 +1872,7 @@ class Dashboard extends CI_Controller {
 		{
 			$application = new CENRO_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
-			$notif_message = $application->get_businessName() . " has been approved by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of City Environment and Natural Resources.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of City Environment and Natural Resources.";
 			foreach ($requirements as $key => $requirement) {
 				$submitted_requirements_field = array(
 					'referenceNum' => $referenceNum,
@@ -1885,7 +1885,7 @@ class Dashboard extends CI_Controller {
 		{
 			$application = new Sanitary_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
-			$notif_message = $application->get_businessName() . " has been approved by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of City Health Office.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of City Health Office.";
 			foreach ($requirements as $key => $requirement) {
 				$submitted_requirements_field = array(
 					'referenceNum' => $referenceNum,
@@ -1898,7 +1898,7 @@ class Dashboard extends CI_Controller {
 		{
 			$application = new BFP_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
-			$notif_message = $application->get_businessName() . " has been approved by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." of Bureau of Fire Protection.";
+			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of Bureau of Fire Protection.";
 			foreach ($requirements as $key => $requirement) {
 				$submitted_requirements_field = array(
 					'referenceNum' => $referenceNum,
@@ -1934,9 +1934,9 @@ class Dashboard extends CI_Controller {
 
 				$this->Assessment_m->refresh_assessment_amount(['referenceNum' => $referenceNum]);
 				$application->change_status($referenceNum, 'Active');
-				$notif_message = $application->get_businessName() . " has been approved by ".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']." from the Office of the Building Official.";
+				$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> from the Office of the Building Official.";
 
-				BPLO_Application::update_status($referenceNum, 'For applicant visit');
+				BPLO_Application::update_status($referenceNum, 'BPLO Interview and Assessment of Fees');
 				// Zoning_Application::update_status($referenceNum, 'For applicant visit');
 				// CENRO_Application::update_status($referenceNum, 'For applicant visit');
 				// Sanitary_Application::update_status($referenceNum, 'For applicant visit');
@@ -2500,7 +2500,7 @@ class Dashboard extends CI_Controller {
 				'referenceNum' => $reference_num,
 				'status' => 'Unread',
 				'role' => 3,
-				'notifMessage' => "<strong>Capitalization</strong> for <strong>Dacudao Apartment</strong> has been <strong>approved!</strong> You can now proceed to other offices to process your remaining requirements."
+				'notifMessage' => "<strong>Capitalization</strong> for <strong>".$bplo->get_businessName()."</strong> has been <strong>approved!</strong> You can now proceed to other offices to process your remaining requirements."
 				);
 			$this->Notification_m->insert($notification_fields);
 
@@ -2584,7 +2584,7 @@ public function get_cert_closure_info()
 public function get_bplo_certificate_info()
 {
 	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('9E9E1D64A2');
+	$data['application'] = new BPLO_Application('739862FF5C');
 
 	$this->load->view('dashboard/bplo/bplo_certificate_printable',$data);
 }
@@ -2784,11 +2784,11 @@ public function update_notif($type = null)
 			$this->Notification_m->update($query,$set);
 		}
 
-
-
-
 		$latest = $this->Notification_m->get_applicant_notif($role_id->roleId, $user_id);
-
+		// echo "<pre>";
+		// print_r($latest);
+		// echo "</pre>";
+		// exit();
 
 		for($i=0;$i<count($latest);$i=$i+1)
 		{
@@ -2811,21 +2811,12 @@ public function update_notif($type = null)
 				'hmac' => false
 				);
 
-
 			$latest[$i]->referenceNum = bin2hex($this->encryption->encrypt($latest[$i]->applicationId."|".$latest[$i]->referenceNum, $custom_encrypt));
-
 		}
-			//
-			// echo '<pre>';
-			// print_r($latest);
-			// echo '</pre>';
-			// exit();
 
 		$data['notifications'] = $latest;
-
 		$this->load->view('dashboard/applicant/notif-view', $data);
 	}
-
 	else
 	{
 		$query = array(
@@ -2841,7 +2832,6 @@ public function update_notif($type = null)
 			$this->Notification_m->update($query, $set);
 		}
 	}
-
 }
 
 public function check_notif()
@@ -2855,7 +2845,7 @@ public function check_notif()
 		$data['new'] = count(User::get_notifications());
 		$data['complete'] = count(User::get_complete_notifications());
 
-		$query['status'] = 'For applicant visit';
+		$query['status'] = 'BPLO Interview and Assessment of Fees';
 		$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 		$query['status'] = 'On process';

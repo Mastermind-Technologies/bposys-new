@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
-	var base_url = 'http://localhost/bposys/';
+	// var base_url = 'http://172.16.105.102/bposys/';
 	var info_active = false;
 	var success_active = false;
 	var warning_active = false;
 	// if($('#notif-count').val() != "-")
 	var interval = window.setInterval(notif_check, 3000);
-	
+
 
 	if($('#notif-count').val() > 0)
 	{
@@ -102,7 +102,7 @@ $(document).ready(function(){
 				$('.badge-incoming').html(data.incoming>0 ? data.incoming : "");
 				$('.badge-process').html(data.process>0 ? data.process : "");
 				$('.badge-completed').html(data.completed>0 ? data.completed : "");
-				console.log(data);
+				// console.log(data);
 			}
 		});
 	}
@@ -232,7 +232,7 @@ $(document).ready(function(){
 		// console.log('hehe');
 		var device_array = [];
 		var req_count = 0;
-		
+
 		$(".device").each(function(){
 			if($(this).val() == "" || $(this).val() < 0)
 			{
@@ -242,7 +242,7 @@ $(document).ready(function(){
 			{
 				device_array.push(this.id + "|" +$(this).val());
 			}
-			
+
 		});
 		// console.log(device_array);
 		$(".hidden-device").each(function(index, result){
@@ -285,5 +285,15 @@ $(document).ready(function(){
 		}
 		// console.log($('.financial-institution:checked').val());
 	})
+
+	$('.btn-process').click(function(){
+		$(this).attr('disabled',true);
+	});
+
+	$('a.btn-process').mouseup(function(){
+		window.location = $(this).attr('href');
+		$(this).removeAttr("href"); 
+		$(this).attr('disabled',true);
+	});
 
 });//End of Jquery

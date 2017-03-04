@@ -1,7 +1,7 @@
 <div id="content">
   <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> 
+    <div id="breadcrumb">
       <a href="<?php echo base_url(); ?>dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a>
     </div>
     <!--End-breadcrumbs-->
@@ -36,7 +36,7 @@
         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
       </ul>
     </div>
-    <div class="row-fluid">
+    <!-- <div class="row-fluid">
       <div class="span4">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-eye-open"></i> </span>
@@ -154,7 +154,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

@@ -23,12 +23,12 @@
 										<div class="tab-pane active" id='step1'>
 											<h2 class=panel-header>Terms of Use</h2>
 											<div class="col-sm-12">
-												<div class="well well-lg">
+												<!-- <div class="well well-lg">
 													<p>Text here...</p>
 													<p>and maybe here too</p>
 													<br>
 													<p>By accessing or using this Site etc etc</p>
-												</div>
+												</div> -->
 
 												<div class="form-group">
 													<div class="checkbox">
@@ -95,7 +95,7 @@
 														<div class="form-group">
 															<label for="brgy-clearance-date-issued">Barangay Clearance Date Issued</label>
 															<div class="input-group">
-																<input type="text" required="" name="brgy-clearance-date-issued" class="form-control date-field"><span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>	
+																<input type="text" required="" name="brgy-clearance-date-issued" class="form-control date-field"><span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
 															</div>
 														</div>
 													</div>
@@ -389,7 +389,7 @@
 													<span><strong>Google Maps Address: </strong> <span id='gmaps-address'>NA</span></span>
 													<div id="gmaps" style="height:400px; width:100%; background-color: gray"></div>
 												</div>
-												
+
 											</div>
 										</div>
 										<hr>
@@ -474,7 +474,7 @@
 												Save as Draft</button>
 											</div>
 										</div>
-										
+
 									</div>
 									<div class="tab-pane" id='step4'>
 										<h2 class="panel-header">Lessor Details (if rented)</h2>
@@ -566,7 +566,7 @@
 													Save as Draft</button>
 												</div>
 											</div>
-											
+
 										</div>
 										<div class="tab-pane" id='step5'>
 											<h2 class="panel-header">Issued Certificates/Permits</h2>
@@ -648,7 +648,7 @@
 														Save as Draft</button>
 													</div>
 												</div>
-												
+
 											</div>
 											<div class="tab-pane" id='step6'>
 												<h2 class="panel-header">Environmental Details</h2>

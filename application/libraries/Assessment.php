@@ -150,160 +150,6 @@ class Assessment{
 		$data['garbage_service_fee'] = $result[0]->garbageServiceFee;
 		return $data;
 
-		//Manufacturer Kind
-		// if($line_of_business == "Manufacturer Kind")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 1000; break;
-		// 		case "Small Scale": $fee = 3500; break;
-		// 		case "Medium Scale": $fee = 5000; break;
-		// 		case "Large Scale": $fee = 7000; break;
-		// 	}
-		// }
-
-		// //Wholesaler kind
-		// if($line_of_business == "Wholesaler Kind")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 1000; break;
-		// 		case "Small Scale": $fee = 3500; break;
-		// 		case "Medium Scale": $fee = 5000; break;
-		// 		case "Large Scale": $fee = 7000; break;
-		// 	}
-		// }
-
-		// //Exporter kind
-		// if($line_of_business == "Exporter Kind")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 800; break;
-		// 		case "Small Scale": $fee = 2500; break;
-		// 		case "Medium Scale": $fee = 4000; break;
-		// 		case "Large Scale": $fee = 6500; break;
-		// 	}
-		// }
-
-		// //Retailer
-		// if($line_of_business == "Retailer")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 500; break;
-		// 		case "Small Scale": $fee = 1500; break;
-		// 		case "Medium Scale": $fee = 3000; break;
-		// 		case "Large Scale": $fee = 5000; break;
-		// 	}
-		// }
-
-		// //Contractor(Restaurants, cafes, cafeterias)
-		// if($line_of_business == "Contractor")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 500; break;
-		// 		case "Small Scale": $fee = 1500; break;
-		// 		case "Medium Scale": $fee = 3000; break;
-		// 		case "Large Scale": $fee = 5000; break;
-		// 	}
-		// }
-
-		// //Lessor (Renting)
-		// if($line_of_business == "Lessor (Renting)")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 3000; break;
-		// 		case "Small Scale": $fee = 3000; break;
-		// 		case "Medium Scale": $fee = 6000; break;
-		// 		case "Large Scale": $fee = 10000; break;
-		// 	}
-		// }
-
-		// //Peddlers
-		// if($line_of_business == "Peddlers")
-		// {
-		// 	$fee = 100;
-		// }
-
-		// //Amusement devices/places
-		// if($line_of_business == "Amusement devices/places")
-		// {
-		// 	//not based on capital
-		// 	//NOT FINAL
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 500; break;
-		// 		case "Small Scale": $fee = 1500; break;
-		// 		case "Medium Scale": $fee = 3000; break;
-		// 		case "Large Scale": $fee = 5000; break;
-		// 	}
-		// }
-
-		// //Bank
-		// if($line_of_business == "Bank")
-		// {
-		// 	//not based capital
-		// 	//NOT FINAL
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 5000; break;
-		// 		case "Small Scale": $fee = 5000; break;
-		// 		case "Medium Scale": $fee = 7000; break;
-		// 		case "Large Scale": $fee = 10000; break;
-		// 	}
-		// }
-
-		// //Retail Dealers (liquors)
-		// if($line_of_business == "Retail Dealers (liquors)")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 3000; break;
-		// 		case "Small Scale": $fee = 3000; break;
-		// 		case "Medium Scale": $fee = 5000; break;
-		// 		case "Large Scale": $fee = 7000; break;
-		// 	}
-		// }
-
-		// //Retail Dealers (tobaccos)
-		// if($line_of_business == "Retail Dealers (tobaccos)")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 3000; break;
-		// 		case "Small Scale": $fee = 3000; break;
-		// 		case "Medium Scale": $fee = 5000; break;
-		// 		case "Large Scale": $fee = 7000; break;
-		// 	}
-		// }
-
-		// //Display areas of products
-		// if($line_of_business == "Display areas of products")
-		// {
-		// 	//50 pesos per square meter of the size of the office or warehouse
-		// 	$fee = $opt_param['business_area'] * 50;
-		// 	return $fee;
-		// }
-
-		// //Others
-		// if($line_of_business == "Others")
-		// {
-		// 	switch($ent_scale)
-		// 	{
-		// 		case "Cottage": $fee = 2500; break;
-		// 		case "Small Scale": $fee = 5000; break;
-		// 		case "Medium Scale": $fee = 7500; break;
-		// 		case "Large Scale": $fee = 10000; break;
-		// 	}
-		// }
-
-		// $data['mayor_fee'] = $fee;
-		// $data['tax'] = $fee * .10;
-		// $data['line_of_business'] = $line_of_business;
-		// return $data;
 	}
 
 	//ENVIRONMENTAL CLEARANCE
@@ -343,113 +189,6 @@ class Assessment{
 			}
 		}
 
-		// if($capital <= 350000)
-		// 	$fee = 500;
-		// if($capital > 350000 && $capital <= 1000000)
-		// 	$fee = 750;
-		// if($capital > 1000000 && $capital <= 5000000)
-		// 	$fee = 1000;
-		// if($capital > 5000000)
-		// 	$fee = 1500;
-
-		return $fee;
-	}
-
-	//ZONING/LOCATIONAL CLEARANCE
-	public static function compute_zoning_clearance_fee($capital, $zone_type)
-	{
-		//UNIT IS PESOS
-		// switch($zone_type)
-		// {
-		// 	case "Single residential":
-		// 	if($capital <= 100000)
-		// 	{
-		// 		$fee = 240;
-		// 	}
-		// 	if($capital > 100000 && $capital <= 200000)
-		// 	{
-		// 		$fee = 480;
-		// 	}
-		// 	if($capital > 200000)
-		// 	{
-		// 		$excess = $capital - 200000;
-		// 		$excess_fee = ($excess * 0.01) / 10;
-		// 		$fee = 600 + $excess_fee;
-		// 	}
-		// 	break;
-
-		// 	case "Apartments/Townhouses":
-		// 	if($capital <= 500000)
-		// 	{
-		// 		$fee = 1200;
-		// 	}
-		// 	if($capital > 500000 && $capital <= 2000000)
-		// 	{
-		// 		$fee = 1800;
-		// 	}
-		// 	if($capital > 2000000)
-		// 	{
-		// 		$excess = $capital - 2000000;
-		// 		$excess_fee = ($excess * 0.01) / 10;
-		// 		$fee = 3000 + $excess_fee;
-		// 	}
-		// 	break;
-
-		// 	case "Dormitories":
-		// 	if($capital <= 2000000)
-		// 	{
-		// 		$fee = 2400;
-		// 	}
-		// 	if($capital > 2000000)
-		// 	{
-		// 		$excess = $capital - 2000000;
-		// 		$excess_fee = ($excess * 0.01) / 10;
-		// 		$fee = 2400 + $excess_fee;
-		// 	}
-		// 	break;
-
-		// 	case "Commercial/Industrial kind":
-		// 	if($capital <= 100000)
-		// 	{
-		// 		$fee = 1200;
-		// 	}
-		// 	if($capital > 100000 && $capital <= 500000)
-		// 	{
-		// 		$fee = 1800;
-		// 	}
-		// 	if($capital > 500000 && $capital <= 1000000)
-		// 	{
-		// 		$fee = 2400;
-		// 	}
-		// 	if($capital > 1000000 && $capital <= 2000000)
-		// 	{
-		// 		$fee = 3600;
-		// 	}
-		// 	if($capital > 2000000)
-		// 	{
-		// 		$excess = $capital - 2000000;
-		// 		$excess_fee = ($excess * 0.01) / 10;
-		// 		$fee = 6000 + $excess_fee;
-		// 	}
-		// 	break;
-
-		// 	case "Special Uses/Special Projects":
-		// 	if($capital <= 2000000)
-		// 	{
-		// 		$fee = 6000;
-		// 	}
-		// 	if($capital > 2000000)
-		// 	{
-		// 		$excess = $capital - 2000000;
-		// 		$excess_fee = ($excess * 0.01) / 10;
-		// 		$fee = 6000 + $excess_fee;
-		// 	}
-		// 	break;
-
-		// }
-
-		//CHANGED TO FIXED FEE 2/23/17 6:49AM
-		$fee = 200;
 		return $fee;
 	}
 
@@ -469,17 +208,6 @@ class Assessment{
 			$excess_fee = $excess_area * $sanitary->succeedingFee;
 			$fee = $sanitary->firstFee + $excess_fee;
 		}
-
-		// if($area <= 25)
-		// {
-		// 	$fee = 100;
-		// }
-		// if($area > 25)
-		// {
-		// 	$excess_area = $area - 25;
-		// 	$excess_fee = $excess_area * 4;
-		// 	$fee = 100 + $excess_fee;
-		// }
 
 		return $fee;
 	}
@@ -517,23 +245,23 @@ class Assessment{
 	public static function get_change_owner_fee()
 	{
 		$var = get_instance();
-		$fee = $var->Fee_m->get_all_fixed_fees(['particular' => 'Change Owner Fee']);
+		$fee = $var->Fee_m->get_all_fixed_fees(['particular' => 'Change of Owner Fee']);
 		return $fee;
 	}
 
-	public static function get_change_address_fee()
-	{
-		$var = get_instance();
-		$fee = $var->Fee_m->get_all_fixed_fees(['particular' => 'Change Address Fee']);
-		return $fee;
-	}
-
-	// public static function get_change_business_name_fee()
+	// public static function get_change_address_fee()
 	// {
 	// 	$var = get_instance();
-	// 	$fee = $var->Fee_m->get_all_fixed_fees(['particular' => 'Retirement Fee']);
+	// 	$fee = $var->Fee_m->get_all_fixed_fees(['particular' => 'Change Address Fee']);
 	// 	return $fee;
 	// }
+
+	public static function get_change_business_name_fee()
+	{
+		$var = get_instance();
+		$fee = $var->Fee_m->get_all_fixed_fees(['particular' => 'Change of Business Name Fee']);
+		return $fee;
+	}
 
 	public static function get_fixed_fees()
 	{
