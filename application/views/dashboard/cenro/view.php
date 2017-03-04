@@ -145,18 +145,12 @@
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <label for="wastewater_treatment_operaion_process">Wastewater Treatment Operation and Process <input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 0 ? 'checked' : '' ?> name="radios" />YES<input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 1 ? 'checked' : '' ?> name="radios" />NONE</label>
+                      <label for="wastewater_treatment_operaion_process">Wastewater Treatment Operation and Process <input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 0 ? 'checked' : '' ?> name="radios" />YES <input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 1 ? 'checked' : '' ?> name="radios" />NONE</label>
                     </td>
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <label for="latest_wastewater_labtest_results">Note: Furnish copy of latest wastewater laboratory test results</label>
-                      <h5>???</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <label for="pending_case_with_llda">Pending case with LLDA? <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()!= "NA" ? 'checked' : '' ?> name="radios" />YES, Case No. <?= $application->get_PendingCaseWithLLDA()?> <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()== "NA" ? 'checked' : '' ?> name="radios" />NONE</label>
+                      <label for="pending_case_with_llda">Pending case with LLDA? <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()!= "NA" ? 'checked' : '' ?> name="radios" />YES, Case No. <strong><?= $application->get_PendingCaseWithLLDA()?></strong> <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()== "NA" ? 'checked' : '' ?> name="radios" />NONE</label>
                     </td>
                   </tr>
                 </tr>

@@ -17,6 +17,16 @@ class Approval_m extends CI_Model {
   	$this->db->insert($this->_table_name, $fields);
   }
 
+  public function get_all_desc($query = null)
+  {
+    if($query != null)
+      $this->db->where($query);
+    $this->db->select('*')->from($this->_table_name)->order_by('createdAt','desc');
+    $result = $this->db->get();
+
+    return $result->result();
+  }
+
   public function get_all($query = null)
   {
     if($query != null)

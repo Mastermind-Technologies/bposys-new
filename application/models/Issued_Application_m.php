@@ -48,4 +48,16 @@ class Issued_Application_m extends CI_Model {
 
 		return $result->result();
 	}
+
+	public function get_issued_organization_type($role)
+	{
+		//select businesses.businessName, businesses.organizationType from issued_applications join application_bplo on issued_applications.referenceNum = application_bplo.referenceNum join businesses on businesses.businessId = application_bplo.businessId where issued_applications.dept = "Zoning" 
+		$this->db->select('application_bplo.referenceNum, businesses.businessName, businesses.organizationType');
+		$this->db->from($this->table);
+		$this->db->join('application_bplo', 'issued_applications.referenceNum = application_bplo.referenceNum');
+		$this->db->join('businesses', 'businesses.businessId = application_bplo.businessId');
+		$this->db->where('issued_applications.dept', $role);
+
+		return $this->db->get()->result();
+	}
 }

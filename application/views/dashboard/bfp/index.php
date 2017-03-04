@@ -20,7 +20,7 @@
        <li class="bg_db"> <a href="<?php echo base_url(); ?>dashboard/incoming_applications"> <i class="fa fa-share fa-2x" aria-hidden="true"></i>
          <span class="label label-success badge-incoming"><?= $incoming > 0 ? $incoming : '' ?></span><br>Incoming Applicants</a> </li>
          <li class="bg_ly"> <a href="<?php echo base_url(); ?>dashboard/on_process_applications"> <i class="fa fa-circle-o-notch fa-2x" aria-hidden="true"></i>
-         <span class="label label-important"><?= $on_process > 0 ? $on_process : '' ?></span><br><span>On Process</span> </a> </li>
+           <span class="label label-important"><?= $on_process > 0 ? $on_process : '' ?></span><br><span>On Process</span> </a> </li>
            <li class="bg_c"> <a href="dashboard/issued_applications"> <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
              <span class="label label-info"><?= $issued > 0 ? $issued : '' ?></span><br>Issued</a> </li>
         <!-- <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
@@ -34,6 +34,12 @@
         <li class="bg_lb"> <a href="interface.html"> <i class="icon-pencil"></i>Elements</a> </li>
         <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li>
         <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li> -->
+      </ul>
+    </div>
+
+    <div class="quick-actions_homepage">
+      <ul class="quick-actions">
+      <li class="bg_db span3"> <a href="<?php echo base_url(); ?>reports"><span><i class="fa fa-bar-chart-o fa-2x" aria-hidden="true"></i> </span><br>View Reports</a> </li>
       </ul>
     </div>
     <!-- <div class="row-fluid">

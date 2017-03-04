@@ -83,6 +83,8 @@
             <li><a href="<?php echo base_url(); ?>reports/top_businesses"><span>Top Businesses</span></a></li>
           </ul>
         </li>
+      <?php else: ?>
+        <li class="<?= $active=="Reports" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>reports"><i class="icon icon-signal"></i> <span>View Reports</span></a>
       <?php endif ?>
 
 

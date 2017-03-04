@@ -46,6 +46,8 @@ class Dashboard extends CI_Controller {
 	public function _init_matrix($data = null)
 	{
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		// var_dump($role);
+		// exit();
 		if($role == "Applicant")
 		{
 			redirect('error/error403');
@@ -77,7 +79,7 @@ class Dashboard extends CI_Controller {
 				$query['status'] = "For approval";
 				$data['retirements'] = count($this->Retirement_m->get_all($query));
 
-				$data['total'] = $data['process'];
+				$data['total'] = $data['incoming'];
 			}
 			else if($role == 'Zoning')
 			{
@@ -295,6 +297,8 @@ class Dashboard extends CI_Controller {
 
 			$query['status'] = 'Completed';
 			$data['complete'] = count($this->Application_m->get_all_bplo_applications($query));
+
+			$data['unsettled_accounts'] = count($this->Application_m->get_all_bplo_applications_with_unsettled_charges());
 
 			//CHANGE TO ISSUED_M
 			unset($query);
@@ -734,7 +738,7 @@ class Dashboard extends CI_Controller {
 
 	public function draft_application($reference_num)
 	{
-		$this->isLogin();//generate reference_number
+		$this->isLogin();
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 
 		if($reference_num == null)
@@ -1349,6 +1353,25 @@ class Dashboard extends CI_Controller {
 
 	// 	$this->load->view('dashboard/pending',$data);
 	// }
+
+	public function task_logs()
+	{
+		$this->isLogin();
+		$navdata['title'] = "Task Logs";
+		$navdata['active'] = 'Dashboard';
+		$navdata['notifications'] = User::get_notifications();
+		$this->_init_matrix($navdata);
+
+		$query['role'] = 4;
+		$data['approvals'] = $this->Approval_m->get_all_desc($query);
+
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+
+		$this->load->view('dashboard/bplo/task-logs', $data);
+	}
 
 	public function payments()
 	{
