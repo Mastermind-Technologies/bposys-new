@@ -2813,29 +2813,80 @@ public function update_notif($type = null)
 		// echo "</pre>";
 		// exit();
 
-		for($i=0;$i<count($latest);$i=$i+1)
-		{
-			$date1 = new DateTime($latest[$i]->createdAt);
-			$date2 = new DateTime("now");
-			$interval = $date1->diff($date2);
-			$years = $interval->format('%y');
-			$months = $interval->format('%m');
-			$days = $interval->format('%d');
-			if($years!=0){
-				$latest[$i]->createdAt = $years.' year(s) ago';
-			}else{
-				$latest[$i]->createdAt = ($months == 0 ? $days.' day(s) ago' : $months.' month(s) ago');
+			for($i=0;$i<count($latest);$i=$i+1)
+			{
+				date_default_timezone_set('Asia/Manila');
+				$date1 = new DateTime($latest[$i]->createdAt);
+				$date2 = new DateTime("now");
+				$interval = $date1->diff($date2);
+			    $years = $interval->format('%y');
+			    $months = $interval->format('%m');
+			    $days = $interval->format('%d');
+			    $hours = $interval->format('%G');
+			    $minutes = $interval->format('%i');
+
+			    if($years!=0){
+			    	if($years==1)
+			    	{
+			    		$latest[$i]->createdAt = $years.' year ago';
+			    	}else{
+			    		$latest[$i]->createdAt = $years.' years ago';
+			    	}
+			    }else{
+			    	if($months!=0)
+			    	{
+			    		if($months==1)
+				    	{
+				    		$latest[$i]->createdAt = $months.' month ago';
+				    	}else{
+				    		$latest[$i]->createdAt = $months.' months ago';
+				    	}
+			    	}else{
+			    		if($days!=0)
+			    		{
+			    			if($days==1)
+					    	{
+					    		$latest[$i]->createdAt = $days.' day ago';
+					    	}else{
+					    		$latest[$i]->createdAt = $days.' days ago';
+					    	}
+			    		}else{
+			    			if($hours!=0)
+			    			{
+				    			if($hours==1)
+						    	{
+						    		$latest[$i]->createdAt = $hours.' hour ago';
+						    	}else{
+						    		$latest[$i]->createdAt = $hours.' hours ago';
+						    	}
+			    			}else{
+			    				if($minutes!=0)
+			    				{
+			    					if($minutes==1)
+							    	{
+							    		$latest[$i]->createdAt = $minutes.' minute ago';
+							    	}else{
+							    		$latest[$i]->createdAt = $minutes.' minutes ago';
+							    	}
+			    				}else{
+			    					$latest[$i]->createdAt = 'a few moments ago';
+			    				}
+			    			}
+			    		}
+			    	}
+			    }
+
+				$custom_encrypt = array(
+					'cipher' => 'blowfish',
+					'mode' => 'ecb',
+					'key' => $this->config->item('encryption_key'),
+					'hmac' => false
+					);
+
+
+				$latest[$i]->referenceNum = bin2hex($this->encryption->encrypt($latest[$i]->applicationId."|".$latest[$i]->referenceNum, $custom_encrypt));
+
 			}
-
-			$custom_encrypt = array(
-				'cipher' => 'blowfish',
-				'mode' => 'ecb',
-				'key' => $this->config->item('encryption_key'),
-				'hmac' => false
-				);
-
-			$latest[$i]->referenceNum = bin2hex($this->encryption->encrypt($latest[$i]->applicationId."|".$latest[$i]->referenceNum, $custom_encrypt));
-		}
 
 		$data['notifications'] = $latest;
 		$this->load->view('dashboard/applicant/notif-view', $data);
