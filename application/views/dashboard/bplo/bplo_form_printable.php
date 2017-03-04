@@ -615,7 +615,11 @@ $pdf->Text(120,$y+8,"Approved by:");
 $pdf->SetFont("Arial","","8");
 $pdf->Text(115,$y+16,"RENE C. MANABAT");
 $pdf->Text(120,$y+20,"BPLO HEAD");
-$pdf->Output();
+
+$refNum = $this->encryption->decrypt($application->get_referenceNum());
+$title = "bplo-application-form";
+$fileName = "$title-$dateHolder-$refNum";
+$pdf->Output('I',$fileName);
  ?>
 
 <div class="container">

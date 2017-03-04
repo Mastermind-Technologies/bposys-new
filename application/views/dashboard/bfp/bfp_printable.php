@@ -1535,5 +1535,10 @@ $pdf->SetFont("Arial","","7");
 $pdf->Text($x+2,$y+4,"Original (BFP copy)");
 $pdf->Text($x+2,$y+8,"Duplicate (BO/BPLO copy)");
 $pdf->Text($x+2,$y+12,"Triplicate (Applicant/Owner's copy)");
-$pdf->Output();
+
+$dateHolder = date('M d Y');
+$title = "bfp-form";
+$refNum = $this->encryption->decrypt($application->get_referenceNum());
+$fileName = "$title-$dateHolder-$refNum";
+$pdf->Output('I',$fileName);
  ?>

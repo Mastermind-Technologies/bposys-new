@@ -228,7 +228,7 @@ class Dashboard extends CI_Controller {
 				foreach ($reference_numbers as $key => $reference)
 				{
 					$application = new BPLO_Application($reference->referenceNum);
-					if($application->get_assessment() != null)		
+					if($application->get_assessment() != null)
 						BPLO_Application::check_penalties($application->get_assessment()->assessmentId);
 					$application->check_expiry();
 					$application = new CENRO_Application($reference->referenceNum);
@@ -2474,7 +2474,7 @@ class Dashboard extends CI_Controller {
 
 				$this->process_assessments($reference_num);
 
-				
+
 
 			// notify all departments
 				for ($i=5; $i <= 10 ; $i++)
@@ -2519,6 +2519,13 @@ class Dashboard extends CI_Controller {
 	// 	$this->load->view('dashboard/bplo/bplo_printable',$data);
 	// }
 
+public function get_reference_info_printable()
+{
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/bplo/reference_info_printable',$data);
+}
 public function get_sanitary_info()
 {
 	$data['application'] = $this->Application_m->get_all_bplo_applications();
@@ -2563,8 +2570,8 @@ public function get_zoning_info()
 public function get_cenro_info()
 {
 	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('1E5E2270C6');
-	$data['application2'] = new CENRO_Application('1E5E2270C6');
+	$data['application'] = new BPLO_Application('739862FF5C');
+	$data['application2'] = new CENRO_Application('739862FF5C');
 
 	$this->load->view('dashboard/cenro/cenro_printable',$data);
 }
@@ -2589,6 +2596,37 @@ public function get_bplo_certificate_info()
 	$this->load->view('dashboard/bplo/bplo_certificate_printable',$data);
 }
 
+public function get_sanitary_permit_info()
+{
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/cho/sanitary_permit',$data);
+}
+
+public function get_engineering_clearance_info()
+{
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/engineering/engineering_clearance',$data);
+}
+
+public function get_zoning_clearance_info()
+{
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/zoning/zoning_clearance',$data);
+}
+//
+public function get_fire_inspection_certificate_info()
+{
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/bfp/fire_inspection_certificate',$data);
+}
 public function get_demographic_report_info()
 {
 		//
@@ -2645,7 +2683,7 @@ public function get_demographic_report_info()
 
 	$this->load->view('dashboard/bplo/demographic_report',$data);
 }
-public function get_employees_accomplishment_report_info()
+public function get_issued_business_permit_report_info()
 {
 		//New & Renewal
 	$query['YEAR(createdAt)'] = date('Y');
@@ -2760,7 +2798,7 @@ public function get_employees_accomplishment_report_info()
 public function get_assessment_form_info()
 {
 
-	$this->load->view('dashboard/bplo/assessment_form_printable');
+	$this->load->view('dashboard/bplo/issued_business_permit_report');
 }
 
 	//FOR AJAX PURPOSES
@@ -3349,7 +3387,7 @@ public function process_assessments($reference_number)
 // 	$garbage_service = 0;
 // 	$zoning_fee = 0;
 
-// 	foreach ($activities as $key => $activity) 
+// 	foreach ($activities as $key => $activity)
 // 	{
 // 		$total_gross = $essential[$key] + $non_essential[$key];
 // 		$query['activityId'] = $this->encryption->decrypt($activity);

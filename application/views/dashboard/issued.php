@@ -1,8 +1,8 @@
 <div id="content">
   <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> 
-      <a href="<?php echo base_url(); ?>dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a> 
+    <div id="breadcrumb">
+      <a href="<?php echo base_url(); ?>dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a>
       <a href="<?php echo base_url(); ?>dashboard/pending_applications" class="current">Issued Applications</a>
     </div>
     <h1>Issued Applications</h1>
@@ -50,7 +50,7 @@
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CENRO"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_cenro_info" class="btn btn-info btn-block">Print CENRO Form</a>
                     <?php endif ?>
-                    
+
                   </td>
                 </tr>
               <?php endforeach; ?>

@@ -294,5 +294,9 @@ $y = $pdf->GetY();
 $pdf->Line($x+1,$y+4.7,$x+75,$y+4.7);
 $pdf->Text($x+20,$y+8,"Signature of Applicant");
 
-$pdf->Output();
+$dateHolder = date('M d Y');
+$refNum = $this->encryption->decrypt($application->get_referenceNum());
+$title = "zoning-form";
+$fileName = "$title-$dateHolder-$refNum";
+$pdf->Output('I',$fileName);
  ?>

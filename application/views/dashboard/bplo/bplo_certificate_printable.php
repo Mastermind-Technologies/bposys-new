@@ -41,7 +41,7 @@ $pdf->Cell(70,5,"$businessName",0,0,"C");
   // $application->get_bldgName() ." ". $application->get_houseBldgNum() ." ". $application->get_unitNum() ." ".  $application->get_street() ." ". $application->get_Subdivision() ." ".
   $busimessAddress =utf8_decode($application->get_barangay() ." ". $application->get_cityMunicipality() ." ". $application->get_province());
   $tempBusiAdd = "Daisy St. South City Homes Binyan, Laguna";
-$pdf->Cell(70,5,"$tempBusiAdd",0,0,"C");
+$pdf->Cell(70,5,"$busimessAddress",0,0,"C");
   $y = $pdf->GetY();
   $pdf->SetXY($x-10,$y+19.5);
   $applicantName = utf8_decode($application->get_FirstName() ." ". $application->get_MiddleName() ." ". $application->get_LastName());
@@ -52,14 +52,17 @@ $pdf->Cell(70,5,"$applicantName",0,0,"C");
 $pdf->Cell(70,5,"$natureOfBusiness",0,0,"C");
   $y = $pdf->GetY();
   $pdf->SetXY($x+7,$y+33);
-$pdf->Cell(17,5,"2017",0,0,"C");
+  $expYear = date('Y');
+$pdf->Cell(17,5,"$expYear",0,0,"C");
   $y = $pdf->GetY();
   $pdf->SetXY($x+19,$y+6);
   $pdf->SetFont("Arial","B","9");
-$pdf->Cell(9,5,"10",0,0,"C");
+  $day = date('d');
+$pdf->Cell(9,5,"$day",0,0,"C");
   $y = $pdf->GetY();
   $pdf->SetXY($x+39.5,$y);
-$pdf->Cell(20,5,"February",0,0,"C");
+  $month = date('M');
+$pdf->Cell(20,5,"$month",0,0,"C");
 
 //
 // $pdf->SetFont("Arial","","10");
@@ -68,9 +71,13 @@ $pdf->Cell(20,5,"February",0,0,"C");
 $pdf->Cell(30,5,"Paid under O.R.",0,0,"C");
   $y = $pdf->GetY();
   $pdf->SetXY($x+32.5,$y+5.1);
-$pdf->Cell(30,5,"February 10, 2017",0,0,"C");
+  $appDate = date('M d Y');
+$pdf->Cell(30,5,"$appDate",0,0,"C");
   $y = $pdf->GetY();
   $pdf->SetXY($x+32.5,$y+5);
 $pdf->Cell(30,5,"P 1,000,000.00",0,0,"C");
-$pdf->Output();
+$refNum = $this->encryption->decrypt($application->get_referenceNum());
+$title = "business-permit-certificate";
+$fileName = "$title-$appDate-$refNum";
+$pdf->Output('I',$fileName);
  ?>

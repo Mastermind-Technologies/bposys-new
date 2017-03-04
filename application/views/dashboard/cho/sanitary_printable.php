@@ -470,6 +470,10 @@ $pdf->Cell(42,5,"/ Smart: 0998-510-7301 /Landline: 049-511-8142",0,1,"L");
 $y = $pdf->GetY();
 $pdf->SetXY(23,$y+3);
 $pdf->Cell(42,5,"*All offices of the City Government of $laguna are undergoing ISO Certification, please bear with us: Say no to FIXERS.*",0,0,"L");
-$pdf->Output();
 
+$dateHolder = date('M d Y');
+$refNum = $this->encryption->decrypt($application->get_referenceNum());
+$title = "sanitary-form";
+$fileName = "$title-$dateHolder-$refNum";
+$pdf->Output('I',$fileName);
 ?>

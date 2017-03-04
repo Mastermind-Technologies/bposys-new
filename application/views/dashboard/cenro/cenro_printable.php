@@ -230,6 +230,11 @@ $pdf->Cell(0,5,"    a. Smoke / Emission",1,1,"L");
   $pdf->Cell(4, 3,"X",0, 0);
   }
 
+  if($application2->get_FugitiveParticulates() == null)
+  {
+    $cbAP3 = "";
+  }
+  else{
   $cbAP3 = $application2->get_FugitiveParticulates();
   if($cbAP3 == in_array('Dust', $application2->get_FugitiveParticulates()))
   {
@@ -245,9 +250,14 @@ $pdf->Cell(0,5,"    a. Smoke / Emission",1,1,"L");
   {
   $pdf->SetXY(167.5,106.2);
   $pdf->Cell(4, 3,"X",0, 0);
-  }
+}}
 
-  $cbAP4 = $application2->get_SteamGenerator();
+  if($application2->get_SteamGenerator() == null)
+  {
+    $cbAP4 = "";
+  }
+  else {
+    $cbAP4 = $application2->get_SteamGenerator();# code...
   if($cbAP4 == in_array('Boiler', $application2->get_SteamGenerator()))
   {
   $pdf->SetXY(109.5,111.2);
@@ -263,7 +273,7 @@ $pdf->Cell(0,5,"    a. Smoke / Emission",1,1,"L");
   $pdf->SetXY(157.5,111.2);
   $pdf->Cell(4, 3,"X",0, 0);
   }
-
+}
   //
 $pdf->SetXY(51.00125,105.5);
 $pdf->Cell(5,3.8,"",1,0,"L");
@@ -749,5 +759,9 @@ $pdf->SetXY($x+1,$y+1);
 $pdf->Cell(34,5,"",0,0,"C");
 $pdf->Text($x+15,$y+8,"Date");
 
-$pdf->Output();
+$dateHolder = date('M d Y');
+$refNum = $this->encryption->decrypt($application->get_referenceNum());
+$title = "cenro-form";
+$fileName = "$title-$dateHolder-$refNum";
+$pdf->Output('I',$fileName);
  ?>

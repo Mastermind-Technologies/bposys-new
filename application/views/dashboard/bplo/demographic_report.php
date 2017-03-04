@@ -72,6 +72,7 @@ if (isset($barangay_array))
   for($i=0;$i<$countBrgy;$i++)
   {
     $cellHeight = 5;
+    $cellHeight = $cellHeight+6.5;
   }
   $y = $pdf->GetY();
   $pdf->SetY($y+1);
@@ -93,5 +94,8 @@ foreach ($barangay_array as $key => $barangay)
   }
 }
 
-$pdf->Output();
+$dateHolder = date('M d Y');
+$title = "demographic-report";
+$fileName = "$title-$dateHolder";
+$pdf->Output('I',$fileName);
 ?>

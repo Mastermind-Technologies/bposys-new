@@ -202,5 +202,8 @@ $pdf->Cell(31,8,"$overallTotal",1,1,"R");
 //   $pdf->Cell(40,8,"",1,0,"R");
 //   $pdf->Cell(40,8,"",1,0,"R");
 //   $pdf->Cell(18,8,"",1,0,"R");
-$pdf->Output();
+$dateHolder = date('M d Y');
+$title = "issued-business-permit-report";
+$fileName = "$title-$dateHolder";
+$pdf->Output('I',$fileName);
  ?>
