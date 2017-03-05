@@ -2650,9 +2650,11 @@ public function get_bplo_form_info($reference_num)
 	$this->load->view('dashboard/bplo/bplo_form_printable',$data);
 }
 
-public function get_cert_closure_info()
+public function get_cert_closure_info($reference_num)
 {
-	$this->load->view('dashboard/bplo/cert_closure_printable');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$data['application'] = new BPLO_Application($reference_num);
+	$this->load->view('dashboard/bplo/cert_closure_printable',$data);
 }
 
 public function get_bplo_certificate_info($reference_num)
@@ -2866,22 +2868,23 @@ public function get_issued_business_permit_report_info()
 	$this->load->view('dashboard/bplo/employees_accomplishment_report',$data);
 }
 
-public function get_order_of_payment_info()
-{
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('739862FF5C');
-
-	$this->load->view('dashboard/bplo/order_of_payment',$data);
-}
-
-public function get_assessment_form_info($reference_num)
+public function get_order_of_payment_info($reference_num)
 {
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 
 	$data['application'] = new BPLO_Application($reference_num);
-	$this->load->view('dashboard/bplo/assessment_form_printable',$data);
+	$this->load->view('dashboard/bplo/order_of_payment',$data);
 }
+
+// public function get_assessment_form_info($reference_num)
+// {
+// 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+// 	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+// 	$data['application'] = new BPLO_Application($reference_num);
+// 	$this->load->view('dashboard/bplo/assessment_form_printable',$data);
+// }
 
 	//FOR AJAX PURPOSES
 public function update_notif($type = null)
