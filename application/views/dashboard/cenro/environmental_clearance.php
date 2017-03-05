@@ -66,8 +66,8 @@ $pdf->Line($x,$y+4.3,$x+90,$y+4.3);
 $x = $pdf->GetX();
 $pdf->SetXY($x,$y-.5);
 $pdf->SetFont("Arial","","10.5");
-// $establishmentType = $application->get_
-$pdf->Cell(90,5,"[/]",0,0,"C");
+ $establishmentType = $application->get_zoneType();
+$pdf->Cell(90,5,"$establishmentType",0,0,"C");
 $pdf->Text($x+24.7,$y+9,"(Type of Establishment)");
 //
 $pdf->SetX(110);
@@ -76,14 +76,14 @@ $pdf->Line($x,$y+4.3,$x+90,$y+4.3);
 $x = $pdf->GetX();
 $pdf->SetXY($x,$y-.5);
 //Sample data
-$address = $utf8_decode($application->get_barangay() ." ". "Biñan, Laguna");
+$address = utf8_decode($application->get_barangay() ." ". "Biñan, Laguna");
 $pdf->Cell(90,5,"$address",0,0,"C");
 $pdf->Text($x+24.7,$y+9,"Address");
 
 //
 $y = $pdf->GetY();
 $pdf->SetXY(10,$y+20);
-$ecNumber = $application->get_applicationId();
+$ecNumber = $this->encryption->decrypt($application->get_applicationId());
 $pdf->Cell(17,5,"EC No.",0,0,"L");
 $x = $pdf->GetX();
 $y = $pdf->GetY();

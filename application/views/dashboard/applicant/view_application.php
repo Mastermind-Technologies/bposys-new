@@ -489,7 +489,7 @@
 
 				</table>
 				<div>
-					<a href="<?php echo base_url(); ?>dashboard/get_cenro_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
+					<a href="<?php echo base_url(); ?>dashboard/get_environmental_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
 				</div>
 			</div>
 		</div>
