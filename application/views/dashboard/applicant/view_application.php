@@ -229,7 +229,7 @@
 				</div>
 
 				<div>
-					<a href="<?php echo base_url(); ?>/dashboard/get_reference_info_printable" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Reference</a>&nbsp;<a href="<?php echo base_url(); ?>/dashboard/get_bplo_form_info" class="btn btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp; Note: Printing of application form is not required.</i></label>
+					<a href="<?php echo base_url(); ?>/dashboard/get_reference_info_printable" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Reference</a>&nbsp;<a href="<?php echo base_url(); ?>dashboard/get_bplo_form_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp; Note: Printing of application form is not required.</i></label>
 				</div>
 			</div>
 		</div>
@@ -442,7 +442,7 @@
 
 				</table>
 				<div>
-					<a href="<?php echo base_url(); ?>/dashboard/get_sanitary_permit_info" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
+					<a href="<?php echo base_url(); ?>dashboard/get_sanitary_permit_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
 				</div>
 			</div>
 		</div>
@@ -489,7 +489,7 @@
 
 				</table>
 				<div>
-					<a href="<?php echo base_url(); ?>/dashboard/get_cenro_info" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
+					<a href="<?php echo base_url(); ?>dashboard/get_cenro_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
 				</div>
 			</div>
 		</div>
@@ -548,7 +548,7 @@
 					</tr>
 				</table>
 				<div>
-					<a href="<?php echo base_url(); ?>/dashboard/get_fire_inspection_certificate_info" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
+					<a href="<?php echo base_url(); ?>dashboard/get_fire_inspection_certificate_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
 				</div>
 			</div>
 		</div>
@@ -592,7 +592,7 @@
 					</tr>
 				</table>
 				<div>
-					<a href="<?php echo base_url(); ?>/dashboard/get_zoning_clearance_info" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
+					<a href="<?php echo base_url(); ?>dashboard/get_zoning_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
 				</div>
 			</div>
 		</div>

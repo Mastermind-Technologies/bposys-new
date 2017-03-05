@@ -47,7 +47,7 @@ $pdf->Line($x+1,$y+4.3,$x+160,$y+4.3);
 $x = $pdf->GetX();
 $pdf->SetXY($x-1,$y-.5);
 $pdf->SetFont("Arial","","10.5");
-$registeredName = utf8_decode($application->FirstName() ." ". $application->MiddleName() ." ". $application->LastName());
+$registeredName = utf8_decode($application->get_firstName() ." ". $application->get_middleName() ." ". $application->get_lastName());
 $pdf->Cell(159,5,"$registeredName",0,0,"C");
 
 //
