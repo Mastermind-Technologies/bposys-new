@@ -98,19 +98,33 @@ class Auth extends CI_Controller {
 
           $data['role'] = $this->User_m->check_user_role($data['user'][0]->role);
 
-          $session_data = array(
+          $permission_level = $this->User_m->check_permission_level($user_id);
+
+          if(!$permission_level)
+          {
+            $this->session->set_flashdata('failed','Invalid username or password');
+            redirect('home');
+          }
+          else
+          {
+           $session_data = array(
             'userId' => $this->encryption->encrypt($data['user'][0]->userId),
             'firstName' => $data['user'][0]->firstName,
             'lastName' => $data['user'][0]->lastName,
             'middleName' => $data['user'][0]->middleName,
             'email' => $this->encryption->encrypt($data['user'][0]->email),
-            'role' => $this->encryption->encrypt($data['role'][0]->name)
+            'role' => $this->encryption->encrypt($data['role'][0]->name),
+            'permissionLevel' => $permission_level,
             );
           // Add user data in session
-          $this->session->set_userdata('userdata', $session_data);
+           $this->session->set_userdata('userdata', $session_data);
+           // echo "<pre>";
+           // print_r($this->session->userdata['userdata']);
+           // echo "</pre>";
+           // exit();
 
-          if($check[0]->role == 1)
-          {
+           if($check[0]->role == 1)
+           {
             redirect("bposys_admin/dashboard");
           }
           else {
@@ -118,37 +132,38 @@ class Auth extends CI_Controller {
           }
         }
       }
-      else
-      {
-        $this->session->set_flashdata('failed','Invalid username or password');
-        redirect('home');
-      }
-
-
-
-
-
-
+    }
+    else
+    {
+      $this->session->set_flashdata('failed','Invalid username or password');
+      redirect('home');
     }
 
+
+
+
+
+
   }
 
-  public function register()
-  {
-    $this->_init("Register", "register");
-    $data['selected'] = "register";
-    $data['title'] = "Register";
+}
+
+public function register()
+{
+  $this->_init("Register", "register");
+  $data['selected'] = "register";
+  $data['title'] = "Register";
     //$this->load->view('template/navbar', $data);
 
-    $this->load->view('register/index');
-    $this->load->view('templates/sb_landing_page/sb-landing-page-footer');
-  }
+  $this->load->view('register/index');
+  $this->load->view('templates/sb_landing_page/sb-landing-page-footer');
+}
 
-  public function register_user()
-  {
-    $this->form_validation->set_rules('fname', 'First Name', 'required');
-    $this->form_validation->set_rules('lname', 'Last Name', 'required');
-    $this->form_validation->set_rules('gender', 'Gender', 'required');
+public function register_user()
+{
+  $this->form_validation->set_rules('fname', 'First Name', 'required');
+  $this->form_validation->set_rules('lname', 'Last Name', 'required');
+  $this->form_validation->set_rules('gender', 'Gender', 'required');
     $this->form_validation->set_rules('email', 'Email', 'required'); //'required|valid_email|is_unique[users.email]'
     $this->form_validation->set_rules('password', 'Password', 'required');
     $this->form_validation->set_rules('civil-status', 'Civil Status', 'required');

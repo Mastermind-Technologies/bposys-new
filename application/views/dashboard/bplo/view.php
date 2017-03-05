@@ -358,7 +358,7 @@
                                 type="button" 
                                 data-target="#<?= $activity->type=='Amusement' ? 'modal-amusement' : '' ?><?= $activity->type=='Financial Institution' ? 'modal-financial' : '' ?>" 
                                 data-toggle="modal" 
-                                value="<?= $activity->type=='Financial Institution' ? 'Select Financial Institution Type' : '' ?><?= $activity->type=='Amusement' ? 'Edit Amusement Devices' : '' ?>" <?= $activity->type=="Financial Institution"||$activity->type=="Amusement" ? '' : 'disabled' ?> 
+                                value="<?= $activity->type=='Financial Institution' ? 'Select Financial Institution Type' : '' ?><?= $activity->type=='Amusement' ? 'Edit Amusement Devices' : '' ?>" <?= $activity->type=="Financial Institution"||$activity->type=="Amusement" ? '' : 'disabled ' ?> 
                                 class="btn <?= $activity->type=='Financial Institution'||$activity->type=='Amusement' ? 'btn-danger btn-required' : 'btn-primary' ?> btn-block"
                                 id="<?= $activity->type=='Financial Institution' ? 'btn-select-financial-institution' : '' ?><?= $activity->type=='Amusement' ? 'btn-edit-amusement-devices' : '' ?>">
                                 <?php if ($activity->type=="Amusement"): ?>
@@ -415,7 +415,7 @@
                                     type="button" 
                                     data-target="#<?= $activity->type=='Amusement' ? 'modal-amusement' : '' ?><?= $activity->type=='Financial Institution' ? 'modal-financial' : '' ?>" 
                                     data-toggle="modal" 
-                                    value="<?= $activity->type=='Financial Institution' ? 'Select Financial Institution Type' : '' ?><?= $activity->type=='Amusement' ? 'Edit Amusement Devices' : '' ?>" <?= $activity->type=="Financial Institution"||$activity->type=="Amusement" ? '' : 'disabled' ?> 
+                                    value="<?= $activity->type=='Financial Institution' ? 'Select Financial Institution Type' : '' ?><?= $activity->type=='Amusement' ? 'Edit Amusement Devices' : '' ?>" <?= $activity->type=="Financial Institution"||$activity->type=="Amusement" ? '' : 'disabled style="display:none;"' ?> 
                                     class="btn <?= $activity->type=='Financial Institution'||$activity->type=='Amusement' ? 'btn-danger btn-required' : 'btn-primary' ?> btn-block"
                                     id="<?= $activity->type=='Financial Institution' ? 'btn-select-financial-institution' : '' ?><?= $activity->type=='Amusement' ? 'btn-edit-amusement-devices' : '' ?>">
                                     <?php if ($activity->type=="Amusement"): ?>
@@ -592,171 +592,175 @@
                       <td><?= date('Y', strtotime($charge->createdAt)) ?></td>
                       <td><?= $charge->period ?></td>
                       <td><?= $charge->particulars ?></td>
-                      <td><?= number_format($charge->due, 2) ?></td>
-                      <td><?= number_format($charge->surcharge, 2) ?></td>
-                      <td><?= number_format($charge->interest, 2) ?></td>
+                      <td><span class="pull-right"><?= number_format($charge->due, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($charge->surcharge, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($charge->interest, 2) ?></span></td>
                       <td>
-                        <?php 
-                        $t = $charge->due + $charge->surcharge + $charge->interest;
-                        echo number_format($t, 2);
-                        $total += $t; 
-                        $total_due += $charge->due;
-                        $total_surcharge += $charge->surcharge;
-                        $total_interest += $charge->interest;
-                        ?>
-                      </td>
+                        <span class="pull-right"><?php 
+                          $t = $charge->due + $charge->surcharge + $charge->interest;
+                          echo number_format($t, 2);
+                          $total += $t; 
+                          $total_due += $charge->due;
+                          $total_surcharge += $charge->surcharge;
+                          $total_interest += $charge->interest;
+                          ?></span>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
+                    <tr>
+                      <td colspan=3><span class="pull-right">TOTAL</span></td>
+                      <td><span class="pull-right"><?= number_format($total_due, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($total_surcharge, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($total_interest, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($application->get_totalAssessment(), 2) ?></span></td>
                     </tr>
-                  <?php endforeach ?>
-                </tbody>
-              </table>
-              <div class="row">
-                <div class="span1 offset5">
-                  <label for="" class='pull-right'>Total:</label>
+                    <tr>
+                      <td colspan=3><span class="pull-right">BALANCE</span></td>
+                      <td><span class="pull-right"><?= number_format($application->get_Assessment()->amount, 2) ?></span></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-bordered">
+                  <thead>
+                    <th>Due Date</th>
+                    <th>First Quarter (Jan 20)</th>
+                    <th>Second Quarter (Apr 20)</th>
+                    <th>Third Quarter (Jul 20)</th>
+                    <th>Fourth Quarter (Oct 20)</th>
+                  </thead>
+                  <tbody>
+                    <th>Amount Due</th>
+                    <td><span class="pull-right"><?= isset($application->get_quarterPayment()[0]) ? number_format($application->get_quarterPayment()[0], 2) : '.00' ?></span></td>
+                    <td><span class="pull-right"><?= isset($application->get_quarterPayment()[1]) ? number_format($application->get_quarterPayment()[1], 2) : '.00' ?></span></td>
+                    <td><span class="pull-right"><?= isset($application->get_quarterPayment()[2]) ? number_format($application->get_quarterPayment()[2], 2) : '.00' ?></span></td>
+                    <td><span class="pull-right"><?= isset($application->get_quarterPayment()[3]) ? number_format($application->get_quarterPayment()[3], 2) : '.00' ?></span></td>
+                  </tbody>
+                </table>
+                <div class="row-fluid text-center">
+                  <div class="span4 offset4">
+                    <div class="control-group">
+                      <a href="<?php echo base_url(); ?>dashboard/get_assessment_form_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success">Print Tax Order of Payment</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="span1"><?= number_format($total_due, 2) ?></div>
-                <div class="span1"><?= number_format($total_surcharge, 2) ?></div>
-                <div class="span1" style="padding-left:50px"><?= number_format($total_interest, 2) ?></div>
-                <div class="span1" style="padding-left:20px"><?= number_format($application->get_totalAssessment(), 2) ?></div>
               </div>
-              <div class="row">
-                <div class="span1 offset5">
-                  <label for="" class="pull-right">Balance:</label>
+              <div id="tab3" class='tab-pane'>
+                <div id="gmaps" style="width:100%; height:500px; background-color: gray">
                 </div>
-                <div class="span1"><?= number_format($application->get_Assessment()->amount, 2) ?></div>
-              </div>
-              <table class="table table-bordered">
-                <thead>
-                  <th>Due Date</th>
-                  <th>First Quarter (Jan 20)</th>
-                  <th>Second Quarter (Apr 20)</th>
-                  <th>Third Quarter (Jul 20)</th>
-                  <th>Fourth Quarter (Oct 20)</th>
-                </thead>
-                <tbody>
-                  <th>Amount Due</th>
-                  <td><span class="pull-right"><?= isset($application->get_quarterPayment()[0]) ? number_format($application->get_quarterPayment()[0], 2) : '.00' ?></span></td>
-                  <td><span class="pull-right"><?= isset($application->get_quarterPayment()[1]) ? number_format($application->get_quarterPayment()[1], 2) : '.00' ?></span></td>
-                  <td><span class="pull-right"><?= isset($application->get_quarterPayment()[2]) ? number_format($application->get_quarterPayment()[2], 2) : '.00' ?></span></td>
-                  <td><span class="pull-right"><?= isset($application->get_quarterPayment()[3]) ? number_format($application->get_quarterPayment()[3], 2) : '.00' ?></span></td>
-                </tbody>
-              </table>
-              <!-- <span>This Statement is valid until 1/30/<?= date('Y') ?></span><br>
-              <span>Please disregard this statement if payment has been made. Thank you.</span> -->
-            </div>
-            <div id="tab3" class='tab-pane'>
-              <div id="gmaps" style="width:100%; height:500px; background-color: gray">
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- End Container Fluid -->
-    </div>
-  </div>
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMOtCdi62jLDT9JFcUh8vN3WYPakFMY8"
-  async defer></script>
-  <script>
-    var map;
-    var loaded = false;
-    function initMap(){
-      if(loaded == false)
-      {
-        loaded = true;
-        latlang = new google.maps.LatLng(<?= $application->get_lat() ?>,<?= $application->get_lng() ?>);
-        map = new google.maps.Map(document.getElementById('gmaps'), {
-          center: latlang,
-          zoom: 15
-
-        });
-        var marker = new google.maps.Marker({
-          position: latlang,
-        });
-
-        marker.setMap(map);
-      }
-    }
-  </script>
-
-  <div id="modal-financial" class="modal hide modal-lg">
-    <div class="modal-header">
-      <button data-dismiss="modal" class="close" type="button">×</button>
-      <h3>Select Financial Institution</h3>
-    </div>
-    <div class="modal-body">
-      <div class="row-fluid">
-        <div class="control-group">
-          <label class="control-label"></label>
-          <div class="controls">
-            <?php foreach ($financial_institutions as $key => $fi): ?>
-              <label>
-                <input type="radio" <?= $key==0 ? 'checked' : '' ?> name="financial_institution" class='financial-institution' value="<?= $this->encryption->encrypt($fi->financialInstitutionId) ?>" />
-                <?= $fi->description ?>
-              </label>
-            <?php endforeach ?>
-          </div>
-        </div>
-      </div>
-      <div class="">
-        <button type="button" id='btn-save-financial' data-dismiss="modal" class="btn btn-success pull-right">Save</button>
+        <!-- End Container Fluid -->
       </div>
     </div>
-  </div>
 
-  <div id="modal-amusement" class="modal hide">
-    <div class="modal-header">
-      <button data-dismiss="modal" class="close" type="button">×</button>
-      <h4>Edit Amusement Devices</h4>
-    </div>
-    <div class="modal-body">
-      <div class="row-fluid">
-        <h4>Amusement Devices</h4>
-        <?php foreach ($amusement_devices as $key => $device): ?>
-          <div class="control-group">
-            <label class="control-label"><?= $device->name ?></label>
-            <div class="controls">
-              <div class="input-prepend">
-                <span class="add-on">Units</span>
-                <input class="span4 device" placeholder="0" required id="<?= $this->encryption->encrypt($device->amusementDeviceId) ?>" type="number" value="0">
-              </div>
-            </div>
-          </div>
-        <?php endforeach ?>
-        <h4>Golf Links</h4>
-        <div class="control-group">
-          <label class="control-label">
-            No. of Holes
-          </label>
-          <div class="controls">
-            <input class="span4" placeholder="0" required id="holes" value="0" type="number">
-          </div>
-        </div>
-        <h4>Bowling Alleys</h4>
-        <div class="control-group">
-          <label class="control-label">
-            No. of Automatic Lanes
-          </label>
-          <div class="controls">
-            <input class="span4" id="automatic-lanes" placeholder="0" value="0" required type="number">
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label">
-            No. of Non-Automatic Lanes
-          </label>
-          <div class="controls">
-            <input class="span4" id="non-automatic-lanes" placeholder="0" value="0" required type="number">
-          </div>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="button" id='btn-save-amusement' data-dismiss="modal" class="btn btn-success pull-right">Save</button>
-      </div>
-    </div>
-  </div>
-
-  <?php if ($this->session->flashdata('error')): ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMOtCdi62jLDT9JFcUh8vN3WYPakFMY8"
+    async defer></script>
     <script>
-      alert(<?= $this->session->flashdata('error') ?>)
+      var map;
+      var loaded = false;
+      function initMap(){
+        if(loaded == false)
+        {
+          loaded = true;
+          latlang = new google.maps.LatLng(<?= $application->get_lat() ?>,<?= $application->get_lng() ?>);
+          map = new google.maps.Map(document.getElementById('gmaps'), {
+            center: latlang,
+            zoom: 15
+
+          });
+          var marker = new google.maps.Marker({
+            position: latlang,
+          });
+
+          marker.setMap(map);
+        }
+      }
     </script>
-  <?php endif ?>
+
+    <div id="modal-financial" class="modal hide modal-lg">
+      <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button">×</button>
+        <h3>Select Financial Institution</h3>
+      </div>
+      <div class="modal-body">
+        <div class="row-fluid">
+          <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+              <?php foreach ($financial_institutions as $key => $fi): ?>
+                <label>
+                  <input type="radio" <?= $key==0 ? 'checked' : '' ?> name="financial_institution" class='financial-institution' value="<?= $this->encryption->encrypt($fi->financialInstitutionId) ?>" />
+                  <?= $fi->description ?>
+                </label>
+              <?php endforeach ?>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <button type="button" id='btn-save-financial' data-dismiss="modal" class="btn btn-success pull-right">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-amusement" class="modal hide">
+      <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button">×</button>
+        <h4>Edit Amusement Devices</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row-fluid">
+          <h4>Amusement Devices</h4>
+          <?php foreach ($amusement_devices as $key => $device): ?>
+            <div class="control-group">
+              <label class="control-label"><?= $device->name ?></label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <span class="add-on">Units</span>
+                  <input class="span4 device" placeholder="0" required id="<?= $this->encryption->encrypt($device->amusementDeviceId) ?>" type="number" value="0">
+                </div>
+              </div>
+            </div>
+          <?php endforeach ?>
+          <h4>Golf Links</h4>
+          <div class="control-group">
+            <label class="control-label">
+              No. of Holes
+            </label>
+            <div class="controls">
+              <input class="span4" placeholder="0" required id="holes" value="0" type="number">
+            </div>
+          </div>
+          <h4>Bowling Alleys</h4>
+          <div class="control-group">
+            <label class="control-label">
+              No. of Automatic Lanes
+            </label>
+            <div class="controls">
+              <input class="span4" id="automatic-lanes" placeholder="0" value="0" required type="number">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">
+              No. of Non-Automatic Lanes
+            </label>
+            <div class="controls">
+              <input class="span4" id="non-automatic-lanes" placeholder="0" value="0" required type="number">
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" id='btn-save-amusement' data-dismiss="modal" class="btn btn-success pull-right">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <?php if ($this->session->flashdata('error')): ?>
+      <script>
+        alert(<?= $this->session->flashdata('error') ?>)
+      </script>
+    <?php endif ?>

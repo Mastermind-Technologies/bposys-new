@@ -60,4 +60,11 @@ class Issued_Application_m extends CI_Model {
 
 		return $this->db->get()->result();
 	}
+
+	public function get_unique_issued_applications()
+	{
+		//select * from issued_applications where dept = "BPLO" group by referenceNum
+		$this->db->select('referenceNum')->from($this->table)->where('dept', "BPLO")->group_by('referenceNum');
+		return $this->db->get()->result();
+	}
 }

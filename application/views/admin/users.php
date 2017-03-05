@@ -29,12 +29,14 @@
 					</thead>
 					<tbody>
 						<?php foreach ($users as $key => $user): ?>
-							<tr>
-								<td><?= $this->encryption->decrypt($user->get_userId()) ?></td>
-								<td><?= $user->get_firstName()." ".$user->get_lastName() ?></td>
-								<td><?= $user->get_role() ?></td>
-								<td style="text-align: center"><a href="<?php echo base_url(); ?>Bposys_admin/edit_user/" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>	<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-							</tr>
+							<?php if ($user->get_role() != "Applicant"): ?>
+								<tr>
+									<td><?= $this->encryption->decrypt($user->get_userId()) ?></td>
+									<td><?= $user->get_firstName()." ".$user->get_lastName() ?></td>
+									<td><?= $user->get_role() ?></td>
+									<td style="text-align: center"><a href="<?php echo base_url(); ?>Bposys_admin/edit_user/" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>	<a href="#" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+								</tr>
+							<?php endif ?>
 						<?php endforeach ?>
 					</tbody>
 				</table>

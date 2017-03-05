@@ -53,7 +53,7 @@ class Bposys_admin extends CI_Controller {
 		{
 			if($this->encryption->decrypt($this->session->userdata['userdata']['role']) != "Master Admin")
 			{
-					redirect('error/error403');
+				redirect('error/error403');
 			}
 		}
 	}
@@ -101,6 +101,8 @@ class Bposys_admin extends CI_Controller {
 		$data['active'] = "Users";
 		$this->_init_matrix($data);
 		$this->load->view('admin/add_user');
+		// echo script_tag('assets/js/jquery.min.js');
+		// echo script_tag('assets/matrix/js/bootstrap-datepicker.js');
 	}
 
 	public function save_user()
@@ -112,14 +114,44 @@ class Bposys_admin extends CI_Controller {
 		$this->form_validation->set_rules('emailAddress','Email','required');
 		$this->form_validation->set_rules('password','Password','required');
 		$this->form_validation->set_rules('role','Staff Details','required');
+		$this->form_validation->set_rules('birthdate','Birth Date','required');
+		$this->form_validation->set_rules('civilStatus','Civil Status','required');
 
 		if($this->form_validation->run() == false)
 		{
-			
+			$this->session->set_flashdata('error',validation_errors());
+			redirect('bposys_admin/add_user');
 		}
 		else
 		{
-			
+			$options = [
+			'cost' => 11,
+			'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+			];
+
+			$user_field = array(
+				'role' => $this->input->post('role'), 	
+				'firstName' => $this->input->post('firstName'), 	
+				'lastName' => $this->input->post('lastName'), 	
+				'middleName' => $this->input->post('middleName'), 	
+				'suffix' => $this->input->post('suffix'), 	
+				'gender' => $this->input->post('hidden-gender'), 	
+				'email' => $this->input->post('emailAddress'), 	
+				'contactNum' => $this->input->post('contactNumber'), 	
+				'civilStatus' => $this->input->post('civilStatus'), 	
+				'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options),
+				'birthdate' => $this->input->post('birthdate'),
+				);
+			$user_id = $this->User_m->register_user($user_field);
+
+			$employee_field = array(
+				'userId' => $user_id,
+				'permissionLevel' => $this->input->post('permissionLevel'),
+				);
+			$this->User_m->add_employee($employee_field);
+
+			$this->session->set_flashdata('message','User successfully added!');
+			redirect('bposys_admin/add_user');
 		}
 	}
 

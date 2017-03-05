@@ -13,10 +13,10 @@
   <div class="container-fluid">
     <div class="widget-box widget-plain">
       <div class="row-fluid">
-        <div class="span8 offset2">
+        <div class="span12">
           <div class="widget-box">
             <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-              <h5>Report by Barangay</h5>
+              <h5>Data table</h5>
             </div>
             <div class="widget-content nopadding">
               <table class="table table-bordered data-table">
@@ -33,15 +33,30 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php if (isset($barangay_array)): ?>
-                    <?php foreach ($barangay_array as $key => $barangay): ?>
-                      <tr>
-                        <td><?= $barangay->barangay ?></td>
-                        <td><?= $barangay->count ?></td>
-                        <td><?= isset($barangay->expired) ? $barangay->expired : "0" ?></td>
-                      </tr>
-                    <?php endforeach ?>
-                  <?php endif ?> -->
+                  <?php foreach ($applications as $key => $application): ?>
+                    <tr>
+                      <td><?= $application->get_BusinessName() ?></td>
+                      <td><?= $application->get_firstName()." ".$application->get_lastName() ?></td>
+                      <td><?= $application->get_lineOfBusiness() ?></td>
+                      <td><?= $application->get_status() ?></td>
+                      <td><?= $application->get_capital() ?></td>
+                      <td>
+                        <?php if ($application->get_applicationType() == "Renew"): ?>
+                          <?php 
+                          $total = 0;
+                          foreach ($application->get_businessActivities() as $key => $activity) {
+                            $total += $activity->previousGross[0]->essentials + $activity->previousGross[0]->nonEssentials;
+                          }
+                          echo $total;
+                          ?>
+                        <?php else: ?>
+                          NA
+                        <?php endif ?>
+                      </td>
+                      <td><?= $application->get_dateOfOperation() ?></td>
+                      <td><?= $application->get_ownerContactNum() ?></td>
+                    </tr>
+                  <?php endforeach ?>
                 </tbody>
               </table>
             </div>
@@ -54,8 +69,8 @@
     </div>
   </div>
 </div>
-  <?php if ($this->session->flashdata('message')): ?>
-    <script>
-      alert('<?= $this->session->flashdata('message') ?>');
-    </script>
-  <?php endif ?>
+<?php if ($this->session->flashdata('message')): ?>
+  <script>
+    alert('<?= $this->session->flashdata('message') ?>');
+  </script>
+<?php endif ?>

@@ -33,7 +33,7 @@ class Alerts extends CI_Controller {
 		}
 		else
 		{
-			if($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Applicant")
+			if($this->encryption->decrypt($this->session->userdata['userdata']['role']) != "BPLO")
 			{
 					redirect('error/error403');
 			}
@@ -79,7 +79,7 @@ class Alerts extends CI_Controller {
 	{
 		$navdata['title'] = 'Send Alerts';
 		$navdata['active'] = 'Alerts';
-		$navdata['notifications'] = User::get_notifications();
+		$navdata['new'] = User::get_notifications();
 		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 		$this->isLogin();

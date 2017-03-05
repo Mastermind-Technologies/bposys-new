@@ -19,6 +19,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('Issued_Application_m');
 		$this->load->model('Business_m');
 		$this->load->model('Approval_m');
+		$this->load->model('Payment_m');
 		$this->load->model('Notification_m');
 		$this->load->model('Retirement_m');
 		$this->load->model('Assessment_m');
@@ -1223,12 +1224,15 @@ class Dashboard extends CI_Controller {
 		if($role == "BPLO")
 		{
 			$this->update_notif('New');
+			$navdata['new'] = User::get_notifications();
+			$navdata['completed'] = User::get_complete_notifications();
 		}
 		else
 		{
 			$this->update_notif("Incoming");
+			$navdata['notifications'] = User::get_notifications();
 		}
-		$navdata['notifications'] = User::get_notifications();
+		
 
 		$this->_init_matrix($navdata);
 
@@ -1356,32 +1360,41 @@ class Dashboard extends CI_Controller {
 
 	public function task_logs()
 	{
-		$this->isLogin();
-		$navdata['title'] = "Task Logs";
-		$navdata['active'] = 'Dashboard';
-		$navdata['notifications'] = User::get_notifications();
-		$this->_init_matrix($navdata);
+		if($this->session->userdata['userdata']['permissionLevel'] == 2)
+		{
+			$this->isLogin();
 
-		$query['role'] = 4;
-		$data['approvals'] = $this->Approval_m->get_all_desc($query);
+			$navdata['title'] = "Task Logs";
+			$navdata['active'] = 'Dashboard';
+			$navdata['new'] = User::get_notifications();
+			$navdata['completed'] = User::get_complete_notifications();
+			$this->_init_matrix($navdata);
 
-		// echo "<pre>";
-		// print_r($data);
-		// echo "</pre>";
-		// exit();
+			$query['role'] = 4;
+			$data['approvals'] = $this->Approval_m->get_all_desc($query);
 
-		$this->load->view('dashboard/bplo/task-logs', $data);
+			$this->load->view('dashboard/bplo/task-logs', $data);
+		}
 	}
 
 	public function payments()
 	{
 		$this->isLogin();
-		$navdata['title'] = "Payments";
-		$navdata['active'] = 'Applications';
-		$navdata['notifications'] = User::get_notifications();
-		$this->_init_matrix($navdata);
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$navdata['title'] = "Payments";
+		$navdata['active'] = 'Applications';
+		if($role == "BPLO")
+		{
+			$navdata['new'] = User::get_notifications();
+			$navdata['completed'] = User::get_complete_notifications();
+		}
+		else
+		{
+			$navdata['notifications'] = User::get_notifications();
+		}
+		$this->_init_matrix($navdata);
+		
 
 		$application = $this->Application_m->get_all_bplo_applications_with_unsettled_charges();
 		$data['payment'] = [];
@@ -1396,13 +1409,21 @@ class Dashboard extends CI_Controller {
 	public function on_process_applications()
 	{
 		$this->isLogin();
-		$this->update_notif('New');
-		$navdata['title'] = "On Process Applications";
-		$navdata['active'] = 'Applications';
-		$navdata['notifications'] = User::get_notifications();
-		$this->_init_matrix($navdata);
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$navdata['title'] = "On Process Applications";
+		$navdata['active'] = 'Applications';
+		if($role == "BPLO")
+		{
+			$navdata['new'] = User::get_notifications();
+			$navdata['completed'] = User::get_complete_notifications();
+		}
+		else
+		{
+			$navdata['notifications'] = User::get_notifications();
+		}
+		$this->_init_matrix($navdata);
+		
 
 		if($role == "BPLO")
 		{
@@ -1491,7 +1512,7 @@ class Dashboard extends CI_Controller {
 		$this->update_notif('Completed');
 		$navdata['title'] = "Complete Requirements";
 		$navdata['active'] = 'Applications';
-		$navdata['notifications'] = User::get_notifications();
+		$navdata['new'] = User::get_notifications();
 		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
@@ -1579,17 +1600,24 @@ class Dashboard extends CI_Controller {
 	public function issued_applications()
 	{
 		$this->isLogin();
-		$navdata['title'] = "Issued Applications";
-		$navdata['active'] = 'Applications';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
-		$this->_init_matrix($navdata);
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$navdata['title'] = "Issued Applications";
+		$navdata['active'] = 'Applications';
+
+		if($role == "BPLO")
+		{
+			$navdata['new'] = User::get_notifications();
+			$navdata['completed'] = User::get_complete_notifications();
+		}
+		else
+		{
+			$navdata['notifications'] = User::get_notifications();
+		}
+		$this->_init_matrix($navdata);
 
 		$query['YEAR(createdAt)'] = date('Y');
 		$query['dept'] = $role;
-
 
 		if($role == "BPLO")
 		{
@@ -1655,13 +1683,21 @@ class Dashboard extends CI_Controller {
 	public function retirements()
 	{
 		$this->isLogin();
-		$navdata['title'] = "Retirements";
-		$navdata['active'] = 'Applications';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
-		$this->_init_matrix($navdata);
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$navdata['title'] = "Retirements";
+		$navdata['active'] = 'Dashboard';
+		if($role == "BPLO")
+		{
+			$navdata['new'] = User::get_notifications();
+			$navdata['completed'] = User::get_complete_notifications();
+		}
+		else
+		{
+			$navdata['notifications'] = User::get_notifications();
+		}
+		$this->_init_matrix($navdata);
+		
 		if($role != "BPLO")
 		{
 			redirect('dashboard');
@@ -2117,6 +2153,10 @@ class Dashboard extends CI_Controller {
 			$data['application'] = $this->Application_m->get_all_bplo_applications($query);
 				//map to application object
 			$data['application'] = new BPLO_Application($data['application'][0]->referenceNum);
+			// echo "<pre>";
+			// print_r($data['application']);
+			// echo "</pre>";
+			// exit();
 
 			if($data['application']->get_status() == 'Completed' || $data['application']->get_status() == 'Active' || $data['application']->get_status() == 'On process')
 			{
@@ -2542,61 +2582,63 @@ class Dashboard extends CI_Controller {
 	// 	$this->load->view('dashboard/bplo/bplo_printable',$data);
 	// }
 
-public function get_sanitary_info()
+public function get_sanitary_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('1E5E2270C6');
-	$data['application2'] = new Sanitary_Application('1E5E2270C6');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
+	$data['application2'] = new Sanitary_Application($reference_num);
 
 
 	$this->load->view('dashboard/cho/sanitary_printable',$data);
 }
 
 
-public function get_bfp_info()
+public function get_bfp_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('1E5E2270C6');
-	$data['application2'] = new BFP_Application('1E5E2270C6');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
+	$data['application2'] = new BFP_Application($reference_num);
 
 	$this->load->view('dashboard/bfp/bfp_printable',$data);
 }
 
 
-
-	// public function get_bplo_renewal_info()
-	// {
-	// 	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	// 	$data['application'] = new BPLO_Application('9E9E1D64A2');
-	//
-	// 	$this->load->view('dashboard/bplo/bpaf_renewal_printable',$data);
-	// }
-
-public function get_zoning_info()
+public function get_zoning_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('1E5E2270C6');
-	$data['application2'] = new Zoning_Application('1E5E2270C6');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
+	$data['application2'] = new Zoning_Application($reference_num);
 
 
 	$this->load->view('dashboard/zoning/zoning_printable',$data);
 }
 
 
-public function get_cenro_info()
+public function get_cenro_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('1E5E2270C6');
-	$data['application2'] = new CENRO_Application('1E5E2270C6');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
+	$data['application2'] = new CENRO_Application($reference_num);
 
 	$this->load->view('dashboard/cenro/cenro_printable',$data);
 }
 
 
-public function get_bplo_form_info()
+public function get_bplo_form_info($reference_num)
 {
-	$this->_init_matrix();
-	$this->load->view('dashboard/bplo/bplo_form_printable');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
+	$this->load->view('dashboard/bplo/bplo_form_printable',$data);
 }
 
 public function get_cert_closure_info()
@@ -2604,10 +2646,13 @@ public function get_cert_closure_info()
 	$this->load->view('dashboard/bplo/cert_closure_printable');
 }
 
-public function get_bplo_certificate_info()
+public function get_bplo_certificate_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/bplo/bplo_certificate_printable',$data);
 }
@@ -2780,10 +2825,14 @@ public function get_employees_accomplishment_report_info()
 
 	$this->load->view('dashboard/bplo/employees_accomplishment_report',$data);
 }
-public function get_assessment_form_info()
-{
 
-	$this->load->view('dashboard/bplo/assessment_form_printable');
+public function get_assessment_form_info($reference_num)
+{
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+
+	$data['application'] = new BPLO_Application($reference_num);
+	$this->load->view('dashboard/bplo/assessment_form_printable',$data);
 }
 
 	//FOR AJAX PURPOSES
@@ -2813,80 +2862,80 @@ public function update_notif($type = null)
 		// echo "</pre>";
 		// exit();
 
-			for($i=0;$i<count($latest);$i=$i+1)
-			{
-				date_default_timezone_set('Asia/Manila');
-				$date1 = new DateTime($latest[$i]->createdAt);
-				$date2 = new DateTime("now");
-				$interval = $date1->diff($date2);
-			    $years = $interval->format('%y');
-			    $months = $interval->format('%m');
-			    $days = $interval->format('%d');
-			    $hours = $interval->format('%G');
-			    $minutes = $interval->format('%i');
+		for($i=0;$i<count($latest);$i=$i+1)
+		{
+			date_default_timezone_set('Asia/Manila');
+			$date1 = new DateTime($latest[$i]->createdAt);
+			$date2 = new DateTime("now");
+			$interval = $date1->diff($date2);
+			$years = $interval->format('%y');
+			$months = $interval->format('%m');
+			$days = $interval->format('%d');
+			$hours = $interval->format('%G');
+			$minutes = $interval->format('%i');
 
-			    if($years!=0){
-			    	if($years==1)
-			    	{
-			    		$latest[$i]->createdAt = $years.' year ago';
-			    	}else{
-			    		$latest[$i]->createdAt = $years.' years ago';
-			    	}
-			    }else{
-			    	if($months!=0)
-			    	{
-			    		if($months==1)
-				    	{
-				    		$latest[$i]->createdAt = $months.' month ago';
-				    	}else{
-				    		$latest[$i]->createdAt = $months.' months ago';
-				    	}
-			    	}else{
-			    		if($days!=0)
-			    		{
-			    			if($days==1)
-					    	{
-					    		$latest[$i]->createdAt = $days.' day ago';
-					    	}else{
-					    		$latest[$i]->createdAt = $days.' days ago';
-					    	}
-			    		}else{
-			    			if($hours!=0)
-			    			{
-				    			if($hours==1)
-						    	{
-						    		$latest[$i]->createdAt = $hours.' hour ago';
-						    	}else{
-						    		$latest[$i]->createdAt = $hours.' hours ago';
-						    	}
-			    			}else{
-			    				if($minutes!=0)
-			    				{
-			    					if($minutes==1)
-							    	{
-							    		$latest[$i]->createdAt = $minutes.' minute ago';
-							    	}else{
-							    		$latest[$i]->createdAt = $minutes.' minutes ago';
-							    	}
-			    				}else{
-			    					$latest[$i]->createdAt = 'a few moments ago';
-			    				}
-			    			}
-			    		}
-			    	}
-			    }
-
-				$custom_encrypt = array(
-					'cipher' => 'blowfish',
-					'mode' => 'ecb',
-					'key' => $this->config->item('encryption_key'),
-					'hmac' => false
-					);
-
-
-				$latest[$i]->referenceNum = bin2hex($this->encryption->encrypt($latest[$i]->applicationId."|".$latest[$i]->referenceNum, $custom_encrypt));
-
+			if($years!=0){
+				if($years==1)
+				{
+					$latest[$i]->createdAt = $years.' year ago';
+				}else{
+					$latest[$i]->createdAt = $years.' years ago';
+				}
+			}else{
+				if($months!=0)
+				{
+					if($months==1)
+					{
+						$latest[$i]->createdAt = $months.' month ago';
+					}else{
+						$latest[$i]->createdAt = $months.' months ago';
+					}
+				}else{
+					if($days!=0)
+					{
+						if($days==1)
+						{
+							$latest[$i]->createdAt = $days.' day ago';
+						}else{
+							$latest[$i]->createdAt = $days.' days ago';
+						}
+					}else{
+						if($hours!=0)
+						{
+							if($hours==1)
+							{
+								$latest[$i]->createdAt = $hours.' hour ago';
+							}else{
+								$latest[$i]->createdAt = $hours.' hours ago';
+							}
+						}else{
+							if($minutes!=0)
+							{
+								if($minutes==1)
+								{
+									$latest[$i]->createdAt = $minutes.' minute ago';
+								}else{
+									$latest[$i]->createdAt = $minutes.' minutes ago';
+								}
+							}else{
+								$latest[$i]->createdAt = 'a few moments ago';
+							}
+						}
+					}
+				}
 			}
+
+			$custom_encrypt = array(
+				'cipher' => 'blowfish',
+				'mode' => 'ecb',
+				'key' => $this->config->item('encryption_key'),
+				'hmac' => false
+				);
+
+
+			$latest[$i]->referenceNum = bin2hex($this->encryption->encrypt($latest[$i]->applicationId."|".$latest[$i]->referenceNum, $custom_encrypt));
+
+		}
 
 		$data['notifications'] = $latest;
 		$this->load->view('dashboard/applicant/notif-view', $data);
@@ -2919,8 +2968,12 @@ public function check_notif()
 		$data['new'] = count(User::get_notifications());
 		$data['complete'] = count(User::get_complete_notifications());
 
-		$query['status'] = 'BPLO Interview and Assessment of Fees';
-		$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
+		if($this->session->userdata['userdata']['permissionLevel'] == 2)
+		{
+			$query['status'] = 'BPLO Interview and Assessment of Fees';
+			$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
+		}
+		
 
 		$query['status'] = 'On process';
 		$data['process'] = count($this->Application_m->get_all_bplo_applications($query));

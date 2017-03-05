@@ -174,7 +174,12 @@ class User {
 		else
 		{
 			if($role_id == 4)
-				$notif_message = "New";
+			{
+				if($var->session->userdata['userdata']['permissionLevel'] == 2)
+					$notif_message = "New";
+				else
+					$notif_message = "";
+			}
 			else
 				$notif_message = "Incoming";
 			$query = array(

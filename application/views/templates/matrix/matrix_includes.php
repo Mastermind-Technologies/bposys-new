@@ -11,6 +11,8 @@
   <!-- CSS -->
 
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.css" />
+  <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/matrix/css/datepicker.css" /> -->
+  <link href="<?php echo base_url(); ?>assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/matrix/css/bootstrap.min.css" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/matrix/css/uniform.css" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/matrix/css/select2.css" />
@@ -40,6 +42,7 @@
   <?php endif ?>
   
   <script src="<?php echo base_url(); ?>assets/matrix/js/jquery.ui.custom.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/matrix/js/bootstrap.min.js"></script>
 
   <!-- <script src="<?php echo base_url(); ?>assets/matrix/js/jquery.flot.min.js"></script>   -->
@@ -66,10 +69,15 @@
   <script src="<?php echo base_url(); ?>assets/matrix/js/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/matrix/js/matrix.tables.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap-datetimepicker.min.js"></script>
+  <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Master Admin"): ?>
+    <script src="<?php echo base_url(); ?>assets/js/admin-dashboard.js"></script>
+  <?php endif ?>
+  
   <!-- <script src="<?php echo base_url(); ?>assets/js/parsley.min.js"></script> -->
 
   <script type="text/javascript">
-  var base_url = "<?php echo base_url(); ?>";
+    var base_url = "<?php echo base_url(); ?>";
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
   function goPage (newURL) {

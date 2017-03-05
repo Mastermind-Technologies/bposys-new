@@ -96,7 +96,8 @@
 							<div class="mdl-stepper-step <?=
 									//conditions for active-step
 							$application->get_status() == "On process" ||
-							$application->get_status() == "Active"
+							$application->get_status() == "Active" ||
+							$application->get_status() == "Completed"
 							? 'active-step' : '' ?>
 							<?=
 							$application->get_status() == "Active" ||
@@ -111,13 +112,14 @@
 
 						<div class="mdl-stepper-step <?=
 									//conditions for active-step
-						$application->get_status() == "Active"
+						$application->get_status() == "Active"||
+						$application->get_status() == "Completed"
 						? 'active-step' : '' ?>
 						<?=
 						$application->get_status() == "Active"
 						? 'step-done' : '' ?>">
 						<div class="mdl-stepper-circle"><span>5</span></div>
-						<div class="mdl-stepper-title">Claim Business Permit</div>
+						<div class="mdl-stepper-title">Payment and Claim Business Permit</div>
 						<div class="mdl-stepper-optional"></div>
 						<div class="mdl-stepper-bar-left"></div>
 						<div class="mdl-stepper-bar-right"></div>
@@ -354,9 +356,23 @@
 								</td>
 							</tr>
 						<?php endforeach ?>
+						<tr>
+                      <td colspan=3><span class="pull-right">TOTAL</span></td>
+                      <td><span class="pull-right"><?= number_format($total_due, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($total_surcharge, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($total_interest, 2) ?></span></td>
+                      <td><span class="pull-right"><?= number_format($application->get_totalAssessment(), 2) ?></span></td>
+                    </tr>
+                    <tr>
+                      <td colspan=3><span class="pull-right">BALANCE</span></td>
+                      <td><span class="pull-right"><?= number_format($application->get_Assessment()->amount, 2) ?></span></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
 					</tbody>
 				</table>
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-sm-1 col-sm-offset-5">
 						<label for="" class='pull-right'>Total:</label>
 					</div>
@@ -370,7 +386,7 @@
 						<label for="" class="pull-right">Balance:</label>
 					</div>
 					<div class="col-sm-1"><?= number_format($application->get_Assessment()->amount, 2) ?></div>
-				</div>
+				</div> -->
 				<table class="table table-bordered">
 					<thead>
 						<th>Due Date</th>

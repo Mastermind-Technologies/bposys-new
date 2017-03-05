@@ -18,8 +18,11 @@
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
 
-        <li class="bg_db"> <a href="<?php echo base_url(); ?>dashboard/incoming_applications"> <i class="fa fa-share fa-2x" aria-hidden="true"></i>
-          <span class="label label-warning badge-incoming"><?= $incoming > 0 ? $incoming : "" ?></span><br>Incoming Applicants </a> </li>
+        <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
+          <li class="bg_db"> <a href="<?php echo base_url(); ?>dashboard/incoming_applications"> <i class="fa fa-share fa-2x" aria-hidden="true"></i>
+            <span class="label label-warning badge-incoming"><?= $incoming > 0 ? $incoming : "" ?></span><br>Incoming Applicants </a> </li>
+          <?php endif ?>
+
 
           <li class="bg_lo"> <a href="<?php echo base_url(); ?>dashboard/on_process_applications"> <i class="fa fa-circle-o-notch fa-2x" aria-hidden="true"></i>
             <span class="label label-success badge-process"><?= $process > 0 ? $process : "" ?></span><br><span>On Process</span> </a> </li>
@@ -37,12 +40,18 @@
                 <li class="bg_lr"> <a href="<?php echo base_url() ?>dashboard/retirements"><span><i class="fa fa-times-rectangle fa-2x" aria-hidden="true"></i><span class="label label-info badge-retirement"><?= $retirement > 0 ? $retirement : "" ?></span> </span><br>Retirements</a> </li>
                 <li class="bg_c span2"> <a href="<?php echo base_url(); ?>dashboard/payments"> <i class="fa fa-money fa-2x" aria-hidden="true"></i>
                   <span class="label label-info"><?= $unsettled_accounts > 0 ? $unsettled_accounts : "" ?></span><br>Payments</a> </li>
-                  <li class="bg_ly span2"> <a href="<?php echo base_url(); ?>dashboard/task_logs"> <i class="fa fa-th-list fa-2x" aria-hidden="true"></i><br>Task Logs</a> </li>
+                  <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
+                    <li class="bg_ly span2"> <a href="<?php echo base_url(); ?>dashboard/task_logs"> <i class="fa fa-th-list fa-2x" aria-hidden="true"></i><br>Task Logs</a> </li>
+                  <?php endif ?>
+                  
                 </ul>
               </div>
               <div class="quick-actions_homepage">
                 <ul class="quick-actions">
-                  <li class="bg_db span3"> <a href="<?php echo base_url(); ?>reports"><span><i class="fa fa-bar-chart-o fa-2x" aria-hidden="true"></i> </span><br>View Reports</a> </li>
+                  <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
+                    <li class="bg_db span3"> <a href="<?php echo base_url(); ?>reports"><span><i class="fa fa-bar-chart-o fa-2x" aria-hidden="true"></i> </span><br>View Reports</a> </li>
+                  <?php endif ?>
+                  
                   <li class="bg_ly span1"> <a href="<?php echo base_url(); ?>Alerts"><span><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i> </span><br>Create Alerts</a> </li>
                 </ul>
               </div>
