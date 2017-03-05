@@ -2650,11 +2650,9 @@ public function get_bplo_form_info($reference_num)
 	$this->load->view('dashboard/bplo/bplo_form_printable',$data);
 }
 
-public function get_cert_closure_info($reference_num)
+public function get_cert_closure_info()
 {
-	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
-	$data['application'] = new BPLO_Application($reference_num);
-	$this->load->view('dashboard/bplo/cert_closure_printable',$data);
+	$this->load->view('dashboard/bplo/cert_closure_printable');
 }
 
 public function get_bplo_certificate_info($reference_num)

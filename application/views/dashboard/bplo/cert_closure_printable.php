@@ -158,7 +158,7 @@ $pdf->Text($x+115,$y+7.3,"POSITION/TITLE");
 //
 $y = $pdf->GetY();
 $pdf->SetY($y+10);
-$pdf->Cell(0,5,"SUBSCRIBED AND SWORN BEFORE ME THIS 31st DAY OF JANUARY, 2017 AT THE CITY HALL OF BINAN",0,0,"L");
+$pdf->Cell(0,5,"SUBSCRIBED AND SWORN BEFORE ME THIS 31st DAY OF JANUARY, 2017 AT THE CITY HALL OF $binyan",0,0,"L");
 
 //
 $y = $pdf->GetY();
@@ -243,5 +243,8 @@ $pdf->SetY($y+5);
   $y = $pdf->GetY();
   $pdf->SetFont("Arial","","9");
 $pdf->Text(10,$y-1,"CITY CHIEF, Business Permit and Licensing Office");
-$pdf->Output();
+
+$title = "certificate-of-closure";
+$fileName = "$title-$dateHolder-$referenceNumber";
+$pdf->Output('I',$fileName);
  ?>
