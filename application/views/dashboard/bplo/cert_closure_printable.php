@@ -60,7 +60,7 @@ $pdf->SetXY(21,$y+15);
 $pdf->Write(5,"Issued this ");
 
 //
-$pdf->Write(5,"$dateHolder");
+$pdf->Write(5,"$dateHolder ");
 
 //
 $pdf->Write(5,"at CITY OF $binyan, LAGUNA.");

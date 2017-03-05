@@ -85,7 +85,7 @@ $y = $pdf->GetY();
 $pdf->Line($x,$y+4.7,$x+50,$y+4.7);
 $x = $pdf->GetX();
 $pdf->SetX($x);
-$pdf->Cell(50,5,"",0,0,"C");
+$pdf->Cell(50,5,"$application_number",0,0,"L");
 
 $y = $pdf->GetY();
 $pdf->SetXY(117.5,$y+5);
@@ -96,7 +96,7 @@ $y = $pdf->GetY();
 $pdf->Line($x,$y+4.7,$x+50,$y+4.7);
 $x = $pdf->GetX();
 $pdf->SetX($x);
-$pdf->Cell(50,5,"",0,0,"C");
+$pdf->Cell(50,5,"$date_received",0,0,"L");
 
 $y = $pdf->GetY();
 $pdf->SetXY(117.5,$y+5);
@@ -107,7 +107,7 @@ $y = $pdf->GetY();
 $pdf->Line($x,$y+4.7,$x+50,$y+4.7);
 $x = $pdf->GetX();
 $pdf->SetX($x);
-$pdf->Cell(50,5,"",0,0,"C");
+$pdf->Cell(50,5,"$received_by",0,0,"L");
 
 //
 $y = $pdf->GetY();
@@ -123,7 +123,7 @@ $y = $pdf->GetY();
 $pdf->Line($x,$y+4.7,$x+95,$y+4.7);
 $x = $pdf->GetX();
 $pdf->SetX($x);
-$pdf->Cell(95,5,"",0,0,"L");
+$pdf->Cell(95,5,"$owner_name",0,0,"C");
 $x = $pdf->GetX();
 $pdf->SetX($x);
 $pdf->Cell(60,5,",  owner/operation,   of   legal   age   and",0,0,"L");
@@ -135,7 +135,7 @@ $y = $pdf->GetY();
 $pdf->Line($x,$y+4.7,$x+81.5,$y+4.7);
 $x = $pdf->GetX();
 $pdf->SetX($x);
-$pdf->Cell(81.5,5,"",0,0,"L");
+$pdf->Cell(81.5,5,"$owner_address",0,0,"C");
 $x = $pdf->GetX();
 $pdf->SetX($x);
 $pdf->Cell(60,5,"hereby   apply   for   a   permit   to   engage   in",0,0,"L");

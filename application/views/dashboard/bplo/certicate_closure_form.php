@@ -10,9 +10,12 @@ $pdf->SetTitle("Certificate of Closure Form");
 $y = $pdf->GetY();
 $pdf->SetY($y+21);
 
+$binyan = utf8_decode("BIÑAN");
 $businessName = utf8_decode($application->get_businessName());
 $businessAddress = utf8_decode($application->get_bldgName() . " " . $application->get_houseBldgNum() . " " . $application->get_unitNum() . " " . $application->get_street() . " " . $application->get_Subdivision());
+ $ownerName = utf8_decode($application->get_firstName()." ".$application->get_middleName()." ".$application->get_lastName());
 $ownersAdd = utf8_decode($application->get_OwnerHouseBldgNo() ." ". $application->get_OwnerbldgName() ." ". $application->get_OwnerunitNum() ." ". $application->get_Ownerstreet() ." ". $application->get_Ownerbarangay() ." ". $application->get_Ownersubdivision() ." ". $application->get_OwnercityMunicipality() ." ". $application->get_Ownerprovince());
+// $gross =number_format($activity->previousGross[0]->essentials + $activity->previousGross[0]->nonEssentials, 2);
 $pdf->SetFont("Arial","","9");
 $pdf->Cell(0,5,"Business Name: $businessName",0,1,"L");
 $pdf->Cell(0,5,"Business Address: $businessAddress",0,1,"L");

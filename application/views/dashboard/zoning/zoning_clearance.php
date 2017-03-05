@@ -71,7 +71,7 @@ $pdf->Line($x+1,$y+3.7,$x+159,$y+3.7);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
 $pdf->SetXY($x+1,$y-.5);
-$address = utf8_decode($application->get_bldgName() . " " . $application->get_houseBldgNum() . " " . $application->get_unitNum() . " " . $application->get_street() . " " . $application->get_Subdivision() . " " . $application->get_barangay() . " " . $application->get_cityMunicipality() . " " . $application->get_province());
+$address = utf8_decode($application->get_houseBldgNum() . " " . $application->get_street() . " " . $application->get_Subdivision() . " " . $application->get_barangay() . " " . $application->get_cityMunicipality() . " " . $application->get_province());
 $pdf->Cell(158,5,"$address",0,0,"L");
 
 $y = $pdf->GetY();

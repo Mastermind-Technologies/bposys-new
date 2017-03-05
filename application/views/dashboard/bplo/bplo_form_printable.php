@@ -54,6 +54,115 @@ $pwdEmp = $application->get_PWDEmployees();
 $lguEmp = $application->get_LGUEmployees();
 $totEmpEst = $maleEmp + $femaleEmp + $pwdEmp + $lguEmp;
 
+if($application->get_lessors() != null)
+{
+  $lessorsLastName = $application->get_lessors()->lastName;
+  $lessorsFirstName = $application->get_lessors()->firstName;
+  $lessorsMiddleName = $application->get_lessors()->middleName;
+  $lessorsFullName = $lessorsLastName . $lessorsFirstName . $lessorsMiddleName;
+  $lessorsFullAdd = $application->get_lessors()->address . $application->get_lessors()->subdivision . $application->get_lessors()->barangay . $application->get_lessors()->cityMunicipality . $application->get_lessors()->province;
+  $lessorsFullContactNum = $application->get_lessors()->telNum;
+  $lessorsEmailAdd = $application->get_lessors()->email;
+  $lessorsMonthlyRental = $application->get_lessors()->monthlyRental;
+}
+else
+{
+  $lessorsFullName = " ";
+  $lessorsFullAdd = " ";
+  $lessorsFullContactNum = " ";
+  $lessorsFullName = " ";
+  $lessorsEmailAdd = " ";
+  $lessorsMonthlyRental = " ";
+}
+// if($application->get_lessors()->lastName != null){
+//   $lessorsLastName = $application->get_lessors()->lastName;
+// }
+// else{
+//   $lessorsLastName = " ";
+// }
+
+// //
+// if($application->get_lessors()->firstName != null){
+//   $lessorsFirstName = $application->get_lessors()->firstName;
+// }
+// else{
+//   $lessorsFirstName = "";
+// }
+
+// //
+// if($application->get_lessors()->middleName != null){
+//   $lessorsMiddleName = $application->get_lessors()->middleName;
+// }
+// else{
+//   $lessorsMiddleName = "";
+// }
+
+// //
+// if($application->get_lessors()->address != null){
+//   $lessorsAddress = $application->get_lessors()->address;
+// }
+// else{
+//   $lessorsAddress = "";
+// }
+
+// //
+// if($application->get_lessors()->subdivision != null){
+//   $lessorsSubd = $application->get_lessors()->subdivision;
+// }
+// else{
+//   $lessorsSubd = "";
+// }
+
+// //
+// if($application->get_lessors()->barangay != null){
+//   $lessorsBrgy = $application->get_lessors()->barangay;
+// }
+// else{
+//   $lessorsBrgy = "";
+// }
+
+// //
+// if($application->get_lessors()->cityMunicipality != null){
+//   $lessorsCity = $application->get_lessors()->cityMunicipality;
+// }
+// else{
+//   $lessorsCity = "";
+// }
+
+// //
+// if($application->get_lessors()->province != null){
+//   $lessorsProvince = $application->get_lessors()->province;
+// }
+// else{
+//   $lessorsProvince = "";
+// }
+
+// //
+// if($application->get_lessors()->telNum != null){
+//   $lessorsFullContactNum = $application->get_lessors()->telNum;
+// }
+// else{
+//   $lessorsFullContactNum = "";
+// }
+
+// //
+// if($application->get_lessors()->email != null){
+//   $lessorsEmailAdd = $application->get_lessors()->email;
+// }
+// else{
+//   $lessorsEmailAdd = "";
+// }
+
+// //
+// if($application->get_lessors()->monthlyRental != null){
+//   $lessorsMonthlyRental = $application->get_lessors()->monthlyRental;
+// }
+// else{
+//   $lessorsMonthlyRental = "";
+// }
+
+// $lessorsFullName = utf8_decode($lessorsLastName ." ". $lessorsFirstName ." ". $lessorsMiddleName);
+// $lessorsFullAdd = utf8_decode($lessorsAddress ." ". $lessorsSubd ." ". $lessorsBrgy ." ". $lessorsCity ." ". $lessorsProvince);
 // $lessorsLastName = $application->get_lessors()->lastName;
 // $lessorsFirstName = $application->get_lessors()->firstName;
 // $lessorsMiddleName = $application->get_lessors()->middleName;
@@ -461,11 +570,11 @@ $pdf->Cell(0,4,"Note: Fill Up Only if Business Place is Rented",0,1,"L");
 
 //
 $pdf->SetFont("Arial","","7.8");
-$pdf->Cell(188,4,"Lessor's Full Name: ",1,1,"L");
-$pdf->Cell(188,4,"Lessor's Full Address: ",1,1,"L");
-$pdf->Cell(188,4,"Lessor's Fill Telephone/Mobile No.: ",1,1,"L");
-$pdf->Cell(94,4,"Lessor's Email Address: ",1,0,"L");
-$pdf->Cell(94,4,"Monthly Rental: ",1,1,"L");
+$pdf->Cell(188,4,"Lessor's Full Name: $lessorsFullName",1,1,"L");
+$pdf->Cell(188,4,"Lessor's Full Address: $lessorsFullAdd",1,1,"L");
+$pdf->Cell(188,4,"Lessor's Fill Telephone/Mobile No.: $lessorsFullContactNum",1,1,"L");
+$pdf->Cell(94,4,"Lessor's Email Address: $lessorsEmailAdd",1,0,"L");
+$pdf->Cell(94,4,"Monthly Rental: $lessorsMonthlyRental",1,1,"L");
 
 //
 $x = $pdf->GetX();

@@ -247,6 +247,7 @@
 			<div class="modal-body">
 				<p>Status: <span class="badge"><?= isset($engineering[0]->createdAt) ? 'Issued' : 'Incomplete' ?></span></p>
 				<p>Date of Completion: <?= isset($engineering[0]->createdAt) ? $engineering[0]->createdAt : 'Incomplete' ?></p>
+				<a href="<?php echo base_url(); ?>/dashboard/get_engineering_clearance_info" class="btn btn-info"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print Form</a><label style="font-size: 11px;font-weight: lighter"><i>&nbsp;Note: Printing of application form is not required.</i></label>
 			</div>
 		</div>
 	</div>
