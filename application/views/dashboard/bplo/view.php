@@ -642,7 +642,7 @@
                 <div class="row-fluid text-center">
                   <div class="span4 offset4">
                     <div class="control-group">
-                      <a href="<?php echo base_url(); ?>dashboard/get_assessment_form_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success">Print Tax Order of Payment</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_order_of_payment_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success">Print Tax Order of Payment</a>
                     </div>
                   </div>
                 </div>
