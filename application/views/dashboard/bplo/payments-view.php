@@ -3,9 +3,8 @@
   <div id="content-header">
     <div id="breadcrumb"> 
       <a href="<?php echo base_url(); ?>dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a> 
-      <a href="<?php echo base_url(); ?>dashboard/completed_applications" class="tip-bottom">Complete Applications</a>
-      <a href="#" class="tip-bottom">View Application</a> 
-      <a href="#" class="current">Payment</a>
+      <a href="<?php echo base_url(); ?>dashboard/payments" class="tip-bottom">Payments</a>
+      <a href="#" class="current">View Payment</a>
     </div>
     <h1>Payment</h1>
   </div>
@@ -59,6 +58,10 @@
                   $third = true;
                   $index = 3;
                   break;
+                  case "Fourth Quarter": 
+                  $third = true;
+                  $index = 3;
+                  break;
                 } 
                 ?>
                 <div class="controls">
@@ -91,6 +94,11 @@
                     case "Third Quarter": 
                     echo "Fourth Quarter";
                     break;
+
+
+                    case "Fourth Quarter": 
+                    echo "Fourth Quarter";
+                    break;
                   } 
                   ?>" id="hidden-paid-up-to">
                 </div>
@@ -104,8 +112,8 @@
               <div class="control-group">
                 <label class="control-label">Amount Paid:</label>
                 <div class="controls-group">
-                  <label class='control-label' id='amount-paid' style='text-align: left; padding-left:20px'><strong>PHP <?= number_format($application->get_quarterPayment()[$index], 2) ?></strong></label>
-                  <input type="hidden" name='amount-paid' id='hap' value="<?= number_format($application->get_quarterPayment()[$index], 2) ?>">
+                  <label class='control-label' id='amount-paid' style='text-align: left; padding-left:20px'><strong>PHP <?= $application->get_assessment()->paidUpTo == "Fourth Quarter" ? number_format($amount_paid, 2) : number_format($application->get_quarterPayment()[$index], 2) ?></strong></label>
+                  <input type="hidden" name='amount-paid' id='hap' value="<?= $application->get_assessment()->paidUpTo == "Fourth Quarter" ? number_format($amount_paid, 2) : number_format($application->get_quarterPayment()[$index], 2) ?>">
                 </div>
               </div>
               <div class="form-actions">

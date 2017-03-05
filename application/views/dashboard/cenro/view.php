@@ -145,18 +145,12 @@
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <label for="wastewater_treatment_operaion_process">Wastewater Treatment Operation and Process <input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 0 ? 'checked' : '' ?> name="radios" />YES<input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 1 ? 'checked' : '' ?> name="radios" />NONE</label>
+                      <label for="wastewater_treatment_operaion_process">Wastewater Treatment Operation and Process <input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 0 ? 'checked' : '' ?> name="radios" />YES <input type="checkbox" disabled <?= $application->get_WasteWaterTreatmentOperationAndProcess()== 1 ? 'checked' : '' ?> name="radios" />NONE</label>
                     </td>
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <label for="latest_wastewater_labtest_results">Note: Furnish copy of latest wastewater laboratory test results</label>
-                      <h5>???</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <label for="pending_case_with_llda">Pending case with LLDA? <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()!= "NA" ? 'checked' : '' ?> name="radios" />YES, Case No. <?= $application->get_PendingCaseWithLLDA()?> <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()== "NA" ? 'checked' : '' ?> name="radios" />NONE</label>
+                      <label for="pending_case_with_llda">Pending case with LLDA? <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()!= "NA" ? 'checked' : '' ?> name="radios" />YES, Case No. <strong><?= $application->get_PendingCaseWithLLDA()?></strong> <input type="checkbox" disabled <?= $application->get_PendingCaseWithLLDA()== "NA" ? 'checked' : '' ?> name="radios" />NONE</label>
                     </td>
                   </tr>
                 </tr>
@@ -286,10 +280,10 @@
                 <?php if ($application->get_status() != "Active"): ?>
                   <div class="row text-center">
                     <?php if ($application->get_status() == "For applicant visit"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Validate</a>
+                      <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-process">Validate</a>
                       <!-- <a href="#" class="btn btn-danger btn-lg">Reject</a> -->
                     <?php elseif ($application->get_status() == "On process"): ?>
-                      <button class="btn btn-success" disabled="" id="approve-btn">Issue Environmental Clearance</button>
+                      <button class="btn btn-success btn-process" disabled="" id="approve-btn">Issue Environmental Clearance</button>
                     </form>
                     <!-- <a href="<?php echo base_url(); ?>dashboard/approve_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Approve</a> -->
                     <!-- <a href="#" class="btn btn-warning btn-lg">Edit information</a> -->

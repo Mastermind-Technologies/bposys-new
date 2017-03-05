@@ -111,7 +111,7 @@ class Auth extends CI_Controller {
 
           if($check[0]->role == 1)
           {
-            redirect("Bposys_admin/dashboard");
+            redirect("bposys_admin/dashboard");
           }
           else {
             redirect("dashboard");

@@ -78,7 +78,7 @@
           <?php if ($application->get_status() == "For Retirement"): ?>
             <div class="form-action">
               <div class="row text-center">
-                <a href="<?php echo base_url(); ?>dashboard/approve_retirement/<?= str_replace(['/','+','='], ['-','_','='],  $application->get_referenceNum()) ?>" class="btn btn-success">Approve Retirement</a>
+                <a href="<?php echo base_url(); ?>dashboard/approve_retirement/<?= str_replace(['/','+','='], ['-','_','='],  $application->get_referenceNum()) ?>" class="btn btn-success btn-process">Approve Retirement</a>
               </div>
             </div>
           <?php endif ?>

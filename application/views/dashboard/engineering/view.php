@@ -354,7 +354,7 @@
                   <?php if ($application->get_status() != "Active"): ?>
                     <div class="row text-center">
                       <?php if ($application->get_status() == "For applicant visit"): ?>
-                        <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success">Validate</a>
+                        <a href="<?php echo base_url(); ?>dashboard/validate_application/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-process">Validate</a>
                         <!-- <a href="#" class="btn btn-danger btn-lg">Reject</a> -->
                       <?php elseif ($application->get_status() == "On process"): ?>
                         <form action="<?php echo base_url(); ?>dashboard/approve_application/<?= $application->get_referenceNum() ?>" method="post">
@@ -368,7 +368,7 @@
                               </div>
                             </div>
                           </div>
-                          <button type="submit" class='btn btn-success'>Approve</button>
+                          <button type="submit" class='btn btn-success btn-process'>Approve</button>
                         </form>
 
                         

@@ -83,6 +83,8 @@
             <li><a href="<?php echo base_url(); ?>reports/top_businesses"><span>Top Businesses</span></a></li>
           </ul>
         </li>
+      <?php else: ?>
+        <li class="<?= $active=="Reports" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>reports"><i class="icon icon-signal"></i> <span>View Reports</span></a>
       <?php endif ?>
 
 
@@ -91,9 +93,9 @@
 
     <?php else: ?>
       <li class="<?= $active=="Dashboard" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/dashboard"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-      <li class="<?= $active=="Users" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/users"><i class="icon icon-home"></i> <span>Users</span></a></li>
-      <li class="<?= $active=="Logs" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/logs"><i class="icon icon-bar-chart"></i> <span>Logs</span></a></li>
-      <li class="<?= $active=="settings" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>settings"><i class="icon icon-wrench"></i> <span>Settings</span></a> </li>
+      <li class="<?= $active=="Users" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/users"><i class="icon icon-user"></i> <span>User Accounts</span></a></li>
+      <!-- <li class="<?= $active=="Logs" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/logs"><i class="icon icon-bar-chart"></i> <span>Logs</span></a></li> -->
+      <li class="<?= $active=="settings" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>settings"><i class="icon icon-wrench"></i> <span>Tax Code Configuration</span></a> </li>
 
 
 

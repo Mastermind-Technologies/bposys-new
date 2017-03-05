@@ -156,12 +156,12 @@ class Profile extends CI_Controller {
 			}
 			else
 			{
-				// $data['owner'][$key]->set_IsApplied(1);
+				$data['owner'][$key]->set_IsApplied(1);
 			}
 		}
 		// echo "<pre>";
-		// print_r($owner);
-		// echo "</	pre>";
+		// print_r($data);
+		// echo "</pre>";
 		// exit();
 
 
@@ -407,8 +407,8 @@ class Profile extends CI_Controller {
 		}
 		if($this->Owner_m->count_owners() > 0)
 		{
-			$query['userId'] = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
-			$data['owner'] = $this->Owner_m->get_all_owners($query);
+			// $query['userId'] = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
+			$data['owner'] = $this->Owner_m->get_unapplied_business_owners($user_id);
 			$this->load->view('profile/add-business', $data);
 		}
 		else

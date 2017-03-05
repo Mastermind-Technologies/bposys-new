@@ -18,6 +18,7 @@ class Form extends CI_Controller {
 		$this->load->model('Notification_m');
 		$this->load->model('Renewal_m');
 		$this->load->model('Payment_m');
+		$this->load->model('Change_m');
 		$this->load->model('Assessment_m');
 		$this->load->model('Retirement_m');
 		$this->load->model('Issued_Application_m');
@@ -54,7 +55,6 @@ class Form extends CI_Controller {
 			$query['dept'] = $role;
 			$data['issued'] = count($this->Issued_Application_m->get_all($query));
 
-
 			if($role == "BPLO")
 			{
 // $query['status'] = 'For validation...';
@@ -71,13 +71,13 @@ class Form extends CI_Controller {
 				$query['status'] = 'Completed';
 				$data['complete'] = count($this->Application_m->get_all_bplo_applications($query));
 
-				$query['status'] = 'For applicant visit';
+				$query['status'] = 'BPLO Interview and Assessment of Fees';
 				$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
 
 				$query['status'] = "For approval";
 				$data['retirements'] = count($this->Retirement_m->get_all($query));
 
-				$data['total'] = $data['process'];
+				$data['total'] = $data['incoming'];
 			}
 			else if($role == 'Zoning')
 			{
@@ -194,6 +194,10 @@ class Form extends CI_Controller {
 		}
 
 		$data['application'] = new BPLO_Application($referenceNum);
+		// echo "<pre>";
+		// print_r($data['application']->get_isRecentlyChanged());
+		// echo "</pre>";
+		// exit();
 
 		$query['referenceNum'] = $referenceNum;
 		$query['YEAR(createdAt)'] = date('Y');
@@ -226,6 +230,8 @@ class Form extends CI_Controller {
 			$data['checklist'] = $checklist;
 		}
 
+		$data['owners'] = $this->Owner_m->get_unapplied_business_owners($user_Id);
+
 		// echo '<pre>';
 		// print_r(array($data));
 		// echo '</pre>';
@@ -233,6 +239,148 @@ class Form extends CI_Controller {
 
 
 		$this->load->view('dashboard/applicant/view_application', $data);
+	}
+
+	public function change_business_details($reference_num)
+	{
+		$reference_num = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $reference_num));
+
+		$bplo = new BPLO_Application($reference_num);
+		$type = $this->input->post('type');
+		// var_dump($type);
+		// exit();
+		switch ($type) {
+			case 'Change Owner':
+			$this->form_validation->set_rules('new-business-owner', 'New Business Owner', 'required');
+
+			if($this->form_validation->run() == false)
+			{
+				$this->session->set_flashdata('error', validation_errors());
+				// echo validation_errors();
+				// exit();
+				$application = new BPLO_Application($reference_num);
+
+				$custom_encrypt = array(
+					'cipher' => 'blowfish',
+					'mode' => 'ecb',
+					'key' => $this->config->item('encryption_key'),
+					'hmac' => false
+					);
+				$encrypted_url = bin2hex($this->encryption->encrypt($application->get_applicationId()."|".$reference_num, $custom_encrypt));
+				redirect('form/view/'.$encrypted_url);
+			}
+			else
+			{
+				// var_dump('here');
+				// exit();
+				$query['ownerId'] = $this->encryption->decrypt($this->input->post('new-business-owner'));
+				$owner = $this->Owner_m->get_all_owners($query);
+
+				$change_field = array(
+					'referenceNum' => $reference_num,
+					'type' => $type,
+					'_from' => $bplo->get_firstName()." ".$bplo->get_lastName(),
+					'_to' => $owner[0]->firstName." ".$owner[0]->lastName,
+					);
+				$this->Change_m->insert($change_field);
+
+				unset($query);
+				// var_dump($bplo->get_businessId());
+				// exit();
+				$set['ownerId'] = $this->encryption->decrypt($this->input->post('new-business-owner'));
+				$this->Business_m->update_business($this->encryption->decrypt($bplo->get_businessId()), $set);
+
+				unset($query);
+				$query['referenceNum'] = $reference_num;
+				$assessment = $this->Assessment_m->get_assessment($query);
+
+				$change_owner_fee = Assessment::get_change_owner_fee();
+				$charge_field = array(
+					'assessmentId' => $assessment[0]->assessmentId,
+					'period' => 'F1',
+					'due' => $change_owner_fee[0]->fee,
+					'surcharge' => 0,
+					'interest' => 0,
+					'particulars' => 'CHANGE OF BUSINESS OWNER FEE',
+					'status' => 'not paid',
+					);
+				$this->Assessment_m->add_charge($charge_field);
+
+				$this->Assessment_m->refresh_assessment_amount(['referenceNum' => $reference_num]);
+
+				$this->session->set_flashdata('message','Change of business owner successful! Please proceed to BPLO for payment');
+				redirect('dashboard');
+			}
+			break;
+
+			case 'Change Business Name':
+			$this->form_validation->set_rules('new-business-name', 'New Business Name', 'required');
+
+			if($this->form_validation->run() == false)
+			{
+				$this->session->set_flashdata('error', validation_errors());
+				// echo validation_errors();
+				// exit();
+				$application = new BPLO_Application($reference_num);
+
+				$custom_encrypt = array(
+					'cipher' => 'blowfish',
+					'mode' => 'ecb',
+					'key' => $this->config->item('encryption_key'),
+					'hmac' => false
+					);
+				$encrypted_url = bin2hex($this->encryption->encrypt($application->get_applicationId()."|".$reference_num, $custom_encrypt));
+				redirect('form/view/'.$encrypted_url);
+			}
+			else
+			{
+				$change_field = array(
+					'referenceNum' => $reference_num,
+					'type' => $type,
+					'_from' => $bplo->get_businessName(),
+					'_to' => $this->input->post('new-business-name'),
+					);
+				$this->Change_m->insert($change_field);
+
+				$set['businessName'] = $this->input->post('new-business-name');
+				$this->Business_m->update_business($this->encryption->decrypt($bplo->get_businessId()), $set);
+
+				unset($query);
+				$query['referenceNum'] = $reference_num;
+				$assessment = $this->Assessment_m->get_assessment($query);
+
+				$change_business_name_fee = Assessment::get_change_business_name_fee();
+				$charge_field = array(
+					'assessmentId' => $assessment[0]->assessmentId,
+					'period' => 'F1',
+					'due' => $change_business_name_fee[0]->fee,
+					'surcharge' => 0,
+					'interest' => 0,
+					'particulars' => 'CHANGE OF BUSINESS NAME FEE',
+					'status' => 'not paid',
+					);
+				$this->Assessment_m->add_charge($charge_field);
+
+				$this->Assessment_m->refresh_assessment_amount(['referenceNum' => $reference_num]);
+
+				$this->session->set_flashdata('message','Change of business name successful! Please proceed to BPLO for payment');
+				redirect('dashboard');
+			}
+			break;
+
+			default:
+			$application = new BPLO_Application($reference_num);
+
+			$custom_encrypt = array(
+				'cipher' => 'blowfish',
+				'mode' => 'ecb',
+				'key' => $this->config->item('encryption_key'),
+				'hmac' => false
+				);
+			$encrypted_url = bin2hex($this->encryption->encrypt($application->get_applicationId()."|".$reference_num, $custom_encrypt));
+			redirect('form/view/'.$encrypted_url);
+			break;
+		}
 	}
 
 	public function renew($application_param)
@@ -1082,6 +1230,12 @@ public function pay_unsettled_charges($reference_num)
 		}
 	}
 
+	$data['amount_paid'] = $data['application']->get_totalAssessment() - $data['total_paid'];
+	// echo "<pre>";
+	// print_r($data['amount_paid']);
+	// echo "</pre>";
+	// exit();
+	
 	$this->load->view('dashboard/bplo/payments-view', $data);
 }
 
@@ -1159,6 +1313,14 @@ public function accept_payment($assessment_id)
 			$this->Assessment_m->update_charges($query, $set);
 			break;
 		}
+
+		$query = array(
+			'referenceNum' => $reference_num,
+			'role' => 4,
+			'type' => "Recieve Payment",
+			'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+			);
+		$this->Approval_m->insert($query);
 
 		// $fields = array(
 		// 	'referenceNum' => $reference_num,
@@ -1282,7 +1444,7 @@ public function submit_retirement($reference_num)
 	{
 		$this->session->set_flashdata('error', validation_errors());
 		$application = new BPLO_Application($reference_num);
-//bin2hex($this->encryption->encrypt($application->get_applicationId().'|'.$this->encryption->decrypt($application->get_reference_num()), $custom_encrypt))
+
 		$custom_encrypt = array(
 			'cipher' => 'blowfish',
 			'mode' => 'ecb',

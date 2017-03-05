@@ -278,6 +278,11 @@ class User {
 			case 2: $role = "User Admin"; break;
 			case 3: $role = "Applicant"; break;
 			case 4: $role = "BPLO"; break;
+			case 5: $role = "BFP"; break;
+			case 7: $role = "CENRO"; break;
+			case 8: $role = "Zoning"; break;
+			case 9: $role = "Engineering"; break;
+			case 10: $role = "CHO"; break;
 		}
 
 		$this->userId = $this->CI->encryption->encrypt($param->userId);
