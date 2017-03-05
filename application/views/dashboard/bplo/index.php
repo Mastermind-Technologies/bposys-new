@@ -52,7 +52,7 @@
                     <li class="bg_db span3"> <a href="<?php echo base_url(); ?>reports"><span><i class="fa fa-bar-chart-o fa-2x" aria-hidden="true"></i> </span><br>View Reports</a> </li>
                   <?php endif ?>
                   
-                  <li class="bg_ly span1"> <a href="<?php echo base_url(); ?>Alerts"><span><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i> </span><br>Create Alerts</a> </li>
+                  <li class="bg_ly span1"> <a href="<?php echo base_url(); ?>alerts"><span><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i> </span><br>Create Alerts</a> </li>
                 </ul>
               </div>
 

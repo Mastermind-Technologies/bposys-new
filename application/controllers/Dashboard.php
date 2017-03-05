@@ -1626,6 +1626,7 @@ class Dashboard extends CI_Controller {
 			foreach ($application as $key => $app) {
 				$data['issued'][$key] = new BPLO_Application($app->referenceNum);
 				$data['issued'][$key]->set_applicationId($this->encryption->decrypt($data['issued'][$key]->get_applicationId()));
+				$data['issued'][$key]->set_applicationType($app->type);
 			}
 		}
 		else if($role == "CHO")
@@ -1634,6 +1635,7 @@ class Dashboard extends CI_Controller {
 			foreach ($application as $key => $app) {
 				$data['issued'][$key] = new Sanitary_Application($app->referenceNum);
 				$data['issued'][$key]->set_applicationId($this->encryption->decrypt($data['issued'][$key]->get_applicationId()));
+				$data['issued'][$key]->set_applicationType($app->type);
 			}
 		}
 		else if($role == "Zoning")
@@ -1642,6 +1644,7 @@ class Dashboard extends CI_Controller {
 			foreach ($application as $key => $app) {
 				$data['issued'][$key] = new Zoning_Application($app->referenceNum);
 				$data['issued'][$key]->set_applicationId($this->encryption->decrypt($data['issued'][$key]->get_applicationId()));
+				$data['issued'][$key]->set_applicationType($app->type);
 			}
 		}
 		else if($role == "CENRO")
@@ -1650,6 +1653,7 @@ class Dashboard extends CI_Controller {
 			foreach ($application as $key => $app) {
 				$data['issued'][$key] = new CENRO_Application($app->referenceNum);
 				$data['issued'][$key]->set_applicationId($this->encryption->decrypt($data['issued'][$key]->get_applicationId()));
+				$data['issued'][$key]->set_applicationType($app->type);
 			}
 		}
 		else if($role == "BFP")
@@ -1658,6 +1662,7 @@ class Dashboard extends CI_Controller {
 			foreach ($application as $key => $app) {
 				$data['issued'][$key] = new BFP_Application($app->referenceNum);
 				$data['issued'][$key]->set_applicationId($this->encryption->decrypt($data['issued'][$key]->get_applicationId()));
+				$data['issued'][$key]->set_applicationType($app->type);
 			}
 		}
 		else if($role == "Engineering")
@@ -1666,6 +1671,7 @@ class Dashboard extends CI_Controller {
 			foreach ($application as $key => $app) {
 				$data['issued'][$key] = new Engineering_Application($app->referenceNum);
 				$data['issued'][$key]->set_applicationId($this->encryption->decrypt($data['issued'][$key]->get_applicationId()));
+				$data['issued'][$key]->set_applicationType($app->type);
 			}
 		}
 
@@ -1749,7 +1755,11 @@ class Dashboard extends CI_Controller {
 		$data['application'] = $this->Application_m->get_all_bplo_applications($query);
 				//map to application object
 		$data['application'] = new BPLO_Application($data['application'][0]->referenceNum);
-
+		$data['retirement'] = $this->Retirement_m->get_all(['referenceNum' => $this->encryption->decrypt($data['application']->get_referenceNum())]);
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
 		$this->load->view('dashboard/bplo/view-retirement',$data);
 	}
 
@@ -2599,7 +2609,6 @@ public function get_sanitary_info($reference_num)
 	$data['application'] = new BPLO_Application($reference_num);
 	$data['application2'] = new Sanitary_Application($reference_num);
 
-
 	$this->load->view('dashboard/cho/sanitary_printable',$data);
 }
 
@@ -2647,53 +2656,67 @@ public function get_bplo_form_info($reference_num)
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 
 	$data['application'] = new BPLO_Application($reference_num);
+	// echo "<pre>";
+	// if($data['application']->get_lessors() != null)
+	// 	var_dump("meron");
+	// else
+	// 	var_dump("wala");
+	// echo "</pre>";
+	// exit();
 	$this->load->view('dashboard/bplo/bplo_form_printable',$data);
 }
 
-public function get_cert_closure_info()
+public function get_cert_closure_info($reference_num)
 {
-	$this->load->view('dashboard/bplo/cert_closure_printable');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+	$data['application'] = new BPLO_Application($reference_num);
+	$this->load->view('dashboard/bplo/cert_closure_printable',$data);
 }
 
 public function get_bplo_certificate_info($reference_num)
 {
 
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
-	$payment = $this->Payment_m->get_initial_payment($reference_num);
+	$data['payment'] = $this->Payment_m->get_initial_payment($reference_num);
+	// echo "<pre>";
+	// print_r($payment);
+	// echo "</pre>";
+	// exit();
 
 	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/bplo/bplo_certificate_printable',$data);
 }
 
-public function get_sanitary_permit_info()
+public function get_sanitary_permit_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('739862FF5C');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/cho/sanitary_permit',$data);
 }
 
-public function get_engineering_clearance_info()
+public function get_engineering_clearance_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('739862FF5C');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/engineering/engineering_clearance',$data);
 }
 
-public function get_zoning_clearance_info()
+public function get_zoning_clearance_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('739862FF5C');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/zoning/zoning_clearance',$data);
 }
 //
-public function get_fire_inspection_certificate_info()
+public function get_fire_inspection_certificate_info($reference_num)
 {
-	$data['application'] = $this->Application_m->get_all_bplo_applications();
-	$data['application'] = new BPLO_Application('739862FF5C');
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/bfp/fire_inspection_certificate',$data);
 }

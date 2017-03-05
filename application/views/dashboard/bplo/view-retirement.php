@@ -51,6 +51,12 @@
                 <h5> <?=$application->get_ownerbldgName() . " " . $application->get_ownerhouseBldgNo() . " " . $application->get_ownerunitNum() . " " . $application->get_ownerstreet() . ", " . $application->get_ownerSubdivision() . ", " . $application->get_ownerbarangay() . ", " . $application->get_ownercityMunicipality() . ", " . $application->get_ownerprovince()?></h5>
               </td>
             </tr>
+            <tr>
+              <td>
+                <label for="">Reason for Closure/Retirement</label>
+                <h5> <?= $retirement[0]->reason ?></h5>
+              </td>
+            </tr>
           </table>
           <table class="table table-bordered">
             <thead>

@@ -68,7 +68,7 @@
       </li>
 
       <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
-        <li class=" <?= $active=="Alerts" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>Alerts"><i class="icon icon-bell"></i> <span>Create Alerts</span></a></li>
+        <li class=" <?= $active=="Alerts" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>alerts"><i class="icon icon-bell"></i> <span>Create Alerts</span></a></li>
       <?php endif ?>
 
 

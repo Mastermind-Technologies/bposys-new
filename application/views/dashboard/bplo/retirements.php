@@ -35,8 +35,9 @@
                 <td><?= $application->get_status() ?></td>
                 <td>
                   <a href="<?php echo base_url(); ?>dashboard/view_retirement/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a>
+                  <a href="#" class="btn btn-success btn-block">Print Retirement Form (not working)</a>
                   <?php if ($application->get_status() == "Closed"): ?>
-                    <a href="<?php echo base_url(); ?>dashboard/get_cert_closure_info" class="btn btn-success btn-block">Print Certificate</a>
+                    <a href="<?php echo base_url(); ?>dashboard/get_cert_closure_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Certificate</a>
                   <?php endif ?>
                 </td>
               </tr>

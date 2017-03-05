@@ -148,6 +148,10 @@ class BPLO_Application extends Business {
 
         $query['bploId'] = $param->applicationId;
         $lessors = $this->CI->Lessor_m->get_all_lessor($query);
+        // echo "<pre>";
+        // print_r($lessors);
+        // echo "</pre>";
+        // exit();
         $business_activities = $this->CI->Business_Activity_m->get_all_business_activity($query);
 
         $total_capital = 0;

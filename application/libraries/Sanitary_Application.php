@@ -313,7 +313,7 @@ class Sanitary_Application extends Business {
      *
      * @return self
      */
-    public function set_tApplicationType($applicationType)
+    public function set_ApplicationType($applicationType)
     {
         $this->applicationType = $applicationType;
 
