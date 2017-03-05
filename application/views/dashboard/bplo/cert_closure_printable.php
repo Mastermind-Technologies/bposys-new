@@ -3,7 +3,7 @@
 require("application/views/FPDF/fpdf.php");
 $pdf = new FPDF();
 
-
+$referenceNumber = $this->encryption->decrypt($application->get_referenceNum());
 $pdf->AddPage();
 $pdf->SetTitle("Certificate of Closure");
 
@@ -75,11 +75,11 @@ $pdf->MultiCell(50,5,"RENE C. MANABAT \tCHIEF, Business Permit & \tLicensing Off
 $y = $pdf->GetY();
 $pdf->SetY($y+30);
 $pdf->Cell(35,5,"O.R. No. ",0,0,"L");
-$pdf->Cell(35,5,"???",0,1,"L");
+$pdf->Cell(35,5,"__________",0,1,"L");
 $pdf->Cell(35,5,"O.R. Date: ",0,0,"L");
-$pdf->Cell(35,5,"???",0,1,"L");
+$pdf->Cell(35,5,"__________",0,1,"L");
 $pdf->Cell(35,5,"O.R. Amount ",0,0,"L");
-$pdf->Cell(35,5,"???",0,1,"L");
+$pdf->Cell(35,5,"__________",0,1,"L");
 
 //
 //2nd Page

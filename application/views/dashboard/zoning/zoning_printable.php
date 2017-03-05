@@ -1,10 +1,19 @@
 <?php
 
+$application_number = $this->encryption->decrypt($application2->get_applicationId());
+$date_received = date('M d, Y');
+$received_by = $this->session->userdata['userdata']['firstName']." ".$this->session->userdata['userdata']['lastName'];
+$owner_name = $application2->get_firstName()." ".$application2->get_lastName();
+$owner_address = $application2->get_ownerCityMunicipality().", ".$application2->get_ownerProvince();
+// var_dump($owner_name);
+// exit();
+
 require("application/views/FPDF/fpdf.php");
 $pdf = new FPDF();
 
 $pdf->AddPage();
 $pdf->SetTitle("Zoning Clearance Form");
+
 
 $cb = $application->get_ApplicationType();
 // $cblength = count($cb);
