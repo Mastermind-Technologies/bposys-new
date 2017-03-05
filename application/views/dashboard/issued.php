@@ -48,7 +48,7 @@
                       <a href="<?php echo base_url(); ?>dashboard/get_sanitary_permit_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Sanitary Permit</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CENRO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_environmetal_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Environmental Clearance</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_environmental_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Environmental Clearance</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Engineering"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_engineering_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Engineering Clearance</a>
