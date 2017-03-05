@@ -2671,8 +2671,17 @@ public function get_cert_closure_info($reference_num)
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 	$data['application'] = new BPLO_Application($reference_num);
-	
+
 	$this->load->view('dashboard/bplo/cert_closure_printable',$data);
+}
+
+public function get_cert_closure_form_info($reference_num)
+{
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$payment = $this->Payment_m->get_initial_payment($reference_num);
+	$data['application'] = new BPLO_Application($reference_num);
+
+	$this->load->view('dashboard/bplo/cert_closure_form',$data);
 }
 
 public function get_bplo_certificate_info($reference_num)
@@ -2704,6 +2713,14 @@ public function get_engineering_clearance_info($reference_num)
 	$data['application'] = new BPLO_Application($reference_num);
 
 	$this->load->view('dashboard/engineering/engineering_clearance',$data);
+}
+
+public function get_environmental_clearance_info($reference_num)
+{
+	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
+	$data['application'] = new BPLO_Application($reference_num);
+
+	$this->load->view('dashboard/cenro/environmental_clearance',$data);
 }
 
 public function get_zoning_clearance_info($reference_num)
