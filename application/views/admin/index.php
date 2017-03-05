@@ -23,6 +23,11 @@
 						<span class="label label-info"></span><br>Applications
 					</a>
 				</li>
+				<li class="bg_c">
+					<a href="<?php echo base_url(); ?>bposys_admin/users/"> <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+						<span class="label label-info"></span><br>Tax Code Configuration
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>

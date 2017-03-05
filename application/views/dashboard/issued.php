@@ -36,19 +36,19 @@
                   <td>
                     <a href="<?php echo base_url(); ?>dashboard/view_application/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info" class="btn btn-success btn-block">Print BPLO Certificate</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print BPLO Certificate</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Zoning"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_zoning_info" class="btn btn-info btn-block">Print Zoning Clearance</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_zoning_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block">Print Zoning Clearance</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BFP"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_bfp_info" class="btn btn-info btn-block">Print BFP Form</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CHO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_sanitary_info" class="btn btn-info btn-block">Print Sanitary Permit</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_sanitary_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block">Print Sanitary Permit</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CENRO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_cenro_info" class="btn btn-info btn-block">Print CENRO Form</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_cenro_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block">Print CENRO Form</a>
                     <?php endif ?>
 
                   </td>

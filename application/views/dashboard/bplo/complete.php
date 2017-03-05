@@ -35,7 +35,7 @@
                 <td><?= $application->get_ApplicationType() ?></td>
                 <td>
                   <a href="<?php echo base_url(); ?>dashboard/view_application/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a>
-                  <a href="<?php echo base_url(); ?>dashboard/get_bplo_form_info" class="btn btn-info btn-block">Print BPLO Form</a>
+                  <a href="<?php echo base_url(); ?>dashboard/get_bplo_form_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block">Print BPLO Form</a>
                 </td>
               </tr>
             <?php endforeach; ?>

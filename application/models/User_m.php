@@ -8,6 +8,7 @@ class User_m extends CI_Model {
     parent::__construct();
     $this->_table_name = 'users';
     $this->_table_role = 'roles';
+    $this->_table_employee = 'employees';
   }
 
   public function register_user($fields = null)
@@ -24,6 +25,30 @@ class User_m extends CI_Model {
     {
       return false;
     }
+  }
+
+  public function check_permission_level($user_id)
+  {
+    $this->db->select('*')->from($this->_table_employee)->where('userId', $user_id)->limit(1);
+    // echo "<pre>";
+    // print_r($this->db->get()->result());
+    // echo "</pre>";
+    // exit();
+    $result = $this->db->get();
+
+    if($result->num_rows() > 0)
+    {
+      return $result->result()[0]->permissionLevel;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  public function add_employee($fields)
+  {
+    $this->db->insert($this->_table_employee, $fields);
   }
 
   public function process_login($fields = null)

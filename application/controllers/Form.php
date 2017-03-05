@@ -1317,7 +1317,7 @@ public function accept_payment($assessment_id)
 		$query = array(
 			'referenceNum' => $reference_num,
 			'role' => 4,
-			'type' => "Recieve Payment",
+			'type' => "Receive Payment",
 			'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
 			);
 		$this->Approval_m->insert($query);

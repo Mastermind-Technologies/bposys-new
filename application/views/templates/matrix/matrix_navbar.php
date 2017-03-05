@@ -38,7 +38,10 @@
       <li class="submenu <?= $active=="Applications" ? "active" : '' ?>"> <a href="#"><i class="icon icon-th-list"></i> <span>Applications</span> <span class="label label-important"><?= $total>0 ? $total : "" ?></span></a>
         <ul>
           <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
-            <li><a href="<?php echo base_url(); ?>dashboard/incoming_applications"><span>Incoming Applications</span><span class="label label-important" style="float:right; margin-right:20px"><?= $incoming>0 ? $incoming : ""?></span></a></li>
+            <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
+              <li><a href="<?php echo base_url(); ?>dashboard/incoming_applications"><span>Incoming Applications</span><span class="label label-important" style="float:right; margin-right:20px"><?= $incoming>0 ? $incoming : ""?></span></a></li>
+            <?php endif ?>
+            
 
             <!-- <li><a href="<?php echo base_url(); ?>dashboard/pending_applications"><span>Pending</span><span class="label label-important" style="float:right; margin-right:20px"><?= $pending>0 ? $pending : ""?></span></a></li> -->
 
@@ -70,7 +73,8 @@
 
 
       <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
-        <li class="submenu <?= $active=="Reports" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>reports"><i class="icon icon-signal"></i> <span>View Reports</span></a>
+        <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
+         <li class="submenu <?= $active=="Reports" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>reports"><i class="icon icon-signal"></i> <span>View Reports</span></a>
           <ul>
             <li><a href="<?php echo base_url(); ?>reports/general_reports"><span>General Reports</span></a></li>
 
@@ -83,8 +87,10 @@
             <li><a href="<?php echo base_url(); ?>reports/top_businesses"><span>Top Businesses</span></a></li>
           </ul>
         </li>
-      <?php else: ?>
-        <li class="<?= $active=="Reports" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>reports"><i class="icon icon-signal"></i> <span>View Reports</span></a>
+      <?php endif ?>
+      
+    <?php else: ?>
+      <li class="<?= $active=="Reports" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>reports"><i class="icon icon-signal"></i> <span>View Reports</span></a>
       <?php endif ?>
 
 

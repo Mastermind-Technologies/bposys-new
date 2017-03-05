@@ -32,6 +32,7 @@ class BPLO_Application extends Business {
     private $requirements = null;
     private $quarterPayment = null;
     private $isRecentlyChanged = null;
+    private $gross_receipts = null;
 
     public function __construct($reference_num = null){
         $this->CI =& get_instance();
@@ -996,7 +997,7 @@ class BPLO_Application extends Business {
     *
     * @return self
     */
-    private function set_Requirements($requirements)
+    public function set_Requirements($requirements)
     {
         $this->requirements = $requirements;
 
@@ -1045,9 +1046,33 @@ class BPLO_Application extends Business {
      *
      * @return self
      */
-    private function set_IsRecentlyChanged($isRecentlyChanged)
+    public function set_IsRecentlyChanged($isRecentlyChanged)
     {
         $this->isRecentlyChanged = $isRecentlyChanged;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of gross_receipts.
+     *
+     * @return mixed
+     */
+    public function get_GrossReceipts()
+    {
+        return $this->gross_receipts;
+    }
+
+    /**
+     * Sets the value of gross_receipts.
+     *
+     * @param mixed $gross_receipts the gross receipts
+     *
+     * @return self
+     */
+    public function set_GrossReceipts($gross_receipts)
+    {
+        $this->gross_receipts = $gross_receipts;
 
         return $this;
     }
