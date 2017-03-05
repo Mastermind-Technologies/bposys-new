@@ -2652,7 +2652,10 @@ public function get_bplo_form_info($reference_num)
 
 public function get_cert_closure_info()
 {
-	$this->load->view('dashboard/bplo/cert_closure_printable');
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/bplo/cert_closure_printable',$data);
 }
 
 public function get_bplo_certificate_info($reference_num)

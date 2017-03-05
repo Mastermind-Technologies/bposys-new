@@ -60,7 +60,7 @@ $pdf->SetXY(21,$y+15);
 $pdf->Write(5,"Issued this ");
 
 //
-$pdf->Write(5,"31st day of January, 2017 ");
+$pdf->Write(5,"$dateHolder");
 
 //
 $pdf->Write(5,"at CITY OF $binyan, LAGUNA.");
@@ -158,7 +158,7 @@ $pdf->Text($x+115,$y+7.3,"POSITION/TITLE");
 //
 $y = $pdf->GetY();
 $pdf->SetY($y+10);
-$pdf->Cell(0,5,"SUBSCRIBED AND SWORN BEFORE ME THIS 31st DAY OF JANUARY, 2017 AT THE CITY HALL OF $binyan",0,0,"L");
+$pdf->Cell(0,5,"SUBSCRIBED AND SWORN BEFORE ME THIS $dateHolder AT THE CITY HALL OF $binyan",0,0,"L");
 
 //
 $y = $pdf->GetY();
@@ -244,6 +244,7 @@ $pdf->SetY($y+5);
   $pdf->SetFont("Arial","","9");
 $pdf->Text(10,$y-1,"CITY CHIEF, Business Permit and Licensing Office");
 
+$referenceNumber = $this->encryption->decrypt($application->get_referenceNum());
 $title = "certificate-of-closure";
 $fileName = "$title-$dateHolder-$referenceNumber";
 $pdf->Output('I',$fileName);
