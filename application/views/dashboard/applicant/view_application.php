@@ -387,6 +387,7 @@
 						<td><span class="pull-right"><?= isset($application->get_quarterPayment()[3]) ? number_format($application->get_quarterPayment()[3], 2) : '.00' ?></span></td>
 					</tbody>
 				</table>
+				<a href="<?php echo base_url(); ?>dashboard/get_order_of_payment_info" class="btn btn-success btn-block">Print Tax Order of Payment</a>
 			</div>
 		</div>
 

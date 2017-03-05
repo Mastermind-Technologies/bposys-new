@@ -53,6 +53,7 @@ $femaleEmp = $application->get_FemaleEmployees();
 $pwdEmp = $application->get_PWDEmployees();
 $lguEmp = $application->get_LGUEmployees();
 $totEmpEst = $maleEmp + $femaleEmp + $pwdEmp + $lguEmp;
+
 // $lessorsLastName = $application->get_lessors()->lastName;
 // $lessorsFirstName = $application->get_lessors()->firstName;
 // $lessorsMiddleName = $application->get_lessors()->middleName;
@@ -616,6 +617,7 @@ $pdf->SetFont("Arial","","8");
 $pdf->Text(115,$y+16,"RENE C. MANABAT");
 $pdf->Text(120,$y+20,"BPLO HEAD");
 
+$dateHolder = date('M d Y');
 $refNum = $this->encryption->decrypt($application->get_referenceNum());
 $title = "bplo-application-form";
 $fileName = "$title-$dateHolder-$refNum";

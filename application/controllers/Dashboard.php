@@ -2603,7 +2603,10 @@ public function get_cenro_info()
 public function get_bplo_form_info()
 {
 	$this->_init_matrix();
-	$this->load->view('dashboard/bplo/bplo_form_printable');
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
+
+	$this->load->view('dashboard/bplo/bplo_form_printable',$data);
 }
 
 public function get_cert_closure_info()
@@ -2818,10 +2821,12 @@ public function get_issued_business_permit_report_info()
 
 	$this->load->view('dashboard/bplo/employees_accomplishment_report',$data);
 }
-public function get_assessment_form_info()
+public function get_order_of_payment_info()
 {
+	$data['application'] = $this->Application_m->get_all_bplo_applications();
+	$data['application'] = new BPLO_Application('739862FF5C');
 
-	$this->load->view('dashboard/bplo/issued_business_permit_report');
+	$this->load->view('dashboard/bplo/order_of_payment',$data);
 }
 
 	//FOR AJAX PURPOSES
