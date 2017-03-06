@@ -2656,13 +2656,16 @@ public function get_bplo_form_info($reference_num)
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 
 	$data['application'] = new BPLO_Application($reference_num);
+
+	$data['approvals'] = $this->Approval_m->get_approvals($reference_num, date('Y', strtotime($data['application']->get_taxYear())));
+
+	//ETO YUNG APPROVALS
 	// echo "<pre>";
-	// if($data['application']->get_lessors() != null)
-	// 	var_dump("meron");
-	// else
-	// 	var_dump("wala");
+	// print_r($data['approvals']);
 	// echo "</pre>";
 	// exit();
+
+
 	$this->load->view('dashboard/bplo/bplo_form_printable',$data);
 }
 
@@ -2688,11 +2691,8 @@ public function get_bplo_certificate_info($reference_num)
 {
 
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
-	$data['payment'] = $this->Payment_m->get_initial_payment($reference_num);
-	// echo "<pre>";
-	// print_r($payment);
-	// echo "</pre>";
-	// exit();
+	$data['payment'] = $this->Payment_m->get_initial_payment($reference_num)[0];
+
 
 	$data['application'] = new BPLO_Application($reference_num);
 

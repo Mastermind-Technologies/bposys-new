@@ -27,6 +27,15 @@ class Approval_m extends CI_Model {
     return $result->result();
   }
 
+  public function get_approvals($reference_num, $year)
+  {
+    //select roles.name from approvals join roles on roles.roleId = approvals.role where type = "Approve"
+    $this->db->where(['referenceNum' => $reference_num, 'YEAR(approvals.createdAt)' => $year, 'type' => 'Approve']);
+    $this->db->select('approvals.*, roles.name')->from($this->_table_name)->join($this->_table_role, 'roles.roleId = approvals.role');
+
+    return $this->db->get()->result();
+  }
+
   public function get_all($query = null)
   {
     if($query != null)
