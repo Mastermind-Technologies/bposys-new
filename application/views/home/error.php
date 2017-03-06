@@ -49,15 +49,15 @@
 </body>
 
 <?php if($this->session->flashdata('success')): ?>
-        <script>
-            alert("<?= $this->session->flashdata('success'); ?>");
-        </script>
-    <?php endif; ?>
+  <script>
+      alert("<?= $this->session->flashdata('success'); ?>");
+  </script>
+<?php endif; ?>
 
-    <?php if($this->session->flashdata('failed')): ?>
-        <script>
-            alert("<?= $this->session->flashdata('failed'); ?>");
-        </script>
-    <?php endif; ?>
+<?php if($this->session->flashdata('failed')): ?>
+  <script>
+      alert("<?= $this->session->flashdata('failed'); ?>");
+  </script>
+<?php endif; ?>
 
-    <script src="<?php echo base_url(); ?>assets/landing-page/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/landing-page/js/bootstrap.min.js"></script>
