@@ -4,20 +4,25 @@
                 <div class="col-lg-6">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="<?php echo base_url(); ?>home">Home</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="<?php echo base_url(); ?>home/guide">How to</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="<?php echo base_url(); ?>home#banner">Contact Us</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="<?php echo base_url(); ?>register">Register</a>
                         </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#modalLogin">Login</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; Business Permit and Licensing Office of Biñan 2017. All Rights Reserved</p>
                 </div>

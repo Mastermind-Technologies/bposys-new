@@ -44,8 +44,8 @@
           <div class="col-lg-8" style="text-align:center">
             <h2 class="section-heading">What is BPOSys?</h2>
             <hr class="section-heading-spacer" style="margin-top: 0px; width: 100%">
-            <p class="lead">A web application that provides the business venturers in the City of Biñan a faster and easier way of applying and managing their business permit applications. </p>
-            <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/manage-applications-online.png" alt="" width="100%" style="margin: auto;">
+            <p class="lead lead-top" style="font-size: 28px">BPOSys or Business Permit Online System is a web application that provides the business venturers in the City of Biñan a faster and easier way of applying and managing their business permit applications. </p>
+<!--             <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/manage-applications-online.png" alt="" width="100%" style="margin: auto;"> -->
 
           </div>
           <div class="col-lg-2">
@@ -66,7 +66,7 @@
                     <p class="lead">Apply online now using the unified form. Single fill up for all 6 major requirements in acquiring or renewing a business permit. Renewals? No problem, you can reuse your previous information for a much faster application!</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/unified-form-resize.png" alt="">
+                    <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/dog.png" alt="">
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                     <p class="lead">Using the website, you can monitor the current status of your business permit application. View all requirements you need in order to finish your application! Already have a registered application? Never miss your payment deadlines by viewing your billing information online!</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/track-application-resize.png" alt="">
+                    <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/phones.png" alt="">
                 </div>
             </div>
 
@@ -107,10 +107,10 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Paperless transaction on the go!</h2>
-                    <p class="lead">You don't have to pile up application forms inside your envelope. Store all your information online for your today's application and for the years to come. Less papers, save trees!</p>
+                    <p class="lead">You don't have to pile up application forms inside your envelope. Store all your information online for your today's application and for the years to come.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/paperless-resize.png" alt="">
+                    <img class="img-responsive" src="<?php echo base_url(); ?>assets/landing-page/img/ipad.png" alt="">
                 </div>
             </div>
 

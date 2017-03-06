@@ -10,6 +10,12 @@
    src: url('Roboto-Black.ttf')
  }
 
+
+ @font-face {
+   font-family: 'MissionScript';
+   src: url('Mission-Script.otf')
+ }
+
 body,
 html {
     width: 100%;
@@ -23,6 +29,7 @@ h5,
 h6 {
     font-family: "Robototest";
 }
+
 
 .topnav {
     font-size: 14px;
