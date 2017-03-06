@@ -1,5 +1,9 @@
 <?php
 
+$or_number = $payment->orNumber;
+$amount_paid = $payment->amountPaid;
+$date_paid = date('M d, Y', strtotime($payment->createdAt));
+
 require("application/views/FPDF/fpdf.php");
 $pdf = new FPDF();
 
