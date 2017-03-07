@@ -89,6 +89,27 @@ class Auth extends CI_Controller {
             redirect('home');
           }
         }
+        else if($check[0]->role == 1)
+        {
+          $query = array(
+            'userId' => $user_id
+            );
+          $data['user'] = $this->User_m->get_all_users($query);
+
+          $data['role'] = $this->User_m->check_user_role($data['user'][0]->role);
+          
+          $session_data = array(
+            'userId' => $this->encryption->encrypt($data['user'][0]->userId),
+            'firstName' => $data['user'][0]->firstName,
+            'lastName' => $data['user'][0]->lastName,
+            'middleName' => $data['user'][0]->middleName,
+            'email' => $this->encryption->encrypt($data['user'][0]->email),
+            'role' => $this->encryption->encrypt($data['role'][0]->name),
+            );
+          // Add user data in session
+          $this->session->set_userdata('userdata', $session_data);
+          redirect("bposys_admin/dashboard");
+        }
         else
         {
           $query = array(
@@ -122,19 +143,20 @@ class Auth extends CI_Controller {
            // print_r($this->session->userdata['userdata']);
            // echo "</pre>";
            // exit();
+           redirect("dashboard");
 
-           if($check[0]->role == 1)
-           {
-            redirect("bposys_admin/dashboard");
-          }
-          else {
-            redirect("dashboard");
-          }
-        }
-      }
-    }
-    else
-    {
+          //  if($check[0]->role == 1)
+          //  {
+          //   redirect("bposys_admin/dashboard");
+          // }
+          // else {
+          //   redirect("dashboard");
+          // }
+         }
+       }
+     }
+     else
+     {
       $this->session->set_flashdata('failed','Invalid username or password');
       redirect('home');
     }

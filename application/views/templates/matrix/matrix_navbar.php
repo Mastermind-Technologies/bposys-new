@@ -100,7 +100,7 @@
     <?php else: ?>
       <li class="<?= $active=="Dashboard" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/dashboard"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
       <li class="<?= $active=="Users" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/users"><i class="icon icon-user"></i> <span>User Accounts</span></a></li>
-      <!-- <li class="<?= $active=="Logs" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/logs"><i class="icon icon-bar-chart"></i> <span>Logs</span></a></li> -->
+      <li class="<?= $active=="Applications" ? "active" : '' ?>"><a href="<?php echo base_url() ?>bposys_admin/applications"><i class="fa fa-files-o"></i> <span>Applications</span></a></li>
       <li class="<?= $active=="settings" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>settings"><i class="icon icon-wrench"></i> <span>Tax Code Configuration</span></a> </li>
 
 

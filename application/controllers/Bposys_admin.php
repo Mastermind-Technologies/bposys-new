@@ -69,6 +69,30 @@ class Bposys_admin extends CI_Controller {
 		$this->load->view('admin/index');
 	}
 
+	public function applications()
+	{
+		$this->isLogin();
+		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
+		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$nav_data['title'] = "Applications";
+		$nav_data['active'] = "Applications";
+		$this->_init_matrix($nav_data);
+
+		$applications = $this->Application_m->get_all_bplo_applications();
+
+		foreach ($applications as $key => $app) {
+			$data['applications'][$key] = new BPLO_Application($app->referenceNum);
+			$data['applications'][$key]->set_user(new User($this->encryption->decrypt($data['applications'][$key]->get_userId())));
+		}
+		// echo "<pre>";
+		// print_r($data['applications'][0]->get_User()->get_firstName());
+		// echo "</pre>";
+		// exit();
+
+
+		$this->load->view('admin/applications',$data);
+	}
+
 	public function Users()
 	{
 		$this->isLogin();

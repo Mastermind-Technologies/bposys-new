@@ -579,6 +579,7 @@
                   <th>Surcharge</th>
                   <th>Interest</th>
                   <th>Total</th>
+                  <th>Actions</th>
                 </thead>
                 <tbody>
                   <?php 
@@ -605,6 +606,10 @@
                           $total_interest += $charge->interest;
                           ?></span>
                         </td>
+                        <td>
+                          <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                          </a>
+                        </td>
                       </tr>
                     <?php endforeach ?>
                     <tr>
@@ -613,10 +618,12 @@
                       <td><span class="pull-right"><?= number_format($total_surcharge, 2) ?></span></td>
                       <td><span class="pull-right"><?= number_format($total_interest, 2) ?></span></td>
                       <td><span class="pull-right"><?= number_format($application->get_totalAssessment(), 2) ?></span></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <td colspan=3><span class="pull-right">BALANCE</span></td>
                       <td><span class="pull-right"><?= number_format($application->get_Assessment()->amount, 2) ?></span></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

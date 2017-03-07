@@ -122,6 +122,7 @@
                 <th>Description</th>
                 <th>Imposition of Tax Category</th>
                 <th>Garbage Service Fee</th>
+                <th>Actions</th>
               </thead>
               <tbody>
                 <?php foreach ($line_of_business as $key => $line): ?>
@@ -133,6 +134,10 @@
                     <td><?= $line->description ?></td>
                     <td><?= $line->impositionOfTaxCategory ?></td>
                     <td><?= "PHP ".number_format($line->garbageServiceFee,2) ?></td>
+                    <td>
+                      <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -210,6 +215,7 @@
                 <th>Small Scale Fee</th>
                 <th>Medium Scale Fee</th>
                 <th>Large Scale Fee</th>
+                <th>Actions</th>
               </thead>
               <tbody>
                 <?php foreach ($fee_common_enterprise as $key => $common_enterprise): ?>
@@ -219,6 +225,10 @@
                     <td><?= "PHP ".number_format($common_enterprise->smallScaleFee) ?></td>
                     <td><?= "PHP ".number_format($common_enterprise->mediumScaleFee) ?></td>
                     <td><?= "PHP ".number_format($common_enterprise->largeScaleFee) ?></td>
+                    <td>
+                      <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -263,6 +273,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Rate per unit</th>
+              <th>Actions</th>
             </thead>
             <tbody>
               <?php foreach ($amusement_device as $key => $device): ?>
@@ -270,6 +281,10 @@
                   <td><?= $device->amusementDeviceId ?></td>
                   <td><?= $device->name ?></td>
                   <td><?= "PHP ".number_format($device->ratePerUnit) ?></td>
+                  <td>
+                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                  </td>
                 </tr>
               <?php endforeach ?>
             </tbody>
@@ -327,6 +342,7 @@
               <th>Above</th>
               <th>Below</th>
               <th>Fee</th>
+              <th>Actions</th>
             </thead>
             <tbody>
               <?php foreach ($golf_link_fees as $key => $golf_link): ?>
@@ -334,6 +350,10 @@
                   <td><?= $golf_link->above." holes" ?></td>
                   <td><?= $golf_link->below." holes" ?></td>
                   <td><?= "PHP". number_format($golf_link->fee) ?></td>
+                  <td>
+                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                  </td>
                 </tr>
               <?php endforeach ?>
             </tbody>

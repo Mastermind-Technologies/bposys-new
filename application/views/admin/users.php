@@ -15,7 +15,7 @@
 		<a class="btn btn-success" href="<?php echo base_url(); ?>bposys_admin/add_user/"><i class="fa fa-plus" aria-hidden="true"></i> New User</a>
 		<div class="widget-box">
 			<div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-				<h5>Logs</h5>
+				<h5>Users</h5>
 			</div>
 			<div class="widget-content nopadding">
 				<table class="table table-bordered data-table">

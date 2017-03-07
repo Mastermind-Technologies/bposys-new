@@ -6,6 +6,7 @@ class BPLO_Application extends Business {
     private $applicationId = null;
     private $referenceNum = null;
     private $userId = null;
+    private $user = null;
     private $taxYear = null;
     private $businessId = null;
     private $applicationDate = null;
@@ -1077,6 +1078,30 @@ class BPLO_Application extends Business {
     public function set_GrossReceipts($gross_receipts)
     {
         $this->gross_receipts = $gross_receipts;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of user.
+     *
+     * @return mixed
+     */
+    public function get_User()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Sets the value of user.
+     *
+     * @param mixed $user the user
+     *
+     * @return self
+     */
+    public function set_User($user)
+    {
+        $this->user = $user;
 
         return $this;
     }

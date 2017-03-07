@@ -18,13 +18,13 @@
 						<span class="label label-info"></span><br>Users Accounts
 					</a>
 				</li>
-				<li class="bg_c">
-					<a href="<?php echo base_url(); ?>bposys_admin/users/"> <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+				<li class="bg_ly">
+					<a href="<?php echo base_url(); ?>bposys_admin/applications/"> <i class="fa fa-files-o fa-2x" aria-hidden="true"></i>
 						<span class="label label-info"></span><br>Applications
 					</a>
 				</li>
-				<li class="bg_c">
-					<a href="<?php echo base_url(); ?>bposys_admin/users/"> <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+				<li class="bg_lr">
+					<a href="<?php echo base_url(); ?>settings"> <i class="fa fa-wrench fa-2x" aria-hidden="true"></i>
 						<span class="label label-info"></span><br>Tax Code Configuration
 					</a>
 				</li>
