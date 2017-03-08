@@ -407,8 +407,13 @@ class Profile extends CI_Controller {
 		}
 		if($this->Owner_m->count_owners() > 0)
 		{
-			// $query['userId'] = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
-			$data['owner'] = $this->Owner_m->get_unapplied_business_owners($user_id);
+			$query['userId'] = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
+			$data['owner'] = $this->Owner_m->get_all_owners($query);
+			// echo "<pre>";
+			// print_r($data);
+			// echo "</pre>";
+			// exit();
+
 			$this->load->view('profile/add-business', $data);
 		}
 		else

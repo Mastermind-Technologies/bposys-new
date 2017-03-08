@@ -3285,17 +3285,49 @@ public function process_assessments($reference_number)
 					break;
 				}
 
-				foreach ($tax as $key => $t) {
-					$charge_field = array(
-						'assessmentId' => $assessmentId,
-						'period' => "Q" . ($key+1),
-						'due' => $t,
-						'surcharge' => 0,
-						'interest' => 0,
-						'particulars' => 'TAX ON '.strtoupper($activity->lineOfBusiness)
-						);
-					$this->Assessment_m->add_charge($charge_field);
-					$total += $t;
+				if($bplo->get_modeOfPayment() == "Semi-Anually")
+				{
+					for ($i=0; $i < count($tax); $i++) 
+					{ 
+						if ($i == 0) {
+							$charge_field = array(
+								'assessmentId' => $assessmentId,
+								'period' => "Q1",
+								'due' => $tax[$i],
+								'surcharge' => 0,
+								'interest' => 0,
+								'particulars' => 'TAX ON '.strtoupper($activity->lineOfBusiness)
+								);
+							$this->Assessment_m->add_charge($charge_field);
+						}
+						else if($i == 1)
+						{
+							$charge_field = array(
+								'assessmentId' => $assessmentId,
+								'period' => "Q3",
+								'due' => $tax[$i],
+								'surcharge' => 0,
+								'interest' => 0,
+								'particulars' => 'TAX ON '.strtoupper($activity->lineOfBusiness)
+								);
+							$this->Assessment_m->add_charge($charge_field);
+						}
+					}
+				}
+				else
+				{
+					foreach ($tax as $key => $t) {
+						$charge_field = array(
+							'assessmentId' => $assessmentId,
+							'period' => "Q" . ($key+1),
+							'due' => $t,
+							'surcharge' => 0,
+							'interest' => 0,
+							'particulars' => 'TAX ON '.strtoupper($activity->lineOfBusiness)
+							);
+						$this->Assessment_m->add_charge($charge_field);
+						$total += $t;
+					}
 				}
 			}
 			else

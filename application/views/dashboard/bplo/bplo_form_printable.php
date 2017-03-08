@@ -739,11 +739,11 @@ $pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 
-$pdf->Cell(70,4,"Market Clearance (For Stall Holders)",1,0,"L");
-$pdf->Cell(70,4,"Office of the City Market Administrator",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
-$pdf->Cell(18,4,"",1,1,"C");
+// $pdf->Cell(70,4,"Market Clearance (For Stall Holders)",1,0,"L");
+// $pdf->Cell(70,4,"Office of the City Market Administrator",1,0,"L");
+// $pdf->Cell(15,4,"",1,0,"L");
+// $pdf->Cell(15,4,"",1,0,"L");
+// $pdf->Cell(18,4,"",1,1,"C");
 
 $pdf->Cell(70,4,"Fire Safety Inspection Certificate",1,0,"L");
 $pdf->Cell(70,4,"Bureau of Fire Protection",1,0,"L");
