@@ -106,4 +106,16 @@ class User_m extends CI_Model {
     $this->db->update($this->_table_name, $fields);
   }
 
+  public function update_user_by_admin($user_id, $fields)
+  {
+    $this->db->where('userId', $user_id);
+    $this->db->update($this->_table_name, $fields);
+  }
+
+  public function update_user_permission_level($user_id, $fields)
+  {
+   $this->db->where('userId', $user_id);
+   $this->db->update($this->_table_employee, $fields);
+ }
+
 }

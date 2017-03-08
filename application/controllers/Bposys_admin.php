@@ -9,6 +9,7 @@ class Bposys_admin extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('User_m');
+		$this->load->model('Role_m');
 		$this->load->library('form_validation');
 	}
 
@@ -179,20 +180,102 @@ class Bposys_admin extends CI_Controller {
 		}
 	}
 
-	public function edit_user()
+	public function edit_user($user_id)
 	{
+		//str_replace(['-','_','='],['/','+','=']
+		$edit_user_id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $user_id));
+		// var_dump($user_id);
+		// exit();
 		$this->isLogin();
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
-		$data['title'] = "Users";
-		$data['active'] = "Users";
-		$this->_init_matrix($data);
-		$this->load->view('admin/edit_user');
+		$navdata['title'] = "Users";
+		$navdata['active'] = "Users";
+		$this->_init_matrix($navdata);
+
+		$data['user'] = new User($edit_user_id);
+
+		$raw_user = $this->User_m->get_all_users(['userId' => $this->encryption->decrypt($data['user']->get_userId())]);
+		$data['user']->set_role($raw_user[0]->role);
+		$data['user']->set_permissionLevel($this->User_m->check_permission_level($edit_user_id));
+		
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+
+		$this->load->view('admin/edit_user',$data);
 	}
 
-	public function delete_user()
+	public function save_edit_user($user_id)
 	{
+		$this->isLogin();
+		$user_id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $user_id));
+		// var_dump($user_id);
+		// exit();
 
+		$this->form_validation->set_rules('firstName','First Name','required');
+		$this->form_validation->set_rules('lastName','Last Name','required');
+		$this->form_validation->set_rules('hidden-gender','Gender','required');
+		$this->form_validation->set_rules('contactNumber','Contact Number','required');
+		$this->form_validation->set_rules('role','Staff Details','required');
+		$this->form_validation->set_rules('birthdate','Birth Date','required');
+		$this->form_validation->set_rules('civilStatus','Civil Status','required');
+
+		if($this->form_validation->run() == false)
+		{
+			$this->session->set_flashdata('message',"Update failed");
+			redirect('bposys_admin/users');
+		}
+		else
+		{
+			$user_field = array(
+				'role' => $this->input->post('role'), 	
+				'firstName' => $this->input->post('firstName'), 	
+				'lastName' => $this->input->post('lastName'), 	
+				'middleName' => $this->input->post('middleName'), 	
+				'suffix' => $this->input->post('suffix'), 	
+				'gender' => $this->input->post('hidden-gender'), 	 	
+				'contactNum' => $this->input->post('contactNumber'), 	
+				'civilStatus' => $this->input->post('civilStatus'), 	
+				'birthdate' => $this->input->post('birthdate'),
+				);
+			$this->User_m->update_user_by_admin($user_id, $user_field);
+			// $user_id = $this->User_m->register_user($user_field);
+
+			$employee_field = array(
+				'permissionLevel' => $this->input->post('permissionLevel'),
+				);
+			$this->User_m->update_user_permission_level($user_id, $employee_field);
+			// $this->User_m->add_employee($employee_field);
+
+			$this->session->set_flashdata('message','User informations edited successfully!');
+			redirect('bposys_admin/users');
+		}
+	}
+
+	public function deactivate_user($user_id)
+	{
+		$this->isLogin();
+		$user_id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $user_id));
+
+		$set['status'] = 'deactivated';
+		$this->User_m->update_user_by_admin($user_id, $set);
+
+		$this->session->set_flashdata('message','User has been deactivated!');
+		redirect('bposys_admin/users');
+	}
+
+	public function activate_user($user_id)
+	{
+		$this->isLogin();
+		$user_id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $user_id));
+
+		$set['status'] = 'active';
+		$this->User_m->update_user_by_admin($user_id, $set);
+
+		$this->session->set_flashdata('message','User has been activated!');
+		redirect('bposys_admin/users');
 	}
 
 	public function view_user()

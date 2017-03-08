@@ -13,6 +13,8 @@ class User {
 	private $email = null;
 	private $birthDate = null;
 	private $contactNum = null;
+	private $permissionLevel = null;
+	private $status = null;
 
 	public function __construct($userId = null){
 		$this->CI =& get_instance();
@@ -301,6 +303,7 @@ class User {
 		$this->email = $param->email;
 		$this->birthDate = $param->birthDate;
 		$this->contactNum = $param->contactNum;
+		$this->status = $param->status;
 
 		$this->unset_CI();
 		return $this;
@@ -334,5 +337,53 @@ class User {
     	$this->contactNum = $contactNum;
 
     	return $this;
+    }
+
+    /**
+     * Sets the value of permissionLevel.
+     *
+     * @param mixed $permissionLevel the permission level
+     *
+     * @return self
+     */
+    public function set_PermissionLevel($permissionLevel)
+    {
+    	$this->permissionLevel = $permissionLevel;
+
+    	return $this;
+    }
+
+    /**
+     * Gets the value of permissionLevel.
+     *
+     * @return mixed
+     */
+    public function get_PermissionLevel()
+    {
+    	return $this->permissionLevel;
+    }
+
+    /**
+     * Gets the value of status.
+     *
+     * @return mixed
+     */
+    public function get_Status()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Sets the value of status.
+     *
+     * @param mixed $status the status
+     *
+     * @return self
+     */
+    public function set_Status($status)
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

@@ -51,7 +51,7 @@ class Auth extends CI_Controller {
       // $fields['userId'] = $this->encryption->encrypt($check[0]->userId);
       $user_id = $check[0]->userId;
 
-      if($check)
+      if($check[0]->status == "active")
       {
         if($check[0]->role == 3)
         {

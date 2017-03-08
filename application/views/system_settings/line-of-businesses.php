@@ -135,7 +135,7 @@
                     <td><?= $line->impositionOfTaxCategory ?></td>
                     <td><?= "PHP ".number_format($line->garbageServiceFee,2) ?></td>
                     <td>
-                      <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      <a href="<?php echo base_url(); ?>settings/edit_line_of_business/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($line->lineOfBusinessId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </a>
                     </td>
                   </tr>

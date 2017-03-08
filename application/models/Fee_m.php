@@ -175,5 +175,11 @@ class Fee_m extends CI_Model {
 		$this->db->update($this->sanitary_permit, $fields);
 	}
 
+	public function update_line_of_business($id, $fields)
+	{
+		$this->db->where('lineOfBusinessId',$id);
+		$this->db->update($this->line_of_business, $fields);
+	}
+
 
 }//END OF CLASS

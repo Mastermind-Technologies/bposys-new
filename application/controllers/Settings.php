@@ -16,7 +16,6 @@ class Settings extends CI_Controller {
 		$this->load->model('Issued_Application_m');
 		$this->load->model('Business_m');
 		$this->load->model('Approval_m');
-		$this->load->model('Notification_m');
 		$this->load->model('Retirement_m');
 		$this->load->model('Fee_m');
 		$this->load->model('Business_Address_m');
@@ -68,8 +67,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Settings';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 		
 		$this->load->view('system_settings/index');
@@ -80,8 +77,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Line of Businesses';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['line_of_business'] = $this->Fee_m->get_all_line_of_businesses();
@@ -102,8 +97,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Environmental Clearance';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['conditions'] = $this->Fee_m->get_all_environmental_conditions();
@@ -120,8 +113,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Sanitary Permit';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['sanitary'] = $this->Fee_m->get_sanitary_fee();
@@ -134,8 +125,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Fixed Fees';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['fixed_fees'] = $this->Fee_m->get_all_fixed_fees();
@@ -390,6 +379,60 @@ class Settings extends CI_Controller {
 
 			$this->session->set_flashdata('message','Fixed fee successfully added');
 			redirect('settings/fixed_fees');
+		}
+	}
+
+	public function edit_line_of_business($id)
+	{
+		$this->isLogin();
+		$navdata['title'] = 'Line of Businesses';
+		$navdata['active'] = 'settings';
+		$this->_init_matrix($navdata);
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+
+		$query['lineOfBusinessId'] = $id;
+		$data['line_of_business'] = $this->Fee_m->get_all_line_of_businesses($query)[0];
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+		$this->load->view('system_settings/edit-line-of-business', $data);
+	}
+
+	public function save_edit_line_of_business($id)
+	{
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+		
+		$this->isLogin();
+
+		$this->form_validation->set_rules('line-of-business-name','Line of Business Name','required');
+		$this->form_validation->set_rules('description','Description','required');
+		$this->form_validation->set_rules('type','Type','required');
+		$this->form_validation->set_rules('tax-rate','Tax Rate','required|numeric');
+		$this->form_validation->set_rules('imposition-of-tax','Imposition of Tax','required');
+		$this->form_validation->set_rules('garbage-service-fee','Garbage Service Fee','required|numeric');
+
+		if($this->form_validation->run() == false)
+		{
+			// echo validation_errors();
+			$this->session->set_flashdata('message', "Failed updating line of business information");
+			redirect('settings/line_of_businesses');
+		}
+		else
+		{
+			$line_of_business_field = array(
+				'name' => $this->input->post('line-of-business-name'),
+				'description' => $this->input->post('description'),
+				'impositionOfTaxCategory' => $this->input->post('imposition-of-tax'),
+				'type' => $this->input->post('type'),
+				'taxRate' => $this->input->post('tax-rate'),
+				'garbageServiceFee' => $this->input->post('garbage-service-fee'),
+				);
+			$this->Fee_m->update_line_of_business($id, $line_of_business_field);
+			// $this->Fee_m->insert_line_of_business($line_of_business_field);
+
+			$this->session->set_flashdata('message','Line of Business updated successfully.');
+			redirect('settings/line_of_businesses');
 		}
 	}
 	

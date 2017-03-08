@@ -29,12 +29,16 @@
 					</thead>
 					<tbody>
 						<?php foreach ($users as $key => $user): ?>
-							<?php if ($user->get_role() != "Applicant"): ?>
+							<?php if ($user->get_role() != "Applicant" && $user->get_role() != "Master Admin"): ?>
 								<tr>
 									<td><?= $this->encryption->decrypt($user->get_userId()) ?></td>
 									<td><?= $user->get_firstName()." ".$user->get_lastName() ?></td>
 									<td><?= $user->get_role() ?></td>
-									<td style="text-align: center"><a href="<?php echo base_url(); ?>Bposys_admin/edit_user/" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>	<a href="#" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+									<td style="text-align: center"><a href="<?php echo base_url(); ?>bposys_admin/edit_user/<?= str_replace(['/','+','='], ['-','_','='], $user->get_userId())?>" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>	<?php if ($user->get_status() == "active"): ?>
+										<a href="<?php echo base_url(); ?>bposys_admin/deactivate_user/<?= str_replace(['/','+','='], ['-','_','='], $user->get_userId())?>" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>
+									<?php else: ?>
+										<a href="<?php echo base_url(); ?>bposys_admin/activate_user/<?= str_replace(['/','+','='], ['-','_','='], $user->get_userId())?>" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></a>
+									<?php endif ?></td>
 								</tr>
 							<?php endif ?>
 						<?php endforeach ?>
