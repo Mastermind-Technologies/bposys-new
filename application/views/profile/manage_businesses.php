@@ -20,7 +20,7 @@
 					<div class="panel-heading">
 						<h3>Manage Businesses <a href="<?php echo base_url(); ?>profile/add_business" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Business</a></h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body table-responsive">
 						<table class="table table-bordered">
 							<thead>
 								<th>Business Name</th>

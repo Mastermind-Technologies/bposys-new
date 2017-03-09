@@ -47,7 +47,9 @@ class Dashboard extends CI_Controller {
 	public function _init_matrix($data = null)
 	{
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
-		// var_dump($role);
+		$data['name'] = $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'];
+
+		// var_dump($role)
 		// exit();
 		if($role == "Applicant")
 		{
@@ -74,8 +76,9 @@ class Dashboard extends CI_Controller {
 				$query['status'] = 'Completed';
 				$data['complete'] = count($this->Application_m->get_all_bplo_applications($query));
 
-				// $query['status'] = 'For finalization';
-				// $data['finalization'] = count($this->Application_m->get_all_bplo_applications($query));
+				// $query['userId'] = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
+				// // $query['status'] = 'For finalization';
+				// // $data['finalization'] = count($this->Application_m->get_all_bplo_applications($query));
 
 				$query['status'] = "For approval";
 				$data['retirements'] = count($this->Retirement_m->get_all($query));
@@ -174,6 +177,21 @@ class Dashboard extends CI_Controller {
 		$this->isLogin();
 		$user_id = $this->encryption->decrypt($this->session->userdata['userdata']['userId']);
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$name = $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'];
+		if($role != 'Applicant')
+		{
+			$permissionLevel = $this->session->userdata['userdata']['permissionLevel'];
+			switch($this->encryption->decrypt($this->session->userdata['userdata']['role']))
+			{
+				case 'BPLO' : $role_id = '4'; break;
+				case 'BFP' : $role_id = '5'; break;
+				case 'CENRO' : $role_id = '7'; break;
+				case 'Zoning' : $role_id = '8'; break;
+				case 'Engineering' : $role_id = '9'; break;
+				case 'CHO' : $role_id = '10'; break;
+			}
+		}
+
 
 		if($role == 'Applicant')
 		{
@@ -273,6 +291,24 @@ class Dashboard extends CI_Controller {
 
 
 			// $data['applications'] = count($this->Application_m->get_all_bplo_applications());
+
+			unset($query);
+			if($permissionLevel == '1')
+			{
+				$query['staff'] = $name;
+			}
+			$query['role'] = $role_id;
+			$query['DAY(createdAt)'] = date('d');
+			$query['MONTH(createdAt)'] = date('m');
+			$query['YEAR(createdAt)'] = date('Y');
+			$data['dailylog'] = $this->Approval_m->get_all_sorted($query);
+
+			// echo "<pre>";
+			// print_r($data['latest_issued']);
+			// echo "</pre>";
+			// exit();ch
+
+			unset($query);
 
 			$data['total_issued'] = count($this->Issued_Application_m->get_all(['dept' => 'BPLO']));
 

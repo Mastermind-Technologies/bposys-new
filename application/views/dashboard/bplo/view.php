@@ -515,7 +515,7 @@
                     <a href="<?php echo base_url(); ?>form/payment/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-large btn-process">Proceed to Payment</a>
                     <!-- <a href="<?php echo base_url(); ?>dashboard/issue_permit/<?= $application->get_referenceNum() ?>" class="btn btn-success btn-large">Issue Business Permit</a> -->
                   <?php elseif ($application->get_status() == "Active"): ?>
-                    <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info" class="btn btn-success btn-large btn-process">Print BPLO Certificate</a>
+                    <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info" class="btn btn-success btn-large btn-process desktop-only">Print BPLO Certificate</a>
                   <?php endif ?>
                 </div>
               </div>
@@ -642,7 +642,7 @@
                 <div class="row-fluid text-center">
                   <div class="span4 offset4">
                     <div class="control-group">
-                      <a href="<?php echo base_url(); ?>dashboard/get_order_of_payment_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success">Print Tax Order of Payment</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_order_of_payment_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success desktop-only">Print Tax Order of Payment</a>
                     </div>
                   </div>
                 </div>

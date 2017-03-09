@@ -36,22 +36,22 @@
                   <td>
                     <a href="<?php echo base_url(); ?>dashboard/view_application/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print BPLO Certificate</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_bplo_certificate_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block desktop-only">Print BPLO Certificate</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Zoning"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_zoning_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Zoning Clearance</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_zoning_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block desktop-only">Print Zoning Clearance</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BFP"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_fire_inspection_certificate_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-success btn-block">Print FSIC</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_fire_inspection_certificate_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() )?>" class="btn btn-success btn-block desktop-only">Print FSIC</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CHO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_sanitary_permit_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Sanitary Permit</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_sanitary_permit_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block desktop-only">Print Sanitary Permit</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CENRO"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_environmental_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Environmental Clearance</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_environmental_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block desktop-only">Print Environmental Clearance</a>
                     <?php endif ?>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Engineering"): ?>
-                      <a href="<?php echo base_url(); ?>dashboard/get_engineering_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block">Print Engineering Clearance</a>
+                      <a href="<?php echo base_url(); ?>dashboard/get_engineering_clearance_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-success btn-block desktop-only">Print Engineering Clearance</a>
                     <?php endif ?>
                   </td>
                 </tr>

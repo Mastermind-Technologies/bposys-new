@@ -36,7 +36,17 @@ class Approval_m extends CI_Model {
     return $this->db->get()->result();
   }
 
-  public function get_all($query = null)
+  public function get_all_sorted($query = null)
+  {
+    if($query != null)
+      $this->db->where($query);
+    $this->db->select('*')->from($this->_table_name)->order_by('createdAt','desc');
+    $result = $this->db->get();
+
+    return $result->result();
+  }
+
+    public function get_all($query = null)
   {
     if($query != null)
       $this->db->where($query);

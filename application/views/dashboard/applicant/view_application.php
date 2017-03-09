@@ -35,7 +35,7 @@
 						? '<span class="label label-danger">'.$application->get_status().'</span>'
 						: '<span class="label label-primary">'.$application->get_status().'</span>' ?></h3>
 						<hr>
-						<div class="mdl-card mdl-shadow--2dp">
+						<div class="mdl-card mdl-shadow--2dp hidden-xs visible-md visible-lg" >
 							<div class="mdl-card__supporting-text">
 								<div class="mdl-stepper-horizontal-alternative">
 									<?php if ($application->get_applicationType() == "New" && $application->get_status() != "Expired"): ?>
@@ -722,36 +722,37 @@
 							</div>
 						</div>
 					</div>
-					<table class="table table-bordered">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr>
+								<th></th>
+								<th></th>
+								<th colspan='2' class='text-center'>Gross Sales/Receipt</th>
+							</tr>
+							<tr>
+								<th class='text-center'>Line of Business</th>
+								<th class='text-center'>Last Capital/Gross Declared</th>
+								<th class='text-center'>Essential</th>
+								<th class='text-center'>Non-Essential</th>
+							</tr>
 
-						<tr>
-							<th></th>
-							<th></th>
-							<th colspan='2' class='text-center'>Gross Sales/Receipt</th>
-						</tr>
-						<tr>
-							<th class='text-center'>Line of Business</th>
-							<th class='text-center'>Last Capital/Gross Declared</th>
-							<th class='text-center'>Essential</th>
-							<th class='text-center'>Non-Essential</th>
-						</tr>
-
-						<tbody>
-							<?php foreach ($application->get_businessactivities() as $key => $activity): ?>
-								<tr>
-									<td>
-										<?= $activity->lineOfBusiness ?>
-										<input type="hidden" name="activity-id[]" required value="<?= $activity->activityId ?>">
-									</td>
-									<td>
-										<span class="pull-right"><?= number_format($application->get_applicationType() == "New" ? $activity->capitalization : $activity->previousGross[0]->essentials + $activity->previousGross[0]->nonEssentials, 2) ?></span>
-									</td>
-									<td><input type="text" data-parsley-type="digits" class="form-control" required name="essentials[]"></td>
-									<td><input type="text" data-parsley-type="digits" class="form-control" required name="non-essentials[]"></td>
-								</tr>
-							<?php endforeach ?>
-						</tbody>
-					</table>
+							<tbody>
+								<?php foreach ($application->get_businessactivities() as $key => $activity): ?>
+									<tr>
+										<td>
+											<?= $activity->lineOfBusiness ?>
+											<input type="hidden" name="activity-id[]" required value="<?= $activity->activityId ?>">
+										</td>
+										<td>
+											<span class="pull-right"><?= number_format($application->get_applicationType() == "New" ? $activity->capitalization : $activity->previousGross[0]->essentials + $activity->previousGross[0]->nonEssentials, 2) ?></span>
+										</td>
+										<td><input type="text" data-parsley-type="digits" class="form-control" required name="essentials[]"></td>
+										<td><input type="text" data-parsley-type="digits" class="form-control" required name="non-essentials[]"></td>
+									</tr>
+								<?php endforeach ?>
+							</tbody>
+						</table>
+					</div>
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="form-group">

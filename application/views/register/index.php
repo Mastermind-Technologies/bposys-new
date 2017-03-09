@@ -5,7 +5,7 @@
     </script>
   <?php endif; ?>
 
-  <div class="container-fluid container-register">
+  <div class="container-fluid container-register"  style="margin-bottom: 14px">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <?php if($this->session->flashdata('error')): ?>

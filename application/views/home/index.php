@@ -59,8 +59,8 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
+                <div class="col-lg-5 col-sm-6" style="text-align:center"><!-- 
+                    <hr class="section-heading-spacer" style="width: 100%"> -->
                     <div class="clearfix"></div>
                     <h2 class="section-heading">No more repetitive filling up of forms</h2>
                     <p class="lead">Apply online now using the unified form. Single fill up for all 6 major requirements in acquiring or renewing a business permit. Renewals? No problem, you can reuse your previous information for a much faster application!</p>
@@ -81,8 +81,8 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6" style="text-align:center">
+                    <!-- <hr class="section-heading-spacer"> -->
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Monitor your application online</h2>
                     <p class="lead">Using the website, you can monitor the current status of your business permit application. View all requirements you need in order to finish your application! Already have a registered application? Never miss your payment deadlines by viewing your billing information online!</p>
@@ -103,8 +103,8 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
+                <div class="col-lg-5 col-sm-6" style="text-align:center">
+                    <!-- <hr class="section-heading-spacer"> -->
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Paperless transaction on the go!</h2>
                     <p class="lead">You don't have to pile up application forms inside your envelope. Store all your information online for your today's application and for the years to come.</p>
@@ -126,16 +126,17 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6">
-                    <h2>Contact us now:</h2>
+                <div class="col-xs-12 col-lg-6" style="text-align: center">
+
                 </div>
-                <div class="col-lg-6" style="text-align: right">
-                    <h5>Address: 7 St Francis, San Antonio, Biñan, Laguna inside Biñan City Hall</h5>
+                <div class="col-xs-12 col-lg-6" style="text-align: center">
                     <br />
-                    <h5>Telephone Number: 09989898989</h5>
+                    <h5>7 St Francis, San Antonio, Biñan, Laguna inside Biñan City Hall</h5>
+                    <br />
+                    <h5>09989898989</h5>
                     <h5>09189898989</h5>
                     <br />
-                    <h5>Email: bplo2017@binan.gov.ph</h5>
+                    <h5>bplo2017@binan.gov.ph</h5>
                 </div>
             </div>
 

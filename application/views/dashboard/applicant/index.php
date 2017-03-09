@@ -11,7 +11,7 @@
 							<div class="panel-heading">
 								<h3>Applications <button class="btn btn-success" id="btn-edit-info"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Business Permit Application</button></h3>
 							</div>
-							<div class="panel-body">
+							<div class="panel-body table-responsive">
 								<?php if(count($applications)>0): ?>
 									<table id="application-table" class="table table-bordered">
 										<th class="text-center">Reference Number</th>

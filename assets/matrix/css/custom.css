@@ -1,3 +1,17 @@
+@media (max-width: 991px) {
+    .mobile-only {
+        display:block !important;
+    }
+
+    .user-name {
+      font-size: 14px;
+    }
+ 
+    .desktop-only {
+        display:none !important;
+    }
+}
+
 .container-alert label {
   font-weight: bold;
 }

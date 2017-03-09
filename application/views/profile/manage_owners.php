@@ -18,9 +18,9 @@
 
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3>Manage Owners <a href="<?php echo base_url(); ?>profile/add_owner" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Owner</a></h3>
+						<h3>Manage Owners <div class="clearfix visible-sm"></div><a href="<?php echo base_url(); ?>profile/add_owner" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Owner</a></h3>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body table-responsive">
 						<table class="table table-bordered">
 							<thead>
 								<th>Owner Name</th>
