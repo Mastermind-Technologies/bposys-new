@@ -16,7 +16,6 @@ class Settings extends CI_Controller {
 		$this->load->model('Issued_Application_m');
 		$this->load->model('Business_m');
 		$this->load->model('Approval_m');
-		$this->load->model('Notification_m');
 		$this->load->model('Retirement_m');
 		$this->load->model('Fee_m');
 		$this->load->model('Business_Address_m');
@@ -68,8 +67,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Settings';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 		
 		$this->load->view('system_settings/index');
@@ -80,8 +77,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Line of Businesses';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['line_of_business'] = $this->Fee_m->get_all_line_of_businesses();
@@ -92,7 +87,10 @@ class Settings extends CI_Controller {
 		$data['fee_common_enterprise'] = $this->Fee_m->get_common_enterprises_fees();
 		$data['amusement_device'] = $this->Fee_m->get_all_amusement_devices();
 		$data['golf_link_fees'] = $this->Fee_m->get_golf_link_fees();
-
+		// echo "<pre>";
+		// print_r($data['fee_common_enterprise']);
+		// echo "</pre>";
+		// exit();
 
 		$this->load->view('system_settings/line-of-businesses', $data);
 	}
@@ -102,8 +100,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Environmental Clearance';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['conditions'] = $this->Fee_m->get_all_environmental_conditions();
@@ -120,8 +116,6 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Sanitary Permit';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['sanitary'] = $this->Fee_m->get_sanitary_fee();
@@ -134,11 +128,13 @@ class Settings extends CI_Controller {
 		$this->isLogin();
 		$navdata['title'] = 'Fixed Fees';
 		$navdata['active'] = 'settings';
-		$navdata['notifications'] = User::get_notifications();
-		$navdata['completed'] = User::get_complete_notifications();
 		$this->_init_matrix($navdata);
 
 		$data['fixed_fees'] = $this->Fee_m->get_all_fixed_fees();
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
 
 		$this->load->view('system_settings/fixed-fees', $data);
 	}
@@ -390,6 +386,204 @@ class Settings extends CI_Controller {
 
 			$this->session->set_flashdata('message','Fixed fee successfully added');
 			redirect('settings/fixed_fees');
+		}
+	}
+
+	public function edit_fixed_fee($id)
+	{
+		$this->isLogin();
+		$navdata['title'] = 'Line of Businesses';
+		$navdata['active'] = 'settings';
+		$this->_init_matrix($navdata);
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+
+		$query['feeFixedId'] = $id;
+		$data['fixed_fee'] = $this->Fee_m->get_all_fixed_fees($query)[0];
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+		$this->load->view('system_settings/edit-fixed-fees', $data);
+	}
+
+	public function save_edit_fixed_fee($id)
+	{
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+		
+		$this->isLogin();
+
+		$this->form_validation->set_rules('particular', 'Particular','required');
+		$this->form_validation->set_rules('fixed-fee', 'Fee','required|numeric');
+
+		if($this->form_validation->run() == false)
+		{
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('settings/fixed_fees');
+		}
+		else
+		{
+			$fixed_fee_fields = array(
+				'particular' => $this->input->post('particular'),
+				'fee' => $this->input->post('fixed-fee'),
+				);
+			$this->Fee_m->update_fixed_fee($id, $fixed_fee_fields);
+			// $this->Fee_m->insert_fixed_fees($fixed_fee_fields);
+
+			$this->session->set_flashdata('message','Fixed fee successfully updated!');
+			redirect('settings/fixed_fees');
+		}
+	}
+
+	public function edit_amusement_device($id)
+	{
+		$this->isLogin();
+		$navdata['title'] = 'Line of Businesses';
+		$navdata['active'] = 'settings';
+		$this->_init_matrix($navdata);
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+
+		$query['amusementDeviceId'] = $id;
+		$data['device'] = $this->Fee_m->get_all_amusement_devices($query)[0];
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+
+		// var_dump($id);
+		// exit();
+
+		$this->load->view('system_settings/edit-amusement-device', $data);
+	}
+
+	public function save_edit_amusement_device($id)
+	{
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+		
+		$this->form_validation->set_rules('amusement-device-name', 'Amusement Device Name', 'required');
+		$this->form_validation->set_rules('rate-per-unit', 'Rate Per Unit', 'required|numeric');
+
+		if($this->form_validation->run() == false)
+		{
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('settings/line_of_businesses');
+		}
+		else
+		{
+			$amusement_device_fields = array(
+				'name' => $this->input->post('amusement-device-name'),
+				'ratePerUnit' => $this->input->post('rate-per-unit'),
+				);
+			$this->Fee_m->update_amusement_device($id, $amusement_device_fields);
+			// $this->Fee_m->insert_amusement_device($amusement_device_fields);
+
+			$this->session->set_flashdata('message','Amusement Device updated successfully.');
+			redirect('settings/line_of_businesses');
+		}
+	}
+
+	public function edit_common_enterprise_fee($id)
+	{
+		$this->isLogin();
+		$navdata['title'] = 'Line of Businesses';
+		$navdata['active'] = 'settings';
+		$this->_init_matrix($navdata);
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+
+		$query['fee_common_enterprise.commonEnterpriseFeeId'] = $id;
+		$data['common_ent_fee'] = $this->Fee_m->get_common_enterprises_fees($query)[0];
+
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+
+		$this->load->view('system_settings/edit-common-enterprise-fees', $data);
+	}
+
+	public function save_edit_common_enterprise_fee($id)
+	{
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+		// var_dump($id);
+		// exit();
+		$this->isLogin();
+
+		$this->form_validation->set_rules('cottage-fee','Cottage Fee','required|numeric');
+		$this->form_validation->set_rules('small-scale-fee','Small Scale Fee','required|numeric');
+		$this->form_validation->set_rules('medium-scale-fee','Medium Scale Fee','required|numeric');
+		$this->form_validation->set_rules('large-scale-fee','Large Scale Fee','required|numeric');
+
+		if($this->form_validation->run() == false)
+		{
+			$this->session->set_rules('message', 'Common Enterprise Fee updated successfully');
+			redirect('settings/line_of_businesses');
+		}
+		else
+		{
+			$common_enterprise_fields = array(
+				'cottageFee' => $this->input->post('cottage-fee'),
+				'smallScaleFee' => $this->input->post('small-scale-fee'),
+				'mediumScaleFee' => $this->input->post('medium-scale-fee'),
+				'largeScaleFee' => $this->input->post('large-scale-fee'),
+				);
+			// $this->Fee_m->insert_common_enterprise($common_enterprise_fields);
+			$this->Fee_m->update_common_enterprise_fee($id, $common_enterprise_fields);
+
+			$this->session->set_flashdata('message','Common Enterprise Fees updated successfully.');
+			redirect('settings/line_of_businesses');
+		}
+	}
+
+	public function edit_line_of_business($id)
+	{
+		$this->isLogin();
+		$navdata['title'] = 'Line of Businesses';
+		$navdata['active'] = 'settings';
+		$this->_init_matrix($navdata);
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+
+		$query['lineOfBusinessId'] = $id;
+		$data['line_of_business'] = $this->Fee_m->get_all_line_of_businesses($query)[0];
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit();
+		$this->load->view('system_settings/edit-line-of-business', $data);
+	}
+
+	public function save_edit_line_of_business($id)
+	{
+		$id = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $id));
+		
+		$this->isLogin();
+
+		$this->form_validation->set_rules('line-of-business-name','Line of Business Name','required');
+		$this->form_validation->set_rules('description','Description','required');
+		$this->form_validation->set_rules('type','Type','required');
+		$this->form_validation->set_rules('tax-rate','Tax Rate','required|numeric');
+		$this->form_validation->set_rules('imposition-of-tax','Imposition of Tax','required');
+		$this->form_validation->set_rules('garbage-service-fee','Garbage Service Fee','required|numeric');
+
+		if($this->form_validation->run() == false)
+		{
+			// echo validation_errors();
+			$this->session->set_flashdata('message', "Failed updating line of business information");
+			redirect('settings/line_of_businesses');
+		}
+		else
+		{
+			$line_of_business_field = array(
+				'name' => $this->input->post('line-of-business-name'),
+				'description' => $this->input->post('description'),
+				'impositionOfTaxCategory' => $this->input->post('imposition-of-tax'),
+				'type' => $this->input->post('type'),
+				'taxRate' => $this->input->post('tax-rate'),
+				'garbageServiceFee' => $this->input->post('garbage-service-fee'),
+				);
+			$this->Fee_m->update_line_of_business($id, $line_of_business_field);
+			// $this->Fee_m->insert_line_of_business($line_of_business_field);
+
+			$this->session->set_flashdata('message','Line of Business updated successfully.');
+			redirect('settings/line_of_businesses');
 		}
 	}
 	

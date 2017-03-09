@@ -1276,13 +1276,13 @@ public function accept_payment($assessment_id)
 		$role_Id = $this->Role_m->get_roleId($role);
 		// BPLO_Application::update_status($reference_num, 'Active');
 
-		$query = array(
-			'referenceNum' => $reference_num,
-			'role' => $role_Id->roleId,
-			'type' => "Issue",
-			'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
-			);
-		$this->Approval_m->insert($query);
+		// $query = array(
+		// 	'referenceNum' => $reference_num,
+		// 	'role' => $role_Id->roleId,
+		// 	'type' => "Issue",
+		// 	'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		// 	);
+		// $this->Approval_m->insert($query);
 
 		$bplo = new BPLO_Application($reference_num);
 

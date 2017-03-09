@@ -5,7 +5,7 @@ $(document).ready(function(){
 	var success_active = false;
 	var warning_active = false;
 	// if($('#notif-count').val() != "-")
-	var interval = window.setInterval(notif_check, 3000);
+	var interval = window.setInterval(notif_check, 5000);
 
 
 	if($('#notif-count').val() > 0)

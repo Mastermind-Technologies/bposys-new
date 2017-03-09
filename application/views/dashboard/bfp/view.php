@@ -532,54 +532,53 @@
                         <td><?= date('Y', strtotime($charge->createdAt)) ?></td>
                         <td><?= $charge->period ?></td>
                         <td><?= $charge->particulars ?></td>
-                        <td><?= number_format($charge->due, 2) ?></td>
-                        <td><?= number_format($charge->surcharge, 2) ?></td>
-                        <td><?= number_format($charge->interest, 2) ?></td>
+                        <td><span class="pull-right"><?= number_format($charge->due, 2) ?></span></td>
+                        <td><span class="pull-right"><?= number_format($charge->surcharge, 2) ?></span></td>
+                        <td><span class="pull-right"><?= number_format($charge->interest, 2) ?></span></td>
                         <td>
-                          <?php 
-                          $t = $charge->due + $charge->surcharge + $charge->interest;
-                          echo number_format($t, 2);
-                          $total += $t; 
-                          $total_due += $charge->due;
-                          $total_surcharge += $charge->surcharge;
-                          $total_interest += $charge->interest;
-                          ?>
-                        </td>
+                          <span class="pull-right"><?php 
+                            $t = $charge->due + $charge->surcharge + $charge->interest;
+                            echo number_format($t, 2);
+                            $total += $t; 
+                            $total_due += $charge->due;
+                            $total_surcharge += $charge->surcharge;
+                            $total_interest += $charge->interest;
+                            ?></span>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
+                      <tr>
+                        <td colspan=3><span class="pull-right">TOTAL</span></td>
+                        <td><span class="pull-right"><?= number_format($total_due, 2) ?></span></td>
+                        <td><span class="pull-right"><?= number_format($total_surcharge, 2) ?></span></td>
+                        <td><span class="pull-right"><?= number_format($total_interest, 2) ?></span></td>
+                        <td><span class="pull-right"><?= number_format($bplo->get_totalAssessment(), 2) ?></span></td>
                       </tr>
-                    <?php endforeach ?>
-                  </tbody>
-                </table>
-                <div class="row">
-                  <div class="span1 offset5">
-                    <label for="" class='pull-right'>Total:</label>
-                  </div>
-                  <div class="span1"><?= number_format($total_due, 2) ?></div>
-                  <div class="span1"><?= number_format($total_surcharge, 2) ?></div>
-                  <div class="span1" style="padding-left:50px"><?= number_format($total_interest, 2) ?></div>
-                  <div class="span1" style="padding-left:20px"><?= number_format($bplo->get_totalAssessment(), 2) ?></div>
-                </div>
-                <div class="row">
-                  <div class="span1 offset5">
-                    <label for="" class="pull-right">Balance:</label>
-                  </div>
-                  <div class="span1"><?= number_format($bplo->get_Assessment()->amount, 2) ?></div>
-                </div>
-                <table class="table table-bordered">
-                  <thead>
-                    <th>Due Date</th>
-                    <th>First Quarter (Jan 20)</th>
-                    <th>Second Quarter (Apr 20)</th>
-                    <th>Third Quarter (Jul 20)</th>
-                    <th>Fourth Quarter (Oct 20)</th>
-                  </thead>
-                  <tbody>
-                    <th>Amount Due</th>
-                    <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[0]) ? number_format($bplo->get_quarterPayment()[0], 2) : '.00' ?></span></td>
-                    <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[1]) ? number_format($bplo->get_quarterPayment()[1], 2) : '.00' ?></span></td>
-                    <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[2]) ? number_format($bplo->get_quarterPayment()[2], 2) : '.00' ?></span></td>
-                    <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[3]) ? number_format($bplo->get_quarterPayment()[3], 2) : '.00' ?></span></td>
-                  </tbody>
-                </table>
+                      <tr>
+                        <td colspan=3><span class="pull-right">BALANCE</span></td>
+                        <td><span class="pull-right"><?= number_format($bplo->get_Assessment()->amount, 2) ?></span></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="table table-bordered">
+                    <thead>
+                      <th>Due Date</th>
+                      <th>First Quarter (Jan 20)</th>
+                      <th>Second Quarter (Apr 20)</th>
+                      <th>Third Quarter (Jul 20)</th>
+                      <th>Fourth Quarter (Oct 20)</th>
+                    </thead>
+                    <tbody>
+                      <th>Amount Due</th>
+                      <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[0]) ? number_format($bplo->get_quarterPayment()[0], 2) : '.00' ?></span></td>
+                      <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[1]) ? number_format($bplo->get_quarterPayment()[1], 2) : '.00' ?></span></td>
+                      <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[2]) ? number_format($bplo->get_quarterPayment()[2], 2) : '.00' ?></span></td>
+                      <td><span class="pull-right"><?= isset($bplo->get_quarterPayment()[3]) ? number_format($bplo->get_quarterPayment()[3], 2) : '.00' ?></span></td>
+                    </tbody>
+                  </table>
                 <!-- <span>This Statement is valid until 1/30/<?= date('Y') ?></span><br>
                 <span>Please disregard this statement if payment has been made. Thank you.</span> -->
               </div>

@@ -677,43 +677,103 @@ $pdf->Cell(18,4,"Not Needed",1,1,"C");
 
 $pdf->Cell(70,4,"Engineering Clearance",1,0,"L");
 $pdf->Cell(70,4,"Office of the Building Official",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
+if(isset($engineering[0]->createdAt) ? 'glyphicon-ok' : 'glyphicon-remove')
+{
+  $pdf->SetFont("ZapfDingbats","","8");
+  $ec = 4; 
+}
+else
+{
+  $ec = "";
+}
+$pdf->Cell(15,4,"$ec",1,0,"C");
+$pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 
 $pdf->Cell(70,4,"Barangay Clearance (For Renewal)",1,0,"L");
 $pdf->Cell(70,4,"Barangay",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
+if(isset($engineering[0]->createdAt) ? 'glyphicon-ok' : 'glyphicon-remove')
+{
+  $pdf->SetFont("ZapfDingbats","","8");
+  $bc = 4; 
+}
+else
+{
+  $bc = "";
+}
+$pdf->Cell(15,4,"$bc",1,0,"C");
+$pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 
 $pdf->Cell(70,4,"Sanitary Permit/Health Clearance",1,0,"L");
 $pdf->Cell(70,4,"City Health Office",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
+if(isset($sanitary[0]->createdAt) ? 'success' : 'danger')
+{
+  $pdf->SetFont("ZapfDingbats","","8");
+  $hc = 4; 
+}
+else
+{
+  $hc = "";
+}
+$pdf->Cell(15,4,"$hc",1,0,"C");
+$pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 
 $pdf->Cell(70,4,"City Environemntal Certificate",1,0,"L");
 $pdf->Cell(70,4,"City Environment and Natural Resources Office",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
+if(isset($engineering[0]->createdAt) ? 'glyphicon-ok' : 'glyphicon-remove')
+{
+  $pdf->SetFont("ZapfDingbats","","8");
+  $cec = 4; 
+}
+else
+{
+  $cec = "";
+}
+$pdf->Cell(15,4,"$cec",1,0,"C");
+$pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 
-$pdf->Cell(70,4,"Market Clearance (For Stall Holders)",1,0,"L");
-$pdf->Cell(70,4,"Office of the City Market Administrator",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
-$pdf->Cell(18,4,"",1,1,"C");
+// $pdf->Cell(70,4,"Market Clearance (For Stall Holders)",1,0,"L");
+// $pdf->Cell(70,4,"Office of the City Market Administrator",1,0,"L");
+// $pdf->Cell(15,4,"",1,0,"L");
+// $pdf->Cell(15,4,"",1,0,"L");
+// $pdf->Cell(18,4,"",1,1,"C");
 
 $pdf->Cell(70,4,"Fire Safety Inspection Certificate",1,0,"L");
 $pdf->Cell(70,4,"Bureau of Fire Protection",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
+if(isset($bfp[0]->createdAt) ? 'success' : 'danger')
+{
+  $pdf->SetFont("ZapfDingbats","","8");
+  $fsic = 4; 
+}
+else
+{
+  $fsic = "";
+}
+$pdf->Cell(15,4,"$fsic",1,0,"C");
+$pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 
 $pdf->Cell(70,4,"Zoning Clearance",1,0,"L");
 $pdf->Cell(70,4,"City Planning & Development Office",1,0,"L");
-$pdf->Cell(15,4,"",1,0,"L");
+if(isset($zoning[0]->createdAt) ? 'success' : 'danger')
+{
+  $pdf->SetFont("ZapfDingbats","","8");
+  $zc = 4; 
+}
+else
+{
+  $zc = "";
+}
+$pdf->Cell(15,4,"$zc",1,0,"C");
+$pdf->SetFont("Arial","","7.8");
 $pdf->Cell(15,4,"",1,0,"L");
 $pdf->Cell(18,4,"",1,1,"C");
 

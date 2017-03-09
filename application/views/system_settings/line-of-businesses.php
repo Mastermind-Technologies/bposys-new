@@ -2,7 +2,7 @@
   <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb">
-      <a href="<?php echo base_url(); ?>dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a>
+      <a href="<?php echo base_url(); ?>bposys_admin/dashboard" class="tip-bottom"><i class="icon-home"></i> Dashboard</a>
       <a href="<?php echo base_url(); ?>settings" class="tip-bottom"> Settings</a>
       <a href="#" class="current"> Line of Businesses</a>
     </div>
@@ -122,6 +122,7 @@
                 <th>Description</th>
                 <th>Imposition of Tax Category</th>
                 <th>Garbage Service Fee</th>
+                <th>Actions</th>
               </thead>
               <tbody>
                 <?php foreach ($line_of_business as $key => $line): ?>
@@ -133,6 +134,10 @@
                     <td><?= $line->description ?></td>
                     <td><?= $line->impositionOfTaxCategory ?></td>
                     <td><?= "PHP ".number_format($line->garbageServiceFee,2) ?></td>
+                    <td>
+                      <a href="<?php echo base_url(); ?>settings/edit_line_of_business/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($line->lineOfBusinessId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -210,6 +215,7 @@
                 <th>Small Scale Fee</th>
                 <th>Medium Scale Fee</th>
                 <th>Large Scale Fee</th>
+                <th>Actions</th>
               </thead>
               <tbody>
                 <?php foreach ($fee_common_enterprise as $key => $common_enterprise): ?>
@@ -219,6 +225,10 @@
                     <td><?= "PHP ".number_format($common_enterprise->smallScaleFee) ?></td>
                     <td><?= "PHP ".number_format($common_enterprise->mediumScaleFee) ?></td>
                     <td><?= "PHP ".number_format($common_enterprise->largeScaleFee) ?></td>
+                    <td>
+                      <a href="<?php echo base_url(); ?>settings/edit_common_enterprise_fee/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($common_enterprise->commonEnterpriseFeeId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -263,6 +273,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Rate per unit</th>
+              <th>Actions</th>
             </thead>
             <tbody>
               <?php foreach ($amusement_device as $key => $device): ?>
@@ -270,6 +281,10 @@
                   <td><?= $device->amusementDeviceId ?></td>
                   <td><?= $device->name ?></td>
                   <td><?= "PHP ".number_format($device->ratePerUnit) ?></td>
+                  <td>
+                    <a href="<?php echo base_url(); ?>settings/edit_amusement_device/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($device->amusementDeviceId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                  </td>
                 </tr>
               <?php endforeach ?>
             </tbody>
@@ -368,7 +383,7 @@
                       </div>
                     </div>
                     <div class="form-actions">
-                      <button class="btn btn-success pull-right">Submit Bowling Alley Fee</button>
+                    <button class="btn btn-success pull-right">Save</button>
                     </div>
                   </form>
                 </div>
