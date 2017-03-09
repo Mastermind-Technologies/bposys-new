@@ -226,7 +226,7 @@
                     <td><?= "PHP ".number_format($common_enterprise->mediumScaleFee) ?></td>
                     <td><?= "PHP ".number_format($common_enterprise->largeScaleFee) ?></td>
                     <td>
-                      <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      <a href="<?php echo base_url(); ?>settings/edit_common_enterprise_fee/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($common_enterprise->commonEnterpriseFeeId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </a>
                     </td>
                   </tr>
@@ -282,7 +282,7 @@
                   <td><?= $device->name ?></td>
                   <td><?= "PHP ".number_format($device->ratePerUnit) ?></td>
                   <td>
-                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a href="<?php echo base_url(); ?>settings/edit_amusement_device/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($device->amusementDeviceId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                   </td>
                 </tr>
@@ -342,7 +342,6 @@
               <th>Above</th>
               <th>Below</th>
               <th>Fee</th>
-              <th>Actions</th>
             </thead>
             <tbody>
               <?php foreach ($golf_link_fees as $key => $golf_link): ?>
@@ -350,10 +349,6 @@
                   <td><?= $golf_link->above." holes" ?></td>
                   <td><?= $golf_link->below." holes" ?></td>
                   <td><?= "PHP". number_format($golf_link->fee) ?></td>
-                  <td>
-                    <a href="#" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    </a>
-                  </td>
                 </tr>
               <?php endforeach ?>
             </tbody>
@@ -388,7 +383,7 @@
                       </div>
                     </div>
                     <div class="form-actions">
-                      <button class="btn btn-success pull-right">Submit Bowling Alley Fee</button>
+                    <button class="btn btn-success pull-right">Save</button>
                     </div>
                   </form>
                 </div>

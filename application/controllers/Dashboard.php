@@ -1766,6 +1766,8 @@ class Dashboard extends CI_Controller {
 	public function approve_retirement($reference_num)
 	{
 		$reference_num = $this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $reference_num));
+		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+		$role_Id = $this->Role_m->get_roleId($role);
 
 		$this->isLogin();
 		$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
@@ -1785,6 +1787,14 @@ class Dashboard extends CI_Controller {
 			'role' => 3,
 			'notifMessage' => '<strong>Retirement approved</strong>. You may now proceed to the treasury for payment and then claim your certificate at Business Permit and Licensing Office. Thank you.');
 		$this->Notification_m->insert($notification_fields);
+
+		$query = array(
+			'referenceNum' => $reference_num,
+			'role' => $role_Id->roleId,
+			'type' => "Approve Retirement",
+			'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+			);
+		$this->Approval_m->insert($query);
 
 		//process assessment?
 
@@ -2609,6 +2619,17 @@ public function get_sanitary_info($reference_num)
 	$data['application'] = new BPLO_Application($reference_num);
 	$data['application2'] = new Sanitary_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/cho/sanitary_printable',$data);
 }
 
@@ -2621,6 +2642,17 @@ public function get_bfp_info($reference_num)
 	$data['application'] = new BPLO_Application($reference_num);
 	$data['application2'] = new BFP_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/bfp/bfp_printable',$data);
 }
 
@@ -2632,6 +2664,17 @@ public function get_zoning_info($reference_num)
 
 	$data['application'] = new BPLO_Application($reference_num);
 	$data['application2'] = new Zoning_Application($reference_num);
+
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
 
 
 	$this->load->view('dashboard/zoning/zoning_printable',$data);
@@ -2646,6 +2689,17 @@ public function get_cenro_info($reference_num)
 	$data['application'] = new BPLO_Application($reference_num);
 	$data['application2'] = new CENRO_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/cenro/cenro_printable',$data);
 }
 
@@ -2658,6 +2712,17 @@ public function get_bplo_form_info($reference_num)
 	$data['application'] = new BPLO_Application($reference_num);
 
 	$data['approvals'] = $this->Approval_m->get_approvals($reference_num, date('Y', strtotime($data['application']->get_taxYear())));
+
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
 
 	//ETO YUNG APPROVALS
 	// echo "<pre>";
@@ -2675,6 +2740,17 @@ public function get_cert_closure_info($reference_num)
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 	$data['application'] = new BPLO_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/bplo/cert_closure_printable',$data);
 }
 
@@ -2683,6 +2759,17 @@ public function get_cert_closure_form_info($reference_num)
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 	$data['application'] = new BPLO_Application($reference_num);
+
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Permit",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
 
 	$this->load->view('dashboard/bplo/certicate_closure_form',$data);
 }
@@ -2693,6 +2780,16 @@ public function get_bplo_certificate_info($reference_num)
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$data['payment'] = $this->Payment_m->get_initial_payment($reference_num)[0];
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Permit",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
 
 	$data['application'] = new BPLO_Application($reference_num);
 
@@ -2704,6 +2801,17 @@ public function get_sanitary_permit_info($reference_num)
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$data['application'] = new BPLO_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Permit",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/cho/sanitary_permit',$data);
 }
 
@@ -2711,6 +2819,17 @@ public function get_engineering_clearance_info($reference_num)
 {
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$data['application'] = new BPLO_Application($reference_num);
+
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Form",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
 
 	$this->load->view('dashboard/engineering/engineering_clearance',$data);
 }
@@ -2720,6 +2839,17 @@ public function get_environmental_clearance_info($reference_num)
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$data['application'] = new BPLO_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Permit",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/cenro/environmental_clearance',$data);
 }
 
@@ -2728,6 +2858,17 @@ public function get_zoning_clearance_info($reference_num)
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$data['application'] = new BPLO_Application($reference_num);
 
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Permit",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/zoning/zoning_clearance',$data);
 }
 //
@@ -2735,6 +2876,17 @@ public function get_fire_inspection_certificate_info($reference_num)
 {
 	$reference_num = $this->encryption->decrypt(str_replace(['-','_','='],['/','+','='],$reference_num));
 	$data['application'] = new BPLO_Application($reference_num);
+
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Permit",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
 
 	$this->load->view('dashboard/bfp/fire_inspection_certificate',$data);
 }
@@ -2913,6 +3065,18 @@ public function get_order_of_payment_info($reference_num)
 	$payment = $this->Payment_m->get_initial_payment($reference_num);
 
 	$data['application'] = new BPLO_Application($reference_num);
+
+	$role = $this->encryption->decrypt($this->session->userdata['userdata']['role']);
+	$role_Id = $this->Role_m->get_roleId($role);
+
+	$query = array(
+		'referenceNum' => $reference_num,
+		'role' => $role_Id->roleId,
+		'type' => "Print Tax Order",
+		'staff' => $this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName'],
+		);
+	$this->Approval_m->insert($query);
+
 	$this->load->view('dashboard/bplo/order_of_payment',$data);
 }
 

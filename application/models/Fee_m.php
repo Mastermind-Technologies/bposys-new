@@ -38,12 +38,14 @@ class Fee_m extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function get_common_enterprises_fees()
+	public function get_common_enterprises_fees($query = null)
 	{
 		//select line_of_businesses.name, fee_common_enterprise.cottageFee, fee_common_enterprise.smallScaleFee, fee_common_enterprise.mediumScaleFee, fee_common_enterprise.largeScaleFee from line_of_businesses join fee_common_enterprise on line_of_businesses.lineOfBusinessId = fee_common_enterprise.lineOfBusinessId 
-		$this->db->select('line_of_businesses.name, fee_common_enterprise.cottageFee, fee_common_enterprise.smallScaleFee, fee_common_enterprise.mediumScaleFee, fee_common_enterprise.largeScaleFee');
+		$this->db->select('fee_common_enterprise.commonEnterpriseFeeId, line_of_businesses.name, fee_common_enterprise.cottageFee, fee_common_enterprise.smallScaleFee, fee_common_enterprise.mediumScaleFee, fee_common_enterprise.largeScaleFee');
 		$this->db->from($this->line_of_business);
 		$this->db->join($this->common_enterprise, 'line_of_businesses.lineOfBusinessId = fee_common_enterprise.lineOfBusinessId');
+		if($query != null)
+			$this->db->where($query);
 		return $this->db->get()->result();
 	}
 
@@ -179,6 +181,24 @@ class Fee_m extends CI_Model {
 	{
 		$this->db->where('lineOfBusinessId',$id);
 		$this->db->update($this->line_of_business, $fields);
+	}
+
+	public function update_common_enterprise_fee($id, $fields)
+	{
+		$this->db->where('commonEnterpriseFeeId', $id);
+		$this->db->update($this->common_enterprise, $fields);
+	}
+
+	public function update_amusement_device($id, $fields)
+	{
+		$this->db->where('amusementDeviceId', $id);
+		$this->db->update($this->amusement_devices, $fields);
+	}
+
+	public function update_fixed_fee($id, $fields)
+	{
+		$this->db->where('feeFixedId', $id);
+		$this->db->update($this->fixed_fees, $fields);
 	}
 
 

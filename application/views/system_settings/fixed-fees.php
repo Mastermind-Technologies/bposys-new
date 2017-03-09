@@ -53,32 +53,37 @@
                 <tr>
                   <th>Particular</th>
                   <th>Fees</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-              <?php foreach ($fixed_fees as $key => $fees): ?>
-                <tr>
-                  <td><?= $fees->particular ?></td>
-                  <td><?= $fees->fee ?></td>
-                </tr>
-              <?php endforeach ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+                <?php foreach ($fixed_fees as $key => $fees): ?>
+                  <tr>
+                    <td><?= $fees->particular ?></td>
+                    <td><?= $fees->fee ?></td>
+                    <td>
+                    <a href="<?php echo base_url(); ?>settings/edit_fixed_fee/<?= str_replace(['/','+','='], ['-','_','='], $this->encryption->encrypt($fees->feeFixedId)) ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                     </a>
+                   </td>
+                 </tr>
+               <?php endforeach ?>
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>
 
-  </div>
+ </div>
 
-  <?php if($this->session->flashdata('message')): ?>
-    <script>
-      alert("<?= $this->session->flashdata('message'); ?>");
-    </script>
-  <?php endif; ?>
+ <?php if($this->session->flashdata('message')): ?>
+  <script>
+    alert("<?= $this->session->flashdata('message'); ?>");
+  </script>
+<?php endif; ?>
 
 
-  <!--Footer-part-->
+<!--Footer-part-->
 
 <!-- <div class="row-fluid">
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>

@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
   // var base_url = 'http://172.16.105.102/bposys/';
-  var interval = window.setInterval(check_application_status, 3000);
+  var interval = window.setInterval(check_application_status, 5000);
 
   // $('.line-of-business').change(function(){
   //   var this_control = this;
@@ -528,18 +528,19 @@ $(document).ready(function()
 
   function check_application_status()
   {
-
-    var business_object = [];
-    $('.hidden-business-id').each(function(index, result){
-      var bus_obj = {id: $(result).val(), status: $(".status").eq(index).html()}
-      business_object.push(bus_obj);
-    });
-    $.ajax({
-      type:'POST',
-      dataType:'JSON',
-      url:base_url+'dashboard/check_app_status',
-      data:{application_object: business_object},
-      success:function(data){
+   
+      var business_object = [];
+      $('.hidden-business-id').each(function(index, result){
+        var bus_obj = {id: $(result).val(), status: $(".status").eq(index).html()}
+        business_object.push(bus_obj);
+      });
+       // $(document).ajaxStart(function(){
+      $.ajax({
+        type:'POST',
+        dataType:'JSON',
+        url:base_url+'dashboard/check_app_status',
+        data:{application_object: business_object},
+        success:function(data){
           // console.log(data.status_array.length);
           if($('#application-table').length != 0)
           {
@@ -573,6 +574,7 @@ $(document).ready(function()
           clearInterval(interval);
         }
       });
+    // });
   }
 
   $('.button-container>button.btn-cancel').click(function(){
