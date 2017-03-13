@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2017 at 05:04 PM
+-- Generation Time: Mar 09, 2017 at 06:17 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `approvals` (
   `staff` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `approvals`
@@ -342,7 +342,10 @@ INSERT INTO `approvals` (`approvalId`, `referenceNum`, `role`, `type`, `staff`, 
 (62, '8D6467E448', 7, 'Validate', 'tester cenro', '2017-03-05 13:44:19', '2017-03-05 13:44:19'),
 (63, '3BA448289A', 4, 'Issue', 'tester bplo', '2017-03-05 13:48:39', '2017-03-05 13:48:39'),
 (64, '739862FF5C', 8, 'Approve', 'tester zoning', '2017-03-06 16:05:51', '2017-03-06 16:05:51'),
-(65, '9FAEA9BEB4', 8, 'Validate', 'tester zoning', '2017-03-06 16:05:58', '2017-03-06 16:05:58');
+(65, '9FAEA9BEB4', 8, 'Validate', 'tester zoning', '2017-03-06 16:05:58', '2017-03-06 16:05:58'),
+(66, '739862FF5C', 4, 'Print Tax Order', 'Employee BPLO', '2017-03-09 02:44:15', '2017-03-09 02:44:15'),
+(67, '739862FF5C', 4, 'Print Form', 'Employee BPLO', '2017-03-09 02:44:50', '2017-03-09 02:44:50'),
+(68, '3BA448289A', 4, 'Print Permit', 'Employee BPLO', '2017-03-09 02:45:58', '2017-03-09 02:45:58');
 
 -- --------------------------------------------------------
 
@@ -860,7 +863,7 @@ CREATE TABLE IF NOT EXISTS `fee_amusement_devices` (
 --
 
 INSERT INTO `fee_amusement_devices` (`amusementDeviceId`, `name`, `ratePerUnit`, `createdAt`, `updatedAt`) VALUES
-(2, 'Videoke, Karaoke, and Jukebox Machine', 500, '2017-02-25 01:57:51', '2017-02-25 01:57:51'),
+(2, 'Videoke, Karaoke, and Jukebox Machine', 500, '2017-02-25 01:57:51', '2017-03-09 01:48:24'),
 (3, 'Contrivances such as Merry-Go-Round, Roller Coaster, Ferris Wheel, Swing, Shooting Gallery & other similar contivances', 300, '2017-02-25 01:58:39', '2017-02-25 01:58:39'),
 (4, 'Vendo Machines', 200, '2017-02-25 01:58:51', '2017-02-25 01:58:51'),
 (5, 'Others', 150, '2017-02-25 07:51:25', '2017-02-25 07:51:25');
@@ -907,7 +910,7 @@ CREATE TABLE IF NOT EXISTS `fee_common_enterprise` (
 --
 
 INSERT INTO `fee_common_enterprise` (`commonEnterpriseFeeId`, `lineOfBusinessId`, `cottageFee`, `smallScaleFee`, `mediumScaleFee`, `largeScaleFee`, `createdAt`, `updatedAt`) VALUES
-(3, 3, 1000, 3500, 5000, 7500, '2017-02-24 06:25:04', '2017-02-24 06:25:04'),
+(3, 3, 1000, 3500, 5000, 7500, '2017-02-24 06:25:04', '2017-03-09 01:16:25'),
 (4, 4, 1000, 3500, 5000, 7000, '2017-02-24 06:25:34', '2017-02-24 06:25:34'),
 (5, 5, 800, 2500, 4000, 6500, '2017-02-24 06:25:55', '2017-02-24 06:25:55'),
 (6, 6, 500, 1500, 3000, 5000, '2017-02-24 06:26:13', '2017-02-24 06:26:13'),
@@ -986,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `fee_fixed` (
 
 INSERT INTO `fee_fixed` (`feeFixedId`, `particular`, `fee`, `conditional`, `createdAt`, `updatedAt`) VALUES
 (1, 'Business Inspection Fee', 200, 0, '2017-02-23 14:02:54', '2017-02-23 14:02:54'),
-(2, 'Zoning/Location Clearance Fee', 200, 0, '2017-02-23 14:03:55', '2017-02-23 14:03:55'),
+(2, 'Zoning/Location Clearance Fee', 200, 0, '2017-02-23 14:03:55', '2017-03-09 02:02:55'),
 (3, 'Retirement Fee', 200, 1, '2017-02-24 01:47:07', '2017-02-24 07:30:45'),
 (4, 'Business Plate & Sticker', 350, 0, '2017-02-26 00:13:58', '2017-02-26 00:13:58'),
 (5, 'Change of Owner Fee', 200, 1, '2017-03-02 14:29:52', '2017-03-02 14:33:49'),
@@ -2112,7 +2115,7 @@ ALTER TABLE `application_zoning`
 -- AUTO_INCREMENT for table `approvals`
 --
 ALTER TABLE `approvals`
-  MODIFY `approvalId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
+  MODIFY `approvalId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `archived_applications`
 --

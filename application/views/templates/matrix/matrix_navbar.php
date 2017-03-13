@@ -16,8 +16,6 @@
   <ul class="nav">
     <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome <?= $this->session->userdata['userdata']['firstName']." ".$this->session->userdata['userdata']['lastName'] ?></span><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
         <li><a href="<?php echo base_url(); ?>auth/logout"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li>
@@ -66,11 +64,11 @@
           <?php endif ?>
         </ul>
       </li>
-
+<!--
       <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
         <li class=" <?= $active=="Alerts" ? "active" : '' ?>"> <a href="<?php echo base_url(); ?>alerts"><i class="icon icon-bell"></i> <span>Create Alerts</span></a></li>
       <?php endif ?>
-
+-->
 
       <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
         <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
@@ -80,7 +78,7 @@
 
             <li><a href="<?php echo base_url(); ?>reports/demographic_reports"><span>Demographic Reports</span></a></li>
 
-            <li><a href="<?php echo base_url(); ?>reports/gross_reports"><span>Gross Reports</span></a></li>
+            <!-- <li><a href="<?php echo base_url(); ?>reports/gross_reports"><span>Gross Reports</span></a></li> -->
 
             <li><a href="<?php echo base_url(); ?>reports/masterlist"><span>Master List</span></a></li>
           </ul>
@@ -111,3 +109,8 @@
 
 </div>
 <!--sidebar-menu-->
+
+
+
+
+

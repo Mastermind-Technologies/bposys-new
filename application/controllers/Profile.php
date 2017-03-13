@@ -57,7 +57,7 @@ class Profile extends CI_Controller {
 		{
 			if($this->encryption->decrypt($this->session->userdata['userdata']['role']) != "Applicant")
 			{
-					redirect('error/error403');
+				redirect('error/error403');
 			}
 		}
 	}
@@ -334,33 +334,39 @@ class Profile extends CI_Controller {
 
 		$query['userId'] = $user_id;
 		$business = $this->Business_m->get_all_businesses($query);
-		foreach ($business as $key => $b) {
-			$data['business'][] = new Business($b->businessId);
-		}
+		if (count($business) > 0) {
+			foreach ($business as $key => $b) {
+				$data['business'][] = new Business($b->businessId);
+			}
 
-		$unapplied = $this->Business_m->get_all_unapplied_businesses($user_id);
-		foreach ($data['business'] as $key => $b) {
-			if(count($unapplied) != 0)
-			{
-				foreach ($unapplied as $key => $u) {
-					if($b->get_BusinessName() == $u->businessName)
-					{
-						$b->set_IsApplied(0);
-						break;
-					}
-					else
-					{
-						$b->set_IsApplied(1);
+			$unapplied = $this->Business_m->get_all_unapplied_businesses($user_id);
+			foreach ($data['business'] as $key => $b) {
+				if(count($unapplied) != 0)
+				{
+					foreach ($unapplied as $key => $u) {
+						if($b->get_BusinessName() == $u->businessName)
+						{
+							$b->set_IsApplied(0);
+							break;
+						}
+						else
+						{
+							$b->set_IsApplied(1);
+						}
 					}
 				}
+				else
+				{
+					$b->set_IsApplied(1);
+				}
 			}
-			else
-			{
-				$b->set_IsApplied(1);
-			}
-		}
 
-		$this->load->view('profile/manage_businesses', $data);
+			$this->load->view('profile/manage_businesses', $data);
+		}
+		else
+		{
+			redirect('profile/add_business');
+		}
 	}
 
 	public function view_business()
@@ -418,7 +424,7 @@ class Profile extends CI_Controller {
 		}
 		else
 		{
-			redirect('profile/manage_owners?ft=1');
+			redirect('profile/add_owner?ft=1');
 		}
 	}
 
@@ -449,7 +455,7 @@ class Profile extends CI_Controller {
 		// $this->form_validation->set_rules('g-address', 'Please point your business location on google maps.', 'required');
 		$this->form_validation->set_rules('email','Email','required');
 		$this->form_validation->set_rules('PIN','Zip/Postal Code','required');
-		$this->form_validation->set_rules('telephone-number','Telephone Number','required');
+		// $this->form_validation->set_rules('telephone-number','Telephone Number','required');
 		$this->form_validation->set_rules('pollution-control-officer','Pollution Control Officer','required');
 		$this->form_validation->set_rules('male-employees','No. of Male Employees','required|numeric');
 		$this->form_validation->set_rules('female-employees','No. of Female Employees','required|numeric');
@@ -573,7 +579,7 @@ class Profile extends CI_Controller {
 		// $this->form_validation->set_rules('g-address', 'Please point your business location on google maps.', 'required');
 		$this->form_validation->set_rules('email','Email','required');
 		$this->form_validation->set_rules('PIN','Zip/Postal Code','required');
-		$this->form_validation->set_rules('telephone-number','Telephone Number','required');
+		// $this->form_validation->set_rules('telephone-number','Telephone Number','required');
 		$this->form_validation->set_rules('pollution-control-officer','Pollution Control Officer','required');
 		$this->form_validation->set_rules('male-employees','No. of Male Employees','required|numeric');
 		$this->form_validation->set_rules('female-employees','No. of Female Employees','required|numeric');

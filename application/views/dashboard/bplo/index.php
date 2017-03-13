@@ -51,8 +51,8 @@
                   <?php if ($this->session->userdata['userdata']['permissionLevel'] == "2"): ?>
                     <li class="bg_db span3"> <a href="<?php echo base_url(); ?>reports"><span><i class="fa fa-bar-chart-o fa-2x" aria-hidden="true"></i> </span><br>View Reports</a> </li>
                   <?php endif ?>
-                  
-                  <li class="bg_ly span1"> <a href="<?php echo base_url(); ?>alerts"><span><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i> </span><br>Create Alerts</a> </li>
+                  <!--
+                  <li class="bg_ly span1"> <a href="<?php echo base_url(); ?>alerts"><span><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i> </span><br>Create Alerts</a> </li>-->
                 </ul>
               </div>
 
@@ -91,6 +91,7 @@
                     case 'Print Form': $action = 'printed the application form of  '; break;
                     case 'Print Permit': $action = 'printed the permit of '; break;
                     case 'Print Tax Order': $action = 'printed the tax order of payment of '; break;
+                    case 'Approve Retirement': $action = 'approved the tax order of payment of '; break;
                   }
                  ?>
                 <td><?= '<span class="label label-info">'. date('h:i A', strtotime($log->createdAt)) . '</span> <b>'  . $log->staff . "</b> " . $action . $log->referenceNum . " "?></td>
@@ -125,3 +126,5 @@
 
 
             <!--Footer-part-->
+
+
