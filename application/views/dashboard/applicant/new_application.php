@@ -80,7 +80,7 @@
 													<div class="col-sm-4">
 														<div class="form-group">
 															<label for="DTISECCDA_RegNum">DTI/SEC/CDA Registration Number*</label>
-															<input type="text" required name="DTISECCDA_RegNum" data-parsley-type="digits" class="form-control">
+															<input type="text" required name="DTISECCDA_RegNum" data-parsley-type="digits" id="DTISECCDA_RegNum" class="form-control">
 														</div>
 													</div>
 													<div class="col-sm-4">
@@ -95,7 +95,7 @@
 														<div class="form-group">
 															<label for="brgy-clearance-date-issued">Barangay Clearance Date Issued</label>
 															<div class="input-group">
-																<input type="text" required="" name="brgy-clearance-date-issued" class="form-control date-field"><span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+																<input type="text" required="" name="brgy-clearance-date-issued" id="brgy-clearance-date-issued" class="form-control date-field"><span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
 															</div>
 														</div>
 													</div>
@@ -104,19 +104,19 @@
 													<div class="col-sm-4">
 														<div class="form-group">
 															<label for="ctc-number">CTC Number*</label>
-															<input required type="text" name="ctc-number" data-parsley-type="digits" class="form-control">
+															<input required type="text" name="ctc-number" id="ctc-number" data-parsley-type="digits" class="form-control">
 														</div>
 													</div>
 													<div class="col-sm-4">
 														<div class="form-group">
 															<label for="tin">TIN*</label>
-															<input required type="text" name="tin" class="form-control">
+															<input required type="text" name="tin" id="tin" class="form-control">
 														</div>
 													</div>
 													<div class="col-sm-4">
 														<div class="form-group">
 															<label for="occupancy-permit-number">Occupany Permit Number</label>
-															<input type="text" required="" name="occupancy-permit-number" class="form-control">
+															<input type="text" required="" name="occupancy-permit-number" id="occupancy-permit-number" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -402,19 +402,19 @@
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label for="storeys">No. of Storeys</label>
-													<input type="text" class='form-control' name='storeys' required>
+													<input type="text" class='form-control' name='storeys' id="storeys" required>
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label for="portion-occupied">Portion Occupied</label>
-													<input type="text" name="portion-occupied" class="form-control" required>
+													<input type="text" name="portion-occupied" id="portion-occupied" class="form-control" required>
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label for="area-per-floor">Area per Floor (in sq. m.)</label>
-													<input type="text" name="area-per-floor" data-parsley-type='digits' class="form-control" required>
+													<input type="text" name="area-per-floor" id="area-per-floor" data-parsley-type='digits' class="form-control" required>
 												</div>
 											</div>
 										</div>
@@ -487,19 +487,19 @@
 												<div class="col-sm-4">
 													<div class="form-group">
 														<label for="lessor-first-name">First Name*</label>
-														<input type="text" disabled class="form-control" name='lessor-first-name'>
+														<input type="text" disabled class="form-control" name='lessor-first-name' id="lessor-first-name">
 													</div>
 												</div>
 												<div class="col-sm-4">
 													<div class="form-group">
 														<label for="lessor-middle-name">Middle Name*</label>
-														<input type="text" disabled class="form-control" name='lessor-middle-name'>
+														<input type="text" disabled class="form-control" name='lessor-middle-name' id="lessor-middle-name">
 													</div>
 												</div>
 												<div class="col-sm-4">
 													<div class="form-group">
 														<label for="lessor-last-name">Last Name*</label>
-														<input type="text" disabled class="form-control" name='lessor-last-name'>
+														<input type="text" disabled class="form-control" name='lessor-last-name' id="lessor-last-name">
 													</div>
 												</div>
 												<div class="col-sm-4">
@@ -513,25 +513,25 @@
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="lessor-subdivision">Subdivision*</label>
-														<input type="text" disabled class="form-control" name="lessor-subdivision">
+														<input type="text" disabled class="form-control" name="lessor-subdivision" id="lessor-subdivision">
 													</div>
 												</div>
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="lessor-barangay">Barangay*</label>
-														<input type="text" disabled class="form-control" name="lessor-barangay">
+														<input type="text" disabled class="form-control" name="lessor-barangay" id="lessor-barangay">
 													</div>
 												</div>
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="lessor-city-municipality">City/Municipality*</label>
-														<input type="text" disabled class="form-control" name="lessor-city-municipality">
+														<input type="text" disabled class="form-control" name="lessor-city-municipality" id="lessor-city-municipality">
 													</div>
 												</div>
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="lessor-province">Province*</label>
-														<input type="text" disabled class="form-control" name="lessor-province">
+														<input type="text" disabled class="form-control" id="lessor-province" name="lessor-province">
 													</div>
 												</div>
 											</div>
@@ -539,19 +539,19 @@
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="lessor-monthly-rental">Monthly Rental*</label>
-														<input type="text" disabled class="form-control" data-parsley-type="digits" name="lessor-monthly-rental">
+														<input type="text" disabled class="form-control" data-parsley-type="digits" name="lessor-monthly-rental" id="lessor-monthly-rental">
 													</div>
 												</div>
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="lessor-tel-cel-no">Tel No./Cel No.*</label>
-														<input type="text" disabled class="form-control" data-parsley-type="digits" name="lessor-tel-cel-no">
+														<input type="text" disabled class="form-control" data-parsley-type="digits" name="lessor-tel-cel-no" id="lessor-tel-cel-no">
 													</div>
 												</div>
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="">Email Address*</label>
-														<input type="email" disabled class="form-control" name="lessor-email">
+														<input type="email" disabled class="form-control" name="lessor-email" id="lessor-email">
 													</div>
 												</div>
 											</div>
