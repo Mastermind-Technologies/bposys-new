@@ -528,19 +528,19 @@ $(document).ready(function()
 
   function check_application_status()
   {
-   
-      var business_object = [];
-      $('.hidden-business-id').each(function(index, result){
-        var bus_obj = {id: $(result).val(), status: $(".status").eq(index).html()}
-        business_object.push(bus_obj);
-      });
+
+    var business_object = [];
+    $('.hidden-business-id').each(function(index, result){
+      var bus_obj = {id: $(result).val(), status: $(".status").eq(index).html()}
+      business_object.push(bus_obj);
+    });
        // $(document).ajaxStart(function(){
-      $.ajax({
-        type:'POST',
-        dataType:'JSON',
-        url:base_url+'dashboard/check_app_status',
-        data:{application_object: business_object},
-        success:function(data){
+        $.ajax({
+          type:'POST',
+          dataType:'JSON',
+          url:base_url+'dashboard/check_app_status',
+          data:{application_object: business_object},
+          success:function(data){
           // console.log(data.status_array.length);
           if($('#application-table').length != 0)
           {
@@ -690,5 +690,134 @@ $(document).ready(function()
     });
     return false;
   });
+
+  function generate_summary()
+  {
+    $('#s-mode-of-payment').html();
+    $('#s-id-presented').html();
+    $('#s-id-dtiseccda-regnum').html();
+    $('#s-dtiseccda-regdate').html();
+    $('#s-brgy-clearance-date-issued').html();
+    $('#s-ctc-number').html();
+    $('#s-tin').html();
+    $('#s-occupancy-permit-number').html();
+
+    if($('#tax-incentive').is(':checked'))
+    {
+      $('#s-tax-incentive').attr('checked', true);
+      $('#s-entity').html();
+    }
+    else
+    {
+      $('#s-entity').html("NA");
+    }
+
+    $('#s-business').html();
+    $('#s-tax-payer-name').html();
+    $('#s-president-treasurer-name').html();
+    $('#s-pollution-control-officer').html();
+    $('#s-male-employees').html();
+    $('#s-female-employees').html();
+    $('#s-pwd-employees').html();
+    $('#s-lgu-employees').html();
+
+    if($('#annual-yes').is(':checked'))
+      $('#s-annual-exams-yes').attr('checked', true);
+    else
+      $('#s-annual-exams-no').attr('checked', true);
+    
+    $('#s-company-name').html();
+    $('#s-business-name').html();
+    $('#s-trade-name').html();
+    $('#s-signage-name').html();
+    $('#s-organization-type').html();
+    $('#s-corporation-nam').html();
+    $('#s-date-of-operation-text').html();
+    $('#s-business-desc').html();
+    $('#s-house-bldg-no').html();
+    $('#s-bldg-name').html();
+    $('#s-unit-num').html();
+    $('#s-street').html();
+    $('#s-barangay').html();
+    $('#s-subdivision').html();
+    $('#s-city-municipality').html();
+    $('#s-province').html();
+    $('#s-business-area').html();
+    $('#s-pin').html();
+    $("#s-storeys").html();
+    $("#s-portion-occupied").html();
+    $("#s-area-per-floor").html();
+    $("#s-tel-num").html();
+    $("#s-email").html();
+    $("#s-emergency-contact-name").html();
+    $("#s-emergency-tel-cel-no").html();
+    $("#s-emergency-email").html();
+
+    if($('#rented').is(':checked'))
+    {
+      $('#s-rented').attr('checked', true);
+      $("#s-lessor-first-name").html();
+      $('#s-lessor-middle-name').html();
+      $('#s-lessor-last-name').html();
+      $('#s-lessor-address').html();
+      $('#s-lessor-subdivision').html();
+      $('#s-lessor-barangay').html();
+      $('#s-lessor-city-municipality').html();
+      $('#s-lessor-province').html();
+      $('#s-lessor-monthly-rental').html();
+      $('#s-lessor-tel-cel-no').html();
+      $('#s-lessor-email-address').html();
+    }
+    else
+    {
+      $("#s-lessor-first-name").html("NA");
+      $('#s-lessor-middle-name').html("NA");
+      $('#s-lessor-last-name').html("NA");
+      $('#s-lessor-address').html("NA");
+      $('#s-lessor-subdivision').html("NA");
+      $('#s-lessor-barangay').html("NA");
+      $('#s-lessor-city-municipality').html("NA");
+      $('#s-lessor-province').html("NA");
+      $('#s-lessor-monthly-rental').html("NA");
+      $('#s-lessor-tel-cel-no').html("NA");
+      $('#s-lessor-email-address').html("NA");
+    }
+
+    if($('#cnc').is(':checked'))
+    {
+      $('#s-cnc').attr('checked', true);
+      $('#s-cnc-date-issued').html($('#cnc-date-issued').val());
+    }
+
+    if($('#llda').is(':checked'))
+    {
+      $('#s-llda').attr('checked',true);
+      $('#s-llda-date-issued').html($('#llda-date-issued').val());
+    }
+
+    if($('#discharge-permit').is(':checked'))
+    {
+      $('#s-discharge-permit').attr('checked',true);
+      $('s-discharge-permit-date-issued').html($('#discharge-permit-date-issued').val());
+    }
+
+    if($('#apsci').is(':checked'))
+    {
+      $('#s-apsci').attr('checked',true);
+      $('s-apsci-date-issued').html($('#apsci-date-issued').val());
+    }
+
+    $('#s-products-by-products').html($('#products-by-products').val());
+
+    if($('#smoke-emission').is(':checked'))
+    {
+      $('#s-smoke-emission').attr('checked',true);
+    }
+    if($('#volatile-compound').is(':checked'))
+    {
+      $('#s-volatile-compound').attr('checked',true);
+    }
+
+  }
 
 }); //End of Jquery
