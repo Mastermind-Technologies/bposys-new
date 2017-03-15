@@ -818,6 +818,148 @@ $(document).ready(function()
       $('#s-volatile-compound').attr('checked',true);
     }
 
+    if($('#fugitive-particulate-dust').is(':checked'))
+    {
+      $('#s-fugitive-particulate-dust').attr('checked', true);
+    }
+    if($('#fugitive-particulate-mist').is(':checked'))
+    {
+      $('#s-fugitive-particulate-mist').attr('checked', true);
+    }
+    if($('#fugitive-particulate-gas').is(':checked'))
+    {
+      $('#s-fugitive-particulate-gas').attr('checked', true);
+    }
+
+    if($('#steam-generators-bioler').is(':checked'))
+    {
+      $('#s-steam-generators-bioler').attr('checked', true);
+    }
+    if($('#steam-generators-furnace').is(':checked'))
+    {
+      $('#s-steam-generators-furnace'.attr('checked', true);)
+    }
+    if($('#steam-generators-others').is(':checked'))
+    {
+      $('#s-steam-generators-others').attr('checked', true);
+      $('#s-steam-generator-specify').val($('#steam-generator-specify').val());
+    }
+
+    $('#s-air-pollution-control-devices').html();
+    $('#s-stack-height').html();
+
+    $('#s-wastewater-treatment-facility').html();
+
+    if($('#wastewater-treatment-operation').is(':checked'))
+    {
+      $('#s-wastewater-treatment-operation').attr('checked',true);
+    }
+
+    if($('#pending-llda-case').is(':checked'))
+    {
+      $('#s-pending-llda-case').attr('checked', true);
+      $('#s-llda-case-no').html($('#llda-case-no').val());
+    }
+
+    $('#s-type-of-solid-wastes').html();
+    $('#s-qty-per-day').html();
+    $('#s-method-of-garbage-collection').html();
+
+    if($('#garbage-collection-frequency').is(':checked'))
+    {
+      $('#s-garbage-collection-frequency').attr('checked', true);
+    }
+    if($('#garbage-collection-frequency').is(':checked'))
+    {
+      $('#s-garbage-collection-frequency').attr('checked', true);
+    }
+    if($('#garbage-collection-others').is(':checked'))
+    {
+      $('#s-garbage-collection-others').attr('checked', true);
+      $('#s-garbage-collection-specify').val($('#garbage-collection-specify').val());
+    }
+
+    $('#s-collector').html();
+    $('#s-collector-address').html();
+
+    if($('#sanitary-landfill').is(':checked'))
+    {
+      $('#s-sanitary-landfill').attr('checked',true);
+    }
+    if($('#controlled-dumpsite').is(':checked'))
+    {
+      $('#s-controlled-dumpsite').attr('checked',true);
+    }
+
+    if($('#recycling').is(':checked'))
+    {
+      $('#s-recycling').attr('checked',true);
+    }
+    if($('#reduction').is(':checked'))
+    {
+      $('#s-reduction').attr('checked',true);
+    }
+    if($('#reuse').is(':checked'))
+    {
+      $('#s-reuse').attr('checked',true);
+    }
+
+    if($('#drainage-system').is(':checked'))
+    {
+      $('#s-drainage-system').attr('checked',true);
+    }
+    if($('#drainage-system-type1').is(':checked'))
+    {
+      $('#s-close-underground').attr('checked',true);
+    }
+    if($('#drainage-system-type2').is(':checked'))
+    {
+      $('#s-open-canal').attr('checked',true);
+    }
+
+    if($('#drainage-where-discharged1').is(':checked'))
+    {
+      $('#s-public-drainage-system').val();
+    }
+    if($('#drainage-where-discharged2').is(':checked'))
+    {
+      $('#s-nature-outfall-waterbody').val();
+    }
+    if($('#sewerage-system').is(':checked'))
+    {
+      $('#s-sewerage-system').val();
+    }
+    if($('#septic-tank').is(':checked'))
+    {
+      $('#s-septic-tank').val();
+    }
+
+    if($('#sewerage-where-discharged1').is(':checked'))
+    {
+      $('#s-septic-public-drainage-system').attr('checked',true);
+    }
+    if($('#sewerage-where-discharged2').is(':checked'))
+    {
+      $('#s-septic-treatment-in-septic-tank').attr('checked',true);
+    }
+
+    if($('#deep-well').is(':checked'))
+    {
+      $('#s-deep-well').attr('checked',true);
+    }
+    if($('#local-water').is(':checked'))
+    {
+      $('#local-water').attr('checked',true);
+    }
+    if($('#surface-water').is(':checked'))
+    {
+      $('#surface-water').attr('checked',true);
+    }
+
+    $('#s-water-supply-type').html();
+
+    //business activities
+
   }
 
 }); //End of Jquery
