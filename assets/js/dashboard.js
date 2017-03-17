@@ -691,82 +691,81 @@ $(document).ready(function()
     return false;
   });
 
-  function generate_summary()
-  {
-    $('#s-mode-of-payment').html();
-    $('#s-id-presented').html();
-    $('#s-id-dtiseccda-regnum').html();
-    $('#s-dtiseccda-regdate').html();
-    $('#s-brgy-clearance-date-issued').html();
-    $('#s-ctc-number').html();
-    $('#s-tin').html();
-    $('#s-occupancy-permit-number').html();
+  $('#generate-summary').click(function(){
+    $('#s-mode-of-payment').html($('#mode-of-payment').val());
+    $('#s-id-presented').html($('#id-presented').val());
+    $('#s-dtiseccda-regnum').html($('#DTISECCDA_RegNum').val());
+    $('#s-dtiseccda-regdate').html($('#DTISECCDA_Date').val());
+    $('#s-brgy-clearance-date-issued').html($('#brgy-clearance-date-issued').val());
+    $('#s-ctc-number').html($('#ctc-number').val());
+    $('#s-tin').html($('#tin').val());
+    $('#s-occupancy-permit-number').html($('#occupancy-permit-number').val());
 
     if($('#tax-incentive').is(':checked'))
     {
       $('#s-tax-incentive').attr('checked', true);
-      $('#s-entity').html();
+      $('#s-entity').html($('#entity').val());
     }
     else
     {
       $('#s-entity').html("NA");
     }
 
-    $('#s-business').html();
-    $('#s-tax-payer-name').html();
-    $('#s-president-treasurer-name').html();
-    $('#s-pollution-control-officer').html();
-    $('#s-male-employees').html();
-    $('#s-female-employees').html();
-    $('#s-pwd-employees').html();
-    $('#s-lgu-employees').html();
+    // $('#s-business').html($('#business-name').val());
+    $('#s-tax-payer-name').html($('#tax-payer-name').html());
+    $('#s-president-treasurer-name').html($('#president-treasurer-name').html());
+    $('#s-pollution-control-officer').html($('#pollution-control-officer').html());
+    $('#s-male-employees').html($('#male-employees').html());
+    $('#s-female-employees').html($('#female-employees').html());
+    $('#s-pwd-employees').html($('#pwd-employees').html());
+    $('#s-lgu-employees').html($('#lgu-employees').html());
 
     if($('#annual-yes').is(':checked'))
       $('#s-annual-exams-yes').attr('checked', true);
     else
       $('#s-annual-exams-no').attr('checked', true);
     
-    $('#s-company-name').html();
-    $('#s-business-name').html();
-    $('#s-trade-name').html();
-    $('#s-signage-name').html();
-    $('#s-organization-type').html();
-    $('#s-corporation-nam').html();
-    $('#s-date-of-operation-text').html();
-    $('#s-business-desc').html();
-    $('#s-house-bldg-no').html();
-    $('#s-bldg-name').html();
-    $('#s-unit-num').html();
-    $('#s-street').html();
-    $('#s-barangay').html();
-    $('#s-subdivision').html();
-    $('#s-city-municipality').html();
-    $('#s-province').html();
-    $('#s-business-area').html();
-    $('#s-pin').html();
-    $("#s-storeys").html();
-    $("#s-portion-occupied").html();
-    $("#s-area-per-floor").html();
-    $("#s-tel-num").html();
-    $("#s-email").html();
-    $("#s-emergency-contact-name").html();
-    $("#s-emergency-tel-cel-no").html();
-    $("#s-emergency-email").html();
+    $('#s-company-name').html($('#company-name').html());
+    $('#s-business-name').html($('#business-name').html());
+    $('#s-trade-name').html($('#trade-name').html());
+    $('#s-signage-name').html($('#signage-name').html());
+    $('#s-organization-type').html($('#organization-type').html())
+    $('#s-corporation-name').html($('#corporation-name').html());
+    $('#s-date-of-operation-text').html($('#date-of-operation-text').html());
+    $('#s-business-desc').html($('#business-desc').html());
+    $('#s-house-bldg-no').html($('#house-bldg-no').html());
+    $('#s-bldg-name').html($('#bldg-name').html());
+    $('#s-unit-num').html($('#unit-num').html());
+    $('#s-street').html($('#street').html());
+    $('#s-barangay').html($('#barangay').html());
+    $('#s-subdivision').html($('#subdivision').html());
+    $('#s-city-municipality').html($('#city-municipality').html());
+    $('#s-province').html($('#province').html());
+    $('#s-business-area').html($('#business-area').html());
+    $('#s-pin').html($('#pin').html());
+    $("#s-storeys").html($("#storeys").val());
+    $("#s-portion-occupied").html($("#portion-occupied").val());
+    $("#s-area-per-floor").html($("#area-per-floor").val());
+    $("#s-tel-num").html($("#tel-num").html());
+    $("#s-email").html($("#email").html());
+    $("#s-emergency-contact-name").html($("#emergency-contact-name").html());
+    $("#s-emergency-tel-cel-no").html($("#emergency-tel-cel-no").html());
+    $("#s-emergency-email").html($("#emergency-email").html());
 
     if($('#rented').is(':checked'))
     {
       $('#s-rented').attr('checked', true);
-      $("#s-lessor-first-name").html();
-      $('#s-lessor-middle-name').html();
-      $('#s-lessor-last-name').html();
-      $('#s-lessor-address').html();
-      $('#s-lessor-subdivision').html();
-      $('#s-lessor-barangay').html();
-      $('#s-lessor-city-municipality').html();
-      $('#s-lessor-province').html();
-      $('#s-lessor-monthly-rental').html();
-      $('#s-lessor-tel-cel-no').html();
-      $('#s-lessor-email-address').html();
+      $("#s-lessor-first-name").html($("#lessor-first-name").val());
+      $('#s-lessor-middle-name').html($('#lessor-middle-name').val());
+      $('#s-lessor-last-name').html($('#lessor-last-name').val());
+      $('#s-lessor-address').html($('#lessor-address').html());
+      $('#s-lessor-subdivision').html($('#lessor-subdivision').val());
+      $('#s-lessor-barangay').html($('#lessor-barangay').val());
+      $('#s-lessor-city-municipality').html($('#lessor-city-municipality').val());
+      $('#s-lessor-province').html($('#lessor-province').val());
+      $('#s-lessor-monthly-rental').html($('#lessor-monthly-rental').val());
+      $('#s-lessor-tel-cel-no').html($('#lessor-tel-cel-no').val());
+      $('#s-lessor-email-address').html($('#lessor-email').val());
     }
     else
     {
@@ -798,13 +797,13 @@ $(document).ready(function()
     if($('#discharge-permit').is(':checked'))
     {
       $('#s-discharge-permit').attr('checked',true);
-      $('s-discharge-permit-date-issued').html($('#discharge-permit-date-issued').val());
+      $('#s-discharge-permit-date-issued').html($('#discharge-permit-date-issued').val());
     }
 
     if($('#apsci').is(':checked'))
     {
       $('#s-apsci').attr('checked',true);
-      $('s-apsci-date-issued').html($('#apsci-date-issued').val());
+      $('#s-apsci-date-issued').html($('#apsci-date-issued').val());
     }
 
     $('#s-products-by-products').html($('#products-by-products').val());
@@ -831,13 +830,13 @@ $(document).ready(function()
       $('#s-fugitive-particulate-gas').attr('checked', true);
     }
 
-    if($('#steam-generators-bioler').is(':checked'))
+    if($('#steam-generators-boiler').is(':checked'))
     {
-      $('#s-steam-generators-bioler').attr('checked', true);
+      $('#s-steam-generators-boiler').attr('checked', true);
     }
     if($('#steam-generators-furnace').is(':checked'))
     {
-      $('#s-steam-generators-furnace'.attr('checked', true);)
+      $('#s-steam-generators-furnace').attr('checked', true);
     }
     if($('#steam-generators-others').is(':checked'))
     {
@@ -845,10 +844,10 @@ $(document).ready(function()
       $('#s-steam-generator-specify').val($('#steam-generator-specify').val());
     }
 
-    $('#s-air-pollution-control-devices').html();
-    $('#s-stack-height').html();
+    $('#s-air-pollution-control-devices').html($('#air-pollution-control-devices').val());
+    $('#s-stack-height').html($('#stack-height').val());
 
-    $('#s-wastewater-treatment-facility').html();
+    $('#s-wastewater-treatment-facility').html($('#wastewater-treatment-facility').val());
 
     if($('#wastewater-treatment-operation').is(':checked'))
     {
@@ -861,9 +860,9 @@ $(document).ready(function()
       $('#s-llda-case-no').html($('#llda-case-no').val());
     }
 
-    $('#s-type-of-solid-wastes').html();
-    $('#s-qty-per-day').html();
-    $('#s-method-of-garbage-collection').html();
+    $('#s-type-of-solid-wastes').html($('#type-of-solid-wastes').val());
+    $('#s-qty-per-day').html($('#qty-per-day').val());
+    $('#s-method-of-garbage-collection').html($('#method-of-garbage-collection').val());
 
     if($('#garbage-collection-frequency').is(':checked'))
     {
@@ -879,8 +878,8 @@ $(document).ready(function()
       $('#s-garbage-collection-specify').val($('#garbage-collection-specify').val());
     }
 
-    $('#s-collector').html();
-    $('#s-collector-address').html();
+    $('#s-collector').html($('#collector').val());
+    $('#s-collector-address').html($('#collector-address').val());
 
     if($('#sanitary-landfill').is(':checked'))
     {
@@ -919,19 +918,19 @@ $(document).ready(function()
 
     if($('#drainage-where-discharged1').is(':checked'))
     {
-      $('#s-public-drainage-system').val();
+      $('#s-public-drainage-system').attr('checked',true);
     }
     if($('#drainage-where-discharged2').is(':checked'))
     {
-      $('#s-nature-outfall-waterbody').val();
+      $('#s-nature-outfall-waterbody').attr('checked',true);
     }
     if($('#sewerage-system').is(':checked'))
     {
-      $('#s-sewerage-system').val();
+      $('#s-sewerage-system').attr('checked',true);
     }
     if($('#septic-tank').is(':checked'))
     {
-      $('#s-septic-tank').val();
+      $('#s-septic-tank').attr('checked',true);
     }
 
     if($('#sewerage-where-discharged1').is(':checked'))
@@ -949,17 +948,41 @@ $(document).ready(function()
     }
     if($('#local-water').is(':checked'))
     {
-      $('#local-water').attr('checked',true);
+      $('#s-local-water').attr('checked',true);
     }
     if($('#surface-water').is(':checked'))
     {
-      $('#surface-water').attr('checked',true);
+      $('#s-surface-water').attr('checked',true);
     }
 
-    $('#s-water-supply-type').html();
+    $('#s-water-supply-type').html($('#water-supply-type').val());
 
-    //business activities
+    var line_of_business = [];
+    var capitalizations = [];
+    $('select.bus-activity>option:selected').each(function(index, result){
+      if($(result).html() != "Select Line of Business")
+        line_of_business.push($(result).html());
+    });
+    $('input.capitalization').each(function(index, result){
+      if($(result).val() != "")
+      {
+        capitalizations.push($(result).val());
+      }
+    });
 
-  }
+    var rows = "";
+    for(var i = 0 ; i < line_of_business.length ; i++)
+    {
+      rows += "<tr><td>"+line_of_business[i]+"</td><td>"+capitalizations[i]+"</td></tr>"
+    }
+    // line_of_business.each(function(index, result){
+    //   rows += "<tr><td>"+result+"</td><td>"+capitalization[index]+"</td></tr>"
+    // });
+    // console.log(capitalizations);
+    // $('.line-of-business-row').each(function(index, result){
+    //   rows += $(result).html();
+    // });
+    $('#summary-table-body').html(rows);
+  });
 
 }); //End of Jquery
