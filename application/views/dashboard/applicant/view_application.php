@@ -104,7 +104,7 @@
 							$application->get_status() == "Completed"
 							? 'step-done' : '' ?>">
 							<div class="mdl-stepper-circle"><span>4</span></div>
-							<div class="mdl-stepper-title">Complete Requirements</div>
+							<div class="mdl-stepper-title">Complete Requirements <strong>(CHO, CENRO, BFP, CPDO)</strong></div>
 							<div class="mdl-stepper-optional"></div>
 							<div class="mdl-stepper-bar-left"></div>
 							<div class="mdl-stepper-bar-right"></div>

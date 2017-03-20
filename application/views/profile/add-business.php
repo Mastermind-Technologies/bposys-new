@@ -57,19 +57,19 @@
 											<div class="col-sm-3">
 												<div class="form-group">
 													<label for="male-employees">No. of Male Employees</label>
-													<input type="text" class="form-control" data-parsley-type="digits" name="male-employees" required name="employee-male">
+													<input type="number" value="0" class="form-control" data-parsley-type="digits" name="male-employees" required name="employee-male">
 												</div>
 											</div>
 											<div class="col-sm-3">
 												<div class="form-group">
 													<label for="female-employees">No. of Female Employee</label>
-													<input type="text" class="form-control" data-parsley-type="digits" name="female-employees" required name="employee-female">
+													<input type="number" value="0" class="form-control" data-parsley-type="digits" name="female-employees" required name="employee-female">
 												</div>
 											</div>
 											<div class="col-sm-3">
 												<div class="form-group">
 													<label for="pwd-employees">No. of PWD Employee</label>
-													<input type="text" class="form-control" data-parsley-type="digits" name="pwd-employees" required name="employee-pwd">
+													<input type="number" value="0" class="form-control" data-parsley-type="digits" name="pwd-employees" required name="employee-pwd">
 												</div>
 											</div>
 										</div>
@@ -77,7 +77,7 @@
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label for="lgu-employees">No. of Employees Residing in LGU</label>
-													<input type="text" id="lgu-employees" name='lgu-employees' required data-parsley-type='digits' class='form-control'>
+													<input type="number" value="0" id="lgu-employees" name='lgu-employees' required data-parsley-type='digits' class='form-control'>
 												</div>
 											</div>
 										</div>
@@ -256,7 +256,9 @@
 											<div class="col-sm-3">
 												<div class="form-group">
 													<label for="PIN">Zip/Postal Code</label>
-													<input type="text" required data-parsley-type='digits' name="PIN" id="PIN" class="form-control">
+													<h4>4024</h4>
+													<!-- <input type="text" required data-parsley-type='digits' name="PIN" id="PIN" class="form-control"> -->
+													<!-- <input type="hidden" name="PIN" id="PIN" data-parsley-type="digits" required> -->
 												</div>
 											</div>
 										</div>

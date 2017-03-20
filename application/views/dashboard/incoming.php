@@ -23,6 +23,7 @@
               <th>Reference Number</th>
               <th>Business Name</th>
               <th>Application Type</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -33,6 +34,7 @@
                 <td><?= $this->encryption->decrypt($application->get_referenceNum()) ?></td>
                 <td><?= $application->get_businessName() ?></td>
                 <td><?= $application->get_applicationType() ?></td>
+                <td><?= $application->get_status() ?></td>
                 <td><a href="<?php echo base_url(); ?>dashboard/view_application/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a></td>
               </tr>
             <?php endforeach; ?>

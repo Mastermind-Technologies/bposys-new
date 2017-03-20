@@ -22,6 +22,9 @@
             <tr>
               <th>Reference Number</th>
               <th>Business Name</th>
+              <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
+                <th>Verified Documents</th>
+              <?php endif ?>
               <th>Application Type</th>
               <th>Actions</th>
             </tr>
@@ -32,6 +35,26 @@
                 <tr>
                   <td><?= $this->encryption->decrypt($application->get_referenceNum()) ?></td>
                   <td><?= $application->get_businessName() ?></td>
+                  <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
+                    <?php 
+                    $string = "";
+                    foreach ($application->get_approvals() as $key => $approval) {
+                      if ($approval->name != "Engineering") {
+                        $string .= " | ".$approval->name;
+                      }
+                    }
+                    $string = substr($string, 3);
+                    echo "<td>";
+                    if ($string == "") {
+                      echo "None";
+                    }
+                    else
+                    {
+                      echo $string;
+                    }
+                    echo "</td>";
+                    ?>
+                  <?php endif ?>
                   <td><?= $application->get_ApplicationType() ?></td>
                   <td>
                     <a href="<?php echo base_url(); ?>dashboard/view_application/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a>
@@ -41,7 +64,7 @@
                       <a href="<?php echo base_url(); ?>dashboard/get_zoning_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block desktop-only">Print Zoning Form</a>
                     <?php elseif ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BFP"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_bfp_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block desktop-only">Print BFP Form</a>
-                      <?php elseif ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CENRO"): ?>
+                    <?php elseif ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "CENRO"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_cenro_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block desktop-only">Print CENRO Form</a>
                     <?php endif ?>
                   </td>

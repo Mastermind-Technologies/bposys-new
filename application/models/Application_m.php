@@ -90,6 +90,13 @@ class Application_m extends CI_Model {
     $this->db->update($this->engineering, $fields);
   }
 
+  public function get_all_incoming_bplo_applications()
+  {
+    $this->db->select('*')->from($this->bplo)->where('status', 'BPLO Interview and Assessment of Fees')->or_where('status', 'Visit the Office of the Building Official');
+
+    return $this->db->get()->result();
+  }
+
   public function get_all_bplo_applications($query = null)
   {
     if($query != null)

@@ -34,6 +34,7 @@ class BPLO_Application extends Business {
     private $quarterPayment = null;
     private $isRecentlyChanged = null;
     private $gross_receipts = null;
+    private $approvals = null;
 
     public function __construct($reference_num = null){
         $this->CI =& get_instance();
@@ -147,6 +148,7 @@ class BPLO_Application extends Business {
         if(!isset($this->CI))
             $this->CI =& get_instance();
 
+        $this->approvals = $this->CI->Approval_m->get_approvals($param->referenceNum, date($param->taxYear));
         $query['bploId'] = $param->applicationId;
         $lessors = $this->CI->Lessor_m->get_all_lessor($query);
         // echo "<pre>";
@@ -1102,6 +1104,30 @@ class BPLO_Application extends Business {
     public function set_User($user)
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of approvals.
+     *
+     * @return mixed
+     */
+    public function get_Approvals()
+    {
+        return $this->approvals;
+    }
+
+    /**
+     * Sets the value of approvals.
+     *
+     * @param mixed $approvals the approvals
+     *
+     * @return self
+     */
+    private function set_Approvals($approvals)
+    {
+        $this->approvals = $approvals;
 
         return $this;
     }

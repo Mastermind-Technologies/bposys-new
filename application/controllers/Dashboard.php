@@ -323,8 +323,8 @@ class Dashboard extends CI_Controller {
 			// $query['status'] = 'For finalization';
 			// $data['finalization'] = count($this->Application_m->get_all_bplo_applications($query));
 
-			$query['status'] = 'BPLO Interview and Assessment of Fees';
-			$data['incoming'] = count($this->Application_m->get_all_bplo_applications($query));
+			// $query['status'] = 'BPLO Interview and Assessment of Fees';
+			$data['incoming'] = count($this->Application_m->get_all_incoming_bplo_applications());
 
 			// $query['status'] = 'For applicant visit';
 			// $data['pending'] = count($this->Application_m->get_all_bplo_applications($query));
@@ -1165,6 +1165,15 @@ class Dashboard extends CI_Controller {
 				);
 			$this->Notification_m->insert($query);
 
+			//SEND NOTIFICATION TO BPLO
+			$query = array(
+				'referenceNum' => $reference_num,
+				'status' => "Unread",
+				'role' => 4,
+				'notifMessage' => "New",
+				);
+			$this->Notification_m->insert($query);
+
 			//prepare assessment
 			$assessment_fields = array(
 				'referenceNum' => $reference_num,
@@ -1274,8 +1283,8 @@ class Dashboard extends CI_Controller {
 
 		if($role == "BPLO")
 		{
-			$query['status'] = 'BPLO Interview and Assessment of Fees';
-			$applications = $this->Application_m->get_all_bplo_applications($query);
+			// $query['status'] = 'BPLO Interview and Assessment of Fees';
+			$applications = $this->Application_m->get_all_incoming_bplo_applications();
 
 			if(count($applications) > 0)
 			{
@@ -2057,13 +2066,13 @@ class Dashboard extends CI_Controller {
 				// Sanitary_Application::update_status($referenceNum, 'For applicant visit');
 
 				//notify BPLO
-				$query = array(
-					'referenceNum' => $referenceNum,
-					'status' => 'Unread',
-					'role' => 4,
-					'notifMessage' => 'New',
-					);
-				$this->Notification_m->insert($query);
+				// $query = array(
+				// 	'referenceNum' => $referenceNum,
+				// 	'status' => 'Unread',
+				// 	'role' => 4,
+				// 	'notifMessage' => 'New',
+				// 	);
+				// $this->Notification_m->insert($query);
 
 				//notify all departments
 				// for ($i=5; $i <= 10 ; $i++)

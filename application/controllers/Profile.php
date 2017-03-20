@@ -454,7 +454,7 @@ class Profile extends CI_Controller {
 		$this->form_validation->set_rules('barangay','Barangay','required');
 		// $this->form_validation->set_rules('g-address', 'Please point your business location on google maps.', 'required');
 		$this->form_validation->set_rules('email','Email','required');
-		$this->form_validation->set_rules('PIN','Zip/Postal Code','required');
+		// $this->form_validation->set_rules('PIN','Zip/Postal Code','required');
 		// $this->form_validation->set_rules('telephone-number','Telephone Number','required');
 		$this->form_validation->set_rules('pollution-control-officer','Pollution Control Officer','required');
 		$this->form_validation->set_rules('male-employees','No. of Male Employees','required|numeric');
@@ -531,7 +531,7 @@ class Profile extends CI_Controller {
 				'lat' => $this->input->post('lat') == "" ? "NA" : $this->input->post('lat'),
 				'lng' => $this->input->post('lng') == "" ? "NA" : $this->input->post('lng'),
 				'gmapAddress' => $this->input->post('g-address') == "" ? "NA" : $this->input->post('g-address'),
-				'PIN' => $this->input->post('PIN'),
+				'PIN' => "4024",
 				'telNum' => $this->input->post('telephone-number'),
 				'email' => $this->input->post('email'),
 				'pollutionControlOfficer' => $this->input->post('pollution-control-officer'),
@@ -578,7 +578,7 @@ class Profile extends CI_Controller {
 		$this->form_validation->set_rules('barangay','Barangay','required');
 		// $this->form_validation->set_rules('g-address', 'Please point your business location on google maps.', 'required');
 		$this->form_validation->set_rules('email','Email','required');
-		$this->form_validation->set_rules('PIN','Zip/Postal Code','required');
+		// $this->form_validation->set_rules('PIN','Zip/Postal Code','required');
 		// $this->form_validation->set_rules('telephone-number','Telephone Number','required');
 		$this->form_validation->set_rules('pollution-control-officer','Pollution Control Officer','required');
 		$this->form_validation->set_rules('male-employees','No. of Male Employees','required|numeric');
@@ -630,44 +630,55 @@ class Profile extends CI_Controller {
 				break;
 			}
 
-			$fields = array(
-				'userId' => $user_id,
-				'ownerId' => $this->encryption->decrypt($this->input->post('business-owner')),
-				'businessName' => $this->input->post('business-name'),
-				'companyName' => $this->input->post('company-name'),
-				'tradeName' => $this->input->post('trade-name'),
-				'signageName' => $this->input->post('signage-name'),
-				'zoneType' => $this->input->post('zone-type'),
+			if($this->input->post('male-employees') < 0 ||
+				$this->input->post('female-employees') < 0 ||
+				$this->input->post('pwd-employees') < 0 ||
+				$this->input->post('lgu-employees') < 0
+				)
+			{
+				$this->session->set_flashdata('error', 'Number of Employees cannot be a negative number');
+				redirect('profile/add_business');
+				exit();
+			}
+
+				$fields = array(
+					'userId' => $user_id,
+					'ownerId' => $this->encryption->decrypt($this->input->post('business-owner')),
+					'businessName' => $this->input->post('business-name'),
+					'companyName' => $this->input->post('company-name'),
+					'tradeName' => $this->input->post('trade-name'),
+					'signageName' => $this->input->post('signage-name'),
+					'zoneType' => $this->input->post('zone-type'),
 				// 'natureOfBusiness' => $this->input->post('nature-of-business'),
-				'organizationType' => $this->input->post('organization-type'),
-				'corporationName' => $this->input->post('organization-type')=="Corporation" ? $this->input->post('corporation-name') : "NA",
-				'dateOfOperation' => $this->input->post('date-of-operation'),
-				'businessDesc' => $this->input->post('business-desc'),
-				'bldgName' => $this->input->post('bldg-name'),
-				'houseBldgNum' => $this->input->post('house-bldg-no'),
-				'unitNum' => $this->input->post('unit-no'),
-				'street' => $this->input->post('street'),
-				'barangay' => $barangay,
-				'subdivision' => $this->input->post('subdivision'),
-				'cityMunicipality' => "Biñan City",
-				'province' => "Laguna",
-				'lat' => $this->input->post('lat') == "" ? "NA" : $this->input->post('lat'),
-				'lng' => $this->input->post('lng') == "" ? "NA" : $this->input->post('lng'),
-				'gmapAddress' => $this->input->post('g-address') == "" ? "NA" : $this->input->post('g-address'),
-				'PIN' => $this->input->post('PIN'),
-				'telNum' => $this->input->post('telephone-number'),
-				'email' => $this->input->post('email'),
-				'pollutionControlOfficer' => $this->input->post('pollution-control-officer'),
-				'maleEmployees' => $this->input->post('male-employees'),
-				'femaleEmployees' => $this->input->post('female-employees'),
-				'PWDEmployees' => $this->input->post('pwd-employees'),
-				'LGUResidingEmployees' => $this->input->post('lgu-employees'),
-				'businessArea' => $this->input->post('business-area'),
-				'presidentTreasurerName' => $this->input->post('president-treasurer-name'),
-				'emergencyContactPerson' => $this->input->post('emergency-contact-name'),
-				'emergencyTelNum' => $this->input->post('emergency-tel-cel-no'),
-				'emergencyEmail' => $this->input->post('emergency-email'),
-				);
+					'organizationType' => $this->input->post('organization-type'),
+					'corporationName' => $this->input->post('organization-type')=="Corporation" ? $this->input->post('corporation-name') : "NA",
+					'dateOfOperation' => $this->input->post('date-of-operation'),
+					'businessDesc' => $this->input->post('business-desc'),
+					'bldgName' => $this->input->post('bldg-name'),
+					'houseBldgNum' => $this->input->post('house-bldg-no'),
+					'unitNum' => $this->input->post('unit-no'),
+					'street' => $this->input->post('street'),
+					'barangay' => $barangay,
+					'subdivision' => $this->input->post('subdivision'),
+					'cityMunicipality' => "Biñan City",
+					'province' => "Laguna",
+					'lat' => $this->input->post('lat') == "" ? "NA" : $this->input->post('lat'),
+					'lng' => $this->input->post('lng') == "" ? "NA" : $this->input->post('lng'),
+					'gmapAddress' => $this->input->post('g-address') == "" ? "NA" : $this->input->post('g-address'),
+					'PIN' => "4024",
+					'telNum' => $this->input->post('telephone-number'),
+					'email' => $this->input->post('email'),
+					'pollutionControlOfficer' => $this->input->post('pollution-control-officer'),
+					'maleEmployees' => $this->input->post('male-employees'),
+					'femaleEmployees' => $this->input->post('female-employees'),
+					'PWDEmployees' => $this->input->post('pwd-employees'),
+					'LGUResidingEmployees' => $this->input->post('lgu-employees'),
+					'businessArea' => $this->input->post('business-area'),
+					'presidentTreasurerName' => $this->input->post('president-treasurer-name'),
+					'emergencyContactPerson' => $this->input->post('emergency-contact-name'),
+					'emergencyTelNum' => $this->input->post('emergency-tel-cel-no'),
+					'emergencyEmail' => $this->input->post('emergency-email'),
+					);
 			$this->Business_m->insert($fields);
 
 			if($this->input->get('ft'))
