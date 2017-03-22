@@ -443,125 +443,125 @@
 																		</select>
 																	</div>
 																</div>
-</div>
-<div class="row">
-	<div class="col-sm-3">
-		<label>Tax Payer Name</label>
-		<br>
-		<span id="tax-payer-name">N/A</span>
-	</div>
-	<div class="col-sm-5">
-		<label>Name of President/Treasurer of Corporation</label>
-		<br>
-		<span id='president-treasurer-name'>N/A</span>
-	</div>
-</div>
-<hr>
-<div class="row">
-	<div class="col-sm-12">
-		<h4>Employee Details</h4>
-	</div>
-	<div class="col-sm-3">
-		<div class="form-group">
-			<label>Pollution Control Officer</label>
-			<br>
-			<span id="pollution-control-officer">N/A</span>
-		</div>
-	</div>
-	<div class="col-sm-3">
-		<div class="form-group">
-			<label>Number of Male Employees</label>
-			<br>
-			<span id="male-employees">N/A</span>
-		</div>
-	</div>
-	<div class="col-sm-3">
-		<div class="form-group">
-			<label>Number of Female Employees</label>
-			<br>
-			<span id="female-employees">N/A</span>
-		</div>
-	</div>
-	<div class="col-sm-3">
-		<div class="form-group">
-			<label>Number of PWD Employees</label>
-			<br>
-			<span id="pwd-employees">N/A</span>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Number of Employees Residing in LGU</label>
-			<br>
-			<span id="lgu-employees">N/A</span>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label for="">Annual Physical Exams for Employees</label>
-			<div class="radio">
-				<label><input type="radio" checked name="annual-exams" value="Yes">Yes</label>
-				<label><input type="radio" name="annual-exams" value="No">No</label>
-			</div>
-		</div>
-	</div>
-</div>
-<hr>
-<div class="row">
-	<div class="col-sm-12">
-		<h4>Business Details</h4>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Company Name</label>
-			<br>
-			<span id="company-name">N/A</span>
-		</div>
-	</div>
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Business Name</label>
-			<br>
-			<span id="business-name">N/A</span>
-		</div>
-	</div>
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Trade Name/Franchise</label>
-			<br>
-			<span id='trade-name'>N/A</span>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Signage Name</label>
-			<br>
-			<span id='signage-name'>N/A</span>
-		</div>
-	</div>
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Organization Type</label>
-			<br>
-			<span id='organization-type'>N/A</span>
-		</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-3">
+																	<label>Tax Payer Name</label>
+																	<br>
+																	<span id="tax-payer-name">N/A</span>
+																</div>
+																<div class="col-sm-5">
+																	<label>Name of President/Treasurer of Corporation</label>
+																	<br>
+																	<span id='president-treasurer-name'>N/A</span>
+																</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-12">
+																	<h4>Employee Details</h4>
+																</div>
+																<div class="col-sm-3">
+																	<div class="form-group">
+																		<label>Pollution Control Officer</label>
+																		<br>
+																		<span id="pollution-control-officer">N/A</span>
+																	</div>
+																</div>
+																<div class="col-sm-3">
+																	<div class="form-group">
+																		<label>Number of Male Employees</label>
+																		<br>
+																		<span id="male-employees">N/A</span>
+																	</div>
+																</div>
+																<div class="col-sm-3">
+																	<div class="form-group">
+																		<label>Number of Female Employees</label>
+																		<br>
+																		<span id="female-employees">N/A</span>
+																	</div>
+																</div>
+																<div class="col-sm-3">
+																	<div class="form-group">
+																		<label>Number of PWD Employees</label>
+																		<br>
+																		<span id="pwd-employees">N/A</span>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Number of Employees Residing in LGU</label>
+																		<br>
+																		<span id="lgu-employees">N/A</span>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label for="">Annual Physical Exams for Employees</label>
+																		<div class="radio">
+																			<label><input type="radio" checked name="annual-exams" value="Yes">Yes</label>
+																			<label><input type="radio" name="annual-exams" value="No">No</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-12">
+																	<h4>Business Details</h4>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Company Name</label>
+																		<br>
+																		<span id="company-name">N/A</span>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Business Name</label>
+																		<br>
+																		<span id="business-name">N/A</span>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Trade Name/Franchise</label>
+																		<br>
+																		<span id='trade-name'>N/A</span>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Signage Name</label>
+																		<br>
+																		<span id='signage-name'>N/A</span>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Organization Type</label>
+																		<br>
+																		<span id='organization-type'>N/A</span>
+																	</div>
 
-	</div>
-	<div class="col-sm-4">
-		<div class="form-group">
-			<label>Corporation Name <small>(if corporation)</small></label>
-			<br>
-			<span id='corporation-name'>N/A</span>
-		</div>
-	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<label>Corporation Name <small>(if corporation)</small></label>
+																		<br>
+																		<span id='corporation-name'>N/A</span>
+																	</div>
+																</div>
 <!-- 										<div class="col-sm-4">
 <div class="form-group">
 <label>Nature of Business</label>
@@ -954,7 +954,7 @@
 					<div class="col-sm-5">
 						<span>Fugitive Particulates:</span>
 						<div class="checkbox">
-						<label><input type="checkbox" <?= in_array('Dust', $cenro->get_FugitiveParticulates()) ? 'checked' : '' ?> name="fugitive-particulates[]" id="fugitive-particulate-dust" value="Dust"><strong>Dust</strong></label>
+							<label><input type="checkbox" <?= in_array('Dust', $cenro->get_FugitiveParticulates()) ? 'checked' : '' ?> name="fugitive-particulates[]" id="fugitive-particulate-dust" value="Dust"><strong>Dust</strong></label>
 						</div>
 						<div class="checkbox">
 							<label><input type="checkbox" <?= in_array('Mist', $cenro->get_FugitiveParticulates()) ? 'checked' : '' ?> name="fugitive-particulates[]" id="fugitive-particulate-mist" value="Mist"><strong>Mist</strong></label>
@@ -981,11 +981,23 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<label for="air-pollution-control-devices">Air Pollution Control Devices Being Used</label>
-						<input type="text" value="<?= $cenro->get_APCD() ?>" required id="air-pollution-control-devices" name="air-pollution-control-devices" class="form-control">
+						<!-- <input type="text" value="<?= $cenro->get_APCD() ?>" required id="air-pollution-control-devices" name="air-pollution-control-devices" class="form-control"> -->
+						<select name="air-pollution-control-devices" id="air-pollution-control-devices" required class="form-control">
+							<option selected disabled>Select Air Pollution Control Devices Used</option>
+							<option <?= $cenro->get_APCD()=="None" ? "selected" : '' ?> value="None">None</option>
+							<option <?= $cenro->get_APCD()=="Mercury Control Technology" ? "selected" : '' ?> value="Mercury Control Technology">Mercury Control Technology</option>
+							<option <?= $cenro->get_APCD()=="Particulate Control Systems" ? "selected" : '' ?> value="Particulate Control Systems">Particulate Control Systems</option>
+							<option <?= $cenro->get_APCD()=="Wet Flue Gas Desulfurization System" ? "selected" : '' ?> value="Wet Flue Gas Desulfurization System">Wet Flue Gas Desulfurization System</option>
+							<option <?= $cenro->get_APCD()=="Spray Dryer" ? "selected" : '' ?> value="Spray Dryer">Spray Dryer</option>
+							<option <?= $cenro->get_APCD()=="Electrostatic Precipitator (ESP)" ? "selected" : '' ?> value="Electrostatic Precipitator (ESP)">Electrostatic Precipitator (ESP)</option>
+							<option <?= $cenro->get_APCD()=="Pulse-Jet Baghouse" ? "selected" : '' ?> value="Pulse-Jet Baghouse">Pulse-Jet Baghouse</option>
+							<option <?= $cenro->get_APCD()=="Selective Catalytic Reduction (SCR) System" ? "selected" : '' ?> value="Selective Catalytic Reduction (SCR) System">Selective Catalytic Reduction (SCR) System</option>
+							<option <?= $cenro->get_APCD()=="CO2 Capture" ? "selected" : '' ?> value="CO2 Capture">CO2 Capture</option>
+						</select>
 					</div>
 					<div class="col-sm-4">
 						<label for="stack-height">Stack Height</label>
-						<input type="text" required value="<?= $cenro->get_StackHeight() ?>" name="stack-height" id="stack-height" class="form-control">
+						<input type="number" required value="<?= $cenro->get_StackHeight() ?>" placeholder="0" name="stack-height" id="stack-height" class="form-control">
 					</div>
 				</div>
 				<!-- END AIR POLLUTION -->
@@ -1002,7 +1014,26 @@
 				<div class="row">
 					<div class="col-sm-4 ">
 						<label for="wastewater-treatment-facility">Wastewater Treatment Facility</label>
-						<input required type="text" value="<?= $cenro->get_wastewaterTreatmentFacility() ?>" name="wastewater-treatment-facility" id="wastewater-treatment-facility" class="form-control">
+						<!-- <input required type="text" value="<?= $cenro->get_wastewaterTreatmentFacility() ?>" name="wastewater-treatment-facility" id="wastewater-treatment-facility" class="form-control"> -->
+						<select name="wastewater-treatment-facility" id="wastewater-treatment-facility" required class="form-control">
+							<option disabled selected>Select Wastewater Treatment Facility</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "None" ? 'selected' : '' ?> value="None">None</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "August 10 Enterprises" ? 'selected' : '' ?> value="August 10 Enterprises">August 10 Enterprises</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "Bayer CropScience, Inc." ? 'selected' : '' ?> value="Bayer CropScience, Inc.">Bayer CropScience, Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "D.H. Lijauco Enterprises" ? 'selected' : '' ?> value="D.H. Lijauco Enterprises">D.H. Lijauco Enterprises</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "ELMS Industrial (Philippines) Co., Inc." ? 'selected' : '' ?> value="ELMS Industrial (Philippines) Co., Inc.">ELMS Industrial (Philippines) Co., Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "Environmental Solutions Philippines (ESPHIL), Inc." ? 'selected' : '' ?> value="Environmental Solutions Philippines (ESPHIL), Inc.">Environmental Solutions Philippines (ESPHIL), Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "FRILCO Philippines Corporation" ? 'selected' : '' ?> value="FRILCO Philippines Corporation">FRILCO Philippines Corporation</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "HAZCHEM, Inc." ? 'selected' : '' ?> value="HAZCHEM, Inc.">HAZCHEM, Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "HMR Envirocycle Phils., Inc. (HEPI)" ? 'selected' : '' ?> value="HMR Envirocycle Phils., Inc. (HEPI)">HMR Envirocycle Phils., Inc. (HEPI)</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "Intergrated Recycling Industries Phils., Inc. (IRIPI)" ? 'selected' : '' ?> value="Intergrated Recycling Industries Phils., Inc. (IRIPI)">Intergrated Recycling Industries Phils., Inc. (IRIPI)</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "Maritrans Recycler, Inc." ? 'selected' : '' ?> value="Maritrans Recycler, Inc.">Maritrans Recycler, Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "Mary Check Trading" ? 'selected' : '' ?> value="Mary Check Trading">Mary Check Trading</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "SEMICYTECH., Inc." ? 'selected' : '' ?> value="SEMICYTECH., Inc.">SEMICYTECH., Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "Symmetrical Maintenance and General Services" ? 'selected' : '' ?> value="Symmetrical Maintenance and General Services">Symmetrical Maintenance and General Services</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "The Rock Environmental Approach Technologies (TREAT), Inc." ? 'selected' : '' ?> value="The Rock Environmental Approach Technologies (TREAT), Inc.">The Rock Environmental Approach Technologies (TREAT), Inc.</option>
+							<option <?= $cenro->get_wastewaterTreatmentFacility() == "TMC Metal Philippines, Inc." ? 'selected' : '' ?> value="TMC Metal Philippines, Inc.	">TMC Metal Philippines, Inc.</option>
+						</select>
 					</div>
 				</div>
 
@@ -1034,7 +1065,13 @@
 					<div class="col-sm-4">
 						<div class="form-group">
 							<label for="type-of-solid-wastes">Type of Solid Wastes Generated</label>
-							<input required type="text" value="<?= $cenro->get_typeOfSolidWastesGenerated() ?>" id="type-of-solid-wastes" name="type-of-solid-wastes" class="form-control">
+							<!-- <input required type="text" value="<?= $cenro->get_typeOfSolidWastesGenerated() ?>" id="type-of-solid-wastes" name="type-of-solid-wastes" class="form-control"> -->
+							<select name="type-of-solid-wastes" class="form-control" id="type-of-solid-wastes" required>
+								<option selected disabled>Select Type of Solid Wastes Generated</option>
+								<option <?= $cenro->get_typeOfSolidWastesGenerated() == "Household/Municipal Solid Wastes" ? 'selected' : '' ?> value="Household/Municipal Solid Wastes">Household/Municipal Solid Wastes</option>
+								<option <?= $cenro->get_typeOfSolidWastesGenerated() == "Industrial/Hazardous Wastes" ? 'selected' : '' ?> value="Industrial/Hazardous Wastes">Industrial/Hazardous Wastes</option>
+								<option <?= $cenro->get_typeOfSolidWastesGenerated() == "Biomedical/Hospital Wastes" ? 'selected' : '' ?> value="Biomedical/Hospital Wastes">Biomedical/Hospital Wastes</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-sm-2">
@@ -1046,7 +1083,14 @@
 					<div class="col-sm-4">
 						<div class="form-group">
 							<label for="method-of-garbage-collection">Method of Garbage Collection</label>
-							<input required type="text" value="<?= $cenro->get_garbageCollectionMethod() ?>" id="method-of-garbage-collection" name="method-of-garbage-collection" class="form-control">
+							<!-- <input required type="text" value="<?= $cenro->get_garbageCollectionMethod() ?>" id="method-of-garbage-collection" name="method-of-garbage-collection" class="form-control"> -->
+							<select name="method-of-garbage-collection" id="method-of-garbage-collection" class="form-control">
+								<option selected disabled>Select Method of Garbage Collection</option>
+								<option <?= $cenro->get_garbageCollectionMethod() == "Manual Collection" ? "selected" : '' ?> value="Manual Collection">Manual Collection</option>
+								<option <?= $cenro->get_garbageCollectionMethod() == "AutoBins" ? "selected" : '' ?> value="AutoBins">AutoBins</option>
+								<option <?= $cenro->get_garbageCollectionMethod() == "Automated Cart Collection" ? "selected" : '' ?> value="Automated Cart Collection">Automated Cart Collection</option>
+								<option <?= $cenro->get_garbageCollectionMethod() == "Bulky Waste Pickup" ? "selected" : '' ?> value="Bulky Waste Pickup">Bulky Waste Pickup</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -1307,7 +1351,18 @@
 												<div class="col-sm-3">
 													<div class="form-group">
 														<label for="water-supply-type">Type of Water Supply/Source</label>
-														<input type="text" name="water-supply-type" required value="<?= $sanitary->get_TypeLevelOfWaterSource() ?>" id="water-supply-type" class="form-control">
+														<!-- <input type="text" name="water-supply-type" required value="<?= $sanitary->get_TypeLevelOfWaterSource() ?>" id="water-supply-type" class="form-control"> -->
+														<select name="water-supply-type" id="water-supply-type" class="form-control">
+															<option selected disabled>Select Water Supply Type</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Piped Water into Dwelling" "selected" : '' ?> value="Piped Water into Dwelling">Piped Water into Dwelling</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Piped Water into Yard/Plot" "selected" : '' ?> value="Piped Water into Yard/Plot">Piped Water into Yard/Plot</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Public Tap/Standpipes" "selected" : '' ?> value="Public Tap/Standpipes">Public Tap/Standpipes</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Tubewell/Boreholes" "selected" : '' ?> value="Tubewell/Boreholes">Tubewell/Boreholes</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Protected Dug Wells" "selected" : '' ?> value="Protected Dug Wells">Protected Dug Wells</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Protected Springs" "selected" : '' ?> value="Protected Springs">Protected Springs</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Rainwater Collection" "selected" : '' ?> value="Rainwater Collection">Rainwater Collection</option>
+															<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Surface Water" "selected" : '' ?> value="Surface Water">Surface Water</option>
+														</select>
 													</div>
 												</div>
 											</div>
@@ -1340,137 +1395,137 @@
 													<?= ($key+1).".) <strong>".$line->name."</strong> - ".$line->description."<br><br>" ?>
 												<?php endforeach ?>
 
-</div>
-<div class="col-sm-8 col-sm-offset-2">
-	<table id='bus-activity' class="table table-bordered">
-		<th>Line of Business</th>
-		<th>Capitalization</th>
+											</div>
+											<div class="col-sm-8 col-sm-offset-2">
+												<table id='bus-activity' class="table table-bordered">
+													<th>Line of Business</th>
+													<th>Capitalization</th>
 
-		<tbody class="table-body">
-			<tr class="data line-of-business-row">
+													<tbody class="table-body">
+														<tr class="data line-of-business-row">
 
-				<td><select name='line-of-business' id='line-of-business' data-type='testing' required class="form-control line-of-business bus-activity">
-					<option selected disabled>Select Line of Business</option>
-					<?php foreach ($line_of_business as $key => $line): ?>
-						<option value="<?= $this->encryption->encrypt($line->name) ?>" data-type="<?= $line->type ?>"><?= $line->name ?></option>
-					<?php endforeach ?>
-			</select></td>
-			<td><input id='capitalization' name="capitalization" type="text" required data-parsley-type='digits' class="form-control capitalization"></td>
-		</tr>
-	</tbody>
-</table>
-</div>
-
-
-<div class="row">
-	<div class="col-sm-4 col-sm-offset-4">
-		<a id="btn-add-bus-activity" class="btn btn-primary btn-block"><i class="fa fa-plus" aria-hidden="true"></i> Add Row</a>
-	</div>
-</div>
-<hr>
-<div class="col-sm-3 pull-left">
-	<a href="<?php echo base_url(); ?>dashboard" class='btn btn-danger'>Cancel</a>
-</div>
-<div class="col-sm-5 pull-right form-navigation">
-	<a data-toggle='tab' id="generate-summary" class='btn btn-success next pull-right'>Proceed to Summary</a>
-	<!-- <button type="submit" id="btn-submit" class="btn btn-success pull-right"><i id="fa-submit" class="fa fa-check" aria-hidden="true"></i> Submit Application</button> -->
-	<a data-toggle='tab' class='btn btn-success previous pull-right' style="margin-right:10px">Back</a>
-	<button class="btn btn-warning pull-right btn-draft" style='margin-right:10px;' id='save-as-draft' data-toggle="tooltip" title="Save as draft so you can continue later." type="submit"><i class="fa fa-pencil-square-o fa-draft-icon" aria-hidden="true"></i>
-		Save as Draft</button>
-	</div>
-</div>
-
-<div class="tab-pane" id='step8'>
-	<h2 class="panel-header">Application Summary</h2>
-	<div class="col-sm-12">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label for="">Date of Application</label>
-					<h5 style='margin-top:0'><strong><?= date('F j, Y') ?></strong></h5>
-					<input type="hidden" id="application-date" name="application-date" value="<?= date('F j, Y') ?>">
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>Mode of Payment</label>
-					<br>
-					<span id="s-mode-of-payment"></span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>ID Presented</label>
-					<br>
-					<span id="s-id-presented"></span>
-				</div>
-			</div>
-		</div>
+															<td><select name='line-of-business' id='line-of-business' data-type='testing' required class="form-control line-of-business bus-activity">
+																<option selected disabled>Select Line of Business</option>
+																<?php foreach ($line_of_business as $key => $line): ?>
+																	<option value="<?= $this->encryption->encrypt($line->name) ?>" data-type="<?= $line->type ?>"><?= $line->name ?></option>
+																<?php endforeach ?>
+															</select></td>
+															<td><input id='capitalization' name="capitalization" type="text" required data-parsley-type='digits' class="form-control capitalization"></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 
 
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>DTI/SEC/CDA Registration Number</label>
-					<br>
-					<span id="s-dtiseccda-regnum"></span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>DTI/SEC/CDA Date of Registration</label>
-					<br>
-					<span id="s-dtiseccda-regdate"></span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>Barangay Clearance Date Issued</label>
-					<br>
-					<span id="s-brgy-clearance-date-issued"></span>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>CTC Number</label>
-					<br>
-					<span id="s-ctc-number"></span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label>TIN</label>
-					<br>
-					<span id="s-tin"></span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label for="occupancy-permit-number">Occupany Permit Number</label>
-					<br>
-					<span id="s-occupancy-permit-number"></span>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="form-group">
-					<input type="checkbox" disabled id="s-tax-incentive" name="tax-incentive" data-toggle="tooltip" title="Please specify entity below">
-					<label for="tax-incentive">Are you enjoying tax incentive from any Government Entity?</label>
-				</div>
+											<div class="row">
+												<div class="col-sm-4 col-sm-offset-4">
+													<a id="btn-add-bus-activity" class="btn btn-primary btn-block"><i class="fa fa-plus" aria-hidden="true"></i> Add Row</a>
+												</div>
+											</div>
+											<hr>
+											<div class="col-sm-3 pull-left">
+												<a href="<?php echo base_url(); ?>dashboard" class='btn btn-danger'>Cancel</a>
+											</div>
+											<div class="col-sm-5 pull-right form-navigation">
+												<a data-toggle='tab' id="generate-summary" class='btn btn-success next pull-right'>Proceed to Summary</a>
+												<!-- <button type="submit" id="btn-submit" class="btn btn-success pull-right"><i id="fa-submit" class="fa fa-check" aria-hidden="true"></i> Submit Application</button> -->
+												<a data-toggle='tab' class='btn btn-success previous pull-right' style="margin-right:10px">Back</a>
+												<button class="btn btn-warning pull-right btn-draft" style='margin-right:10px;' id='save-as-draft' data-toggle="tooltip" title="Save as draft so you can continue later." type="submit"><i class="fa fa-pencil-square-o fa-draft-icon" aria-hidden="true"></i>
+													Save as Draft</button>
+												</div>
+											</div>
 
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
-					<label for="entity">Specify Entity*</label>
-					<br>
-					<span id="s-entity"></span>
-				</div>
-			</div>
-		</div>
+											<div class="tab-pane" id='step8'>
+												<h2 class="panel-header">Application Summary</h2>
+												<div class="col-sm-12">
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label for="">Date of Application</label>
+																<h5 style='margin-top:0'><strong><?= date('F j, Y') ?></strong></h5>
+																<input type="hidden" id="application-date" name="application-date" value="<?= date('F j, Y') ?>">
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>Mode of Payment</label>
+																<br>
+																<span id="s-mode-of-payment"></span>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>ID Presented</label>
+																<br>
+																<span id="s-id-presented"></span>
+															</div>
+														</div>
+													</div>
+
+
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>DTI/SEC/CDA Registration Number</label>
+																<br>
+																<span id="s-dtiseccda-regnum"></span>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>DTI/SEC/CDA Date of Registration</label>
+																<br>
+																<span id="s-dtiseccda-regdate"></span>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>Barangay Clearance Date Issued</label>
+																<br>
+																<span id="s-brgy-clearance-date-issued"></span>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>CTC Number</label>
+																<br>
+																<span id="s-ctc-number"></span>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label>TIN</label>
+																<br>
+																<span id="s-tin"></span>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label for="occupancy-permit-number">Occupany Permit Number</label>
+																<br>
+																<span id="s-occupancy-permit-number"></span>
+															</div>
+														</div>
+													</div>
+													<hr>
+													<div class="row">
+														<div class="col-sm-12">
+															<div class="form-group">
+																<input type="checkbox" disabled id="s-tax-incentive" name="tax-incentive" data-toggle="tooltip" title="Please specify entity below">
+																<label for="tax-incentive">Are you enjoying tax incentive from any Government Entity?</label>
+															</div>
+
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<label for="entity">Specify Entity*</label>
+																<br>
+																<span id="s-entity"></span>
+															</div>
+														</div>
+													</div>
 		<!-- <div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
@@ -1854,403 +1909,403 @@
 						</div>
 					</div>
 				</div>
-				</div>
-				<div class="col-sm-12"></div>
-				<h2 class="panel-header">Issued Certificates/Permits</h2>
-				<div class="col-sm-12">
-					<small>Click the checkbox if specific permit is issued.</small>
-					<div class="form-group">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-cnc"><strong>Environmental Compliance Certificate/CNC</strong></label>
-								</div>
-							</div>
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-llda"><strong>LLDA Clearance / Certificate of Exemption</strong></label>
-								</div>
+			</div>
+			<div class="col-sm-12"></div>
+			<h2 class="panel-header">Issued Certificates/Permits</h2>
+			<div class="col-sm-12">
+				<small>Click the checkbox if specific permit is issued.</small>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-5">
+							<div class="checkbox">
+								<label><input type="checkbox" disabled id="s-cnc"><strong>Environmental Compliance Certificate/CNC</strong></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-3">
-								<label>Date Issued:</label>
-								<div class="input-group">
-									<span id="s-cnc-date-issued"></span>
-								</div>
+						<div class="col-sm-5">
+							<div class="checkbox">
+								<label><input type="checkbox" disabled id="s-llda"><strong>LLDA Clearance / Certificate of Exemption</strong></label>
 							</div>
-							<div class="col-sm-3 col-sm-offset-2">
-								<label>Date Issued:</label>
-								<div class="input-group">
-									<span id="s-llda-date-issued"></span>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<label>Date Issued:</label>
+							<div class="input-group">
+								<span id="s-cnc-date-issued"></span>
+							</div>
+						</div>
+						<div class="col-sm-3 col-sm-offset-2">
+							<label>Date Issued:</label>
+							<div class="input-group">
+								<span id="s-llda-date-issued"></span>
+							</div>
 
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-discharge-permit"><strong>Discharge Permit</strong></label>
-								</div>
-							</div>
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-apsci" name="apsci"><strong>Permit to Operate/APSCI</strong></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-3">
-								<label>Date Issued:</label>
-								<div class="input-group">
-									<span id="s-discharge-permit-date-issued"></span>
-								</div>
-							</div>
-							<div class="col-sm-3 col-sm-offset-2">
-								<label for="apsci-date-issued">Date Issued:</label>
-								<div class="input-group">
-									<span id="s-apsci-date-issued"></span>
-								</div>
-							</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-sm-4">
-							<div class="form-group">
-								<label for="products-by-products">Products and By-Products</label>
-								<span id="s-products-by-products"></span>
+						<div class="col-sm-5">
+							<div class="checkbox">
+								<label><input type="checkbox" disabled id="s-discharge-permit"><strong>Discharge Permit</strong></label>
+							</div>
+						</div>
+						<div class="col-sm-5">
+							<div class="checkbox">
+								<label><input type="checkbox" disabled id="s-apsci" name="apsci"><strong>Permit to Operate/APSCI</strong></label>
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<label>Date Issued:</label>
+							<div class="input-group">
+								<span id="s-discharge-permit-date-issued"></span>
+							</div>
+						</div>
+						<div class="col-sm-3 col-sm-offset-2">
+							<label for="apsci-date-issued">Date Issued:</label>
+							<div class="input-group">
+								<span id="s-apsci-date-issued"></span>
+							</div>
+						</div>
 					</div>
-					<h2 class="panel-header">Environmental Details</h2>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="products-by-products">Products and By-Products</label>
+							<span id="s-products-by-products"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<h2 class="panel-header">Environmental Details</h2>
+			<div class="col-sm-12">
+				<h4>Air Pollutants</h4>
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-smoke-emission"><strong>Smoke/Emission</strong></label>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-volatile-compound"><strong>Volatile Compound</strong></label>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-5">
+						<span>Fugitive Particulates:</span>
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-fugitive-particulate-dust"><strong>Dust</strong></label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-fugitive-particulate-mist" value="Mist"><strong>Mist</strong></label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-fugitive-particulate-gas"><strong>Gas</strong></label>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<span>Steam Generator:</span>
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-steam-generators-boiler"><strong>Boiler</strong></label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-steam-generators-furnace"><strong>Furnace</strong></label>
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-steam-generators-others"><strong>Others</strong></label>
+							<input type="text" disabled id="s-steam-generator-specify" disabled>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-5">
+						<label for="air-pollution-control-devices">Air Pollution Control Devices Being Used</label>
+						<br>
+						<span id="s-air-pollution-control-devices"></span>
+					</div>
+					<div class="col-sm-4">
+						<label for="stack-height">Stack Height</label>
+						<br>
+						<span id="s-stack-height"></span>
+					</div>
+				</div>
+				<!-- END AIR POLLUTION -->
+				<hr>
+				<h4>Wastewater</h4>
+				<div class="row">
 					<div class="col-sm-12">
-						<h4>Air Pollutants</h4>
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-smoke-emission"><strong>Smoke/Emission</strong></label>
-								</div>
-							</div>
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-volatile-compound"><strong>Volatile Compound</strong></label>
-								</div>
-							</div>
+						<div class="form-group well well-sm">
+							<span><strong class="text-warning">Note: When visiting CENRO, furnish copy of latest wastewater laboratory test results</strong></span>
 						</div>
+					</div>
+				</div>
 
-						<div class="row">
-							<div class="col-sm-5">
-								<span>Fugitive Particulates:</span>
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-fugitive-particulate-dust"><strong>Dust</strong></label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-fugitive-particulate-mist" value="Mist"><strong>Mist</strong></label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-fugitive-particulate-gas"><strong>Gas</strong></label>
-								</div>
-							</div>
-							<div class="col-sm-5">
-								<span>Steam Generator:</span>
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-steam-generators-boiler"><strong>Boiler</strong></label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-steam-generators-furnace"><strong>Furnace</strong></label>
-								</div>
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-steam-generators-others"><strong>Others</strong></label>
-									<input type="text" disabled id="s-steam-generator-specify" disabled>
-								</div>
-							</div>
-						</div>
+				<div class="row">
+					<div class="col-sm-4 ">
+						<label for="wastewater-treatment-facility">Wastewater Treatment Facility</label>
+						<span id="s-wastewater-treatment-facility"></span>
+					</div>
+				</div>
 
-						<div class="row">
-							<div class="col-sm-5">
-								<label for="air-pollution-control-devices">Air Pollution Control Devices Being Used</label>
-								<br>
-								<span id="s-air-pollution-control-devices"></span>
-							</div>
-							<div class="col-sm-4">
-								<label for="stack-height">Stack Height</label>
-								<br>
-								<span id="s-stack-height"></span>
-							</div>
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-wastewater-treatment-operation"><strong>Wastewater Treatment Operation and Process</strong></label>
 						</div>
-						<!-- END AIR POLLUTION -->
-						<hr>
-						<h4>Wastewater</h4>
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="form-group well well-sm">
-									<span><strong class="text-warning">Note: When visiting CENRO, furnish copy of latest wastewater laboratory test results</strong></span>
-								</div>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div class="row">
-							<div class="col-sm-4 ">
-								<label for="wastewater-treatment-facility">Wastewater Treatment Facility</label>
-								<span id="s-wastewater-treatment-facility"></span>
-							</div>
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-pending-llda-case"><strong>Pending Case with LLDA?</strong></label>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						<label>Case No.:</label>
+						<span id="s-llda-case-no"></span>
+					</div>
+				</div>
+				<!-- END OF WASTEWATER -->
+				<hr>
+				<h4>Solid Wastes</h4>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>Type of Solid Wastes Generated</label>
+							<br>
+							<span id="s-type-of-solid-wastes"></span>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label>Quantity per day</label>
+							<br>
+							<span id="s-qty-per-day"></span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>Method of Garbage Collection</label>
+							<br>
+							<span id="s-method-of-garbage-collection"></span>
+						</div>
+					</div>
+				</div>
+				<br>
 
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-wastewater-treatment-operation"><strong>Wastewater Treatment Operation and Process</strong></label>
-								</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group" id="garbage-radio">
+							<span>Frequency of Garbage Collection:</span>
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-garbage-collection-frequency"><strong>Daily</strong></label>
+							</div>
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-garbage-collection-frequency"><strong>Weekly</strong></label>
+							</div>
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-garbage-collection-others"><strong>Others</strong></label>
+								<input type="text" disabled id="s-garbage-collection-specify" disabled>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="form-group">
+							<label>Person / Company Collecting Solid Wastes</label>
+							<br>
+							<span id="s-collector"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="form-group">
+							<label>Collector's Address</label>
+							<br>
+							<span id="s-collector-address"></span>
+						</div>
+					</div>
+				</div>
+				<br>
 
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-pending-llda-case"><strong>Pending Case with LLDA?</strong></label>
-								</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<span>Method of Garbage Disposal:</span>
+							<div class="radio-inline">
+								<label><input type="radio" id="s-sanitary-landfill" disabled><strong>Sanitary Landfill</strong></label>
+							</div>
+							<div class="radio-inline">
+								<label><input type="radio" id="s-controlled-dumpsite" disabled><strong>Controlled Dumpsite</strong></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-3">
-								<label>Case No.:</label>
-								<span id="s-llda-case-no"></span>
-							</div>
-						</div>
-						<!-- END OF WASTEWATER -->
-						<hr>
-						<h4>Solid Wastes</h4>
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>Type of Solid Wastes Generated</label>
-									<br>
-									<span id="s-type-of-solid-wastes"></span>
-								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>Quantity per day</label>
-									<br>
-									<span id="s-qty-per-day"></span>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>Method of Garbage Collection</label>
-									<br>
-									<span id="s-method-of-garbage-collection"></span>
-								</div>
-							</div>
-						</div>
-						<br>
+					</div>
+				</div>
 
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="form-group" id="garbage-radio">
-									<span>Frequency of Garbage Collection:</span>
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-garbage-collection-frequency"><strong>Daily</strong></label>
-									</div>
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-garbage-collection-frequency"><strong>Weekly</strong></label>
-									</div>
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-garbage-collection-others"><strong>Others</strong></label>
-										<input type="text" disabled id="s-garbage-collection-specify" disabled>
-									</div>
-								</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<span>Method of Waste Minimization (if any):</span>
+							<div class="checkbox-inline">
+								<label><input type="checkbox" disabled id="s-recycling"><strong>Recycling</strong></label>
+							</div>
+							<div class="checkbox-inline">
+								<label><input type="checkbox" disabled id="s-reduction"><strong>Reduction</strong></label>
+							</div>
+							<div class="checkbox-inline">
+								<label><input type="checkbox" disabled id="s-reuse"><strong>Reuse</strong></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="form-group">
-									<label>Person / Company Collecting Solid Wastes</label>
-									<br>
-									<span id="s-collector"></span>
-								</div>
+					</div>
+				</div>
+				<!-- END OF SOLID WASTES -->
+				<hr>
+				<h4>Drainage</h4>
+				<small>Check if available</small>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-drainage-system"><strong>Drainage System</strong></input></label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="">Type:</label>
+						</div>
+						<div class="col-sm-3 col-sm-offset-1">
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-close-underground"><strong>Closed/Underground</strong></input></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="form-group">
-									<label>Collector's Address</label>
-									<br>
-									<span id="s-collector-address"></span>
-								</div>
+						<div class="col-sm-3">
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-open-canal"><strong>Open Canal</strong></input></label>
 							</div>
 						</div>
-						<br>
+					</div>
 
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="form-group">
-									<span>Method of Garbage Disposal:</span>
-									<div class="radio-inline">
-										<label><input type="radio" id="s-sanitary-landfill" disabled><strong>Sanitary Landfill</strong></label>
-									</div>
-									<div class="radio-inline">
-										<label><input type="radio" id="s-controlled-dumpsite" disabled><strong>Controlled Dumpsite</strong></label>
-									</div>
-								</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label for="">Where Discharged:</label>
+						</div>
+						<div class="col-sm-3 col-sm-offset-1">
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-public-drainage-system"><strong>Public Drainage System</strong></input></label>
 							</div>
 						</div>
-
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="form-group">
-									<span>Method of Waste Minimization (if any):</span>
-									<div class="checkbox-inline">
-										<label><input type="checkbox" disabled id="s-recycling"><strong>Recycling</strong></label>
-									</div>
-									<div class="checkbox-inline">
-										<label><input type="checkbox" disabled id="s-reduction"><strong>Reduction</strong></label>
-									</div>
-									<div class="checkbox-inline">
-										<label><input type="checkbox" disabled id="s-reuse"><strong>Reuse</strong></label>
-									</div>
-								</div>
+						<div class="col-sm-3">
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-nature-outfall-waterbody"><strong>Nature Outfall/Waterbody</strong></input></label>
 							</div>
 						</div>
-						<!-- END OF SOLID WASTES -->
-						<hr>
-						<h4>Drainage</h4>
-						<small>Check if available</small>
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-drainage-system"><strong>Drainage System</strong></input></label>
-								</div>
+					</div>
+				</div>
+				<!-- END OF DRAINAGE -->
+				<hr>
+				<h4>Sewerage</h4>
+				<small>Check if available</small>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="checkbox">
+							<label><input type="checkbox" disabled id="s-sewerage-system"><strong>Sewerage System</strong></input></label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="checkbox">
+							<label><input type="checkbox" id="s-septic-tank" disabled><strong>Septic Tank</strong></input></label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<label for="">Where Discharged:</label></div>
+						<div class="col-sm-3 col-sm-offset-1">
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-septic-public-drainage-system"><strong>Public Drainage System</strong></input></label>
 							</div>
 						</div>
-						<div class="row">
+						<div class="col-sm-3">
+							<div class="radio-inline">
+								<label><input type="radio" disabled id="s-septic-treatment-in-septic-tank"><strong>Treatment in Septic Tank</strong></input></label>
+							</div>
+						</div>
+					</div>
+					<!-- END OF SEWERAGE -->
+					<hr>
+					<h4>Water Supply/Source</h4>
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="radio">
+								<label><input type="radio" disabled id="s-deep-well"><strong>Deep Well</strong></input></label>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="radio">
+								<label><input type="radio" disabled id="s-local-water"><strong>Local Water Utility</strong></input></label>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="radio">
+								<label><input type="radio" disabled id="s-surface-water"><strong>Surface Water</strong></input></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3">
 							<div class="form-group">
-								<div class="col-sm-12">
-									<label for="">Type:</label>
-								</div>
-								<div class="col-sm-3 col-sm-offset-1">
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-close-underground"><strong>Closed/Underground</strong></input></label>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-open-canal"><strong>Open Canal</strong></input></label>
-									</div>
-								</div>
+								<label>Type of Water Supply/Source</label>
+								<span id="s-water-supply-type"></span>
 							</div>
+						</div>
+					</div>
+					<h2 class="panel-header">Business Activities</h2>
 
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<label for="">Where Discharged:</label>
-								</div>
-								<div class="col-sm-3 col-sm-offset-1">
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-public-drainage-system"><strong>Public Drainage System</strong></input></label>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-nature-outfall-waterbody"><strong>Nature Outfall/Waterbody</strong></input></label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- END OF DRAINAGE -->
-						<hr>
-						<h4>Sewerage</h4>
-						<small>Check if available</small>
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="checkbox">
-									<label><input type="checkbox" disabled id="s-sewerage-system"><strong>Sewerage System</strong></input></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="checkbox">
-									<label><input type="checkbox" id="s-septic-tank" disabled><strong>Septic Tank</strong></input></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<label for="">Where Discharged:</label></div>
-								<div class="col-sm-3 col-sm-offset-1">
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-septic-public-drainage-system"><strong>Public Drainage System</strong></input></label>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="radio-inline">
-										<label><input type="radio" disabled id="s-septic-treatment-in-septic-tank"><strong>Treatment in Septic Tank</strong></input></label>
-									</div>
-								</div>
-							</div>
-							<!-- END OF SEWERAGE -->
-							<hr>
-							<h4>Water Supply/Source</h4>
-							<div class="row">
-								<div class="col-sm-3">
-									<div class="radio">
-										<label><input type="radio" disabled id="s-deep-well"><strong>Deep Well</strong></input></label>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="radio">
-										<label><input type="radio" disabled id="s-local-water"><strong>Local Water Utility</strong></input></label>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="radio">
-										<label><input type="radio" disabled id="s-surface-water"><strong>Surface Water</strong></input></label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label>Type of Water Supply/Source</label>
-										<span id="s-water-supply-type"></span>
-									</div>
-								</div>
-							</div>
-							<h2 class="panel-header">Business Activities</h2>
+					<div class="col-sm-8 col-sm-offset-2">
+						<table id='summary-table' class="table table-bordered">
+							<thead>
+								<th>Line of Business</th>
+								<th>Capitalization</th>
+							</thead>
 
-							<div class="col-sm-8 col-sm-offset-2">
-								<table id='summary-table' class="table table-bordered">
-								<thead>
-									<th>Line of Business</th>
-									<th>Capitalization</th>
-								</thead>
-									
-									<!-- <th></th> -->
-									<tbody class="table-body" id="summary-table-body">
+							<!-- <th></th> -->
+							<tbody class="table-body" id="summary-table-body">
 <!-- 										<tr>
 
-										</tr> -->
-									</tbody>
-								</table>
-							</div>
+</tr> -->
+</tbody>
+</table>
+</div>
 
-						</div>
-						<hr>
+</div>
+<hr>
 <div class="col-sm-3 pull-left">
-<a href="<?php echo base_url(); ?>dashboard" class='btn btn-danger'>Cancel</a>
+	<a href="<?php echo base_url(); ?>dashboard" class='btn btn-danger'>Cancel</a>
 </div>
 <div class="col-sm-5 pull-right form-navigation">
-<button type="submit" id="btn-submit" class="btn btn-success pull-right"><i id="fa-submit" class="fa fa-check" aria-hidden="true"></i> Submit Application</button>
-<!-- <a data-toggle='tab' class='btn btn-success next pull-right'>Next 2/6</a> -->
-<a data-toggle='tab' class='btn btn-success previous pull-right' style='margin-right:10px;'>Back</a>
-<button class="btn btn-warning pull-right btn-draft" style='margin-right:10px;' id='save-as-draft' data-toggle="tooltip" title="Save as draft so you can continue later." type="submit"><i class="fa fa-pencil-square-o fa-draft-icon" aria-hidden="true"></i>
-Save as Draft</button>
-</div>
+	<button type="submit" id="btn-submit" class="btn btn-success pull-right"><i id="fa-submit" class="fa fa-check" aria-hidden="true"></i> Submit Application</button>
+	<!-- <a data-toggle='tab' class='btn btn-success next pull-right'>Next 2/6</a> -->
+	<a data-toggle='tab' class='btn btn-success previous pull-right' style='margin-right:10px;'>Back</a>
+	<button class="btn btn-warning pull-right btn-draft" style='margin-right:10px;' id='save-as-draft' data-toggle="tooltip" title="Save as draft so you can continue later." type="submit"><i class="fa fa-pencil-square-o fa-draft-icon" aria-hidden="true"></i>
+		Save as Draft</button>
+	</div>
 </div>
 </div>
 

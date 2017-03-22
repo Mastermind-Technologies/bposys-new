@@ -649,7 +649,19 @@
 												<div class="row">
 													<div class="col-sm-4">
 														<label for="air-pollution-control-devices">Air Pollution Control Devices Being Used</label>
-														<input type="text" value="<?= $cenro->get_APCD() ?>" required id="air-pollution-control-devices" name="air-pollution-control-devices" class="form-control">
+														<!-- <input type="text" value="<?= $cenro->get_APCD() ?>" required id="air-pollution-control-devices" name="air-pollution-control-devices" class="form-control"> -->
+														<select name="air-pollution-control-devices" id="air-pollution-control-devices" required class="form-control">
+															<option selected disabled>Select Air Pollution Control Devices Used</option>
+															<option <?= $cenro->get_APCD()=="None" ? "selected" : '' ?> value="None">None</option>
+															<option <?= $cenro->get_APCD()=="Mercury Control Technology" ? "selected" : '' ?> value="Mercury Control Technology">Mercury Control Technology</option>
+															<option <?= $cenro->get_APCD()=="Particulate Control Systems" ? "selected" : '' ?> value="Particulate Control Systems">Particulate Control Systems</option>
+															<option <?= $cenro->get_APCD()=="Wet Flue Gas Desulfurization System" ? "selected" : '' ?> value="Wet Flue Gas Desulfurization System">Wet Flue Gas Desulfurization System</option>
+															<option <?= $cenro->get_APCD()=="Spray Dryer" ? "selected" : '' ?> value="Spray Dryer">Spray Dryer</option>
+															<option <?= $cenro->get_APCD()=="Electrostatic Precipitator (ESP)" ? "selected" : '' ?> value="Electrostatic Precipitator (ESP)">Electrostatic Precipitator (ESP)</option>
+															<option <?= $cenro->get_APCD()=="Pulse-Jet Baghouse" ? "selected" : '' ?> value="Pulse-Jet Baghouse">Pulse-Jet Baghouse</option>
+															<option <?= $cenro->get_APCD()=="Selective Catalytic Reduction (SCR) System" ? "selected" : '' ?> value="Selective Catalytic Reduction (SCR) System">Selective Catalytic Reduction (SCR) System</option>
+															<option <?= $cenro->get_APCD()=="CO2 Capture" ? "selected" : '' ?> value="CO2 Capture">CO2 Capture</option>
+														</select>
 													</div>
 													<div class="col-sm-4">
 														<label for="stack-height">Stack Height</label>
@@ -670,7 +682,26 @@
 												<div class="row">
 													<div class="col-sm-4 ">
 														<label for="wastewater-treatment-facility">Wastewater Treatment Facility</label>
-														<input required type="text" value="<?= $cenro->get_wastewaterTreatmentFacility() ?>" name="wastewater-treatment-facility" id="wastewater-treatment-facility" class="form-control">
+														<!-- <input required type="text" value="<?= $cenro->get_wastewaterTreatmentFacility() ?>" name="wastewater-treatment-facility" id="wastewater-treatment-facility" class="form-control"> -->
+														<select name="wastewater-treatment-facility" id="wastewater-treatment-facility" required class="form-control">
+															<option disabled selected>Select Wastewater Treatment Facility</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "None" ? 'selected' : '' ?> value="None">None</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "August 10 Enterprises" ? 'selected' : '' ?> value="August 10 Enterprises">August 10 Enterprises</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "Bayer CropScience, Inc." ? 'selected' : '' ?> value="Bayer CropScience, Inc.">Bayer CropScience, Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "D.H. Lijauco Enterprises" ? 'selected' : '' ?> value="D.H. Lijauco Enterprises">D.H. Lijauco Enterprises</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "ELMS Industrial (Philippines) Co., Inc." ? 'selected' : '' ?> value="ELMS Industrial (Philippines) Co., Inc.">ELMS Industrial (Philippines) Co., Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "Environmental Solutions Philippines (ESPHIL), Inc." ? 'selected' : '' ?> value="Environmental Solutions Philippines (ESPHIL), Inc.">Environmental Solutions Philippines (ESPHIL), Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "FRILCO Philippines Corporation" ? 'selected' : '' ?> value="FRILCO Philippines Corporation">FRILCO Philippines Corporation</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "HAZCHEM, Inc." ? 'selected' : '' ?> value="HAZCHEM, Inc.">HAZCHEM, Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "HMR Envirocycle Phils., Inc. (HEPI)" ? 'selected' : '' ?> value="HMR Envirocycle Phils., Inc. (HEPI)">HMR Envirocycle Phils., Inc. (HEPI)</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "Intergrated Recycling Industries Phils., Inc. (IRIPI)" ? 'selected' : '' ?> value="Intergrated Recycling Industries Phils., Inc. (IRIPI)">Intergrated Recycling Industries Phils., Inc. (IRIPI)</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "Maritrans Recycler, Inc." ? 'selected' : '' ?> value="Maritrans Recycler, Inc.">Maritrans Recycler, Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "Mary Check Trading" ? 'selected' : '' ?> value="Mary Check Trading">Mary Check Trading</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "SEMICYTECH., Inc." ? 'selected' : '' ?> value="SEMICYTECH., Inc.">SEMICYTECH., Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "Symmetrical Maintenance and General Services" ? 'selected' : '' ?> value="Symmetrical Maintenance and General Services">Symmetrical Maintenance and General Services</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "The Rock Environmental Approach Technologies (TREAT), Inc." ? 'selected' : '' ?> value="The Rock Environmental Approach Technologies (TREAT), Inc.">The Rock Environmental Approach Technologies (TREAT), Inc.</option>
+															<option <?= $cenro->get_wastewaterTreatmentFacility() == "TMC Metal Philippines, Inc." ? 'selected' : '' ?> value="TMC Metal Philippines, Inc.	">TMC Metal Philippines, Inc.</option>
+														</select>
 													</div>
 												</div>
 
@@ -702,7 +733,13 @@
 													<div class="col-sm-4">
 														<div class="form-group">
 															<label for="type-of-solid-wastes">Type of Solid Wastes Generated</label>
-															<input required type="text" value="<?= $cenro->get_typeOfSolidWastesGenerated() ?>" id="type-of-solid-wastes" name="type-of-solid-wastes" class="form-control">
+															<!-- <input required type="text" value="<?= $cenro->get_typeOfSolidWastesGenerated() ?>" id="type-of-solid-wastes" name="type-of-solid-wastes" class="form-control"> -->
+															<select name="type-of-solid-wastes" class="form-control" id="type-of-solid-wastes" required>
+																<option selected disabled>Select Type of Solid Wastes Generated</option>
+																<option <?= $cenro->get_typeOfSolidWastesGenerated() == "Household/Municipal Solid Wastes" ? 'selected' : '' ?> value="Household/Municipal Solid Wastes">Household/Municipal Solid Wastes</option>
+																<option <?= $cenro->get_typeOfSolidWastesGenerated() == "Industrial/Hazardous Wastes" ? 'selected' : '' ?> value="Industrial/Hazardous Wastes">Industrial/Hazardous Wastes</option>
+																<option <?= $cenro->get_typeOfSolidWastesGenerated() == "Biomedical/Hospital Wastes" ? 'selected' : '' ?> value="Biomedical/Hospital Wastes">Biomedical/Hospital Wastes</option>
+															</select>
 														</div>
 													</div>
 													<div class="col-sm-2">
@@ -714,7 +751,14 @@
 													<div class="col-sm-4">
 														<div class="form-group">
 															<label for="method-of-garbage-collection">Method of Garbage Collection</label>
-															<input required type="text" value="<?= $cenro->get_garbageCollectionMethod() ?>" id="method-of-garbage-collection" name="method-of-garbage-collection" class="form-control">
+															<!-- <input required type="text" value="<?= $cenro->get_garbageCollectionMethod() ?>" id="method-of-garbage-collection" name="method-of-garbage-collection" class="form-control"> -->
+															<select name="method-of-garbage-collection" id="method-of-garbage-collection" class="form-control">
+																<option selected disabled>Select Method of Garbage Collection</option>
+																<option <?= $cenro->get_garbageCollectionMethod() == "Manual Collection" ? "selected" : '' ?> value="Manual Collection">Manual Collection</option>
+																<option <?= $cenro->get_garbageCollectionMethod() == "AutoBins" ? "selected" : '' ?> value="AutoBins">AutoBins</option>
+																<option <?= $cenro->get_garbageCollectionMethod() == "Automated Cart Collection" ? "selected" : '' ?> value="Automated Cart Collection">Automated Cart Collection</option>
+																<option <?= $cenro->get_garbageCollectionMethod() == "Bulky Waste Pickup" ? "selected" : '' ?> value="Bulky Waste Pickup">Bulky Waste Pickup</option>
+															</select>
 														</div>
 													</div>
 												</div>
@@ -975,7 +1019,18 @@
 																				<div class="col-sm-3">
 																					<div class="form-group">
 																						<label for="water-supply-type">Type of Water Supply/Source</label>
-																						<input type="text" name="water-supply-type" required value="<?= $sanitary->get_TypeLevelOfWaterSource() ?>" id="water-supply-type" class="form-control">
+																						<!-- <input type="text" name="water-supply-type" required value="<?= $sanitary->get_TypeLevelOfWaterSource() ?>" id="water-supply-type" class="form-control"> -->
+																						<select name="water-supply-type" id="water-supply-type" class="form-control">
+																							<option selected disabled>Select Water Supply Type</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Piped Water into Dwelling" "selected" : '' ?> value="Piped Water into Dwelling">Piped Water into Dwelling</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Piped Water into Yard/Plot" "selected" : '' ?> value="Piped Water into Yard/Plot">Piped Water into Yard/Plot</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Public Tap/Standpipes" "selected" : '' ?> value="Public Tap/Standpipes">Public Tap/Standpipes</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Tubewell/Boreholes" "selected" : '' ?> value="Tubewell/Boreholes">Tubewell/Boreholes</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Protected Dug Wells" "selected" : '' ?> value="Protected Dug Wells">Protected Dug Wells</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Protected Springs" "selected" : '' ?> value="Protected Springs">Protected Springs</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Rainwater Collection" "selected" : '' ?> value="Rainwater Collection">Rainwater Collection</option>
+																							<option <?= $sanitary->get_TypeLevelOfWaterSource() == "Surface Water" "selected" : '' ?> value="Surface Water">Surface Water</option>
+																						</select>
 																					</div>
 																				</div>
 																			</div>
