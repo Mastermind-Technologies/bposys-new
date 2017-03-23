@@ -36,10 +36,6 @@
   <!-- <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>  -->
   <script src="<?php echo base_url(); ?>assets/js/noty/packaged/jquery.noty.packaged.min.js"></script>
   <!-- <script src="<?php echo base_url(); ?>assets/js/noty/themes/relax.js"></script> -->
-
-  <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) != "Master Admin"): ?>
-    <script src="<?php echo base_url(); ?>assets/js/dept-dashboard.js"></script>
-  <?php endif ?>
   
   <script src="<?php echo base_url(); ?>assets/matrix/js/jquery.ui.custom.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
@@ -70,6 +66,9 @@
   <script src="<?php echo base_url(); ?>assets/matrix/js/matrix.tables.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/jquery.canvasjs.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/bootstrap-datetimepicker.min.js"></script>
+  <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) != "Master Admin"): ?>
+    <script src="<?php echo base_url(); ?>assets/js/dept-dashboard.js"></script>
+  <?php endif ?>
   <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Master Admin"): ?>
     <script src="<?php echo base_url(); ?>assets/js/admin-dashboard.js"></script>
   <?php endif ?>

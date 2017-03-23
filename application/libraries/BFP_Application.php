@@ -115,6 +115,20 @@ class BFP_Application extends Business {
         $line_of_business = $line_of_business[0]->lineOfBusiness;
 		if(!isset($this->CI))
 			$this->CI =& get_instance();
+
+        $submitted = $this->CI->Requirement_m->get_submitted_requirements($param->referenceNum);
+        $requirements = $this->CI->Requirement_m->get_requirements(5);
+
+        foreach ($requirements as $key => $req) {
+            foreach ($submitted as $key => $submit) {
+                if($req->requirementId == $submit->requirementId)
+                {
+                    $req->submitted = 1;
+                    $req->expirationDate = $submit->expirationDate;
+                }
+            }
+        }
+
         $this->applicationId = $this->CI->encryption->encrypt($param->applicationId);
         $this->referenceNum = $this->CI->encryption->encrypt($param->referenceNum);
         $this->businessId = $this->CI->encryption->encrypt($param->businessId);
@@ -126,7 +140,7 @@ class BFP_Application extends Business {
         $this->occupancyPermitNum = $param->occupancyPermitNum;
         $this->status = $param->status;
         $this->lineOfBusiness = $line_of_business;
-        $this->requirements = $this->CI->Requirement_m->get_requirements(5);
+        $this->requirements = $requirements;
 		$this->unset_CI();
 		return $this;
 	}

@@ -60,7 +60,7 @@ class CENRO_Application extends Business {
         $this->applicationType = "New";
     }
     if(isset($reference_num))
-     return $this->get_application($reference_num);
+       return $this->get_application($reference_num);
 }
 
 public function get_application($reference_num = null)
@@ -81,9 +81,9 @@ public function change_status($reference_num = null, $status = null)
 {
   $this->CI =& get_instance();
   $query = array(
-     'referenceNum' => $reference_num,
-     'status' => $status,
-     );
+   'referenceNum' => $reference_num,
+   'status' => $status,
+   );
   $this->CI->Application_m->update_application($query, 'cenro');
   $this->status = $status;
   $this->unset_CI();
@@ -103,10 +103,10 @@ public static function update_status($reference_num = null, $status = null)
 public function check_expiry()
 {
   if(!isset($this->CI))
-     $this->CI =& get_instance();
+   $this->CI =& get_instance();
 		//check if status is active
- if($this->status == 'Active')
- {
+if($this->status == 'Active')
+{
     $reference_num = $this->CI->encryption->decrypt($this->referenceNum);
     $query = array(
         'referenceNum' => $reference_num,
@@ -128,57 +128,70 @@ $this->unset_CI();
 public function set_application_all($param = null)
 {
   if(!isset($this->CI))
-     $this->CI =& get_instance();
+   $this->CI =& get_instance();
 
- $fugitive_particulates = $param->fugitiveParticulates!=null ? explode('|', $param->fugitiveParticulates) : [];
- $steam_generator = $param->steamGenerator!=null ? explode('|', $param->steamGenerator) : [];
- $waste_minimization = $param->wasteMinimizationMethod!=null ? explode('|', $param->wasteMinimizationMethod) : [];
+$fugitive_particulates = $param->fugitiveParticulates!=null ? explode('|', $param->fugitiveParticulates) : [];
+$steam_generator = $param->steamGenerator!=null ? explode('|', $param->steamGenerator) : [];
+$waste_minimization = $param->wasteMinimizationMethod!=null ? explode('|', $param->wasteMinimizationMethod) : [];
 
- $line_of_business = $this->CI->Business_Activity_m->get_all_business_activity_by_reference_num($param->referenceNum);
- if(count($line_of_business) > 0)
- $line_of_business = $line_of_business[0]->lineOfBusiness;
+$line_of_business = $this->CI->Business_Activity_m->get_all_business_activity_by_reference_num($param->referenceNum);
+if(count($line_of_business) > 0)
+   $line_of_business = $line_of_business[0]->lineOfBusiness;
 
- $this->applicationId = $this->CI->encryption->encrypt($param->applicationId);
- $this->referenceNum = $this->CI->encryption->encrypt($param->referenceNum);
- $this->userId = $this->CI->encryption->encrypt($param->userId);
- $this->businessId = $this->CI->encryption->encrypt($param->businessId);
- $this->CNC = $param->CNC;
- $this->LLDAClearance = $param->LLDAClearance;
- $this->dischargePermit = $param->dischargePermit;
- $this->apsci = $param->apsci;
- $this->productsAndByProducts = $param->productsAndByProducts;
- $this->smokeEmission = $param->smokeEmission;
- $this->volatileCompound = $param->volatileCompound;
-        $this->fugitiveParticulates = $fugitive_particulates;//$param->fugitiveParticulates;
-        $this->steamGenerator = $steam_generator;//$param->steamGenerator;
-        $this->APCD = $param->APCD;
-        $this->stackHeight = $param->stackHeight;
-        $this->wastewaterTreatmentFacility = $param->wastewaterTreatmentFacility;
-        $this->wastewaterTreatmentOperationAndProcess = $param->wastewaterTreatmentOperationAndProcess;
-        $this->pendingCaseWithLLDA = $param->pendingCaseWithLLDA;
-        $this->typeOfSolidWastesGenerated = $param->typeOfSolidWastesGenerated;
-        $this->qtyPerDay = $param->qtyPerDay;
-        $this->garbageCollectionMethod = $param->garbageCollectionMethod;
-        $this->frequencyOfGarbageCollection = $param->frequencyOfGarbageCollection;
-        $this->wasteCollector = $param->wasteCollector;
-        $this->collectorAddress = $param->collectorAddress;
-        $this->garbageDisposalMethod = $param->garbageDisposalMethod;
-        $this->wasteMinimizationMethod = $waste_minimization;//$param->wasteMinimizationMethod;
-        $this->drainageSystem = $param->drainageSystem;
-        $this->drainageType = $param->drainageType;
-        $this->drainageDischargeLocation = $param->drainageDischargeLocation;
-        $this->sewerageSystem = $param->sewerageSystem;
-        $this->septicTank = $param->septicTank;
-        $this->sewerageDischargeLocation = $param->sewerageDischargeLocation;
-        $this->waterSupply = $param->waterSupply;
-        $this->status = $param->status;
-        $this->lineOfBusiness = $line_of_business;
-        $this->requirements = $this->CI->Requirement_m->get_requirements(7);
+$submitted = $this->CI->Requirement_m->get_submitted_requirements($param->referenceNum);
+$requirements = $this->CI->Requirement_m->get_requirements(7);
 
-
-        $this->unset_CI();
-        return $this;
+foreach ($requirements as $key => $req) {
+    foreach ($submitted as $key => $submit) {
+        if($req->requirementId == $submit->requirementId)
+        {
+            $req->submitted = 1;
+            $req->expirationDate = $submit->expirationDate;
+        }
     }
+}
+
+$this->applicationId = $this->CI->encryption->encrypt($param->applicationId);
+$this->referenceNum = $this->CI->encryption->encrypt($param->referenceNum);
+$this->userId = $this->CI->encryption->encrypt($param->userId);
+$this->businessId = $this->CI->encryption->encrypt($param->businessId);
+$this->CNC = $param->CNC;
+$this->LLDAClearance = $param->LLDAClearance;
+$this->dischargePermit = $param->dischargePermit;
+$this->apsci = $param->apsci;
+$this->productsAndByProducts = $param->productsAndByProducts;
+$this->smokeEmission = $param->smokeEmission;
+$this->volatileCompound = $param->volatileCompound;
+$this->fugitiveParticulates = $fugitive_particulates;
+$this->steamGenerator = $steam_generator;
+$this->APCD = $param->APCD;
+$this->stackHeight = $param->stackHeight;
+$this->wastewaterTreatmentFacility = $param->wastewaterTreatmentFacility;
+$this->wastewaterTreatmentOperationAndProcess = $param->wastewaterTreatmentOperationAndProcess;
+$this->pendingCaseWithLLDA = $param->pendingCaseWithLLDA;
+$this->typeOfSolidWastesGenerated = $param->typeOfSolidWastesGenerated;
+$this->qtyPerDay = $param->qtyPerDay;
+$this->garbageCollectionMethod = $param->garbageCollectionMethod;
+$this->frequencyOfGarbageCollection = $param->frequencyOfGarbageCollection;
+$this->wasteCollector = $param->wasteCollector;
+$this->collectorAddress = $param->collectorAddress;
+$this->garbageDisposalMethod = $param->garbageDisposalMethod;
+$this->wasteMinimizationMethod = $waste_minimization;
+$this->drainageSystem = $param->drainageSystem;
+$this->drainageType = $param->drainageType;
+$this->drainageDischargeLocation = $param->drainageDischargeLocation;
+$this->sewerageSystem = $param->sewerageSystem;
+$this->septicTank = $param->septicTank;
+$this->sewerageDischargeLocation = $param->sewerageDischargeLocation;
+$this->waterSupply = $param->waterSupply;
+$this->status = $param->status;
+$this->lineOfBusiness = $line_of_business;
+$this->requirements = $requirements;
+
+
+$this->unset_CI();
+return $this;
+}
 
 
 
@@ -1006,8 +1019,8 @@ public function set_application_all($param = null)
      */
     public function get_ApplicationType()
     {
-       return $this->applicationType;
-   }
+     return $this->applicationType;
+ }
 
      /**
       * Sets the value of applicationType.
@@ -1018,14 +1031,14 @@ public function set_application_all($param = null)
       */
      public function set_ApplicationType($applicationType)
      {
-       $this->applicationType = $applicationType;
+         $this->applicationType = $applicationType;
 
-       return $this;
-   }
-   public function get_LineOfBusiness()
-   {
-       return $this->lineOfBusiness;
-   }
+         return $this;
+     }
+     public function get_LineOfBusiness()
+     {
+         return $this->lineOfBusiness;
+     }
 
 	 /**
 		* Sets the value of applicationType.
@@ -1034,12 +1047,12 @@ public function set_application_all($param = null)
 		*
 		* @return self
 		*/
-     public function set_LineOfBusiness($param)
-     {
-       $this->lineOfBusiness = $param;
+       public function set_LineOfBusiness($param)
+       {
+         $this->lineOfBusiness = $param;
 
-       return $this;
-   }
+         return $this;
+     }
 
     /**
      * Gets the value of requirements.

@@ -7,6 +7,10 @@ $(document).ready(function(){
 	// if($('#notif-count').val() != "-")
 	var interval = window.setInterval(notif_check, 5000);
 
+	$('.datetimepicker').datetimepicker({
+		format: 'MM/DD/YYYY',
+	});
+
 
 	if($('#notif-count').val() > 0)
 	{
@@ -204,22 +208,92 @@ $(document).ready(function(){
 	var requirements_count = $('.requirements-checkbox').length;
 	// console.log(requirements_count);
 	var checked_count = 0;
-	$('.requirements-checkbox').click(function(){
-		if($(this).is(':checked'))
-		{
-			checked_count++;
-		}
-		else
-		{
-			checked_count--;
-		}
+
+	function check_submitted_requirements()
+	{
+		$('.requirements-checkbox').each(function(index,result){
+			if($(result).is(':checked'))
+			{
+				checked_count++;
+			}
+		});
 		if(checked_count == requirements_count)
 		{
 			$('#approve-btn').prop('disabled', false);
 		}
+		console.log(checked_count);
+	}
+	check_submitted_requirements();
+
+	$('.datetimepicker').click(function(){
+
+		// console.log('test');
+		$(this).closest('tr').find('.checker').removeClass('disabled');
+		$(this).closest('tr').find("input.requirements-checkbox").prop('disabled', false);
+		
+	});
+
+	$('.requirements-checkbox').click(function(){
+		var this_control = this;
+		var expDate = $(this).closest('tr').find("input.datetimepicker").val();
+		if($(this).is(':checked'))
+		{
+			$.ajax({
+				type:"POST",
+				data:{referenceNum: $('#reference-number').val(), requirement_id: $(this_control).val(), expirationDate: expDate},
+				url: base_url + 'dashboard/submit_requirements',
+				success: function(data)
+				{
+					if(data == "success")
+					{
+						// $(this_control).prop('checked', true);
+						checked_count++;
+						if(checked_count == requirements_count)
+						{
+							$('#approve-btn').prop('disabled', false);
+						}
+						else
+						{
+							$('#approve-btn').prop('disabled', true);
+						}
+					}
+					else
+					{
+						$(this_control).closest('tr').find("span.checked").removeClass('checked');
+						$(this_control).prop('checked',false);
+						$(this_control).closest('tr').find("input.datetimepicker").focus();
+					}
+				},
+				error: function()
+				{
+					$(this_control).prop('checked',false);
+				}
+			});
+		}
 		else
 		{
-			$('#approve-btn').prop('disabled', true);
+			$.ajax({
+				type:"POST",
+				data:{referenceNum: $('#reference-number').val(), requirement_id: $(this_control).val()},
+				url: base_url + 'dashboard/remove_requirement',
+				success: function()
+				{
+					$(this_control).prop('checked', false);
+					checked_count--;
+					if(checked_count == requirements_count)
+					{
+						$('#approve-btn').prop('disabled', false);
+					}
+					else
+					{
+						$('#approve-btn').prop('disabled', true);
+					}
+				},
+				error: function()
+				{
+					$(this_control).prop('checked',true);
+				}
+			});
 		}
 	});
 

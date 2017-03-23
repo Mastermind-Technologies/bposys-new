@@ -1949,10 +1949,10 @@ class Dashboard extends CI_Controller {
 				$this->session->set_flashdata('message','Approval failed, requirements not completed.');
 				redirect('dashboard');
 			}
-			else
-			{
-				$requirements = $this->input->post('requirements');
-			}
+			// else
+			// {
+			// 	$requirements = $this->input->post('requirements');
+			// }
 		}
 
 		//validate if application is legitimately validated
@@ -1984,52 +1984,52 @@ class Dashboard extends CI_Controller {
 			$application = new Zoning_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
 			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of Zoning Department.";
-			foreach ($requirements as $key => $requirement) {
-				$submitted_requirements_field = array(
-					'referenceNum' => $referenceNum,
-					'requirementId' => $this->encryption->decrypt($requirement),
-					);
-				$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
-			}
+			// foreach ($requirements as $key => $requirement) {
+			// 	$submitted_requirements_field = array(
+			// 		'referenceNum' => $referenceNum,
+			// 		'requirementId' => $this->encryption->decrypt($requirement),
+			// 		);
+			// 	$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
+			// }
 		}
 		else if ($role == "CENRO")
 		{
 			$application = new CENRO_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
 			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of City Environment and Natural Resources.";
-			foreach ($requirements as $key => $requirement) {
-				$submitted_requirements_field = array(
-					'referenceNum' => $referenceNum,
-					'requirementId' => $this->encryption->decrypt($requirement),
-					);
-				$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
-			}
+			// foreach ($requirements as $key => $requirement) {
+			// 	$submitted_requirements_field = array(
+			// 		'referenceNum' => $referenceNum,
+			// 		'requirementId' => $this->encryption->decrypt($requirement),
+			// 		);
+			// 	$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
+			// }
 		}
 		else if ($role == "CHO")
 		{
 			$application = new Sanitary_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
 			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of City Health Office.";
-			foreach ($requirements as $key => $requirement) {
-				$submitted_requirements_field = array(
-					'referenceNum' => $referenceNum,
-					'requirementId' => $this->encryption->decrypt($requirement),
-					);
-				$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
-			}
+			// foreach ($requirements as $key => $requirement) {
+			// 	$submitted_requirements_field = array(
+			// 		'referenceNum' => $referenceNum,
+			// 		'requirementId' => $this->encryption->decrypt($requirement),
+			// 		);
+			// 	$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
+			// }
 		}
 		else if ($role == "BFP")
 		{
 			$application = new BFP_Application($referenceNum);
 			$application->change_status($referenceNum, 'Active');
 			$notif_message = "<strong>".$application->get_businessName() . "</strong> has been <strong>approved</strong> by <strong>".$this->session->userdata['userdata']['firstName'] . " " . $this->session->userdata['userdata']['lastName']."</strong> of Bureau of Fire Protection.";
-			foreach ($requirements as $key => $requirement) {
-				$submitted_requirements_field = array(
-					'referenceNum' => $referenceNum,
-					'requirementId' => $this->encryption->decrypt($requirement),
-					);
-				$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
-			}
+			// foreach ($requirements as $key => $requirement) {
+			// 	$submitted_requirements_field = array(
+			// 		'referenceNum' => $referenceNum,
+			// 		'requirementId' => $this->encryption->decrypt($requirement),
+			// 		);
+			// 	$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
+			// }
 		}
 		else if ($role == "Engineering")
 		{
@@ -2250,6 +2250,7 @@ class Dashboard extends CI_Controller {
 			$data['amusement_devices'] = $this->Fee_m->get_all_amusement_devices();
 			//instantiate Owner of this application
 			// $data['owner'] = new Owner($this->encryption->decrypt($data['application']->get_userId()));
+
 			// echo "<pre>";
 			// print_r($data['application']);
 			// echo "</pre>";
@@ -2401,6 +2402,11 @@ class Dashboard extends CI_Controller {
 			}
 			$data['bplo']->set_referenceNum(str_replace(['/','+','='], ['-','_','='], $data['bplo']->get_referenceNum()));
 			$data['representative'] = new User($user_id);
+
+			// echo "<pre>";
+			// print_r($data['application']);
+			// echo "</pre>";
+			// exit();
 
 			$this->load->view('dashboard/bfp/view', $data);
 		}
@@ -3778,6 +3784,42 @@ public function process_assessments($reference_number)
 	$this->Assessment_m->refresh_assessment_amount(['referenceNum' => $reference_number]);
 
 }
+
+public function submit_requirements()
+{
+	$reference_number =$this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $this->input->post('referenceNum')));
+	$requirement_id = $this->encryption->decrypt($this->input->post('requirement_id'));
+	$expiration_date = $this->input->post('expirationDate');
+
+	if($reference_number != "" && $requirement_id != "" && $expiration_date != "")
+	{
+		$submitted_requirements_field = array(
+			'referenceNum' => $reference_number,
+			'requirementId' => $requirement_id,
+			'expirationDate' => $expiration_date,
+			);
+		$this->Requirement_m->insert_submitted_requirements($submitted_requirements_field);
+
+		echo "success";
+	}
+	else
+	{
+		echo "error";
+	}
+}
+
+public function remove_requirement()
+{
+	$reference_number =$this->encryption->decrypt(str_replace(['-','_','='], ['/','+','='], $this->input->post('referenceNum')));
+	$requirement_id = $this->encryption->decrypt($this->input->post('requirement_id'));
+
+	$query = array(
+		'referenceNum' => $reference_number,
+		'requirementId' => $requirement_id,
+		);
+	$this->Requirement_m->remove_requirement($query);
+}
+
 	//END AJAX FUNCTIONS
 
 // private function process_renewal_tax($activities, $previous_gross, $essential, $non_essential, $reference_num)

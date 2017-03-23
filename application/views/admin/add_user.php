@@ -87,7 +87,7 @@
 										<div class="control-group">
 											<label class="control-label">Birthdate :</label>
 											<div class="controls">
-												<input type="text" placeholder='mm/dd/yyyy' name='birthdate' id='birthdate' class="span11">
+												<input type="text" placeholder='mm/dd/yyyy' name='birthdate' id='datetimepicker' class="span11">
 											</div>
 										</div>
 										<div class="control-group">

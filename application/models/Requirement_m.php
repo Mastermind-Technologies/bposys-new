@@ -28,8 +28,13 @@ class Requirement_m extends CI_Model {
   public function get_submitted_requirements($reference_num)
   {
     //select requirements.requirementId, items.name, submitted_requirements.submittedRequirementsId, roles.name from items join requirements on items.itemId = requirements.itemId join submitted_requirements on requirements.requirementId = submitted_requirements.requirementId join roles on requirements.roleId = roles.roleId where submitted_requirements.referenceNum = '1E5E2270C6'
-    $this->db->select('requirements.requirementId, items.name, submitted_requirements.submittedRequirementsId, roles.name as role')->from($this->table_items)->join($this->table, 'items.itemId = requirements.itemId')->join($this->table_submitted_requirements, 'requirements.requirementId = submitted_requirements.requirementId')->join($this->table_role, 'requirements.roleId = roles.roleId')->where(['submitted_requirements.referenceNum' => $reference_num]);
+    $this->db->select('requirements.requirementId, items.name, submitted_requirements.submittedRequirementsId, roles.name as role, submitted_requirements.expirationDate')->from($this->table_items)->join($this->table, 'items.itemId = requirements.itemId')->join($this->table_submitted_requirements, 'requirements.requirementId = submitted_requirements.requirementId')->join($this->table_role, 'requirements.roleId = roles.roleId')->where(['submitted_requirements.referenceNum' => $reference_num]);
     return $this->db->get()->result();
+  }
+
+  public function remove_requirement($query)
+  {
+    $this->db->delete($this->table_submitted_requirements, $query);
   }
 
   // public function insert($fields = null)

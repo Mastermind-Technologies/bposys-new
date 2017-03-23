@@ -31,7 +31,7 @@ class Zoning_Application extends Business {
         $this->applicationType = "New";
     }
     if(isset($reference_num))
-     return $this->get_application($reference_num);
+       return $this->get_application($reference_num);
 }
 
 public function get_application($reference_num = null)
@@ -54,9 +54,9 @@ public function change_status($reference_num = null, $status = null)
 {
   $this->CI =& get_instance();
   $query = array(
-     'referenceNum' => $reference_num,
-     'status' => $status,
-     );
+   'referenceNum' => $reference_num,
+   'status' => $status,
+   );
   $this->CI->Application_m->update_application($query, 'zoning');
   $this->status = $status;
   $this->unset_CI();
@@ -76,10 +76,10 @@ public static function update_status($reference_num = null, $status = null)
 public function check_expiry()
 {
   if(!isset($this->CI))
-     $this->CI =& get_instance();
+   $this->CI =& get_instance();
 		//check if status is active
- if($this->status == 'Active')
- {
+if($this->status == 'Active')
+{
     $reference_num = $this->CI->encryption->decrypt($this->referenceNum);
     $query = array(
         'referenceNum' => $reference_num,
@@ -108,13 +108,26 @@ $this->unset_CI();
 public function set_application_all($param = null)
 {
   if(!isset($this->CI))
-     $this->CI =& get_instance();
+   $this->CI =& get_instance();
 
- $business_activity = $this->CI->Business_Activity_m->get_all_business_activity_by_reference_num($param->referenceNum);
+$business_activity = $this->CI->Business_Activity_m->get_all_business_activity_by_reference_num($param->referenceNum);
 
- $total_capital = 0;
- foreach ($business_activity as $b) {
+$total_capital = 0;
+foreach ($business_activity as $b) {
     $total_capital += $b->capitalization;
+}
+
+$submitted = $this->CI->Requirement_m->get_submitted_requirements($param->referenceNum);
+$requirements = $this->CI->Requirement_m->get_requirements(8);
+
+foreach ($requirements as $key => $req) {
+    foreach ($submitted as $key => $submit) {
+        if($req->requirementId == $submit->requirementId)
+        {
+            $req->submitted = 1;
+            $req->expirationDate = $submit->expirationDate;
+        }
+    }
 }
 
 $this->applicationId = $this->CI->encryption->encrypt($param->applicationId);
@@ -123,7 +136,7 @@ $this->userId = $this->CI->encryption->encrypt($param->userId);
 $this->businessId = $this->CI->encryption->encrypt($param->businessId);
 $this->capitalInvested = $total_capital;
 $this->status = $param->status;
-$this->requirements = $this->CI->Requirement_m->get_requirements(8);
+$this->requirements = $requirements;
 
 $this->unset_CI();
 return $this;

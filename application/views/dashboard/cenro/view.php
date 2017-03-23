@@ -260,15 +260,18 @@
             </table>
             <?php if ($application->get_status() == "On process"): ?>
               <form action="<?php echo base_url(); ?>dashboard/approve_application/<?= $application->get_referenceNum() ?>" method="POST">
+                <input type="hidden" id="reference-number" value="<?= $application->get_referenceNum() ?>"> 
                 <div class="row-fluid text-center">
-                  <div class="span4 offset4">
+                  <div class="span6 offset3">
                     <table class="table table-bordered">
                       <th colspan="2" class='text-center'>Requirements Checklist</th>
+                      <th>Expiration Date</th>
                       <tbody>
                         <?php foreach ($application->get_requirements() as $key => $requirements): ?>
                           <tr>
-                            <td style="width:10%"><input type="checkbox" value="<?= $this->encryption->encrypt($requirements->requirementId) ?>" class='requirements-checkbox' name="requirements[]" /></td>
+                            <td style="width:10%"><input type="checkbox" value="<?= $this->encryption->encrypt($requirements->requirementId) ?>" class='requirements-checkbox' <?= isset($requirements->submitted) ? 'checked' : 'disabled' ?> name="requirements[]" /></td>
                             <td> <?= $requirements->name ?></td>
+                            <td><input type="text" placeholder='MM/DD/YYYY' name='expiration-date[]' value="<?= isset($requirements->submitted) ? $requirements->expirationDate : '' ?>" required class="span12 datetimepicker"></td>
                           </tr>
                         <?php endforeach ?>
                       </tbody>
