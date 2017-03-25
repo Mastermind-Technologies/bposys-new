@@ -35,6 +35,7 @@ class BPLO_Application extends Business {
     private $isRecentlyChanged = null;
     private $gross_receipts = null;
     private $approvals = null;
+    private $lastUpdate = null;
 
     public function __construct($reference_num = null){
         $this->CI =& get_instance();
@@ -241,6 +242,7 @@ class BPLO_Application extends Business {
         $this->status = $param->status;
         $this->businessActivities = $business_activities;
         $this->dateStarted = $param->createdAt;
+        $this->lastUpdate = $param->updatedAt;
         if(isset($lineOfBusiness))
             $this->lineOfBusiness = $lineOfBusiness;
         $this->capital = $total_capital;
@@ -1125,9 +1127,33 @@ class BPLO_Application extends Business {
      *
      * @return self
      */
-    private function set_Approvals($approvals)
+    public function set_Approvals($approvals)
     {
         $this->approvals = $approvals;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of lastUpdate.
+     *
+     * @return mixed
+     */
+    public function get_LastUpdate()
+    {
+        return $this->lastUpdate;
+    }
+
+    /**
+     * Sets the value of lastUpdate.
+     *
+     * @param mixed $lastUpdate the last update
+     *
+     * @return self
+     */
+    public function set_LastUpdate($lastUpdate)
+    {
+        $this->lastUpdate = $lastUpdate;
 
         return $this;
     }

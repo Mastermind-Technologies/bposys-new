@@ -82,9 +82,27 @@
             </tbody>
           </table>
           <?php if ($application->get_status() == "For Retirement"): ?>
-            <div class="form-action">
-              <div class="row text-center">
-                <a href="<?php echo base_url(); ?>dashboard/approve_retirement/<?= str_replace(['/','+','='], ['-','_','='],  $application->get_referenceNum()) ?>" class="btn btn-success btn-process">Approve Retirement</a>
+            <div class="row-fluid text-center">
+              <div class="span6 offset3">
+                <table class="table table-bordered">
+                  <th colspan="2" class='text-center'>Requirements Checklist</th>
+                  <tbody>
+                    <tr>
+                      <td style="width:10%"><input type="checkbox" class="retirement-checkbox"/></td>
+                      <td> Certificate of No operation</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="form-action">
+                <div class="row text-center">
+                <form action="<?php echo base_url(); ?>dashboard/approve_retirement/<?= str_replace(['/','+','='], ['-','_','='],  $application->get_referenceNum()) ?>" method="get">
+                  <button class="btn btn-success btn-process" disabled="" id="approve-retirement">Approve Retirement</button>
+                </form><!-- 
+                  <a href="" disabled id="approve-retirement" class="btn btn-success btn-process">Approve Retirement</a> -->
+                </div>
               </div>
             </div>
           <?php endif ?>

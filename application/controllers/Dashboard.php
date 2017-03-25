@@ -3820,6 +3820,20 @@ public function remove_requirement()
 	$this->Requirement_m->remove_requirement($query);
 }
 
+public function follow_up()
+{
+	// echo $this->encryption->decrypt($this->input->post('referenceNum'));
+	$query = array(
+		'referenceNum' => $this->encryption->decrypt($this->input->post('referenceNum')),
+		'status' => "Unread",
+		'role' => 3,
+		'notifMessage' => "Your application process is taking too long. If you did not finish this until the end of the year, your unpaid balance will carry over when you renew this application.",
+		);
+	$this->Notification_m->insert($query);
+
+	echo "success";
+}
+
 	//END AJAX FUNCTIONS
 
 // private function process_renewal_tax($activities, $previous_gross, $essential, $non_essential, $reference_num)

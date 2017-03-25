@@ -24,6 +24,7 @@
               <th>Business Name</th>
               <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
                 <th>Verified Documents</th>
+                <th>On Process Since</th>
               <?php endif ?>
               <th>Application Type</th>
               <th>Actions</th>
@@ -54,12 +55,14 @@
                     }
                     echo "</td>";
                     ?>
+                    <td><?= date('M d, Y', strtotime($application->get_lastUpdate())) ?></td>
                   <?php endif ?>
                   <td><?= $application->get_ApplicationType() ?></td>
                   <td>
                     <a href="<?php echo base_url(); ?>dashboard/view_application/<?= bin2hex($this->encryption->encrypt($application->get_applicationId(), $custom_encrypt)) ?>" class="btn btn-info btn-block">Show Details</a>
                     <?php if ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BPLO"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_bplo_form_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block desktop-only">Print BPLO Form</a>
+                      <button id="<?= $application->get_referenceNum() ?>" class="btn btn-warning btn-block desktop-only btn-follow-up">Send Follow Up Notification</button>
                     <?php elseif ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "Zoning"): ?>
                       <a href="<?php echo base_url(); ?>dashboard/get_zoning_info/<?= str_replace(['/','+','='], ['-','_','='], $application->get_referenceNum() ) ?>" class="btn btn-info btn-block desktop-only">Print Zoning Form</a>
                     <?php elseif ($this->encryption->decrypt($this->session->userdata['userdata']['role']) == "BFP"): ?>

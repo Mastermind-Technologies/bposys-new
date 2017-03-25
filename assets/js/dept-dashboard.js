@@ -370,4 +370,35 @@ $(document).ready(function(){
 		$(this).attr('disabled',true);
 	});
 
+	$('.retirement-checkbox').click(function(){
+		if($(this).is(':checked'))
+		{
+			// console.log('hehe');
+			$('#approve-retirement').prop('disabled',false);
+		}
+		else
+		{
+			$("#approve-retirement").prop('disabled',true);
+		}
+	});
+
+	$('.btn-follow-up').click(function(){
+		// console.log(this.id);
+		var this_control = this;
+		$.ajax({
+			type:"POST",
+			url: base_url + 'dashboard/follow_up',
+			data: {referenceNum: this.id},
+			success: function(data)
+			{
+				if(data == "success")
+				{
+					$(this_control).prop('disabled',true);
+					$(this_control).html('Notification Sent');
+				}
+				// console.log(data);
+			}
+		})
+	})
+
 });//End of Jquery
