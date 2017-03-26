@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2017 at 06:15 AM
+-- Generation Time: Mar 27, 2017 at 12:54 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `application_bplo` (
 INSERT INTO `application_bplo` (`applicationId`, `referenceNum`, `userId`, `businessId`, `taxYear`, `applicationDate`, `idPresented`, `modeOfPayment`, `DTISECCDA_RegNum`, `DTISECCDA_Date`, `brgyClearanceDateIssued`, `CTCNum`, `TIN`, `entityName`, `status`, `createdAt`, `updatedAt`) VALUES
 (1, '9FAEA9BEB4', 24, 1, 2017, 'March 1, 2017', '2012109320', 'Quarterly', '6543123', '02/07/2017', '02/09/2017', '6512355612', '1251262', 'NA', 'On process', '2017-03-01 02:31:46', '2017-03-01 02:43:18'),
 (2, 'AE29D1B98F', 24, 2, 2017, 'March 1, 2017', 'Driver''s License - 000000', 'Quarterly', '00000000', '03/01/2017', '03/01/2017', '00000000', '00000000', 'NA', 'On process', '2017-03-01 02:37:10', '2017-03-03 02:35:06'),
-(3, '739862FF5C', 24, 3, 2017, 'March 5, 2017', 'Voter''s ID - 000000', 'Semi-Anually', '00000000', '03/01/2016', '03/01/2016', '00000000', '00000000', 'NA', 'Closed', '2016-03-01 02:48:56', '2017-03-09 15:19:30'),
+(3, '739862FF5C', 24, 3, 2017, 'March 5, 2017', 'Voter''s ID - 000000', 'Semi-Anually', '00000000', '03/01/2016', '03/01/2016', '00000000', '00000000', 'NA', 'Closed', '2016-03-01 02:48:56', '2017-03-25 11:00:45'),
 (4, 'A98409F68C', 24, 4, 2017, 'March 1, 2017', 'Postal ID - 819266123', 'Quarterly', '61235124', '02/18/2016', '05/20/2015', '561255123', '56126123', 'NA', 'On process', '2017-03-01 02:52:19', '2017-03-01 08:34:40'),
 (5, 'A03F21C5BC', 24, 6, 2017, 'March 1, 2017', 'Company ID - 699966', 'Anually', '12127979', '02/21/2017', '02/21/2017', '67891234', '1234', 'NA', 'Closed', '2017-03-01 02:55:10', '2017-03-05 13:56:20'),
 (6, '3BA448289A', 24, 5, 2017, 'March 9, 2017', 'Voters ID - 9881234125', 'Quarterly', '851249123', '02/15/2017', '01/16/2017', '51231512', '612345126', 'NA', 'Visit the Office of the Building Official', '2017-03-01 02:58:41', '2017-03-10 01:38:12'),
@@ -377,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `approvals` (
   `staff` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `approvals`
@@ -473,7 +473,8 @@ INSERT INTO `approvals` (`approvalId`, `referenceNum`, `role`, `type`, `staff`, 
 (92, '9FAEA9BEB4', 7, 'Approve', 'Employee CENRO', '2017-03-20 00:24:56', '2017-03-20 00:24:56'),
 (93, '8D6467E448', 10, 'Validate', 'Employee Sanitary', '2017-03-23 05:06:12', '2017-03-23 05:06:12'),
 (94, '8D6467E448', 8, 'Validate', 'Employee Zoning', '2017-03-23 05:10:16', '2017-03-23 05:10:16'),
-(95, '8D6467E448', 5, 'Approve', 'Employee BFP', '2017-03-23 05:14:27', '2017-03-23 05:14:27');
+(95, '8D6467E448', 5, 'Approve', 'Employee BFP', '2017-03-23 05:14:27', '2017-03-23 05:14:27'),
+(96, '739862FF5C', 4, 'Approve Retirement', 'Rene Manabat', '2017-03-25 11:00:45', '2017-03-25 11:00:45');
 
 -- --------------------------------------------------------
 
@@ -1376,7 +1377,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `name` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `items`
@@ -1406,7 +1407,8 @@ INSERT INTO `items` (`itemId`, `name`, `createdAt`, `updatedAt`) VALUES
 (21, 'Receipt of Realty Tax (If own)', '2017-02-21 12:39:37', '2017-02-21 12:39:37'),
 (22, 'Proof of Service and Maintenance of Fire Fighting Equipment', '2017-02-21 12:39:37', '2017-02-21 12:39:37'),
 (23, 'Health Card per Employee', '2017-02-21 12:39:37', '2017-02-21 12:39:37'),
-(24, 'Certificate of Land Title', '2017-02-21 12:44:00', '2017-02-21 12:44:00');
+(24, 'Certificate of Land Title', '2017-02-21 12:44:00', '2017-02-21 12:44:00'),
+(25, 'Certificate of No Operation', '2017-03-25 10:42:21', '2017-03-25 10:42:21');
 
 -- --------------------------------------------------------
 
@@ -1488,7 +1490,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `notifMessage` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notifications`
@@ -1661,7 +1663,10 @@ INSERT INTO `notifications` (`notificationId`, `referenceNum`, `status`, `role`,
 (165, '9FAEA9BEB4', 'Read', 3, '<strong>Mastermind Incorporated</strong> has been <strong>approved</strong> by <strong>Employee CENRO</strong> of City Environment and Natural Resources.', '2017-03-20 00:24:56', '2017-03-22 00:43:08'),
 (166, '8D6467E448', 'Read', 3, '<strong>R V BIHIS TRUCKING SERVICES</strong> has been <strong>validated</strong> by <strong>Employee Sanitary</strong> of City Health Office. Please check application status.', '2017-03-23 05:06:12', '2017-03-23 05:12:14'),
 (167, '8D6467E448', 'Read', 3, '<strong>R V BIHIS TRUCKING SERVICES</strong> has been <strong>validated</strong> by <strong>Employee Zoning</strong> of Zoning Department. Please check application status.', '2017-03-23 05:10:16', '2017-03-23 05:12:14'),
-(168, '8D6467E448', 'Read', 3, '<strong>R V BIHIS TRUCKING SERVICES</strong> has been <strong>approved</strong> by <strong>Employee BFP</strong> of Bureau of Fire Protection.', '2017-03-23 05:14:27', '2017-03-23 05:14:56');
+(168, '8D6467E448', 'Read', 3, '<strong>R V BIHIS TRUCKING SERVICES</strong> has been <strong>approved</strong> by <strong>Employee BFP</strong> of Bureau of Fire Protection.', '2017-03-23 05:14:27', '2017-03-23 05:14:56'),
+(169, '739862FF5C', 'Read', 3, '<strong>Retirement approved</strong>. You may now proceed to the treasury for payment and then claim your certificate at Business Permit and Licensing Office. Thank you.', '2017-03-25 11:00:45', '2017-03-25 12:13:43'),
+(170, '8D6467E448', 'Read', 3, 'Your application process is taking too long. If you did not finish this until the end of the year, your unpaid balance will carry over when you renew this application.', '2017-03-25 12:13:27', '2017-03-25 12:13:43'),
+(171, '8D6467E448', 'Unread', 3, 'Your application process is taking too long. If you did not finish this until the end of the year, your unpaid balance will carry over when you renew this application.', '2017-03-25 12:14:40', '2017-03-25 12:14:40');
 
 -- --------------------------------------------------------
 
@@ -1830,7 +1835,7 @@ CREATE TABLE IF NOT EXISTS `requirements` (
   `roleId` int(10) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `requirements`
@@ -1863,7 +1868,8 @@ INSERT INTO `requirements` (`requirementId`, `itemId`, `roleId`, `createdAt`, `u
 (24, 20, 5, '2017-02-21 12:51:20', '2017-02-21 12:51:20'),
 (25, 21, 5, '2017-02-21 12:51:20', '2017-02-21 12:51:20'),
 (26, 22, 5, '2017-02-21 12:51:34', '2017-02-21 12:51:34'),
-(27, 19, 5, '2017-02-21 12:51:34', '2017-02-21 12:51:34');
+(27, 19, 5, '2017-02-21 12:51:34', '2017-02-21 12:51:34'),
+(28, 25, 4, '2017-03-25 10:42:54', '2017-03-25 10:42:54');
 
 -- --------------------------------------------------------
 
@@ -2489,7 +2495,7 @@ ALTER TABLE `application_zoning`
 -- AUTO_INCREMENT for table `approvals`
 --
 ALTER TABLE `approvals`
-  MODIFY `approvalId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=96;
+  MODIFY `approvalId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
 --
 -- AUTO_INCREMENT for table `archived_applications`
 --
@@ -2579,7 +2585,7 @@ ALTER TABLE `issued_applications`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `itemId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `itemId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `lessors`
 --
@@ -2594,7 +2600,7 @@ ALTER TABLE `line_of_businesses`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notificationId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=169;
+  MODIFY `notificationId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=172;
 --
 -- AUTO_INCREMENT for table `owners`
 --
@@ -2619,7 +2625,7 @@ ALTER TABLE `renewals`
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `requirementId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `requirementId` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `retirements`
 --
